@@ -6,6 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prisma:db:deploy": "prisma migrate deploy",
+    "db:up": "docker compose up nestjs-demetra-systems-zero-db -d",
+    "db:rm": "docker compose rm nestjs-demetra-systems-zero-db -s -f -v",
+    "db:reboot": "yarn db:up && yarn db:down && sleep 60 && yarn prisma:db:deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
