@@ -24,6 +24,11 @@ $ yarn add argon2
 # Install config
 $ yarn add @nestjs/config
 
+# Install Caching
+$ npm install @nestjs/cache-manager cache-manager
+$ npm i cache-manager-redis-store
+$ npm i redis@3.1.2
+
 # Install Bull
 $ npm install --save @nestjs/bull bull
 
