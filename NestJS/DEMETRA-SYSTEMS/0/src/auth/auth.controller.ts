@@ -1,10 +1,15 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Controller, Body, Query, Param, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthUpDto, AuthInDto } from './dto';
 
-@Controller('auth')
+@Controller("auth")
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Get("get-user-by-id")
+  getUserById(@Query() query: { id: string }) {
+    return this.authService.userById(query.id);
+  }
 
   @Post("signup")
   signup(@Body() dto: AuthUpDto) {
