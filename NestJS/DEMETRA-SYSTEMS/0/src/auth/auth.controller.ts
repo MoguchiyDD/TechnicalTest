@@ -1,4 +1,5 @@
 import { Controller, Body, Query, Param, Get, Post } from '@nestjs/common';
+import { CacheTTL } from '@nestjs/cache-manager';
 import { AuthService } from './auth.service';
 import { AuthUpDto, AuthInDto } from './dto';
 
@@ -7,6 +8,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Get("get-user-by-id")
+  @CacheTTL(1800)  // seconds
   getUserById(@Query() query: { id: string }) {
     return this.authService.userById(query.id);
   }
