@@ -6,4 +6,4 @@ This repository stores all completed technical test
 - License: [MIT License](LICENSE)
 
 ## Folder : NestJS
-Each project contains a file **ABOUT.md** (read it)
+Each project contains a file **NestJS-README.md** (read it)
