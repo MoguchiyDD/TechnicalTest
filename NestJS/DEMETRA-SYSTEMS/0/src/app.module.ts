@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
-import { PrismaModule } from './prisma/prisma.module';
-import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { typeormConfig } from './configs/typeorm.config';
+import { UsersEmployee } from './entity/users.entity';
 
 @Module({
   imports: [
@@ -11,16 +13,17 @@ import { AuthModule } from './auth/auth.module';
     }),
     BullModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async (config: ConfigService) => ({
         redis: {
-          host: configService.get("REDIS_HOST"),
-          port: configService.get("REDIS_PORT")
+          host: config.get("REDIS_HOST"),
+          port: config.get("REDIS_PORT")
         },
       }),
       inject: [ConfigService],
     }),
-    PrismaModule,
-    AuthModule
+    TypeOrmModule.forRoot(typeormConfig),
+    TypeOrmModule.forFeature([UsersEmployee]),
+    UsersModule
   ]
 })
 export class AppModule {}
