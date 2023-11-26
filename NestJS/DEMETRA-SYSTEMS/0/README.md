@@ -8,6 +8,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## Information
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
+- Started & Finished : from **2023.11.23** to **2023.11.26**
 - Package: **yarn**
 - Docker Compose: **PostgreSQl V13**, **Adminer Latest**, **Redis Latest**
 - License: [MIT License](../../../LICENSE)
