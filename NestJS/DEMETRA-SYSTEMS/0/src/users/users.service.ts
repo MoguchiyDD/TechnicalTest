@@ -20,6 +20,7 @@ export class UsersService {
   ) {}
   private readonly logger = new Logger(UsersService.name);
   private readonly regexId = /^[0-9]+$/;
+  private readonly regexEmail = /^[a-z0-9._-]+@[a-z]+\.[a-z]{2,4}$/;
 
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
@@ -107,6 +108,13 @@ export class UsersService {
    * @returns USER DATA from DATABASE TABLE
   */
   async signup(dto: UsersUpDto): Promise<UsersEmployee> {
+    if (!this.regexEmail.test(dto.email)) {
+      throw new HttpException(
+        "ERR_WRONG_EMAIL",
+        HttpStatus.BAD_REQUEST
+      );
+    }
+
     const hash = await argon.hash(dto.password);
 
     // Find USER
