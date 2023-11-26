@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { typeormConfig } from './configs/typeorm.config';
 import { UsersEmployee } from './entity/users.entity';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { UsersEmployee } from './entity/users.entity';
     TypeOrmModule.forRoot(typeormConfig),
     TypeOrmModule.forFeature([UsersEmployee]),
     UsersModule
-  ]
+  ],
+  providers: [AppService],
+  controllers: [AppController]
 })
 export class AppModule {}
