@@ -34,7 +34,7 @@ export class AppService {
       return ip;
     } catch(error) {
       throw new HttpException(
-        "ERROR_NET_IP",
+        "ERR_NET_IP",
         HttpStatus.BAD_REQUEST
       )
     }
