@@ -15,7 +15,7 @@ services:
     networks:
       - nestjs-demetra-systems-zero
   adminer:
-    image: adminer
+    image: adminer:latest
     container_name: adminer-db
     restart: always
     ports:
