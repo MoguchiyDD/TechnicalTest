@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "doc:up": "docker compose up -d",
-    "doc:rm": "docker compose rm mongodb -s -f -v && docker compose rm mongo-express -s -f -v",
+    "doc:rm": "docker compose rm mongodb -s -f -v && docker compose rm mongo-express -s -f -v && docker compose rm redis -s -f -v",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -22,13 +22,17 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/cache-manager": "^2.1.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.0",
     "@nestjs/mongoose": "^10.0.2",
     "@nestjs/platform-express": "^10.0.0",
+    "cache-manager": "^5.3.1",
+    "cache-manager-redis-store": "^3.0.1",
     "mongoose": "^8.0.2",
     "qrcode-terminal": "^0.12.0",
+    "redis": "^4.6.11",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "whatsapp-web.js": "^1.23.0",
