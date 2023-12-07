@@ -1,10 +1,10 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
-import { WhatsApp } from './whatsapp.model';
+import { WhatsApp } from './models/whatsapp.model';
 import { MongoStore } from 'wwebjs-mongo';
 import { Client, RemoteAuth } from 'whatsapp-web.js';
 
@@ -15,6 +15,10 @@ export class WhatsAppService {
     @InjectModel('WhatsApp') private readonly whatsappModel: Model<WhatsApp>,
     @Inject(CACHE_MANAGER) private cacheManager: Cache
   ) {}
+  private readonly logger = new Logger(WhatsAppService.name);
+
+
+  // ---------------- Get CACHE -----------------
 
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
@@ -23,8 +27,8 @@ export class WhatsAppService {
    * @param {string} msgFrom Group or User chat ID
    * @returns Find CACHE || ''
    */
-  async getCacheWhatsApp(msgFrom: string): Promise<unknown|string> {
-    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFrom);
+  async __getCacheWhatsApp(msgFrom: string): Promise<unknown|string> {
+    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFrom);  // Get CACHE
     if (cacheWhatsAppData) {
       return cacheWhatsAppData
     }
@@ -32,9 +36,56 @@ export class WhatsAppService {
     return ''
   }
 
+  // --------------------------------------------
+  
+  
+  // --------------- Job woth DB ----------------
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Saves and Updates DATA to The DB
+   * @param {unknown} data The DATA from CACHE
+   */
+  saveOrUpdatePersonDB(data: unknown) {
+    const findWhatsAppPerson = this.whatsappModel.findOne({ phone: data['phone'] }).exec();
+    findWhatsAppPerson.then((person) => {
+      if (person === null) {  // CREATE
+        const newWhatsAppPerson = new this.whatsappModel({
+          createdAt: new Date().toUTCString(),
+          updatedAt: new Date().toUTCString(),
+          consultation: data['consultationType'],
+          phone: data['phone'],
+          fullname: data['fullname'],
+          service: data['service'],
+          description: data['description']
+        });
+        newWhatsAppPerson.save();
+
+        this.logger.warn('The Database SUCCESSFULLY Saved The New PERSON');
+      } else {  // UPDATE
+        person.updatedAt = new Date().toUTCString();
+        person.consultation = data['consultationType'];
+        person.phone = data['phone'];
+        person.fullname = data['fullname'];
+        person.service = data['service'];
+        person.description = data['description'];
+        person.save();
+
+        this.logger.warn('The Database SUCCESSFULLY Updated The Old PERSON');
+      }
+    }).catch((error) => {
+      throw this.logger.error(`DatabaseError: ${error}`);
+    });
+  }
+
+  // --------------------------------------------
+
+
+  // ----------------- WhatsApp -----------------
+
   async whastappWeb(): Promise<void> {
     const qrcode = await require('qrcode-terminal');
-
     mongoose.connect(this.config.get('DATABASE_URL')).then(async () => {
       const store = await new MongoStore({ mongoose: mongoose });
       const clientID = 'CLIENT_' + Math.round(0 - 0.5 + Math.random() * (999 - 1 + 1)).toString() + '_' + Date.now().toString();
@@ -125,6 +176,8 @@ export class WhatsAppService {
     });
   }
 
+  // --------------------------------------------
+
 
   // ----------------- GREETING -----------------
 
@@ -141,9 +194,9 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ): Promise<void> {
-    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      this.cacheManager.del("cache-whatsapp_" + msgFromSplit);
+      this.cacheManager.del('cache-whatsapp_' + msgFromSplit);
       this._clientGreeting(client, msgFrom, msgFromSplit);
     }
   }
@@ -161,12 +214,12 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ): Promise<void> {
-    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData === '') {
       const person = {
         phone: '+' + msgFromSplit
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
       await client.sendMessage(
         msgFrom,
         'Здравствуйте, Ваша заявка на консультацию принята! Как Вам удобно переговорить устно (/устно) или перепиской (/перепиской)?'
@@ -201,7 +254,7 @@ export class WhatsAppService {
     msgFromSplit: string,
     __askPhone: string = ''
   ): Promise<void> {
-    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
       switch (__askPhone) {
         case '': {
@@ -213,7 +266,7 @@ export class WhatsAppService {
             consultationType: cacheWhatsAppData['consultationType'],
             isPhone: true
           }
-          await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+          await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
           await client.sendMessage(msgFrom, 'Тогда  по какому номеру телефона мне с Вами связаться?');
           break;
         }
@@ -240,16 +293,16 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ) {
-    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
       const person = {
         consultationType: type,
-        phone: cacheWhatsAppData["phone"]
+        phone: cacheWhatsAppData['phone']
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
       await client.sendMessage(
         msgFrom,
-        `Мне связаться с Вами в будущем по ${cacheWhatsAppData["phone"]} номеру телефона? (/да-изменить или /не-изменять)`
+        `Мне связаться с Вами в будущем по ${cacheWhatsAppData['phone']} номеру телефона? (/да-изменить или /не-изменять)`
       );
     }
   }
@@ -269,14 +322,14 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ) {
-    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
       const person = {
-        consultationType: cacheWhatsAppData["consultationType"],
+        consultationType: cacheWhatsAppData['consultationType'],
         isFullName: true,
-        phone: cacheWhatsAppData["phone"]
+        phone: cacheWhatsAppData['phone']
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
       await client.sendMessage(msgFrom, 'Как мне к Вам обращаться?');
     }
   }
@@ -301,7 +354,7 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ): Promise<void> {
-    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData) {
       const isPhone = cacheWhatsAppData['isPhone'];
       if (isPhone === true) {
@@ -309,7 +362,7 @@ export class WhatsAppService {
           consultationType: cacheWhatsAppData['consultationType'],
           phone: '+' + msgBody.match(/\d+/g).join('')
         }
-        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
         this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
       }
     }
@@ -327,16 +380,18 @@ export class WhatsAppService {
     msgBody: string,
     msgFromSplit: string
   ): Promise<boolean> {
-    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData) {
       const isFullName = cacheWhatsAppData['isFullName'];
       if (isFullName === true) {
         const person = {
           consultationType: cacheWhatsAppData['consultationType'],
           phone: cacheWhatsAppData['phone'],
-          fullname: msgBody.charAt(0).toUpperCase() + msgBody.slice(1)
+          fullname: msgBody.charAt(0).toUpperCase() + msgBody.slice(1),
+          service: '',
+          description: ''
         }
-        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
 
         return isFullName;
       }
@@ -363,13 +418,10 @@ export class WhatsAppService {
     msgFrom: string,
     msgFromSplit: string
   ): Promise<void> {
-    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData) {
-      console.log('_endConsultationReality:', cacheWhatsAppData);
-      this.cacheManager.del("cache-whatsapp_" + msgFromSplit);
-
-      // SAVE DATA
-
+      this.saveOrUpdatePersonDB(cacheWhatsAppData);  // Save DATA
+      this.cacheManager.del('cache-whatsapp_' + msgFromSplit);  // Del CACHE
       await client.sendMessage(
         msgFrom,
         `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Менеджер позвонит Вам в ближайшее время по ${cacheWhatsAppData['phone']} номеру телефона.`
