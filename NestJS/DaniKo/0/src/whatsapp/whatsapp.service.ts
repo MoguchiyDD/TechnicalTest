@@ -134,27 +134,52 @@ export class WhatsAppService {
             this._clientGreeting(client, message.from, msgFrom);
             break;
           }
-          case '/устно': {
+          case '/созвонимся': {
             this._askForPersonalDetails('устно', client, message.from, msgFrom);
             break;
           }
           case '/да-изменить': {
-            this._askForPersonalDetails('устно', client, message.from, msgFrom, 'да');
+            this._askForPersonalDetails('', client, message.from, msgFrom, 'да');
             break;
           }
           case '/не-изменять': {
-            this._askForPersonalDetails('устно', client, message.from, msgFrom, 'нет');
+            this._askForPersonalDetails('', client, message.from, msgFrom, 'нет');
             break;
           }
-          case '/перепиской': {
+          case '/спишемся': {
+            this._askForPersonalDetails('переписка', client, message.from, msgFrom);
+            break;
+          }
+          case '/сайт': {
+            this._askForDetails(client, message.from, msgFrom, 'сайт');
+            break;
+          }
+          case '/по': {
+            this._askForDetails(client, message.from, msgFrom, 'программное-обеспечение');
+            break;
+          }
+          case '/по-мобильное': {
+            this._askForDetails(client, message.from, msgFrom, 'мобильное-программное-обеспечение');
+            break;
+          }
+          case '/по-настольное': {
+            this._askForDetails(client, message.from, msgFrom, 'настольное-программное-обеспечение');
+            break;
+          }
+          case '/игра': {
+            this._askForDetails(client, message.from, msgFrom, 'игра');
+            break;
+          }
+          case '/игра-мобильная': {
+            this._askForDetails(client, message.from, msgFrom, 'мобильная-игра');
+            break;
+          }
+          case '/игра-настольная': {
+            this._askForDetails(client, message.from, msgFrom, 'настольная-игра');
             break;
           }
           default: {
-            await this._firstEditPhone(client, msgBody, message.from, msgFrom);  // isPhone
-            const setFullName = await this._firstEditFullname(msgBody, msgFrom);  // isFullName
-            if (setFullName === true) {
-              this._endConsultationReality(client, message.from, msgFrom);
-            }
+            this._firstEdits(client, msgBody, message.from, msgFrom);
             break;
           }
         }
@@ -222,7 +247,7 @@ export class WhatsAppService {
       await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
       await client.sendMessage(
         msgFrom,
-        'Здравствуйте, Ваша заявка на консультацию принята! Как Вам удобно переговорить устно (/устно) или перепиской (/перепиской)?'
+        'Здравствуйте, Ваша заявка на консультацию принята! Как Вам удобно переговорить устно (/созвонимся) или перепиской (/спишемся)?'
       )
     } else {
       await client.sendMessage(
@@ -241,22 +266,22 @@ export class WhatsAppService {
    * @copyright Copyright (c) 2023 MoguchiyDD
    * @license MIT License
    * @description Asks The PERSON for your PHONE and your FULL NAME
-   * @param {string} type «устно» or «перепиской»
+   * @param {string} type «устно» or «переписка»
    * @param {Client} client WhatsApp Web API Client
    * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
-   * @param {string} __askPhone «''», «'да'» or «'нет'»
+   * @param {string} askPhone «''», «'да'» or «'нет'»
    */
   async _askForPersonalDetails(
     type: string,
     client: Client,
     msgFrom: string,
     msgFromSplit: string,
-    __askPhone: string = ''
+    askPhone: string = ''
   ): Promise<void> {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
-    if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
-      switch (__askPhone) {
+    if (cacheWhatsAppData != '') {
+      switch (askPhone) {
         case '': {
           this.__askPhone(type, client, msgFrom, msgFromSplit);
           break;
@@ -271,7 +296,7 @@ export class WhatsAppService {
           break;
         }
         case 'нет': {
-          this.__askFullName(type, client, msgFrom, msgFromSplit);
+          this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
           break;
         }
       }
@@ -294,7 +319,7 @@ export class WhatsAppService {
     msgFromSplit: string
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
-    if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
+    if (cacheWhatsAppData != '') {
       const person = {
         consultationType: type,
         phone: cacheWhatsAppData['phone']
@@ -323,7 +348,7 @@ export class WhatsAppService {
     msgFromSplit: string
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
-    if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
+    if (cacheWhatsAppData != '') {
       const person = {
         consultationType: cacheWhatsAppData['consultationType'],
         isFullName: true,
@@ -335,9 +360,295 @@ export class WhatsAppService {
   }
 
   // --------------------------------------------
+  
+  
+  // -------------- TYPE SOFTWARE ---------------
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON what TYPE of SOFTWARE is needed
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @param {string} typeSoftware «''», «'сайт'», «'программное-обеспечение'», \
+   * «'мобильное-программное-обеспечение'», «'настольное-программное-обеспечение'», \
+   * «'игра'», «'мобильная-игра'», or «'настольная-игра'»
+   */
+  async _askForDetails(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string,
+    typeSoftware: string = ''
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData != '') {
+      switch (typeSoftware) {
+        case '': {
+          this.__greetingTypeSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'сайт': {
+          this.__siteSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'программное-обеспечение': {
+          this.__softwareSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'мобильное-программное-обеспечение': {
+          this.__softwareTypeSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'настольное-программное-обеспечение': {
+          this.__softwareTypeSoftware(client, msgFrom, msgFromSplit, true);
+          break;
+        }
+        case 'игра': {
+          this.__gameSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'мобильная-игра': {
+          this.__gameTypeSoftware(client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'настольная-игра': {
+          this.__gameTypeSoftware(client, msgFrom, msgFromSplit, true);
+          break;
+        }
+      }
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON what SOFTWARE is Needed
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async __greetingTypeSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData != '') {
+      await client.sendMessage(
+        msgFrom,
+        `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра)`
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON what WEB SITE is Needed
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async __siteSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData != '') {
+      const person = {
+        consultationType: cacheWhatsAppData['consultationType'],
+        phone: cacheWhatsAppData['phone'],
+        fullname: cacheWhatsAppData['fullname'],
+        service: 'веб-сайт',
+        description: cacheWhatsAppData['description'],
+        isSite: true
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+      await client.sendMessage(
+        msgFrom,
+        'На какую тему будет веб-сайт? Например, магазин для книг, игровой комплекс, космодром и так далее.'
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON what TYPE of SOFTWARE is Needed
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async __softwareSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData != '') {
+      const person = {
+        consultationType: cacheWhatsAppData['consultationType'],
+        phone: cacheWhatsAppData['phone'],
+        fullname: cacheWhatsAppData['fullname'],
+        service: cacheWhatsAppData['service'],
+        description: cacheWhatsAppData['description']
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+      await client.sendMessage(
+        msgFrom,
+        `${cacheWhatsAppData['fullname']} желает программное обеспечение на мобильном (/по-мобильное) или настольном (/по-настольное) устройстве?`
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches The DESCRIPTION for The SOFTWARE
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @param {boolean} isDesktopSoftware Is The SOFTWARE DESKTOP or not?
+   */
+  async __softwareTypeSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string,
+    isDesktopSoftware: boolean = false
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      const person = {
+        consultationType: cacheWhatsAppData['consultationType'],
+        phone: cacheWhatsAppData['phone'],
+        fullname: cacheWhatsAppData['fullname'],
+        service: isDesktopSoftware ? 'настольное программное обеспечение' : 'мобильное программное обеспечение',
+        description: cacheWhatsAppData['description'],
+        isDesktopSoftware: isDesktopSoftware,
+        isSoftwareType: true
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+      await client.sendMessage(
+        msgFrom,
+        'На какую тему будет программное обеспечение? Например, облегчение подсчёта товаров, музыкальная ча-ча-ча, антивирус и так далее.'
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON what TYPE of GAME is Needed
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async __gameSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData != '') {
+      const person = {
+        consultationType: cacheWhatsAppData['consultationType'],
+        phone: cacheWhatsAppData['phone'],
+        fullname: cacheWhatsAppData['fullname'],
+        service: cacheWhatsAppData['service'],
+        description: cacheWhatsAppData['description']
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+      await client.sendMessage(
+        msgFrom,
+        `${cacheWhatsAppData['fullname']} желает игру на мобильном (/игра-мобильная) или настольном (/игра-настольная) устройстве?`
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches The DESCRIPTION for The SOFTWARE
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @param {boolean} isDesktopGame Is The GAME DESKTOP or not?
+   */
+  async __gameTypeSoftware(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string,
+    isDesktopGame: boolean = false
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      const person = {
+        consultationType: cacheWhatsAppData['consultationType'],
+        phone: cacheWhatsAppData['phone'],
+        fullname: cacheWhatsAppData['fullname'],
+        service: isDesktopGame ? 'настольная игра' : 'мобильная игра',
+        description: cacheWhatsAppData['description'],
+        isDesktopGame: isDesktopGame,
+        isGameType: true
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+      await client.sendMessage(
+        msgFrom,
+        'На какую тему будет игра? Например, полёт в космос, сражение за свои достоинства, ролевуха с эпичностью и так далее.'
+      );
+    }
+  }
+
+  // --------------------------------------------
 
 
   // ------------------ EDITS -------------------
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches DATA from The PERSON that is not Included in The BOT’s COMMANDS
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async _firstEdits(
+    client: Client,
+    msgBody: string,
+    msgFrom: string,
+    msgFromSplit: string
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      await this.__firstEditPhone(client, msgBody, msgFrom, msgFromSplit);  // isPhone
+      const setFullName = await this.__firstEditFullname(msgBody, msgFromSplit);  // isFullName
+      if ((setFullName === true) && (cacheWhatsAppData['consultationType'] === 'устно')) {
+        this._endConsultationReality('устно', client, msgFrom, msgFromSplit);
+        return;
+      } else if ((setFullName === true) && (cacheWhatsAppData['consultationType'] === 'переписка')) {
+        this._askForDetails(client, msgFrom, msgFromSplit);
+      }
+
+      const setSite = await this.__firstEditSite(msgBody, msgFromSplit);  // isSite
+      if (setSite === true) {
+        this._endConsultationReality('переписка', client, msgFrom, msgFromSplit);
+        return;
+      }
+
+      const setSoftware = await this.__firstEditSoftware(msgBody, msgFromSplit);  // isSoftwareType
+      if (setSoftware === true) {
+        this._endConsultationReality('переписка', client, msgFrom, msgFromSplit);
+        return;
+      }
+
+      const setGame = await this.__firstEditGame(msgBody, msgFromSplit);  // isGameType
+      if (setGame === true) {
+        this._endConsultationReality('переписка', client, msgFrom, msgFromSplit);
+        return;
+      }
+    }
+  }
 
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
@@ -348,7 +659,7 @@ export class WhatsAppService {
    * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
-  async _firstEditPhone(
+  async __firstEditPhone(
     client: Client,
     msgBody: string,
     msgFrom: string,
@@ -376,7 +687,7 @@ export class WhatsAppService {
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    * @returns Catches The PERSON's New FULL NAME
    */
-  async _firstEditFullname(
+  async __firstEditFullname(
     msgBody: string,
     msgFromSplit: string
   ): Promise<boolean> {
@@ -400,6 +711,105 @@ export class WhatsAppService {
     return false;
   }
 
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches The DESCRIPTION for The SITE
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @returns Catches The PERSON's New FULL NAME
+   */
+  async __firstEditSite(
+    msgBody: string,
+    msgFromSplit: string
+  ): Promise<boolean> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      const isSite = cacheWhatsAppData['isSite'];
+      if (isSite === true) {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: cacheWhatsAppData['service'],
+          description: msgBody.charAt(0).toUpperCase() + msgBody.slice(1),
+          area: 'сайтов'
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+
+        return isSite;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches The DESCRIPTION for The SOFTWARE
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @returns Catches The PERSON's New FULL NAME
+   */
+  async __firstEditSoftware(
+    msgBody: string,
+    msgFromSplit: string
+  ): Promise<boolean> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      const isSoftwareType = cacheWhatsAppData['isSoftwareType'];
+      if (isSoftwareType === true) {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: cacheWhatsAppData['service'],
+          description: msgBody.charAt(0).toUpperCase() + msgBody.slice(1),
+          area: cacheWhatsAppData['isDesktopSoftware'] ? 'настольного программного обеспечения' : 'мобильного программного обеспечения',
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+
+        return isSoftwareType;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Catches The DESCRIPTION for The GAME
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @returns Catches The PERSON's New FULL NAME
+   */
+  async __firstEditGame(
+    msgBody: string,
+    msgFromSplit: string
+  ): Promise<boolean> {
+    const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
+    if (cacheWhatsAppData) {
+      const isGameType = cacheWhatsAppData['isGameType'];
+      if (isGameType === true) {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: cacheWhatsAppData['service'],
+          description: msgBody.charAt(0).toUpperCase() + msgBody.slice(1),
+          area: cacheWhatsAppData['isDesktopGame'] ? 'настольных игр' : 'мобильных игр',
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+
+        return isGameType;
+      }
+    }
+
+    return false;
+  }
+
   // --------------------------------------------
 
 
@@ -414,6 +824,7 @@ export class WhatsAppService {
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
   async _endConsultationReality(
+    type: string,
     client: Client,
     msgFrom: string,
     msgFromSplit: string
@@ -422,10 +833,18 @@ export class WhatsAppService {
     if (cacheWhatsAppData) {
       this.saveOrUpdatePersonDB(cacheWhatsAppData);  // Save DATA
       this.cacheManager.del('cache-whatsapp_' + msgFromSplit);  // Del CACHE
-      await client.sendMessage(
-        msgFrom,
-        `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Менеджер позвонит Вам в ближайшее время по ${cacheWhatsAppData['phone']} номеру телефона.`
-      )
+
+      if (type === 'устно') {
+        await client.sendMessage(
+          msgFrom,
+          `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Менеджер позвонит Вам в ближайшее время по ${cacheWhatsAppData['phone']} номеру телефона.`
+        );
+      } else if (type === 'переписка') {
+        await client.sendMessage(
+          msgFrom,
+          `У Вас отпадный вкус, ${cacheWhatsAppData['fullname']}! В ближайшее время разбирающийся в области ${cacheWhatsAppData['area']} позвонит Вам в ближайшее время по ${cacheWhatsAppData['phone']} номеру телефона для уточнения Вашего заказа.`
+        );
+      }
     }
   };
 
