@@ -16,6 +16,22 @@ export class WhatsAppService {
     @Inject(CACHE_MANAGER) private cacheManager: Cache
   ) {}
 
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Returns The Found CACHE if The CACHE Exists
+   * @param {string} msgFrom Group or User chat ID
+   * @returns Find CACHE || ''
+   */
+  async getCacheWhatsApp(msgFrom: string): Promise<unknown|string> {
+    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFrom);
+    if (cacheWhatsAppData) {
+      return cacheWhatsAppData
+    }
+
+    return ''
+  }
+
   async whastappWeb(): Promise<void> {
     const qrcode = await require('qrcode-terminal');
 
@@ -60,25 +76,33 @@ export class WhatsAppService {
         const msgFrom = message.from.split('@c.us')[0];
         switch (msgBody) {
           case '/заново': {
-            this.clientNewGreeting(client, message.from, msgFrom);
+            this._clientNewGreeting(client, message.from, msgFrom);
             break;
           }
           case '/консультация': {
-            this.clientGreeting(client, message.from, msgFrom);
+            this._clientGreeting(client, message.from, msgFrom);
             break;
           }
           case '/устно': {
-            this.clientAskFullName('устно', client, message.from, msgFrom);
+            this._askForPersonalDetails('устно', client, message.from, msgFrom);
+            break;
+          }
+          case '/да-изменить': {
+            this._askForPersonalDetails('устно', client, message.from, msgFrom, 'да');
+            break;
+          }
+          case '/не-изменять': {
+            this._askForPersonalDetails('устно', client, message.from, msgFrom, 'нет');
             break;
           }
           case '/перепиской': {
-            this.clientAskFullName('перепиской', client, message.from, msgFrom);
             break;
           }
           default: {
-            const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFrom);
-            if (cacheWhatsAppData) {
-              this.findFullName(cacheWhatsAppData, msgBody, msgFrom);
+            await this._firstEditPhone(client, msgBody, message.from, msgFrom);  // isPhone
+            const setFullName = await this._firstEditFullname(msgBody, msgFrom);  // isFullName
+            if (setFullName === true) {
+              this._endConsultationReality(client, message.from, msgFrom);
             }
             break;
           }
@@ -101,6 +125,9 @@ export class WhatsAppService {
     });
   }
 
+
+  // ----------------- GREETING -----------------
+
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
    * @license MIT License
@@ -109,11 +136,15 @@ export class WhatsAppService {
    * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
-  async clientNewGreeting(client: Client, msgFrom: string, msgFromSplit: string): Promise<void> {
+  async _clientNewGreeting(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ): Promise<void> {
     const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
       this.cacheManager.del("cache-whatsapp_" + msgFromSplit);
-      this.clientGreeting(client, msgFrom, msgFromSplit);
+      this._clientGreeting(client, msgFrom, msgFromSplit);
     }
   }
 
@@ -125,7 +156,11 @@ export class WhatsAppService {
    * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
-  async clientGreeting(client: Client, msgFrom: string, msgFromSplit: string): Promise<void> {
+  async _clientGreeting(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ): Promise<void> {
     const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData === '') {
       const person = {
@@ -144,38 +179,156 @@ export class WhatsAppService {
     }
   }
 
+  // --------------------------------------------
+
+
+  // ------------ PHONE && FULL NAME ------------
+
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
    * @license MIT License
-   * @description Asks The PERSON for your FULLNAME
+   * @description Asks The PERSON for your PHONE and your FULL NAME
    * @param {string} type «устно» or «перепиской»
    * @param {Client} client WhatsApp Web API Client
    * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @param {string} __askPhone «''», «'да'» or «'нет'»
    */
-  async clientAskFullName(type: string, client: Client, msgFrom: string, msgFromSplit: string) {
+  async _askForPersonalDetails(
+    type: string,
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string,
+    __askPhone: string = ''
+  ): Promise<void> {
     const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
     if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
-      const person = {
-        consultationType: type,
-        isFullName: true,
-        phone: '+' + msgFromSplit
+      switch (__askPhone) {
+        case '': {
+          this.__askPhone(type, client, msgFrom, msgFromSplit);
+          break;
+        }
+        case 'да': {
+          const person = {
+            consultationType: cacheWhatsAppData['consultationType'],
+            isPhone: true
+          }
+          await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+          await client.sendMessage(msgFrom, 'Тогда  по какому номеру телефона мне с Вами связаться?');
+          break;
+        }
+        case 'нет': {
+          this.__askFullName(type, client, msgFrom, msgFromSplit);
+          break;
+        }
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
-      await client.sendMessage(msgFrom, `Как мне к Вам обращаться?`)
     }
   }
 
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
    * @license MIT License
-   * @description Asks The PERSON for your FULLNAME
-   * @param {unknown} cacheWhatsAppData Cache from PERSON
-   * @param {string} msgBody Contents of The PERSON's Message
+   * @description Asks The PERSON for your PHONE
+   * @param {string} type «устно» or «перепиской»
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
    * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
-  async findFullName(cacheWhatsAppData: unknown, msgBody: string, msgFromSplit: string): Promise<void> {
-    try {
+  async __askPhone(
+    type: string,
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
+      const person = {
+        consultationType: type,
+        phone: cacheWhatsAppData["phone"]
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+      await client.sendMessage(
+        msgFrom,
+        `Мне связаться с Вами в будущем по ${cacheWhatsAppData["phone"]} номеру телефона? (/да-изменить или /не-изменять)`
+      );
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Asks The PERSON for your FULL NAME
+   * @param {string} type «устно» or «перепиской»
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async __askFullName(
+    type: string,
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ) {
+    const cacheWhatsAppData = await this.getCacheWhatsApp(msgFromSplit);
+    if ((cacheWhatsAppData != '') && ((type === 'устно') || (type === 'перепиской'))) {
+      const person = {
+        consultationType: cacheWhatsAppData["consultationType"],
+        isFullName: true,
+        phone: cacheWhatsAppData["phone"]
+      }
+      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+      await client.sendMessage(msgFrom, 'Как мне к Вам обращаться?');
+    }
+  }
+
+  // --------------------------------------------
+
+
+  // ------------------ EDITS -------------------
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Changes The PERSON's PHONE and Asks for your FULL NAME
+   * @param {Client} client WhatsApp Web API Client
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFrom Group or User chat ID
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   */
+  async _firstEditPhone(
+    client: Client,
+    msgBody: string,
+    msgFrom: string,
+    msgFromSplit: string
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
+    if (cacheWhatsAppData) {
+      const isPhone = cacheWhatsAppData['isPhone'];
+      if (isPhone === true) {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: '+' + msgBody.match(/\d+/g).join('')
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+        this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
+      }
+    }
+  }
+
+  /**
+   * @copyright Copyright (c) 2023 MoguchiyDD
+   * @license MIT License
+   * @description Sets The PERSON's FULL NAME
+   * @param {string} msgBody Contents of The PERSON's Message
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
+   * @returns Catches The PERSON's New FULL NAME
+   */
+  async _firstEditFullname(
+    msgBody: string,
+    msgFromSplit: string
+  ): Promise<boolean> {
+    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
+    if (cacheWhatsAppData) {
       const isFullName = cacheWhatsAppData['isFullName'];
       if (isFullName === true) {
         const person = {
@@ -183,25 +336,47 @@ export class WhatsAppService {
           phone: cacheWhatsAppData['phone'],
           fullname: msgBody.charAt(0).toUpperCase() + msgBody.slice(1)
         }
-        console.log(cacheWhatsAppData, person);
         await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);
+
+        return isFullName;
       }
-    } catch(error) {}
+    }
+
+    return false;
   }
+
+  // --------------------------------------------
+
+
+  // ------------- END CONSULTATION -------------
 
   /**
    * @copyright Copyright (c) 2023 MoguchiyDD
    * @license MIT License
-   * @description Returns The Found CACHE if The CACHE Exists
+   * @description Removes DATA from The CACHE and also Saves The DATA to The DB
+   * @param {Client} client WhatsApp Web API Client
    * @param {string} msgFrom Group or User chat ID
-   * @returns Find CACHE || ''
+   * @param {string} msgFromSplit Group or User chat ID without «@c.us»
    */
-  async getCacheWhatsApp(msgFrom: string): Promise<unknown|string> {
-    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFrom);
+  async _endConsultationReality(
+    client: Client,
+    msgFrom: string,
+    msgFromSplit: string
+  ): Promise<void> {
+    const cacheWhatsAppData = await this.cacheManager.get('cache-whatsapp_' + msgFromSplit);
     if (cacheWhatsAppData) {
-      return cacheWhatsAppData
-    }
+      console.log('_endConsultationReality:', cacheWhatsAppData);
+      this.cacheManager.del("cache-whatsapp_" + msgFromSplit);
 
-    return ''
-  }
+      // SAVE DATA
+
+      await client.sendMessage(
+        msgFrom,
+        `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Менеджер позвонит Вам в ближайшее время по ${cacheWhatsAppData['phone']} номеру телефона.`
+      )
+    }
+  };
+
+  // --------------------------------------------
+
 }
