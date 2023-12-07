@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { WhatsAppSchema } from './whatsapp.model';
-import { WhatsAppService } from './whatsapp.service';
-import { WhatsAppController } from './whatsapp.controller';
+import { ConfigService } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-store';
 import type { RedisClientOptions } from 'redis';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { WhatsAppSchema } from './models/whatsapp.model';
+import { WhatsAppService } from './whatsapp.service';
+import { WhatsAppController } from './whatsapp.controller';
 
 @Module({
   imports: [
