@@ -11,13 +11,19 @@
 ## URL Addresses
 - http://localhost:3000 : **whatsapp-web.js**
 
-## Installed
+## Installed *main folder*
+- turbo
+
+## Installed */apps/api*
 - @nestjs/config
 - @nestjs/mongoose mongoose
 - @nestjs/cache-manager cache-manager
 - cache-manager-redis-store
 - whatsapp-web.js
 - qrcode-terminal
+
+## Installed */apps/client*
+- vite@latest -> **React**
 
 
 ## Commands
@@ -28,4 +34,7 @@ $ npm run doc:up
 
 # Stops and Removes all *Docker Containers* from *Docker Compose*
 $ npm run doc:rm
+
+# Runs NestJS and React from Turbo (+ Docker Compose: rm && up)
+$ npm run dev
 ```
