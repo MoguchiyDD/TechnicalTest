@@ -6,7 +6,8 @@
     "doc:up": "docker compose up -d",
     "doc:rm": "docker compose rm mongodb -s -f -v && docker compose rm mongo-express -s -f -v && docker compose rm redis -s -f -v",
     "dev": "npm run doc:rm && npm run doc:up && sleep 10 && turbo run dev",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "start": "npm run doc:rm && npm run doc:up && sleep 10 && node apps/api/dist/main"
   },
   "workspaces": [
     "apps/*"
