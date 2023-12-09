@@ -5,7 +5,7 @@
 ## Information
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
 - Package: **npm**
-- Docker Compose: **mongo:4.4-focal**, **mongo-express:latest**
+- Docker Compose: **mongo:4.4-focal**, **mongo-express:latest**, **redis:latest**
 - License: [MIT License](../../../LICENSE)
 
 ## URL Addresses
@@ -15,6 +15,7 @@
 - turbo
 
 ## Installed */apps/api*
+- @nestjs/serve-static
 - @nestjs/config
 - @nestjs/mongoose mongoose
 - @nestjs/cache-manager cache-manager
@@ -37,4 +38,10 @@ $ npm run doc:rm
 
 # Runs NestJS and React from Turbo (+ Docker Compose: rm && up)
 $ npm run dev
+
+# Build from Turbo (NestJS + React)
+$ npm run build
+
+# React inside NestJS -> ERROR [MongooseModule] Unable to connect to the database. Retrying (...)
+$ npm run start
 ```
