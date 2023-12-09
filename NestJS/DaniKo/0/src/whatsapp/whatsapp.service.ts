@@ -122,7 +122,6 @@ export class WhatsAppService {
       });
 
       client.on('message', async message => {
-        console.log(message.body, message.from);
         const msgBody = message.body.toLowerCase().replace(/^\s+|\s+$/g, '');
         const msgFrom = message.from.split('@c.us')[0];
         switch (msgBody) {
@@ -221,7 +220,7 @@ export class WhatsAppService {
   ): Promise<void> {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      this.cacheManager.del('cache-whatsapp_' + msgFromSplit);
+      this.cacheManager.del('cache-whatsapp_' + msgFromSplit);  // Del CACHE
       this._clientGreeting(client, msgFrom, msgFromSplit);
     }
   }
@@ -242,7 +241,9 @@ export class WhatsAppService {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData === '') {
       const person = {
-        phone: '+' + msgFromSplit
+        phone: '+' + msgFromSplit,
+        cmdCurrent: '/консультация',
+        cmdNexts: ['/созвонимся', '/спишемся']
       }
       await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
       await client.sendMessage(
@@ -287,16 +288,33 @@ export class WhatsAppService {
           break;
         }
         case 'да': {
-          const person = {
-            consultationType: cacheWhatsAppData['consultationType'],
-            isPhone: true
+          if ((cacheWhatsAppData['cmdCurrent'] === '/созвонимся') || (cacheWhatsAppData['cmdCurrent'] === '/спишемся')) {
+            const person = {
+              consultationType: cacheWhatsAppData['consultationType'],
+              isPhone: true,
+              cmdCurrent: '/да-изменить',
+              cmdNexts: []
+            } 
+            await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+            await client.sendMessage(msgFrom, 'Тогда  по какому номеру телефона мне с Вами связаться?');
+          } else {
+            let cmds = '';
+            cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+            await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
           }
-          await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-          await client.sendMessage(msgFrom, 'Тогда  по какому номеру телефона мне с Вами связаться?');
           break;
         }
         case 'нет': {
-          this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
+          if ((cacheWhatsAppData['cmdCurrent'] === '/созвонимся') || (cacheWhatsAppData['cmdCurrent'] === '/спишемся')) {
+            cacheWhatsAppData['cmdCurrent'] = '/не-изменять';
+            cacheWhatsAppData['cmdNexts'] = [];
+            await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, cacheWhatsAppData);  // Set CACHE
+            this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
+          } else {
+            let cmds = '';
+            cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+            await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
+          }
           break;
         }
       }
@@ -320,15 +338,23 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      const person = {
-        consultationType: type,
-        phone: cacheWhatsAppData['phone']
+      if (cacheWhatsAppData['cmdCurrent'] === '/консультация') {
+        const person = {
+          consultationType: type,
+          phone: cacheWhatsAppData['phone'],
+          cmdCurrent: type === 'переписка' ? '/спишемся' : '/созвонимся',
+          cmdNexts: ['/да-изменить', '/не-изменять']
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          `Мне связаться с Вами в будущем по ${cacheWhatsAppData['phone']} номеру телефона? (/да-изменить или /не-изменять)`
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        `Мне связаться с Вами в будущем по ${cacheWhatsAppData['phone']} номеру телефона? (/да-изменить или /не-изменять)`
-      );
     }
   }
 
@@ -349,13 +375,21 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        isFullName: true,
-        phone: cacheWhatsAppData['phone']
+      if ((cacheWhatsAppData['cmdCurrent'] === '/да-изменить') || (cacheWhatsAppData['cmdCurrent'] === '/не-изменять')) {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          cmdCurrent: cacheWhatsAppData['cmdCurrent'],
+          cmdNexts: [],
+          isFullName: true
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(msgFrom, 'Как мне к Вам обращаться?');
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(msgFrom, 'Как мне к Вам обращаться?');
     }
   }
 
@@ -435,10 +469,16 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      await client.sendMessage(
-        msgFrom,
-        `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра)`
-      );
+      if (cacheWhatsAppData['cmdCurrent'] === '/полное-имя') {
+        await client.sendMessage(
+          msgFrom,
+          `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра)`
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
+      }
     }
   }
 
@@ -457,19 +497,27 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        phone: cacheWhatsAppData['phone'],
-        fullname: cacheWhatsAppData['fullname'],
-        service: 'веб-сайт',
-        description: cacheWhatsAppData['description'],
-        isSite: true
+      if (cacheWhatsAppData['cmdCurrent'] === '/полное-имя') {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: 'веб-сайт',
+          description: cacheWhatsAppData['description'],
+          cmdCurrent: '/сайт',
+          cmdNexts: [],
+          isSite: true
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          'На какую тему будет веб-сайт? Например, магазин для книг, игровой комплекс, космодром и так далее.'
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        'На какую тему будет веб-сайт? Например, магазин для книг, игровой комплекс, космодром и так далее.'
-      );
     }
   }
 
@@ -488,18 +536,26 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        phone: cacheWhatsAppData['phone'],
-        fullname: cacheWhatsAppData['fullname'],
-        service: cacheWhatsAppData['service'],
-        description: cacheWhatsAppData['description']
+      if (cacheWhatsAppData['cmdCurrent'] === '/полное-имя') {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: cacheWhatsAppData['service'],
+          description: cacheWhatsAppData['description'],
+          cmdCurrent: '/программное-обеспечение',
+          cmdNexts: ['/по-мобильное', '/по-настольное']
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          `${cacheWhatsAppData['fullname']} желает программное обеспечение на мобильном (/по-мобильное) или настольном (/по-настольное) устройстве?`
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        `${cacheWhatsAppData['fullname']} желает программное обеспечение на мобильном (/по-мобильное) или настольном (/по-настольное) устройстве?`
-      );
     }
   }
 
@@ -519,20 +575,28 @@ export class WhatsAppService {
   ): Promise<void> {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData) {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        phone: cacheWhatsAppData['phone'],
-        fullname: cacheWhatsAppData['fullname'],
-        service: isDesktopSoftware ? 'настольное программное обеспечение' : 'мобильное программное обеспечение',
-        description: cacheWhatsAppData['description'],
-        isDesktopSoftware: isDesktopSoftware,
-        isSoftwareType: true
+      if (cacheWhatsAppData['cmdCurrent'] === '/программное-обеспечение') {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: isDesktopSoftware ? 'настольное программное обеспечение' : 'мобильное программное обеспечение',
+          description: cacheWhatsAppData['description'],
+          isDesktopSoftware: isDesktopSoftware,
+          cmdCurrent: isDesktopSoftware ? '/по-настольное' : '/по-мобильное',
+          cmdNexts: [],
+          isSoftwareType: true
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          'На какую тему будет программное обеспечение? Например, облегчение подсчёта товаров, музыкальная ча-ча-ча, антивирус и так далее.'
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        'На какую тему будет программное обеспечение? Например, облегчение подсчёта товаров, музыкальная ча-ча-ча, антивирус и так далее.'
-      );
     }
   }
 
@@ -551,18 +615,26 @@ export class WhatsAppService {
   ) {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData != '') {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        phone: cacheWhatsAppData['phone'],
-        fullname: cacheWhatsAppData['fullname'],
-        service: cacheWhatsAppData['service'],
-        description: cacheWhatsAppData['description']
+      if (cacheWhatsAppData['cmdCurrent'] === '/полное-имя') {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: cacheWhatsAppData['service'],
+          description: cacheWhatsAppData['description'],
+          cmdCurrent: '/игра',
+          cmdNexts: ['/игра-мобильная', '/игра-настольная']
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          `${cacheWhatsAppData['fullname']} желает игру на мобильном (/игра-мобильная) или настольном (/игра-настольная) устройстве?`
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        `${cacheWhatsAppData['fullname']} желает игру на мобильном (/игра-мобильная) или настольном (/игра-настольная) устройстве?`
-      );
     }
   }
 
@@ -582,20 +654,28 @@ export class WhatsAppService {
   ): Promise<void> {
     const cacheWhatsAppData = await this.__getCacheWhatsApp(msgFromSplit);
     if (cacheWhatsAppData) {
-      const person = {
-        consultationType: cacheWhatsAppData['consultationType'],
-        phone: cacheWhatsAppData['phone'],
-        fullname: cacheWhatsAppData['fullname'],
-        service: isDesktopGame ? 'настольная игра' : 'мобильная игра',
-        description: cacheWhatsAppData['description'],
-        isDesktopGame: isDesktopGame,
-        isGameType: true
+      if (cacheWhatsAppData['cmdCurrent'] === '/игра') {
+        const person = {
+          consultationType: cacheWhatsAppData['consultationType'],
+          phone: cacheWhatsAppData['phone'],
+          fullname: cacheWhatsAppData['fullname'],
+          service: isDesktopGame ? 'настольная игра' : 'мобильная игра',
+          description: cacheWhatsAppData['description'],
+          isDesktopGame: isDesktopGame,
+          cmdCurrent: isDesktopGame ? '/игра-настольная' : '/игра-мобильная',
+          cmdNexts: [],
+          isGameType: true
+        }
+        await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
+        await client.sendMessage(
+          msgFrom,
+          'На какую тему будет игра? Например, полёт в космос, сражение за свои достоинства, ролевуха с эпичностью и так далее.'
+        );
+      } else {
+        let cmds = '';
+        cacheWhatsAppData['cmdNexts'].forEach(element => { cmds += `, ${element}` });
+        await client.sendMessage(msgFrom, `Текущее расположение: ${cacheWhatsAppData['cmdCurrent']}. Доступные на данный момент команды: /заново${cmds}.`);
       }
-      await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
-      await client.sendMessage(
-        msgFrom,
-        'На какую тему будет игра? Например, полёт в космос, сражение за свои достоинства, ролевуха с эпичностью и так далее.'
-      );
     }
   }
 
@@ -671,7 +751,9 @@ export class WhatsAppService {
       if (isPhone === true) {
         const person = {
           consultationType: cacheWhatsAppData['consultationType'],
-          phone: '+' + msgBody.match(/\d+/g).join('')
+          phone: '+' + msgBody.match(/\d+/g).join(''),
+          cmdCurrent: cacheWhatsAppData['cmdCurrent'],
+          cmdNexts: []
         }
         await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
         this.__askFullName(cacheWhatsAppData['consultationType'], client, msgFrom, msgFromSplit);
@@ -695,12 +777,20 @@ export class WhatsAppService {
     if (cacheWhatsAppData) {
       const isFullName = cacheWhatsAppData['isFullName'];
       if (isFullName === true) {
+
+        // FULLNAME Proccessing
+        let fullname = '';
+        const fullnameWithoutSpaces = msgBody.split(' ')
+        fullnameWithoutSpaces.forEach(element => { fullname += element.charAt(0).toUpperCase() + element.slice(1) + ' ' });
+
         const person = {
           consultationType: cacheWhatsAppData['consultationType'],
           phone: cacheWhatsAppData['phone'],
-          fullname: msgBody.charAt(0).toUpperCase() + msgBody.slice(1),
+          fullname: fullname.replace(/^\s+|\s+$/g, ''),
           service: '',
-          description: ''
+          description: '',
+          cmdCurrent: '/полное-имя',
+          cmdNexts: cacheWhatsAppData['consultationType'] === 'переписка' ? ['/сайт', '/по', '/игра'] : []
         }
         await this.cacheManager.set('cache-whatsapp_' + msgFromSplit, person);  // Set CACHE
 
