@@ -472,7 +472,7 @@ export class WhatsAppService {
       if (cacheWhatsAppData['cmdCurrent'] === '/полное-имя') {
         await client.sendMessage(
           msgFrom,
-          `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра)`
+          `Приятно познакомиться, ${cacheWhatsAppData['fullname']}! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра).`
         );
       } else {
         let cmds = '';
