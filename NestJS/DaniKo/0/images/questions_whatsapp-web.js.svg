@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="248.58299"
-   height="16.452"
-   viewBox="0 0 248.58299 16.452"
+   width="279.98499"
+   height="16.924999"
+   viewBox="0 0 279.98499 16.925"
    fill="none"
    version="1.1"
    id="svg2"
-   sodipodi:docname="html.svg"
+   sodipodi:docname="questions_whatsapp-web.js.svg"
    inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -51,12 +51,12 @@
   <text
      xml:space="preserve"
      style="font-size:17px;fill:#80d8ff;fill-opacity:1;stroke-width:0.79748;stroke-dasharray:none"
-     x="-1.5441971"
-     y="12.915941"
+     x="-0.93817139"
+     y="12.915869"
      id="text3"><tspan
        sodipodi:role="line"
        id="tspan3"
-       x="-1.5441971"
-       y="12.915941"
-       style="font-size:17px;fill:#80d8ff;fill-opacity:1">вопросы-от-whatsapp-web.js</tspan></text>
+       x="-0.93817139"
+       y="12.915869"
+       style="font-size:17px;fill:#80d8ff;fill-opacity:1">questions_from_whatsapp-web.js</tspan></text>
 </svg>

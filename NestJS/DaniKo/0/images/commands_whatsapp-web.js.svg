@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="380.56601"
-   height="16.452"
-   viewBox="0 0 380.56601 16.452"
+   width="361.19199"
+   height="16.924999"
+   viewBox="0 0 361.19199 16.925"
    fill="none"
    version="1.1"
    id="svg2"
@@ -25,9 +25,9 @@
      inkscape:deskcolor="#505050"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="5.6568542"
-     inkscape:cx="50.734912"
-     inkscape:cy="-11.136932"
+     inkscape:zoom="0.99999999"
+     inkscape:cx="244"
+     inkscape:cy="-109"
      inkscape:window-width="1360"
      inkscape:window-height="704"
      inkscape:window-x="0"
@@ -35,12 +35,12 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2">
     <sodipodi:guide
-       position="0,9.113281"
+       position="0,9.5862807"
        orientation="1,0"
        id="guide2"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="0.375,17"
+       position="0.375,17.473"
        orientation="0,-1"
        id="guide3"
        inkscape:locked="false" />
@@ -52,11 +52,11 @@
      xml:space="preserve"
      style="font-size:17px;fill:#eeeeee;fill-opacity:1;stroke-width:0.79748;stroke-dasharray:none"
      x="4.5776367e-05"
-     y="13.061205"
+     y="12.915869"
      id="text3"><tspan
        sodipodi:role="line"
        id="tspan3"
        x="4.5776367e-05"
-       y="13.061205"
-       style="font-size:17px;fill:#ffff8d;fill-opacity:1">/обозначения-команд-для-whatsapp-web.js</tspan></text>
+       y="12.915869"
+       style="font-size:17px;fill:#ffff8d;fill-opacity:1">/command_notations_for_whatsapp-web.js</tspan></text>
 </svg>
