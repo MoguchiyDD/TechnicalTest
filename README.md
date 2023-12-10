@@ -14,11 +14,12 @@ Each project contains a file **NestJS-README.md** (read it)
   - React Flow
   - whatsapp-web.js
   - Mongoose
+  - Cache + Redis
   - Docker Compose
 - DEMETRA SYSTEMS (once)
   - NestJS
   - TypeORM
-  - Bull
-  - Chache
+  - Bull + Redis
+  - Chache + Redis
   - Axios
   - Docker Compose
