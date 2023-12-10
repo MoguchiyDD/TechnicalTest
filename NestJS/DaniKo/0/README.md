@@ -6,6 +6,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## Information
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
+- Started & Finished : from **2023.12.05** to **2023.12.10**
 - Package: **npm**
 - Docker Compose: **mongo:4.4-focal**, **mongo-express:latest**, **redis:latest**
 - License: [MIT License](../../../LICENSE)
