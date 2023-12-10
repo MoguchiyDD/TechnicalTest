@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="296.58701"
-   height="16.452"
-   viewBox="0 0 296.58701 16.452"
+   width="290.87601"
+   height="16.924999"
+   viewBox="0 0 290.87602 16.924999"
    fill="none"
    version="1.1"
    id="svg2"
-   sodipodi:docname="html.svg"
+   sodipodi:docname="ends_whatsapp-web.js.svg"
    inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,7 +26,7 @@
      showgrid="false"
      showguides="true"
      inkscape:zoom="1"
-     inkscape:cx="142"
+     inkscape:cx="173"
      inkscape:cy="-88"
      inkscape:window-width="1360"
      inkscape:window-height="704"
@@ -35,12 +35,12 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2">
     <sodipodi:guide
-       position="0,8.5652807"
+       position="0,8.5632819"
        orientation="1,0"
        id="guide2"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="0.375,16.452"
+       position="0.375,16.450001"
        orientation="0,-1"
        id="guide3"
        inkscape:locked="false" />
@@ -51,12 +51,22 @@
   <text
      xml:space="preserve"
      style="font-size:17px;fill:#b388ff;fill-opacity:1;stroke-width:0.79748;stroke-dasharray:none"
-     x="-1.5438995"
-     y="12.915941"
+     x="-0.93797302"
+     y="12.915869"
      id="text3"><tspan
        sodipodi:role="line"
        id="tspan3"
-       x="-1.5438995"
-       y="12.915941"
-       style="font-size:17px;fill:#b388ff;fill-opacity:1">конец-диалога-в-whatsapp-web.js</tspan></text>
+       x="-0.93797302"
+       y="12.915869"
+       style="font-size:17px;fill:#b388ff;fill-opacity:1;stroke-width:0.79748">end_of_dialog_in_whatsapp-web.js</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:17px;fill:#b388ff;stroke-width:1.48"
+     x="206.25"
+     y="18.957031"
+     id="text1"><tspan
+       sodipodi:role="line"
+       id="tspan1"
+       x="206.25"
+       y="18.957031" /></text>
 </svg>
