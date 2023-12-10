@@ -40,7 +40,7 @@ const initialNodes = [
   {
     id: '5',
     data: { label: 'Мне связаться с Вами в будущем по <номер-телефона-пользователя> номеру телефона? (/да-изменить или /не-изменять)' },
-    position: { x: 115, y: 400 },
+    position: { x: 115, y: 405 },
     style: { background: '#80D8FF' }
   },
   {  // /да-изменить
@@ -264,7 +264,7 @@ export default function App() {
   );
  
   return (
-    <div style={{ width: '100vw', height: '100vh', background: '#111111' }}>
+    <div style={{ width: '100vw', height: '100vh', background: '#111' }}>
       <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect} >
         <Controls>
           <ControlButton onClick={() => {fetch('/api').then((res) => res.text()).then(whatsapp);}}>
