@@ -1,6 +1,8 @@
 # NestJS
 
-### Read The **NestJS-README.md** file
+The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+
+![](result.gif)
 
 ## Information
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
