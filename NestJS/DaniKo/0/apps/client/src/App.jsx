@@ -1,45 +1,53 @@
 import React, { useCallback } from 'react';
 import ReactFlow, {
-  MiniMap,
   Controls,
+  ControlButton,
   Background,
   useNodesState,
   useEdgesState,
   addEdge,
 } from 'reactflow';
- 
+import { PaperPlaneIcon } from '@radix-ui/react-icons';
+
 import 'reactflow/dist/style.css';
- 
+
+
 const initialNodes = [
   {  // /консультация
     id: '1',
     data: { label: '/консультация' },
-    position: { x: 25, y: 25 }
+    position: { x: 25, y: 25 },
+    style: { background: '#FFFF8D' }
   },
   {
     id: '2',
     data: { label: 'Здравствуйте, Ваша заявка на консультацию принята! Как Вам удобно переговорить устно (/созвонимся) или перепиской (/спишемся)?' },
-    position: { x: 25, y: 100 }
+    position: { x: 25, y: 100 },
+    style: { background: '#80D8FF' }
   },
   {  // /созвонимся
     id: '3',
     data: { label: '/созвонимся' },
-    position: { x: 25, y: 315 }
+    position: { x: 25, y: 315 },
+    style: { background: '#FFFF8D' }
   },
   {  // /спишемся
     id: '4',
     data: { label: '/спишемся' },
-    position: { x: 200, y: 315 }
+    position: { x: 200, y: 315 },
+    style: { background: '#FFFF8D' }
   },
   {
     id: '5',
     data: { label: 'Мне связаться с Вами в будущем по <номер-телефона-пользователя> номеру телефона? (/да-изменить или /не-изменять)' },
-    position: { x: 115, y: 400 }
+    position: { x: 115, y: 400 },
+    style: { background: '#80D8FF' }
   },
   {  // /да-изменить
     id: '6',
     data: { label: '/да-изменить' },
     position: { x: 225, y: 575 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -47,6 +55,7 @@ const initialNodes = [
     id: '7',
     data: { label: '/не-изменять' },
     position: { x: 225, y: 645 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -54,6 +63,7 @@ const initialNodes = [
     id: '8',
     data: { label: 'Тогда  по какому номеру телефона мне с Вами связаться?' },
     position: { x: 425, y: 540 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -61,6 +71,7 @@ const initialNodes = [
     id: '9',
     data: { label: '<номер-телефона-пользователя>' },
     position: { x: 615, y: 549 },
+    style: { background: '#FF9E80' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -68,6 +79,7 @@ const initialNodes = [
     id: '10',
     data: { label: 'Как мне к Вам обращаться?' },
     position: { x: 815, y: 636 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -75,6 +87,7 @@ const initialNodes = [
     id: '11',
     data: { label: '<полное-имя-пользователя>' },
     position: { x: 1010, y: 636 },
+    style: { background: '#FF9E80' },
     sourcePosition: 'right',
     targetPosition: 'left'
   },
@@ -82,12 +95,14 @@ const initialNodes = [
     id: '12',
     data: { label: 'Приятно познакомиться, <полное-имя-пользователя>! Менеджер позвонит Вам в ближайшее время по <номер-телефона-пользователя> номеру телефона.' },
     position: { x: 1630, y: 615 },
+    style: { background: '#B388FF' },
     targetPosition: 'left'
   },
   {
     id: '13',
     data: { label: 'Приятно познакомиться, <полное-имя-пользователя>! Итак, Вы желаете себе веб-сайт (/сайт), программное приложение (/по) или игру (/игра).' },
     position: { x: 1520, y: 25 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'left',
     targetPosition: 'bottom'
   },
@@ -95,6 +110,7 @@ const initialNodes = [
     id: '14',
     data: { label: '/сайт' },
     position: { x: 1275, y: 430 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'left',
     targetPosition: 'right'
   },
@@ -102,6 +118,7 @@ const initialNodes = [
     id: '15',
     data: { label: 'На какую тему будет веб-сайт? Например, магазин для книг, игровой комплекс, космодром и так далее.' },
     position: { x: 1075, y: 295 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'top',
     targetPosition: 'bottom'
   },
@@ -109,6 +126,7 @@ const initialNodes = [
     id: '16',
     data: { label: '/по' },
     position: { x: 1275, y: 502 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'left',
     targetPosition: 'right'
   },
@@ -116,6 +134,7 @@ const initialNodes = [
     id: '17',
     data: { label: '<полное-имя-пользователя> желает программное обеспечение на мобильном (/по-мобильное) или настольном (/по-настольное) устройстве?' },
     position: { x: 685, y: 220 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'top',
     targetPosition: 'right'
   },
@@ -123,6 +142,7 @@ const initialNodes = [
     id: '18',
     data: { label: '/по-настольное' },
     position: { x: 375, y: 120 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'top',
     targetPosition: 'bottom'
   },
@@ -130,6 +150,7 @@ const initialNodes = [
     id: '19',
     data: { label: '/по-мобильное' },
     position: { x: 550, y: 120 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'top',
     targetPosition: 'bottom'
   },
@@ -137,6 +158,7 @@ const initialNodes = [
     id: '20',
     data: { label: 'На какую тему будет программное обеспечение? Например, облегчение подсчёта товаров, музыкальная ча-ча-ча, антивирус и так далее.' },
     position: { x: 875, y: 115 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'top',
     targetPosition: 'left'
   },
@@ -144,6 +166,7 @@ const initialNodes = [
     id: '21',
     data: { label: '/игра' },
     position: { x: 1275, y: 575 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'left',
     targetPosition: 'right'
   },
@@ -151,6 +174,7 @@ const initialNodes = [
     id: '22',
     data: { label: '<полное-имя-пользователя> /желает игру на мобильном (/игра-мобильная) или настольном (/игра-настольная) устройстве?' },
     position: { x: 425, y: 335 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'top',
     targetPosition: 'right'
   },
@@ -158,6 +182,7 @@ const initialNodes = [
     id: '23',
     data: { label: '/игра-настольная' },
     position: { x: 325, y: 245 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'top',
     targetPosition: 'bottom'
   },
@@ -165,6 +190,7 @@ const initialNodes = [
     id: '24',
     data: { label: '/игра-мобильная' },
     position: { x: 500, y: 245 },
+    style: { background: '#FFFF8D' },
     sourcePosition: 'top',
     targetPosition: 'bottom'
   },
@@ -172,6 +198,7 @@ const initialNodes = [
     id: '25',
     data: { label: 'На какую тему будет игра? Например, полёт в космос, сражение за свои достоинства, ролевуха с эпичностью и так далее.' },
     position: { x: 205, y: 25 },
+    style: { background: '#80D8FF' },
     sourcePosition: 'right',
     targetPosition: 'bottom'
   },
@@ -179,6 +206,7 @@ const initialNodes = [
     id: '26',
     data: { label: '<описание>' },
     position: { x: 1175, y: 50 },
+    style: { background: '#FF9E80' },
     sourcePosition: 'right',
     targetPosition: 'top'
   },
@@ -186,6 +214,7 @@ const initialNodes = [
     id: '27',
     data: { label: 'У Вас отпадный вкус, <полное-имя-описание>! В ближайшее время разбирающийся в области <приложение> позвонит Вам в ближайшее время по <номер-телефона-пользователя> номеру телефона для уточнения Вашего заказа.' },
     position: { x: 1275, y: 125 },
+    style: { background: '#B388FF' },
     sourcePosition: 'bottom',
     targetPosition: 'top'
   }
@@ -235,10 +264,14 @@ export default function App() {
   );
  
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '100vw', height: '100vh', background: '#111111' }}>
       <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect} >
-        <Controls />
-        <Background variant="dots" gap={12} size={1} />
+        <Controls>
+          <ControlButton onClick={() => {fetch('/api').then((res) => res.text()).then(whatsapp);}}>
+            <PaperPlaneIcon />
+          </ControlButton>
+        </Controls>
+        <Background variant="cross" gap={12} size={1} />
       </ReactFlow>
     </div>
   );
