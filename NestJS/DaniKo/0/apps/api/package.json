@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "Open «README.md» file",
+  "description": "Open «./0/README.md» file",
   "author": "МогучийДД (MoguchiyDD)",
   "private": true,
   "license": "MIT",
