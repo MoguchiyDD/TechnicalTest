@@ -1,4 +1,9 @@
 {
+  "name": "0",
+  "version": "1.0.0",
+  "description": "Open «README.md» file",
+  "author": "МогучийДД (MoguchiyDD)",
+  "license": "MIT",
   "devDependencies": {
     "turbo": "^1.11.1"
   },
