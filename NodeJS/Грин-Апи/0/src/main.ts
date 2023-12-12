@@ -1,24 +1,47 @@
-import express from 'express';
-import { Express, Request, Response } from 'express';
+import dotenv from 'dotenv';
+import express, { Express, Router, Request, Response } from 'express';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import https from 'node:https';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { dirname } from 'path';
+import { connectSendRabbitMQ } from './send/send.js';
+import { connectReceiveRabbitMQ, numbersData } from './receive/receive.js';
+
+// Environment Variables
+dotenv.config();
+const envHost: string = process.env.HOST!;
+const envServerPort: string = process.env.SERVER_PORT!;
+const envDelay: number = Number(process.env.DELAY)!;
 
 // Find KEY && CERTIFICATE
-const __filename: string = fileURLToPath(import.meta.url);
-const __dirname: string = dirname(__filename);
-
+const __dirname: string = dirname(fileURLToPath(import.meta.url));
 const localhostKey: string = path.join(__dirname, '..', 'OpenSSL', 'key.pem');
 const localhostCert: string = path.join(__dirname, '..', 'OpenSSL', 'cert.pem');
 
+// Artificial DELAY
+const sleep: (ms: number) => Promise<unknown> = (ms: number) => new Promise(resolve => global.setTimeout(resolve, ms));
+
 // Express REQUEST && RESPONSE
 const app: Express = express();
-const port: Number = 443;
+const router: Router = Router();
 
-app.post('/:num', (req: Request, res: Response): void => {
-  res.send(`${req.params.num}`);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/', router);
+
+router.post('/:anyNumber', async (req: Request, res: Response) => {
+  const anyNumber: number = Number(req.params.anyNumber);
+  if (isNaN(anyNumber)) {
+    throw res.status(400).json({ message: 'ERROR_NOT_NUMBER' });
+  };
+
+  await connectSendRabbitMQ(JSON.stringify({ number: anyNumber }));  // SEND
+  await connectReceiveRabbitMQ();  // RECEIVE
+
+  await sleep(envDelay).then(() => {  // 5 seconds
+    return res.status(200).json(numbersData);  // RESULT
+  });
 });
 
 // HTTPS Server
@@ -27,5 +50,5 @@ const server = https.createServer({
   cert: fs.readFileSync(localhostCert, 'utf8')
 }, app);
 
-await server.listen(443);
-console.info(`Server running at https://localhost:${port}`);
+server.listen(envServerPort);
+console.info(`Server running at https://${envHost}:${envServerPort}`);
