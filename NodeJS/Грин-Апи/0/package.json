@@ -5,6 +5,8 @@
   "main": "./src/main.ts",
   "type": "module",
   "scripts": {
+    "doc:up": "docker compose up -d",
+    "doc:rm": "docker compose rm rabbitmq -s -f -v",
     "build": "npx tsc",
     "start": "npm run build && node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,9 +15,13 @@
   "author": "МогучийДД (MoguchiyDD)",
   "license": "MIT",
   "dependencies": {
+    "@types/amqplib": "^0.10.4",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.4",
     "@types/typescript": "^2.0.0",
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "typescript": "^5.3.3"
   }
