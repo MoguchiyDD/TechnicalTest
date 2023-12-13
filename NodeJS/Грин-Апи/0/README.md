@@ -3,9 +3,8 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## Information
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
-- Started & Finished : from **2023.12.11** to **2023.12.12 / until now**
+- Started & Finished : from **2023.12.11** to **2023.12.13**
 - Package: **npm**
-- Date of creation of the key and certificate: **2023.12.11, ~10:22 PM**
 - Docker Compose: **rabbitmq:3.10.7-management**
 - License: [MIT License](../../../LICENSE)
 
@@ -22,8 +21,8 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## OpenSSL
 ```Bash
-$ openssl req -x509 -newkey rsa:2048 -keyout OpenSSL/keytmp.pem -out OpenSSL/cert.pem -days 365
-$ openssl rsa -in keytmp.pem -out OpenSSL/key.pem
+$ openssl req -x509 -newkey rsa:2048 -keyout ssl/keytmp.pem -out ssl/cert.pem -days 365
+$ openssl rsa -in keytmp.pem -out ssl/key.pem
 ```
 
 ## Commands
