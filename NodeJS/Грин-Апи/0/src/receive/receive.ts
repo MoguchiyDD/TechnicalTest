@@ -30,23 +30,27 @@ export let numbersData: { beforeNumber: number; afterNumber: number; } | {} = {}
  */
 export async function connectReceiveRabbitMQ() {
   numbersData = {};
+  try {
+    const connection: Connection = await amqplib.connect(receiveRabbit);
+    console.log('[RECEIVE] Connected to RabbitMQ server');
 
-  const connection: Connection = await amqplib.connect(receiveRabbit);
-  console.log('[RECEIVE] Connected to RabbitMQ server');
+    const channel: Channel = await connection.createChannel();
+    await channel.prefetch(1);
+    await channel.assertExchange(exchangeName, 'headers', { durable: true });
+    await channel.assertQueue(envRbQueueNameNumber, { durable: true, deadLetterExchange: exchangeName });
+    await channel.bindQueue(envRbQueueNameNumber, exchangeName, bindName);
+    console.log(`[RECEIVE] Channel name «${envRbQueueNameNumber}»`);
 
-  const channel: Channel = await connection.createChannel();
-  await channel.assertExchange(exchangeName, 'headers', { durable: true });
-  await channel.assertQueue(envRbQueueNameNumber, { durable: true, deadLetterExchange: exchangeName });
-  await channel.bindQueue(envRbQueueNameNumber, exchangeName, bindName);
-  console.log(`[RECEIVE] Channel name «${envRbQueueNameNumber}»`);
-
-  await channel.consume(envRbQueueNameNumber, async (data: any) => {
-    await sleep(envDelay).then(() => {  // 5 seconds
-      const anyNumber: number = JSON.parse(data.content).number;
-      const doubleNumber: number = anyNumber * 2;
-      numbersData = { beforeNumber: anyNumber, afterNumber: doubleNumber };
-      console.log('[RECEIVE] Received %s', doubleNumber);
-      channel.ack(data);
+    await channel.consume(envRbQueueNameNumber, async (data: any) => {
+      await sleep(envDelay).then(() => {  // 5 seconds
+        const anyNumber: number = JSON.parse(data.content).number;
+        const doubleNumber: number = anyNumber * 2;
+        numbersData = { beforeNumber: anyNumber, afterNumber: doubleNumber };
+        console.log('[RECEIVE] Received %s', doubleNumber);
+        channel.ack(data);
+      });
     });
-  });
+  } catch(error) {
+    console.log(`[RECEIVE] ${error}`);
+  }
 };
