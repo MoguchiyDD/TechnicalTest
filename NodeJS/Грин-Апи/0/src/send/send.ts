@@ -23,15 +23,20 @@ const bindName: string = 'DoubleNumberKey';
  * @param {string} message Message for Sending a REQUEST
  */
 export async function connectSendRabbitMQ(message: string) {
-  const connection: Connection = await amqplib.connect(sendRabbit);
-  console.log('[SEND] Connected to RabbitMQ server');
+  try {
+    const connection: Connection = await amqplib.connect(sendRabbit);
+    console.log('[SEND] Connected to RabbitMQ server');
 
-  const channel: Channel = await connection.createChannel();
-  await channel.assertExchange(exchangeName, 'headers', { durable: true });
-  await channel.assertQueue(envRbQueueNameNumber, { durable: true, deadLetterExchange: exchangeName });
-  await channel.bindQueue(envRbQueueNameNumber, exchangeName, bindName);
-  console.log(`[SEND] Channel name «${envRbQueueNameNumber}»`);
+    const channel: Channel = await connection.createChannel();
+    await channel.prefetch(1);
+    await channel.assertExchange(exchangeName, 'headers', { durable: true });
+    await channel.assertQueue(envRbQueueNameNumber, { durable: true, deadLetterExchange: exchangeName });
+    await channel.bindQueue(envRbQueueNameNumber, exchangeName, bindName);
+    console.log(`[SEND] Channel name «${envRbQueueNameNumber}»`);
 
-  channel.sendToQueue(envRbQueueNameNumber, Buffer.from(message));
-  console.log('[SEND] Sent %s', message);
+    channel.sendToQueue(envRbQueueNameNumber, Buffer.from(message));
+    console.log('[SEND] Sent %s', message);
+  } catch(error) {
+    console.log(`[SEND] ${error}`);
+  };
 };
