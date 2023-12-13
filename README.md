@@ -11,4 +11,4 @@ This repository stores all completed Technical Tests
 ## Completed *Technical Test* from companies (A-Z):
 - **DaniKo** (once : *NestJS* + *React Flow* + *whatsapp-web.js* + *Mongoose* + *Cache with Redis* + *Docker Compose*)
 - **DEMETRA SYSTEMS** (once : *NestJS* + *TypeORM* + *Bull with Redis* + *Chache with Redis* + *Axios* + *Docker Compose*)
-- **Грин-Апи** (once : *NodeJS* + *RabbitMQ*)
+- **GREEN-API** (once : *NodeJS* + *RabbitMQ* + *Microservices*)
