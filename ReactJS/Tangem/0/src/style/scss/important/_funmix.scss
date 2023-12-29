@@ -1,0 +1,56 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: TEMPORARILY ABSENT
+
+Goal: Creating Different Useful Short FUNCTIONS
+Result: Created Different Useful Short FUNCTIONS
+
+Past Modification: Adding COPYRIGHT
+Last Modification: Adding The «FUNCTIONS» and The «MIXINS» BLOCKS
+Modification Date: 2023.12.29, 10:48 PM
+
+Create Data: 2023.12.29, 04:29 PM
+*/
+
+
+// ------------ FUNCTIONS ------------
+
+@function HexToRGB($hex) {
+  @return rgb(red($hex), green($hex), blue($hex));
+}
+
+// -----------------------------------
+
+
+// ------------- MIXINS --------------
+
+@mixin sizeScreen($width: 100%, $height: auto) {
+  @if ($width) {
+    width: $width;
+  }
+  @if ($height) {
+    height: $height;
+  }
+}
+
+@mixin indentations($margin: auto, $padding: 0em) {
+  @if ($margin) {
+    margin: $margin;
+  }
+  @if ($padding) {
+    padding: $padding;
+  }
+}
+
+@mixin position($position, $top: 0, $left: 0) {
+  position: $position;
+
+  @if ($top) {
+    top: $top;
+  }
+  @if ($left) {
+    left: $left;
+  }
+}
+
+// -----------------------------------

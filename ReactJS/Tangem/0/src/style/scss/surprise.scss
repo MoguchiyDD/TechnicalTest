@@ -1,0 +1,68 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: MIT License which is located in the text file LICENSE
+
+Goal: Stylize OBJECT of SURPRISE
+Result: Stylized OBJECT of SURPRISE
+
+Past Modification: Adding The «MAIN» BLOCK
+Last Modification: Adding The «TOP» BLOCK
+Modification Date: 2023.12.29, 10:46 PM
+
+Create Data: 2023.12.29, 05:41 PM
+*/
+
+
+@import "important/vocabulary";
+@import "important/funmix";
+
+
+// ------------ MAIN ------------
+
+figure {
+  @include indentations(0em);
+}
+
+// ------------------------------
+
+
+// ------------ TOP -------------
+
+.surprise-top {
+  @include sizeScreen(100%, 63px);
+  @include indentations(2em);
+  background:
+    linear-gradient(
+      to right,
+      rgba(HexToRGB(map-get($colors, "dark-linear-one")), 1),
+      rgba(HexToRGB(map-get($colors, "dark-linear-two")), 0.70)
+    ),
+    radial-gradient(
+      ellipse farthest-side at top center,
+      HexToRGB(map-get($colors, "light-yellow-radial-one")) 10%,
+      HexToRGB(map-get($colors, "light-yellow-radial-two")) 80%
+    );
+
+  p {
+    @include indentations(0em, 1.1em);
+    font-size: map-get($size, "hd-p");
+    color: map-get($colors, "background");
+    text-align: center;
+
+    span {
+      &.yellow {
+        color: map-get($colors, "yellow");
+      }
+      &.gray {
+        color: rgba(HexToRGB(map-get($colors, "white")), 0.37);
+      }
+    }
+  }
+
+  img {
+    @include position(absolute, -23px, -37px);
+    clip: rect(55px, 271px, 118px, 37px);
+  }
+}
+
+// ------------------------------
