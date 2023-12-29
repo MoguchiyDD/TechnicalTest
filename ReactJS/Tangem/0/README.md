@@ -1,4 +1,4 @@
-# NodeJS
+# ReactJS
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## Information
