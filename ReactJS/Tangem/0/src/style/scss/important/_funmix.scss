@@ -5,9 +5,9 @@ LICENSE: TEMPORARILY ABSENT
 Goal: Creating Different Useful Short FUNCTIONS
 Result: Created Different Useful Short FUNCTIONS
 
-Past Modification: Editing The «MIXINS» BLOCK (ALL)
-Last Modification: Editing The «MIXINS» BLOCK («indentationsBottom»)
-Modification Date: 2023.12.30, 06:20 PM
+Past Modification: Editing The «MIXINS» BLOCK («indentationsBottom»)
+Last Modification: Removing The «MIXINS» BLOCK (INDENTATIONS)
+Modification Date: 2023.12.30, 08:39 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -27,15 +27,6 @@ Create Data: 2023.12.29, 04:29 PM
 @mixin sizeScreen($width, $height) {
   width: $width;
   height: $height;
-}
-
-@mixin indentations($margin: auto, $padding: 0em) {
-  margin: $margin;
-  padding: $padding;
-}
-@mixin indentationsBottom($margin: 0em, $padding: 0em) {
-  margin-bottom: $margin;
-  padding-bottom: $padding;
 }
 
 @mixin positionTopLeft($position, $top, $left) {
