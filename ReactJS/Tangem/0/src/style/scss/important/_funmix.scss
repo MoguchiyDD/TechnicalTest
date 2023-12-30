@@ -5,9 +5,9 @@ LICENSE: TEMPORARILY ABSENT
 Goal: Creating Different Useful Short FUNCTIONS
 Result: Created Different Useful Short FUNCTIONS
 
-Past Modification: Adding COPYRIGHT
-Last Modification: Adding The «FUNCTIONS» and The «MIXINS» BLOCKS
-Modification Date: 2023.12.29, 10:48 PM
+Past Modification: Adding The «FUNCTIONS» and The «MIXINS» BLOCKS
+Last Modification: Editing The «MIXINS» BLOCK («positionTop: Left || Right»)
+Modification Date: 2023.12.30, 01:24 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -42,7 +42,7 @@ Create Data: 2023.12.29, 04:29 PM
   }
 }
 
-@mixin position($position, $top: 0, $left: 0) {
+@mixin positionTopLeft($position, $top, $left) {
   position: $position;
 
   @if ($top) {
@@ -50,6 +50,16 @@ Create Data: 2023.12.29, 04:29 PM
   }
   @if ($left) {
     left: $left;
+  }
+}
+@mixin positionTopRight($position, $top, $right) {
+  position: $position;
+
+  @if ($top) {
+    top: $top;
+  }
+  @if ($right) {
+    right: $right;
   }
 }
 
