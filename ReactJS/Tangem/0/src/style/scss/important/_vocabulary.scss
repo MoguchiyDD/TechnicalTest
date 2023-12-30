@@ -5,21 +5,22 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Editing The «colors» VOCABULARY (TEXT)
-Last Modification: Editing The «size» VOCABULARY (FHD)
-Modification Date: 2023.12.30, 06:07 PM
+Past Modification: Editing The «MAIN» BLOCK (COLORS && SIZE)
+Last Modification: Adding SEVERAL BLOCKS
+Modification Date: 2023.12.30, 08:35 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
 
 
-// ------------ MAIN ------------
+// ---------------- MAIN ----------------
 
 $height: 1000em;
 $colors: (
   "background": #EEE,
   "white": #FFF,
   "yellow": #D7A830,
+  "gray": #333,
   "text": #0B0B0B,
 
   "dark-linear-one": #101010,
@@ -29,12 +30,65 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
+  // 1600px
+  "hdplus-h1": 2.57em,
+  "hdplus-h2": 2.3em,
+  "hdplus-p": 1.15em,
+  "hdplus-text": 0.95em,
 
   // 1920px
   "fhd-h1": 2.87em,
   "fhd-h2": 2.5em,
   "fhd-p": 1.25em,
   "fhd-text": 1.00em
-)
+);
+$screen: (
+  "D1600": 1600px,
+  "D1919": 1919px,
+  "D1920": 1920px
+);
 
-// ------------------------------
+// --------------------------------------
+
+
+// --------------- WIDTH ----------------
+
+$width: (
+  "D1600-hdplus-surprise-top-btn": 7%,
+  "D1600-hdplus-surprise-bottom": 33.25%,
+  "D1600-hdplus-surprise-bottom-btn": 100%,
+  "D1920-fhd-surprise-top-btn": 8%,
+  "D1920-fhd-surprise-bottom": 31.25%,
+  "D1920-fhd-surprise-bottom-btn": 94%
+);
+
+// --------------------------------------
+
+
+// ------------ INDENTATIONS ------------
+
+$indentations: (
+  "zero-margin": 0em,
+
+  "surprise-top-margin": 2em auto 0em,
+  "surprise-top-p-margin": 0em auto,
+  "surprise-bottom-margin": 0em 2em 2em 0em,
+
+  // 1600px
+  "D1600-hdplus-surprise-top-p-padding": 0.9em,
+  "D1600-hdplus-surprise-top-btn-padding": 0.35em 0.75em,
+  "D1600-hdplus-surprise-bottom-p-header-padding": 0.55em,
+  "D1600-hdplus-surprise-bottom-p-percent-padding": 0.45em,
+  "D1600-hdplus-surprise-bottom-p-code-padding": 2.62em,
+  "D1600-hdplus-surprise-bottom-btn-padding": 0.75em 1.5em,
+
+  // 1920px
+  "D1920-fhd-surprise-top-p-padding": 0.8em,
+  "D1920-fhd-surprise-top-btn-padding": 0.35em 0.75em,
+  "D1920-fhd-surprise-bottom-p-header-padding": 0.6em,
+  "D1920-fhd-surprise-bottom-p-percent-padding": 0.5em,
+  "D1920-fhd-surprise-bottom-p-code-padding": 2.92em,
+  "D1920-fhd-surprise-bottom-btn-padding": 0.75em 1.5em,
+);
+
+// --------------------------------------
