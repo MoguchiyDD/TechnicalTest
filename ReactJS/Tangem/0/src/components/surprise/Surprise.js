@@ -11,6 +11,7 @@ export const SurpriseTop = props => {
         <span className="gray">&nbsp;ꞏ&nbsp;</span>
         Use code <strong><span className="yellow">{code}</span></strong> at checkout
       </p>
+      <button id="btn">Shop now</button>
       <figure>
         <img src={process.env.PUBLIC_URL + "/images/surprise.png"} alt="Surprise Top" />
       </figure>
