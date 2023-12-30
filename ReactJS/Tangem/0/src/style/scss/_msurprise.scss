@@ -1,0 +1,111 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: MIT License which is located in the text file LICENSE
+
+Goal: Stylize OBJECT of SURPRISE MEDIA
+Result: Stylized OBJECT of SURPRISE MEDIA
+
+Past Modification: Adaptation for 1920px screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for 1600px screens («TOP» && «BOTTOM»)
+Modification Date: 2023.12.30, 08:38 PM
+
+Create Data: 2023.12.30, 07:03 PM
+*/
+
+
+// ------------ 1600 — 1920  ------------
+
+@media screen and (min-width: map-get($screen, D1600)) and (max-width: map-get($screen, D1919)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding: map-get($indentations, "D1600-hdplus-surprise-top-p-padding");
+      font-size: map-get($size, "hdplus-p");
+    }
+
+    #btn {
+      width: map-get($width, "D1600-hdplus-surprise-top-btn");
+      @include positionTopRight(absolute, 2.9em, 3em);
+      padding: map-get($indentations, "D1600-hdplus-surprise-top-btn-padding");
+      font-size: map-get($size, "hdplus-text");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D1600-hdplus-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "hdplus-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "hdplus-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "hdplus-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D1600-hdplus-surprise-bottom-btn");
+      padding: map-get($indentations, "D1600-hdplus-surprise-bottom-btn-padding");
+      font-size: map-get($size, "hdplus-text");
+    }
+  }
+}
+
+// --------------------------------------
+
+
+// ---------------- 1920 ----------------
+
+@media screen and (min-width: map-get($screen, D1920)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding: map-get($indentations, "D1920-fhd-surprise-top-p-padding");
+      font-size: map-get($size, "fhd-p");
+    }
+
+    #btn {
+      width: map-get($width, "D1920-fhd-surprise-top-btn");
+      @include positionTopRight(absolute, 2.7em, 3em);
+      padding: map-get($indentations, "D1920-fhd-surprise-top-btn-padding");
+      font-size: map-get($size, "fhd-text");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D1920-fhd-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "fhd-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "fhd-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "fhd-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D1920-fhd-surprise-bottom-btn");
+      padding: map-get($indentations, "D1920-fhd-surprise-bottom-btn-padding");
+      font-size: map-get($size, "fhd-text");
+    }
+  }
+}
+
+// --------------------------------------

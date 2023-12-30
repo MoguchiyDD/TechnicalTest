@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Editing The «TOP» BLOCK (SIZE && BUTTON)
-Last Modification: Adaptation for 1920px screens («TOP» && «BOTTOM»)
-Modification Date: 2023.12.30, 06:24 PM
+Past Modification: Adaptation for 1920px Screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
+Modification Date: 2023.12.30, 08:37 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -15,12 +15,13 @@ Create Data: 2023.12.29, 05:41 PM
 
 @import "important/vocabulary";
 @import "important/funmix";
+@import "msurprise.scss";
 
 
 // ------------- MAIN -------------
 
 figure {
-  @include indentations(0em);
+  margin: map-get($indentations, "zero-margin");
 }
 
 // --------------------------------
@@ -30,7 +31,7 @@ figure {
 
 .surprise-top {
   @include sizeScreen(100%, 54px);
-  @include indentations(2em auto 0em);
+  margin: map-get($indentations, "surprise-top-margin");
   background:
     linear-gradient(
       to right,
@@ -44,8 +45,7 @@ figure {
     );
 
   p {
-    @include indentations(0em auto, 0.8em);
-    font-size: map-get($size, "fhd-p");
+    margin: map-get($indentations, "surprise-top-p-margin");
     color: map-get($colors, "white");
     text-align: center;
 
@@ -60,10 +60,6 @@ figure {
   }
 
   #btn {
-    width: 8%;
-    @include indentations($padding: 0.35em 0.75em);
-    @include positionTopRight(absolute, 2.7em, 3em);
-    font-size: map-get($size, "fhd-text");
     color: map-get($colors, "text");
     background: map-get($colors, "white");
     border: 1px solid map-get($colors, "white");
@@ -87,7 +83,7 @@ figure {
 // ------------ BOTTOM ------------
 
 .surprise-bottom {
-  @include indentations(0em 2em 2em 0em);
+  margin: map-get($indentations, "surprise-bottom-margin");
   @include positionBottomRight(fixed, 0em, 0em);
 
   img {
@@ -102,38 +98,28 @@ figure {
     align-items: center;
 
     p {
-      @include indentations(0em);
-  
+      margin: map-get($indentations, "zero-margin");
+
       &#header {
-        @include indentationsBottom($padding: 0.6em);
-        font-size: map-get($size, "fhd-h1");
+        margin: map-get($indentations, "zero-margin");
         color: map-get($colors, "white");
       }
-  
       &#percent {
-        @include indentationsBottom($padding: 0.5em);
-        font-size: map-get($size, "fhd-h2");
         background: linear-gradient(to right, #7D5317, #EDDF95);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-  
       &#code {
-        @include indentationsBottom($padding: 2.92em);
-        font-size: map-get($size, "fhd-text");
         color: #6C6C70;
-  
+
         span.yellow {
           color: map-get($colors, "yellow");
         }
       }
     }
-  
+
     #btn {
-      width: 94%;
-      @include indentations($padding: 0.75em 1.5em);
-      font-size: map-get($size, "fhd-text");
       color: map-get($colors, "white");
       background-color: #333;
       border: 1px solid #333;
