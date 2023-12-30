@@ -6,8 +6,8 @@ Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
 Past Modification: Editing The «colors» VOCABULARY (TEXT)
-Last Modification: Editing The «size» VOCABULARY (HD)
-Modification Date: 2023.12.30, 12:26 PM
+Last Modification: Editing The «size» VOCABULARY (FHD)
+Modification Date: 2023.12.30, 06:07 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -29,8 +29,12 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
-  "hd-p": 1.25em,
-  "hd-btn": 1.00em
+
+  // 1920px
+  "fhd-h1": 2.87em,
+  "fhd-h2": 2.5em,
+  "fhd-p": 1.25em,
+  "fhd-text": 1.00em
 )
 
 // ------------------------------
