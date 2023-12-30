@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Adding The «size» VOCABULARY
-Last Modification: Editing The «colors» VOCABULARY (WHITE && YELLOW)
-Modification Date: 2023.12.29, 10:37 PM
+Past Modification: Editing The «colors» VOCABULARY (TEXT)
+Last Modification: Editing The «size» VOCABULARY (HD)
+Modification Date: 2023.12.30, 12:26 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -20,6 +20,7 @@ $colors: (
   "background": #EEE,
   "white": #FFF,
   "yellow": #D7A830,
+  "text": #0B0B0B,
 
   "dark-linear-one": #101010,
   "dark-linear-two": #0B0B0B,
@@ -28,7 +29,8 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
-  "hd-p": 1.07em
+  "hd-p": 1.25em,
+  "hd-btn": 1.00em
 )
 
 // ------------------------------
