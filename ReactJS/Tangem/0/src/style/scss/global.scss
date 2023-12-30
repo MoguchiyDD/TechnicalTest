@@ -5,9 +5,9 @@ LICENSE: TEMPORARILY ABSENT
 Goal: Setting Important STYLES
 Result: Important STYLES Adjusted
 
-Past Modification: Adding New «FONTS» BLOCK
-Last Modification: Adding New «MAIN» BLOCK
-Modification Date: 2023.12.29, 05:41 PM
+Past Modification: Adding New «MAIN» BLOCK
+Last Modification: Editing New «FONTS» BLOCK (line-height)
+Modification Date: 2023.12.30, 06:26 PM
 
 Create Data: 2023.12.29, 04:27 PM
 */
@@ -40,7 +40,7 @@ $text-family: (
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.1;
 }
 *, *::before, *::after {
   -webkit-box-sizing: inherit;
