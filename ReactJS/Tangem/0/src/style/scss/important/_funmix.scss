@@ -5,9 +5,9 @@ LICENSE: TEMPORARILY ABSENT
 Goal: Creating Different Useful Short FUNCTIONS
 Result: Created Different Useful Short FUNCTIONS
 
-Past Modification: Adding The «FUNCTIONS» and The «MIXINS» BLOCKS
-Last Modification: Editing The «MIXINS» BLOCK («positionTop: Left || Right»)
-Modification Date: 2023.12.30, 01:24 PM
+Past Modification: Editing The «MIXINS» BLOCK (ALL)
+Last Modification: Editing The «MIXINS» BLOCK («indentationsBottom»)
+Modification Date: 2023.12.30, 06:20 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -24,43 +24,34 @@ Create Data: 2023.12.29, 04:29 PM
 
 // ------------- MIXINS --------------
 
-@mixin sizeScreen($width: 100%, $height: auto) {
-  @if ($width) {
-    width: $width;
-  }
-  @if ($height) {
-    height: $height;
-  }
+@mixin sizeScreen($width, $height) {
+  width: $width;
+  height: $height;
 }
 
 @mixin indentations($margin: auto, $padding: 0em) {
-  @if ($margin) {
-    margin: $margin;
-  }
-  @if ($padding) {
-    padding: $padding;
-  }
+  margin: $margin;
+  padding: $padding;
+}
+@mixin indentationsBottom($margin: 0em, $padding: 0em) {
+  margin-bottom: $margin;
+  padding-bottom: $padding;
 }
 
 @mixin positionTopLeft($position, $top, $left) {
   position: $position;
-
-  @if ($top) {
-    top: $top;
-  }
-  @if ($left) {
-    left: $left;
-  }
+  top: $top;
+  left: $left;
 }
 @mixin positionTopRight($position, $top, $right) {
   position: $position;
-
-  @if ($top) {
-    top: $top;
-  }
-  @if ($right) {
-    right: $right;
-  }
+  top: $top;
+  right: $right;
+}
+@mixin positionBottomRight($position, $bottom, $right) {
+  position: $position;
+  bottom: $bottom;
+  right: $right;
 }
 
 // -----------------------------------
