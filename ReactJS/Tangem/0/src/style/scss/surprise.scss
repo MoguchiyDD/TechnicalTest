@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Adding The «MAIN» BLOCK
-Last Modification: Adding The «TOP» BLOCK
-Modification Date: 2023.12.29, 10:46 PM
+Past Modification: Adding The «BOTTOM» BLOCK
+Last Modification: Editing The «TOP» BLOCK (SIZE && BUTTON)
+Modification Date: 2023.12.30, 02:37 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -17,20 +17,20 @@ Create Data: 2023.12.29, 05:41 PM
 @import "important/funmix";
 
 
-// ------------ MAIN ------------
+// ------------- MAIN -------------
 
 figure {
   @include indentations(0em);
 }
 
-// ------------------------------
+// --------------------------------
 
 
-// ------------ TOP -------------
+// ------------- TOP --------------
 
 .surprise-top {
-  @include sizeScreen(100%, 63px);
-  @include indentations(2em);
+  @include sizeScreen(100%, 54px);
+  @include indentations(2em auto 0);
   background:
     linear-gradient(
       to right,
@@ -44,7 +44,7 @@ figure {
     );
 
   p {
-    @include indentations(0em, 1.1em);
+    @include indentations(0em auto, 0.59em);
     font-size: map-get($size, "hd-p");
     color: map-get($colors, "background");
     text-align: center;
@@ -59,10 +59,30 @@ figure {
     }
   }
 
+  #btn {
+    @include sizeScreen(8%);
+    @include indentations($padding: 0.35em 0.75em);
+    @include positionTopRight(absolute, 2.5em, 3em);
+    font-size: map-get($size, "hd-btn");
+    color: map-get($colors, "text");
+    background: map-get($colors, "white");
+    border: 1px solid map-get($colors, "white");
+    border-radius: 5em;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
   img {
-    @include position(absolute, -23px, -37px);
-    clip: rect(55px, 271px, 118px, 37px);
+    @include sizeScreen(30.5em);
+    @include positionTopLeft(absolute, -12px, -37px);
+    clip: rect(44px, 227px, 98px, 37px);
   }
 }
 
-// ------------------------------
+// --------------------------------
+
+
+// ------------ BOTTOM ------------
+// --------------------------------
