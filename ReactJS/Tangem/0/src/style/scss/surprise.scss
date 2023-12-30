@@ -7,7 +7,7 @@ Result: Stylized OBJECT of SURPRISE
 
 Past Modification: Adaptation for 1920px Screens («TOP» && «BOTTOM»)
 Last Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
-Modification Date: 2023.12.30, 08:37 PM
+Modification Date: 2023.12.30, 10:24 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -30,7 +30,6 @@ figure {
 // ------------- TOP --------------
 
 .surprise-top {
-  @include sizeScreen(100%, 54px);
   margin: map-get($indentations, "surprise-top-margin");
   background:
     linear-gradient(
@@ -68,12 +67,6 @@ figure {
     &:hover {
       font-weight: bold;
     }
-  }
-
-  img {
-    width: 30.5em;
-    @include positionTopLeft(absolute, -12px, -37px);
-    clip: rect(44px, 227px, 98px, 37px);
   }
 }
 
@@ -121,8 +114,8 @@ figure {
 
     #btn {
       color: map-get($colors, "white");
-      background-color: #333;
-      border: 1px solid #333;
+      background-color: map-get($colors, "gray");
+      border: 1px solid map-get($colors, "gray");
       border-radius: 5em;
 
       &:hover {
