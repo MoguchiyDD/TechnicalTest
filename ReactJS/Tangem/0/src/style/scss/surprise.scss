@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Adding The «BOTTOM» BLOCK
-Last Modification: Editing The «TOP» BLOCK (SIZE && BUTTON)
-Modification Date: 2023.12.30, 02:37 PM
+Past Modification: Editing The «TOP» BLOCK (SIZE && BUTTON)
+Last Modification: Adaptation for 1920px screens («TOP» && «BOTTOM»)
+Modification Date: 2023.12.30, 06:24 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -30,7 +30,7 @@ figure {
 
 .surprise-top {
   @include sizeScreen(100%, 54px);
-  @include indentations(2em auto 0);
+  @include indentations(2em auto 0em);
   background:
     linear-gradient(
       to right,
@@ -44,9 +44,9 @@ figure {
     );
 
   p {
-    @include indentations(0em auto, 0.59em);
-    font-size: map-get($size, "hd-p");
-    color: map-get($colors, "background");
+    @include indentations(0em auto, 0.8em);
+    font-size: map-get($size, "fhd-p");
+    color: map-get($colors, "white");
     text-align: center;
 
     span {
@@ -60,10 +60,10 @@ figure {
   }
 
   #btn {
-    @include sizeScreen(8%);
+    width: 8%;
     @include indentations($padding: 0.35em 0.75em);
-    @include positionTopRight(absolute, 2.5em, 3em);
-    font-size: map-get($size, "hd-btn");
+    @include positionTopRight(absolute, 2.7em, 3em);
+    font-size: map-get($size, "fhd-text");
     color: map-get($colors, "text");
     background: map-get($colors, "white");
     border: 1px solid map-get($colors, "white");
@@ -75,7 +75,7 @@ figure {
   }
 
   img {
-    @include sizeScreen(30.5em);
+    width: 30.5em;
     @include positionTopLeft(absolute, -12px, -37px);
     clip: rect(44px, 227px, 98px, 37px);
   }
@@ -85,4 +85,65 @@ figure {
 
 
 // ------------ BOTTOM ------------
+
+.surprise-bottom {
+  @include indentations(0em 2em 2em 0em);
+  @include positionBottomRight(fixed, 0em, 0em);
+
+  img {
+    width: 100%;
+  }
+
+  #right {
+    @include positionBottomRight(absolute, 3em, 2em);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    p {
+      @include indentations(0em);
+  
+      &#header {
+        @include indentationsBottom($padding: 0.6em);
+        font-size: map-get($size, "fhd-h1");
+        color: map-get($colors, "white");
+      }
+  
+      &#percent {
+        @include indentationsBottom($padding: 0.5em);
+        font-size: map-get($size, "fhd-h2");
+        background: linear-gradient(to right, #7D5317, #EDDF95);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+  
+      &#code {
+        @include indentationsBottom($padding: 2.92em);
+        font-size: map-get($size, "fhd-text");
+        color: #6C6C70;
+  
+        span.yellow {
+          color: map-get($colors, "yellow");
+        }
+      }
+    }
+  
+    #btn {
+      width: 94%;
+      @include indentations($padding: 0.75em 1.5em);
+      font-size: map-get($size, "fhd-text");
+      color: map-get($colors, "white");
+      background-color: #333;
+      border: 1px solid #333;
+      border-radius: 5em;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 // --------------------------------
