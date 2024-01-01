@@ -1,5 +1,5 @@
 import './style/scss/global.scss';
-import './style/scss/surprise.scss';
+import './style/scss/surprise/surprise.scss';
 import { SurpriseTop, SurpriseBottom } from './components/surprise/Surprise';
 
 function App() {
