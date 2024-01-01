@@ -6,8 +6,8 @@ Goal: Determine SCREEN Size
 Result: Accurate SCREEN Size
 
 Past Modification: Adding COMMENTS
-Last Modification: Editing The «SurpriseBottom» CONSTANT
-Modification Date: 2024.01.02, 12:29 AM
+Last Modification: Editing The «SurpriseBottom» CONSTANT (SCROLL)
+Modification Date: 2024.01.02, 02:34 AM
 
 Create Data: 2023.12.29, 02:37 PM
 */
@@ -90,7 +90,25 @@ export const SurpriseTop = props => {
  */
 export const SurpriseBottom = props => {
   const {discount, code} = props;
-  const scrollDirection = useScrollDirection();  // Scroll
+  const scrollDirection = useScrollDirection();  // Scroll && Count
+  const countScroll = scrollDirection.count;  // Scroll
+  const scroll = scrollDirection.scroll;  // Number of SCROLL Starts
+
+  // Style for BLOCk hide
+  let style = { "": "" };
+  if ((scroll === "hide") && (countScroll >= 1)) {
+    style = {
+      animation: "animationHide 1s forwards",
+      WebkitAnimation: "animationHide 1s forwards",
+      OAnimation: "animationHide 1s forwards",
+      MozAnimation: "animationHide 1s forwards",
+      MsAnimation: "animationHide 1s forwards"
+    }
+  } else if ((scroll === "hide") && (countScroll === 0)) {
+    style = { display: "none" }
+  } else {
+    style = { "": "" };
+  }
 
   // BLOCK show || hide
   const [id, setId] = useState("");
@@ -122,7 +140,7 @@ export const SurpriseBottom = props => {
 
   // JSX
   return(
-    <div className={"surprise-bottom " + scrollDirection + " " + id}>
+    <div className={"surprise-bottom " + scroll + " " + id} style={style}>
       <figure>
         <img src={process.env.PUBLIC_URL + "/images/surprise.png"} alt="Surprise Bottom" />
       </figure>
