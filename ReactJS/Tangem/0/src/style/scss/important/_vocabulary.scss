@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Adaptation for 960px Screen
-Last Modification: Adaptation for 768px Screen
-Modification Date: 2024.01.01, 03:31 PM
+Past Modification: Editing The «MAIN» Block (COLORS)
+Last Modification: Adaptation for 576px Screen
+Modification Date: 2024.01.01, 04:05 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -21,6 +21,7 @@ $colors: (
   "white": #FFF,
   "yellow": #D7A830,
   "gray": #333,
+  "light-gray": #D9D9D9,
   "text": #0B0B0B,
 
   "dark-linear-one": #101010,
@@ -30,6 +31,12 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
+  // 576px
+  "576-h1": 1.67em,
+  "576-h2": 1.5em,
+  "576-p": 0.85em,
+  "576-text": 0.75em,
+
   // 768px
   "768-h1": 1.87em,
   "768-h2": 1.6em,
@@ -61,6 +68,8 @@ $size: (
   "fhd-text": 1.00em
 );
 $screen: (
+  "D576": 576px,
+  "D575": 575px,
   "D768": 768px,
   "D767": 767px,
   "D960": 960px,
@@ -79,6 +88,12 @@ $screen: (
 // --------------- WIDTH ----------------
 
 $width: (
+  // 576px
+  "D576-surprise-top-img": 26.5em,
+  "D576-surprise-top-btn": 3%,
+  "D576-surprise-bottom": 59.25%,
+  "D576-surprise-bottom-btn": 100%,
+
   // 768px
   "D768-surprise-top-img": 28.5em,
   "D768-surprise-top-btn": 11%,
@@ -124,6 +139,13 @@ $indentations: (
   "surprise-bottom-one-margin": 0em 1em 1em 0em,
   "surprise-bottom-two-margin": 0em 2em 2em 0em,
 
+  // 576px
+  "D576-surprise-top-p-padding": 1.2em,
+  "D576-surprise-bottom-p-header-padding": 0.42em,
+  "D576-surprise-bottom-p-percent-padding": 0.37em,
+  "D576-surprise-bottom-p-code-padding": 1.69em,
+  "D576-surprise-bottom-btn-padding": 0.53em 0.75em,
+  
   // 768px
   "D768-surprise-top-p-padding": 1.2em,
   "D768-surprise-top-btn-padding": 0.35em 0.65em,
