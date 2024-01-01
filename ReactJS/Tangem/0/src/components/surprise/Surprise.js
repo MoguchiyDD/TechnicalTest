@@ -7,14 +7,15 @@ Result: Accurate SCREEN Size
 
 Past Modification: Editing The «SurpriseTop» CONSTANT
 Last Modification: Editing The «SurpriseBottom» CONSTANT
-Modification Date: 2024.01.01, 04:27 PM
+Modification Date: 2024.01.01, 11:16 PM
 
 Create Data: 2023.12.29, 02:37 PM
 */
 
 
-import React from "react";
+import React, { useState } from "react";
 import { useScreenWidth } from "../screen/Screen";
+import { useScrollDirection } from "../scroll/Scroll";
 
 
 /**
@@ -87,6 +88,11 @@ export const SurpriseTop = props => {
  */
 export const SurpriseBottom = props => {
   const {discount, code} = props;
+  const [id, setId] = useState("");
+  const activateBtnClose = () => {
+    setId("hide");
+  };
+  const scrollDirection = useScrollDirection();
 
   let btn = "";
 
@@ -98,11 +104,11 @@ export const SurpriseBottom = props => {
   }
 
   return(
-    <div className="surprise-bottom">
+    <div className={"surprise-bottom " + scrollDirection + id}>
       <figure>
         <img src={process.env.PUBLIC_URL + "/images/surprise.png"} alt="Surprise Bottom" />
       </figure>
-      <button id="btn-close">✕</button>
+      <button id="btn-close" onClick={activateBtnClose}>✕</button>
       <div id="right">
         <p id="header"><strong>Black Friday</strong></p>
         <p id="percent"><strong>{discount}</strong></p>
