@@ -5,9 +5,9 @@ LICENSE: TEMPORARILY ABSENT
 Goal: Creating Different Useful Short FUNCTIONS
 Result: Created Different Useful Short FUNCTIONS
 
-Past Modification: Editing The «MIXINS» BLOCK («indentationsBottom»)
-Last Modification: Removing The «MIXINS» BLOCK (INDENTATIONS)
-Modification Date: 2023.12.30, 08:39 PM
+Past Modification: Removing The «MIXINS» BLOCK (INDENTATIONS)
+Last Modification: Editing The «MIXINS» BLOCK («positionTopLeftRight»)
+Modification Date: 2023.12.31, 08:29 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -29,6 +29,12 @@ Create Data: 2023.12.29, 04:29 PM
   height: $height;
 }
 
+@mixin positionTopLeftRight($position, $top, $left, $right) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+}
 @mixin positionTopLeft($position, $top, $left) {
   position: $position;
   top: $top;
