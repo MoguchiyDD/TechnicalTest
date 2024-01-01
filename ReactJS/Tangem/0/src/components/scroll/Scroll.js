@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Find The SCROLL DIRECTION
 Result: Found The SCROLL DIRECTION
 
-Past Modification: Adding COPYRIGHT
-Last Modification: Adding The «useScrollDirection» FUNCTION
-Modification Date: 2024.01.01, 11:16 PM
+Past Modification: Adding The «useScrollDirection» FUNCTION
+Last Modification: Editing The «useScrollDirection» FUNCTION (LOGIC)
+Modification Date: 2024.01.02, 02:18 AM
 
 Create Data: 2024.01.01, 10:23 PM
 */
@@ -23,22 +23,34 @@ import { useEffect, useState } from "react";
  * @returns The DIRECTION of SCROLLING
  */
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState("hide");
+  const [scrollDirection, setScrollDirection] = useState({
+    count: 0,
+    scroll: "hide"
+  });
 
   useEffect(() => {
-    let previousScrollY = window.pageYOffset;
-
     const updateScrollDirection = () => {
-      const currentScrollY = window.pageYOffset;
-      const direction = currentScrollY > previousScrollY ? "show" : "hide";
-      if ((direction !== scrollDirection) && (((currentScrollY - previousScrollY) > 10) || ((currentScrollY - previousScrollY) < -10))) {
-        setScrollDirection(direction);
+      const scrollY = window.pageYOffset;
+
+      const direction = ((scrollY >= 0) && (scrollY <= 120)) ? "hide" : "show";
+      if (direction !== scrollDirection) {
+        if (scrollDirection.count === 0) {
+          setScrollDirection({
+            count: direction === "show" ? ++scrollDirection.count : scrollDirection.count,
+            scroll: direction
+          });
+        } else {
+          setScrollDirection({
+            count: direction === "show" ? ++scrollDirection.count : scrollDirection.count,
+            scroll: direction
+          });
+        }
       }
-      previousScrollY = currentScrollY > 0 ? currentScrollY : 0;
     };
-    window.addEventListener("scroll", updateScrollDirection); // add event listener
+
+    window.addEventListener("scroll", updateScrollDirection);
     return () => {
-      window.removeEventListener("scroll", updateScrollDirection); // clean up
+      window.removeEventListener("scroll", updateScrollDirection);
     }
   }, [scrollDirection]);
 
