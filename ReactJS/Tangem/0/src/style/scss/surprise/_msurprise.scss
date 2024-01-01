@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE MEDIA
 Result: Stylized OBJECT of SURPRISE MEDIA
 
-Past Modification: Adaptation for 320px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for ALL Screens (BUTTON CLOSE)
-Modification Date: 2024.01.01, 08:03 PM
+Past Modification: Adaptation for ALL Screens (BUTTON CLOSE)
+Last Modification: Adaptation for ALL BROWSERS
+Modification Date: 2024.01.02, 12:40 AM
 
 Create Data: 2023.12.30, 07:03 PM
 */
@@ -539,6 +539,7 @@ Create Data: 2023.12.30, 07:03 PM
     }
 
     #btn {
+      width: map-get($width, "D1600-hdplus-surprise-top-btn");
       padding: map-get($indentations, "D1600-hdplus-surprise-top-btn-padding");
       font-size: map-get($size, "hdplus-text");
     }
