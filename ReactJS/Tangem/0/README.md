@@ -5,6 +5,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 - Developer, Owner and Author: [МогучийДД (MoguchiyDD)](https://github.com/MoguchiyDD)
 - Started & Finished : from **2023.12.29** to **until now**
 - Package: **npm**
+- Testing: **Google Chrome**
 - License: [MIT License](../../../LICENSE)
 
 ## URL Addresses
