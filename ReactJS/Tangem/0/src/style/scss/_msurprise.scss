@@ -5,17 +5,17 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE MEDIA
 Result: Stylized OBJECT of SURPRISE MEDIA
 
-Past Modification: Adaptation for 768px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for 576px Screens («TOP» && «BOTTOM»)
-Modification Date: 2024.01.01, 04:05 PM
+Past Modification: Adaptation for 360px Screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for 480px Screens («TOP» && «BOTTOM»)
+Modification Date: 2024.01.01, 04:58 PM
 
 Create Data: 2023.12.30, 07:03 PM
 */
 
 
-// ---------------- 576 ----------------
+// ---------------- 360 ----------------
 
-@media screen and (min-width: map-get($screen, D576)) {
+@media screen and (min-width: map-get($screen, D240)) {
 
   // TOP
   .surprise-top {
@@ -31,11 +31,115 @@ Create Data: 2023.12.30, 07:03 PM
 
   // BOTTOM
   .surprise-bottom {
-    margin: map-get($indentations, "surprise-bottom-one-margin");
-
     #right {
       @include positionBottomRight(absolute, 2em, 1.2em);
     }
+  }
+}
+
+// -------------------------------------
+
+// ------------- 240 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D240)) and (max-width: map-get($screen, D575)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-one-rbl-margin");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 360 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D360)) and (max-width: map-get($screen, D575)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 41px);
+
+    p {
+      padding-left: calc(map-get($width, "D360-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D360-surprise-top-p-padding"));
+      font-size: map-get($size, "360-p");
+    }
+
+    #btn {
+      width: map-get($width, "D360-surprise-top-btn");
+      font-size: map-get($size, "360-text");
+    }
+
+    img {
+      width: map-get($width, "D360-surprise-top-img");
+      @include positionTopLeft(absolute, -35px, -37px);
+      clip: rect(35px, 171px, 76px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D360-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "360-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "360-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "360-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D360-surprise-bottom-btn");
+      padding: map-get($indentations, "D360-surprise-bottom-btn-padding");
+      font-size: map-get($size, "360-text");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 360 — 480 -------------
+
+@media screen and (min-width: map-get($screen, D360)) and (max-width: map-get($screen, D480)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D360-surprise-bottom");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 480 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D480)) and (max-width: map-get($screen, D575)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D480-surprise-bottom");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 576 — 1279 ------------
+
+@media screen and (min-width: map-get($screen, D576)) and (max-width: map-get($screen, D1279)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-one-rb-margin");
   }
 }
 
@@ -51,8 +155,7 @@ Create Data: 2023.12.30, 07:03 PM
     @include sizeScreen(100%, 46px);
 
     p {
-      padding: map-get($indentations, "D576-surprise-top-p-padding");
-      padding-left: calc(map-get($width, "D576-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D576-surprise-top-p-padding"));
+      padding-left: calc(map-get($width, "D576-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D576-surprise-top-p-padding"));
       font-size: map-get($size, "576-p");
     }
 
@@ -123,7 +226,6 @@ Create Data: 2023.12.30, 07:03 PM
   // TOP
   .surprise-top {
     p {
-      padding: map-get($indentations, "D768-surprise-top-p-padding");
       padding-left: calc(map-get($width, "D768-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D768-surprise-top-p-padding"));
       font-size: map-get($size, "768-p");
     }
@@ -198,7 +300,6 @@ Create Data: 2023.12.30, 07:03 PM
   // TOP
   .surprise-top {
     p {
-      padding: map-get($indentations, "D960-qhd-surprise-top-p-padding");
       padding-left: calc(map-get($width, "D960-qhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D960-qhd-surprise-top-p-padding"));
       font-size: map-get($size, "qhd-p");
     }
@@ -261,7 +362,7 @@ Create Data: 2023.12.30, 07:03 PM
 
   // BOTTOm
   .surprise-bottom {
-    margin: map-get($indentations, "surprise-bottom-two-margin");
+    margin: map-get($indentations, "surprise-bottom-two-rb-margin");
 
     #right {
       @include positionBottomRight(absolute, 3em, 2em);
@@ -281,7 +382,6 @@ Create Data: 2023.12.30, 07:03 PM
     @include sizeScreen(100%, 53px);
 
     p {
-      padding: map-get($indentations, "D1280-hd-surprise-top-p-padding");
       padding-left: calc(map-get($width, "D1280-hd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1280-hd-surprise-top-p-padding"));
       font-size: map-get($size, "hd-p");
     }
@@ -355,7 +455,6 @@ Create Data: 2023.12.30, 07:03 PM
   // TOP
   .surprise-top {
     p {
-      padding: map-get($indentations, "D1600-hdplus-surprise-top-p-padding");
       padding-left: calc(map-get($width, "D1600-hdplus-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1600-hdplus-surprise-top-p-padding"));
       font-size: map-get($size, "hdplus-p");
     }
@@ -403,7 +502,6 @@ Create Data: 2023.12.30, 07:03 PM
   // TOP
   .surprise-top {
     p {
-      padding: map-get($indentations, "D1920-fhd-surprise-top-p-padding");
       padding-left: calc(map-get($width, "D1920-fhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1920-fhd-surprise-top-p-padding"));
       font-size: map-get($size, "fhd-p");
     }

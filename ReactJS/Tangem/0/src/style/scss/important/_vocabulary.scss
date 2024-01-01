@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Editing The «MAIN» Block (COLORS)
-Last Modification: Adaptation for 576px Screen
-Modification Date: 2024.01.01, 04:05 PM
+Past Modification: Adaptation for 360px Screen
+Last Modification: Adaptation for 480px Screen
+Modification Date: 2024.01.01, 04:55 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -31,6 +31,12 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
+  // 360px
+  "360-h1": 1.47em,
+  "360-h2": 1.3em,
+  "360-p": 0.75em,
+  "360-text": 0.69em,
+
   // 576px
   "576-h1": 1.67em,
   "576-h2": 1.5em,
@@ -68,12 +74,16 @@ $size: (
   "fhd-text": 1.00em
 );
 $screen: (
-  "D576": 576px,
+  "D240": 240px,
+  "D359": 359px,
+  "D360": 360px,
+  "D480": 480px,
   "D575": 575px,
-  "D768": 768px,
+  "D576": 576px,
   "D767": 767px,
-  "D960": 960px,
+  "D768": 768px,
   "D959": 959px,
+  "D960": 960px,
   "D1279": 1279px,
   "D1280": 1280px,
   "D1599": 1599px,
@@ -88,6 +98,14 @@ $screen: (
 // --------------- WIDTH ----------------
 
 $width: (
+  // 360px
+  "D360-surprise-top-img": 23.5em,
+  "D360-surprise-top-btn": 3%,
+  "D360-surprise-bottom": 91%,
+  "D360-surprise-bottom-btn": 50%,
+  
+  "D480-surprise-bottom": 70%,
+
   // 576px
   "D576-surprise-top-img": 26.5em,
   "D576-surprise-top-btn": 3%,
@@ -136,16 +154,24 @@ $indentations: (
 
   "surprise-top-margin": 2em auto 0em,
   "surprise-top-p-margin": 0em auto,
-  "surprise-bottom-one-margin": 0em 1em 1em 0em,
-  "surprise-bottom-two-margin": 0em 2em 2em 0em,
+  "surprise-bottom-one-rbl-margin": 0em 1em 1em 1em,
+  "surprise-bottom-one-rb-margin": 0em 1em 1em 0em,
+  "surprise-bottom-two-rb-margin": 0em 2em 2em 0em,
+
+  // 360px
+  "D360-surprise-top-p-padding": 8em,
+  "D360-surprise-bottom-p-header-padding": 0.6em,
+  "D360-surprise-bottom-p-percent-padding": 0.5em,
+  "D360-surprise-bottom-p-code-padding": 1.82em,
+  "D360-surprise-bottom-btn-padding": 0.53em 0.75em,
 
   // 576px
-  "D576-surprise-top-p-padding": 1.2em,
+  "D576-surprise-top-p-padding": 7em,
   "D576-surprise-bottom-p-header-padding": 0.42em,
   "D576-surprise-bottom-p-percent-padding": 0.37em,
   "D576-surprise-bottom-p-code-padding": 1.69em,
   "D576-surprise-bottom-btn-padding": 0.53em 0.75em,
-  
+
   // 768px
   "D768-surprise-top-p-padding": 1.2em,
   "D768-surprise-top-btn-padding": 0.35em 0.65em,
