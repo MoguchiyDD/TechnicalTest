@@ -7,7 +7,7 @@ Result: Stylized OBJECT of SURPRISE
 
 Past Modification: Editing The «BOTTOM» BLOCKS (DIV)
 Last Modification: Editing The «BOTTOM» BLOCKS (ANIMATION)
-Modification Date: 2024.01.02, 02:33 AM
+Modification Date: 2024.01.02, 02:44 AM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -84,13 +84,6 @@ figure {
     -o-animation: animationShow 1s forwards;
     -moz-animation: animationShow 1s forwards;
     -ms-animation: animationShow 1s forwards;
-  }
-  &.close {
-    animation: animationHide 1s forwards;
-    -webkit-animation: animationHide 1s forwards;
-    -o-animation: animationHide 1s forwards;
-    -moz-animation: animationHide 1s forwards;
-    -ms-animation: animationHide 1s forwards;
   }
 
   @keyframes animationShow {
