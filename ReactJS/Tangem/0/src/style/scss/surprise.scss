@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Adaptation for 1920px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
-Modification Date: 2023.12.30, 10:24 PM
+Past Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
+Last Modification: Editing The «TOP» && «BOTTOM» BLOCKS
+Modification Date: 2024.01.01, 02:53 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -30,7 +30,10 @@ figure {
 // ------------- TOP --------------
 
 .surprise-top {
-  margin: map-get($indentations, "surprise-top-margin");
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
   background:
     linear-gradient(
       to right,
@@ -76,7 +79,6 @@ figure {
 // ------------ BOTTOM ------------
 
 .surprise-bottom {
-  margin: map-get($indentations, "surprise-bottom-margin");
   @include positionBottomRight(fixed, 0em, 0em);
 
   img {
@@ -84,7 +86,6 @@ figure {
   }
 
   #right {
-    @include positionBottomRight(absolute, 3em, 2em);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

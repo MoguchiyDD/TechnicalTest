@@ -5,52 +5,147 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE MEDIA
 Result: Stylized OBJECT of SURPRISE MEDIA
 
-Past Modification: Adaptation for 1600px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for 1280px Screens («TOP» && «BOTTOM»)
-Modification Date: 2023.12.30, 10:23 PM
+Past Modification: Adaptation for 1280px Screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for 960px Screens («TOP» && «BOTTOM»)
+Modification Date: 2024.01.01, 02:55 PM
 
 Create Data: 2023.12.30, 07:03 PM
 */
 
 
-// ---------------- 1280 ----------------
+// ---------------- 768 ----------------
+
+@media screen and (min-width: map-get($screen, D768)) {
+
+  // TOP
+  .surprise-top {
+    @include positionTopLeftRight(absolute, 1em, 0em, 0em);
+
+    #btn {
+      margin-right: map-get($indentations, "one-margin");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-one-margin");
+
+    #right {
+      @include positionBottomRight(absolute, 2.5em, 1.5em);
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------ 960 — 1279 -------------
+
+@media screen and (min-width: map-get($screen, D960)) and (max-width: map-get($screen, D1279)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 50px);
+
+    p {
+      padding: map-get($indentations, "D960-qhd-surprise-top-p-padding");
+      padding-left: calc(map-get($width, "D960-qhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D960-qhd-surprise-top-p-padding"));
+      font-size: map-get($size, "qhd-p");
+    }
+
+    #btn {
+      width: map-get($width, "D960-qhd-surprise-top-btn");
+      padding: map-get($indentations, "D960-qhd-surprise-top-btn-padding");
+      font-size: map-get($size, "qhd-text");
+    }
+
+    img {
+      width: map-get($width, "D960-qhd-surprise-top-img");
+      @include positionTopLeft(absolute, -42px, -37px);
+      clip: rect(42px, 207px, 92px, 37px)
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D960-qhd-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "qhd-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "qhd-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "qhd-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D960-qhd-surprise-bottom-btn");
+      padding: map-get($indentations, "D960-qhd-surprise-bottom-btn-padding");
+      font-size: map-get($size, "qhd-text");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// --------------- 1280 ----------------
 
 @media screen and (min-width: map-get($screen, D1280)) {
 
   // TOP
   .surprise-top {
-    @include sizeScreen(100%, 53px);
+    @include positionTopLeftRight(absolute, 2em, 0em, 0em);
 
     #btn {
-      width: map-get($width, "D1280-hd-surprise-top-btn");
+      margin-right: map-get($indentations, "two-margin");
     }
+  }
 
-    img {
-      width: map-get($width, "D1280-hd-surprise-top-img");
-      @include positionTopLeft(absolute, -11px, -37px);
-      clip: rect(43px, 216px, 96px, 37px);
+  // BOTTOm
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-two-margin");
+
+    #right {
+      @include positionBottomRight(absolute, 3em, 2em);
     }
   }
 }
 
-// --------------------------------------
+// -------------------------------------
 
 
-// ------------ 1280 — 1600  ------------
+// ------------ 1280 — 1599 ------------
 
-@media screen and (min-width: map-get($screen, D1280)) and (max-width: map-get($screen, D1600)) {
+@media screen and (min-width: map-get($screen, D1280)) and (max-width: map-get($screen, D1599)) {
 
   // TOP
   .surprise-top {
+    @include sizeScreen(100%, 53px);
+
     p {
       padding: map-get($indentations, "D1280-hd-surprise-top-p-padding");
+      padding-left: calc(map-get($width, "D1280-hd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1280-hd-surprise-top-p-padding"));
       font-size: map-get($size, "hd-p");
     }
 
     #btn {
-      @include positionTopRight(absolute, 3.05em, 3em);
+      width: map-get($width, "D1280-hd-surprise-top-btn");
       padding: map-get($indentations, "D1280-hd-surprise-top-btn-padding");
       font-size: map-get($size, "hd-text");
+    }
+
+    img {
+      width: map-get($width, "D1280-hd-surprise-top-img");
+      @include positionTopLeft(absolute, -43px, -37px);
+      clip: rect(43px, 216px, 96px, 37px);
     }
   }
 
@@ -81,10 +176,10 @@ Create Data: 2023.12.30, 07:03 PM
   }
 }
 
-// --------------------------------------
+// -------------------------------------
 
 
-// ---------------- 1600 ----------------
+// --------------- 1600 ----------------
 
 @media screen and (min-width: map-get($screen, D1600)) {
 
@@ -93,17 +188,17 @@ Create Data: 2023.12.30, 07:03 PM
     @include sizeScreen(100%, 54px);
 
     img {
-      width: map-get($width, "D1600-hd-surprise-top-img");
-      @include positionTopLeft(absolute, -12px, -37px);
-      clip: rect(44px, 227px, 98px, 37px);
+      width: map-get($width, "D1600-hdplus-surprise-top-img");
+      @include positionTopLeft(absolute, -44px, -37px);
+      clip: rect(45px, 223px, 98px, 37px);
     }
   }
 }
 
-// --------------------------------------
+// -------------------------------------
 
 
-// ------------ 1600 — 1920  ------------
+// ------------ 1600 — 1920 ------------
 
 @media screen and (min-width: map-get($screen, D1600)) and (max-width: map-get($screen, D1919)) {
 
@@ -111,11 +206,11 @@ Create Data: 2023.12.30, 07:03 PM
   .surprise-top {
     p {
       padding: map-get($indentations, "D1600-hdplus-surprise-top-p-padding");
+      padding-left: calc(map-get($width, "D1600-hdplus-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1600-hdplus-surprise-top-p-padding"));
       font-size: map-get($size, "hdplus-p");
     }
 
     #btn {
-      @include positionTopRight(absolute, 2.9em, 3em);
       padding: map-get($indentations, "D1600-hdplus-surprise-top-btn-padding");
       font-size: map-get($size, "hdplus-text");
     }
@@ -148,10 +243,10 @@ Create Data: 2023.12.30, 07:03 PM
   }
 }
 
-// --------------------------------------
+// -------------------------------------
 
 
-// ---------------- 1920 ----------------
+// --------------- 1920 ----------------
 
 @media screen and (min-width: map-get($screen, D1920)) {
 
@@ -159,12 +254,12 @@ Create Data: 2023.12.30, 07:03 PM
   .surprise-top {
     p {
       padding: map-get($indentations, "D1920-fhd-surprise-top-p-padding");
+      padding-left: calc(map-get($width, "D1920-fhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1920-fhd-surprise-top-p-padding"));
       font-size: map-get($size, "fhd-p");
     }
 
     #btn {
       width: map-get($width, "D1920-fhd-surprise-top-btn");
-      @include positionTopRight(absolute, 2.7em, 3em);
       padding: map-get($indentations, "D1920-fhd-surprise-top-btn-padding");
       font-size: map-get($size, "fhd-text");
     }
@@ -197,4 +292,4 @@ Create Data: 2023.12.30, 07:03 PM
   }
 }
 
-// --------------------------------------
+// -------------------------------------
