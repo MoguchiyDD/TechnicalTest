@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Determine SCREEN Size
 Result: Accurate SCREEN Size
 
-Past Modification: Adding COMMENTS
-Last Modification: Editing The «SurpriseTOP» CONSTANT
-Modification Date: 2024.01.01, 02:57 PM
+Past Modification: Editing The «SurpriseTop» CONSTANT
+Last Modification: Editing The «SurpriseBottom» CONSTANT
+Modification Date: 2024.01.01, 04:27 PM
 
 Create Data: 2023.12.29, 02:37 PM
 */
@@ -88,6 +88,15 @@ export const SurpriseTop = props => {
 export const SurpriseBottom = props => {
   const {discount, code} = props;
 
+  let btn = "";
+
+  const screenWidth = useScreenWidth();  
+  if (screenWidth < 768) {
+    btn = <button id="btn">Shop now</button>;
+  } else {
+    btn = <button id="btn">Shop now through Monday</button>;
+  }
+
   return(
     <div className="surprise-bottom">
       <figure>
@@ -97,7 +106,7 @@ export const SurpriseBottom = props => {
         <p id="header"><strong>Black Friday</strong></p>
         <p id="percent"><strong>{discount}</strong></p>
         <p id="code">Use code <strong><span className="yellow">{code}</span></strong> at checkout</p>
-        <button id="btn">Shop now through Monday</button>
+        {btn}
       </div>
     </div>
   )
