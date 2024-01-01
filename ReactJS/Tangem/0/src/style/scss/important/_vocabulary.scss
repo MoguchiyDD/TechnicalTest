@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Adaptation for 1280px Screens
-Last Modification: Adaptation for 960px Screens
-Modification Date: 2024.01.01, 02:54 PM
+Past Modification: Adaptation for 960px Screen
+Last Modification: Adaptation for 768px Screen
+Modification Date: 2024.01.01, 03:31 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -30,6 +30,12 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
+  // 768px
+  "768-h1": 1.87em,
+  "768-h2": 1.6em,
+  "768-p": 0.9em,
+  "768-text": 0.8em,
+
   // 960px
   "qhd-h1": 1.97em,
   "qhd-h2": 1.7em,
@@ -73,6 +79,12 @@ $screen: (
 // --------------- WIDTH ----------------
 
 $width: (
+  // 768px
+  "D768-surprise-top-img": 28.5em,
+  "D768-surprise-top-btn": 11%,
+  "D768-surprise-bottom": 49.25%,
+  "D768-surprise-bottom-btn": 100%,
+
   // 960px
   "D960-qhd-surprise-top-img": 28.5em,
   "D960-qhd-surprise-top-btn": 10%,
@@ -111,6 +123,14 @@ $indentations: (
   "surprise-top-p-margin": 0em auto,
   "surprise-bottom-one-margin": 0em 1em 1em 0em,
   "surprise-bottom-two-margin": 0em 2em 2em 0em,
+
+  // 768px
+  "D768-surprise-top-p-padding": 1.2em,
+  "D768-surprise-top-btn-padding": 0.35em 0.65em,
+  "D768-surprise-bottom-p-header-padding": 0.45em,
+  "D768-surprise-bottom-p-percent-padding": 0.4em,
+  "D768-surprise-bottom-p-code-padding": 1.72em,
+  "D768-surprise-bottom-btn-padding": 0.55em 0.78em,
 
   // 960px
   "D960-qhd-surprise-top-p-padding": 1.1em,
