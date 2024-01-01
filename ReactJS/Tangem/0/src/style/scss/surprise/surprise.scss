@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Editing The «BOTTOM» BLOCKS (BUTTON CLOSE)
-Last Modification: Editing The «BOTTOM» BLOCKS (DIV)
-Modification Date: 2024.01.01, 11:19 PM
+Past Modification: Editing The «BOTTOM» BLOCKS (DIV)
+Last Modification: Editing The «BOTTOM» BLOCKS (ANIMATION)
+Modification Date: 2024.01.02, 02:33 AM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -79,10 +79,110 @@ figure {
 
   &.show {
     display: block;
+    animation: animationShow 1s forwards;
+    -webkit-animation: animationShow 1s forwards;
+    -o-animation: animationShow 1s forwards;
+    -moz-animation: animationShow 1s forwards;
+    -ms-animation: animationShow 1s forwards;
+  }
+  &.close {
+    animation: animationHide 1s forwards;
+    -webkit-animation: animationHide 1s forwards;
+    -o-animation: animationHide 1s forwards;
+    -moz-animation: animationHide 1s forwards;
+    -ms-animation: animationHide 1s forwards;
   }
 
-  &.hide, &.close {
-    display: none;
+  @keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-o-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-ms-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-ms-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
   }
 
   img {
