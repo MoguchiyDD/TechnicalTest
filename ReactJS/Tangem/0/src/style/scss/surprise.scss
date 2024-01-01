@@ -7,7 +7,7 @@ Result: Stylized OBJECT of SURPRISE
 
 Past Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
 Last Modification: Editing The «TOP» && «BOTTOM» BLOCKS
-Modification Date: 2024.01.01, 02:53 PM
+Modification Date: 2024.01.01, 03:38 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -61,15 +61,8 @@ figure {
     }
   }
 
-  #btn {
-    color: map-get($colors, "text");
-    background: map-get($colors, "white");
-    border: 1px solid map-get($colors, "white");
-    border-radius: 5em;
-
-    &:hover {
-      font-weight: bold;
-    }
+  #btn:hover {
+    font-weight: bold;
   }
 }
 
