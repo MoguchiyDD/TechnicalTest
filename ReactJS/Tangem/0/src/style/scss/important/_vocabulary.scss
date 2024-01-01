@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Adaptation for 320px Screen
-Last Modification: Editing The «MAIN» Block (COLORS)
-Modification Date: 2024.01.01, 07:24 PM
+Past Modification: Editing The «MAIN» Block (COLORS)
+Last Modification: Editing The «MAIN» Block (SIZE)
+Modification Date: 2024.01.01, 08:12 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -37,48 +37,56 @@ $size: (
   "320-h2": 1.1em,
   "320-p": 0.65em,
   "320-text": 0.58em,
+  "320-close": 0.83em,
 
   // 360px
   "360-h1": 1.47em,
   "360-h2": 1.3em,
   "360-p": 0.75em,
   "360-text": 0.69em,
-
+  "360-close": 1.03em,
+  
   // 576px
   "576-h1": 1.67em,
   "576-h2": 1.5em,
   "576-p": 0.85em,
   "576-text": 0.75em,
-
+  "576-close": 1.03em,
+  
   // 768px
   "768-h1": 1.87em,
   "768-h2": 1.6em,
   "768-p": 0.9em,
   "768-text": 0.8em,
-
+  "768-close": 1.03em,
+  
   // 960px
   "qhd-h1": 1.97em,
   "qhd-h2": 1.7em,
   "qhd-p": 0.95em,
   "qhd-text": 0.85em,
-
+  "qhd-close": 1.13em,
+  
   // 1280px
   "hd-h1": 2.27em,
   "hd-h2": 2.1em,
   "hd-p": 1.05em,
   "hd-text": 0.9em,
-
+  "hd-close": 1.23em,
+  
   // 1600px
   "hdplus-h1": 2.57em,
   "hdplus-h2": 2.3em,
   "hdplus-p": 1.15em,
   "hdplus-text": 0.95em,
-
+  "hdplus-close": 1.43em,
+  
   // 1920px
   "fhd-h1": 2.87em,
   "fhd-h2": 2.5em,
   "fhd-p": 1.25em,
-  "fhd-text": 1.00em
+  "fhd-text": 1.00em,
+  "fhd-close": 1.63em
 );
 $screen: (
   "D320": 320px,
