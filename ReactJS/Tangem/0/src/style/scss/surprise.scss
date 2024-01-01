@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE
 Result: Stylized OBJECT of SURPRISE
 
-Past Modification: Adaptation for DIFFERENT Screens («TOP» && «BOTTOM»)
-Last Modification: Editing The «TOP» && «BOTTOM» BLOCKS
-Modification Date: 2024.01.01, 03:38 PM
+Past Modification: Editing The «TOP» && «BOTTOM» BLOCKS
+Last Modification: Adaptation for BROWSER
+Modification Date: 2024.01.01, 06:58 PM
 
 Create Data: 2023.12.29, 05:41 PM
 */
@@ -31,8 +31,11 @@ figure {
 
 .surprise-top {
   display: flex;
+  -webkit-flex-direction: row;
   flex-direction: row;
+  -webkit-justify-content: space-evenly;
   justify-content: space-evenly;
+  -webkit-align-items: center;
   align-items: center;
   background:
     linear-gradient(
@@ -80,8 +83,11 @@ figure {
 
   #right {
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
+    -webkit-justify-content: flex-end;
     justify-content: flex-end;
+    -webkit-align-items: center;
     align-items: center;
 
     p {
@@ -92,10 +98,11 @@ figure {
         color: map-get($colors, "white");
       }
       &#percent {
+        color: transparent;
         background: linear-gradient(to right, #7D5317, #EDDF95);
-        background-clip: text;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        background-clip: text;
       }
       &#code {
         color: #6C6C70;
