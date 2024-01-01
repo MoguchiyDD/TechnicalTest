@@ -102,6 +102,7 @@ export const SurpriseBottom = props => {
       <figure>
         <img src={process.env.PUBLIC_URL + "/images/surprise.png"} alt="Surprise Bottom" />
       </figure>
+      <button id="btn-close">✕</button>
       <div id="right">
         <p id="header"><strong>Black Friday</strong></p>
         <p id="percent"><strong>{discount}</strong></p>
