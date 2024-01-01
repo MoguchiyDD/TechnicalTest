@@ -5,17 +5,17 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE MEDIA
 Result: Stylized OBJECT of SURPRISE MEDIA
 
-Past Modification: Adaptation for 360px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for 480px Screens («TOP» && «BOTTOM»)
-Modification Date: 2024.01.01, 04:58 PM
+Past Modification: Adaptation for 480px Screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for 320px Screens («TOP» && «BOTTOM»)
+Modification Date: 2024.01.01, 05:58 PM
 
 Create Data: 2023.12.30, 07:03 PM
 */
 
 
-// ---------------- 360 ----------------
+// ---------------- 320 ----------------
 
-@media screen and (min-width: map-get($screen, D240)) {
+@media screen and (min-width: map-get($screen, D320)) {
 
   // TOP
   .surprise-top {
@@ -39,13 +39,68 @@ Create Data: 2023.12.30, 07:03 PM
 
 // -------------------------------------
 
-// ------------- 240 — 575 -------------
+// ------------- 320 — 575 -------------
 
-@media screen and (min-width: map-get($screen, D240)) and (max-width: map-get($screen, D575)) {
+@media screen and (min-width: map-get($screen, D320)) and (max-width: map-get($screen, D575)) {
 
   // BOTTOM
   .surprise-bottom {
     margin: map-get($indentations, "surprise-bottom-one-rbl-margin");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 320 — 359 -------------
+
+@media screen and (min-width: map-get($screen, D320)) and (max-width: map-get($screen, D359)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 29px);
+
+    p {
+      padding-left: calc(map-get($width, "D320-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D320-surprise-top-p-padding"));
+      font-size: map-get($size, "320-p");
+    }
+
+    #btn {
+      width: map-get($width, "D320-surprise-top-btn");
+      font-size: map-get($size, "320-text");
+    }
+
+    img {
+      width: map-get($width, "D320-surprise-top-img");
+      @include positionTopLeft(absolute, -24px, -17px);
+      clip: rect(24px, 120px, 53px, 17px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D320-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "320-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "320-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "320-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D320-surprise-bottom-btn");
+      padding: map-get($indentations, "D320-surprise-bottom-btn-padding");
+      font-size: map-get($size, "320-text");
+    }
   }
 }
 
