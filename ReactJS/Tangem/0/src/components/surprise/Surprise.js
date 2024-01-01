@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Determine SCREEN Size
 Result: Accurate SCREEN Size
 
-Past Modification: Adding COMMENTS
-Last Modification: Editing The «SurpriseBottom» CONSTANT (SCROLL)
-Modification Date: 2024.01.02, 02:34 AM
+Past Modification: Editing The «SurpriseBottom» CONSTANT (SCROLL)
+Last Modification: Editing The «SurpriseBottom» CONSTANT (LOGIC)
+Modification Date: 2024.01.02, 03:08 AM
 
 Create Data: 2023.12.29, 02:37 PM
 */
@@ -94,22 +94,6 @@ export const SurpriseBottom = props => {
   const countScroll = scrollDirection.count;  // Scroll
   const scroll = scrollDirection.scroll;  // Number of SCROLL Starts
 
-  // Style for BLOCk hide
-  let style = { "": "" };
-  if ((scroll === "hide") && (countScroll >= 1)) {
-    style = {
-      animation: "animationHide 1s forwards",
-      WebkitAnimation: "animationHide 1s forwards",
-      OAnimation: "animationHide 1s forwards",
-      MozAnimation: "animationHide 1s forwards",
-      MsAnimation: "animationHide 1s forwards"
-    }
-  } else if ((scroll === "hide") && (countScroll === 0)) {
-    style = { display: "none" }
-  } else {
-    style = { "": "" };
-  }
-
   // BLOCK show || hide
   const [id, setId] = useState("");
 
@@ -124,9 +108,25 @@ export const SurpriseBottom = props => {
   const activateBtnClose = () => {
     setId("close");
     if (!localStorage.getItem("close")) {
-      window.localStorage.setItem("close", JSON.stringify("close", id));
+      window.localStorage.setItem("close", JSON.stringify("close"));
     }
   };
+
+  // Style for BLOCK hide
+  let style = { "": "" };
+  if (((scroll === "hide") && (countScroll >= 1)) && (id !== "close")) {
+    style = {
+      animation: "animationHide 1s forwards",
+      WebkitAnimation: "animationHide 1s forwards",
+      OAnimation: "animationHide 1s forwards",
+      MozAnimation: "animationHide 1s forwards",
+      MsAnimation: "animationHide 1s forwards"
+    }
+  } else if (((scroll === "hide") && (countScroll === 0)) || (id === "close")) {
+    style = { display: "none" }
+  } else {
+    style = { "": "" };
+  }
 
   // Screen Width
   let btn = "";
