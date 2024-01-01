@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Stylize OBJECT of SURPRISE MEDIA
 Result: Stylized OBJECT of SURPRISE MEDIA
 
-Past Modification: Adaptation for 1280px Screens («TOP» && «BOTTOM»)
-Last Modification: Adaptation for 960px Screens («TOP» && «BOTTOM»)
-Modification Date: 2024.01.01, 02:55 PM
+Past Modification: Adaptation for 960px Screens («TOP» && «BOTTOM»)
+Last Modification: Adaptation for 768px Screens («TOP» && «BOTTOM»)
+Modification Date: 2024.01.01, 03:32 PM
 
 Create Data: 2023.12.30, 07:03 PM
 */
@@ -32,6 +32,63 @@ Create Data: 2023.12.30, 07:03 PM
 
     #right {
       @include positionBottomRight(absolute, 2.5em, 1.5em);
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 768 — 959 -------------
+
+@media screen and (min-width: map-get($screen, D768)) and (max-width: map-get($screen, D959)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 50px);
+
+    p {
+      padding: map-get($indentations, "D768-surprise-top-p-padding");
+      padding-left: calc(map-get($width, "D768-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D768-surprise-top-p-padding"));
+      font-size: map-get($size, "768-p");
+    }
+
+    #btn {
+      width: map-get($width, "D768-surprise-top-btn");
+      padding: map-get($indentations, "D768-surprise-top-btn-padding");
+      font-size: map-get($size, "768-text");
+    }
+
+    img {
+      width: map-get($width, "D768-surprise-top-img");
+      @include positionTopLeft(absolute, -42px, -37px);
+      clip: rect(42px, 207px, 92px, 37px)
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D768-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "768-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "768-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "768-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D768-surprise-bottom-btn");
+      padding: map-get($indentations, "D768-surprise-bottom-btn-padding");
+      font-size: map-get($size, "768-text");
     }
   }
 }
