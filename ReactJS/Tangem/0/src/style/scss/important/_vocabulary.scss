@@ -5,9 +5,9 @@ LICENSE: MIT License which is located in the text file LICENSE
 Goal: Storing Useful VARIABLES
 Result: Stored Useful VARIABLES
 
-Past Modification: Adding SEVERAL BLOCKS
-Last Modification: Adaptation for 1280px Screens
-Modification Date: 2023.12.30, 10:27 PM
+Past Modification: Adaptation for 1280px Screens
+Last Modification: Adaptation for 960px Screens
+Modification Date: 2024.01.01, 02:54 PM
 
 Create Data: 2023.12.29, 04:29 PM
 */
@@ -30,6 +30,12 @@ $colors: (
   "light-yellow-radial-two": #0B0E17
 );
 $size: (
+  // 960px
+  "qhd-h1": 1.97em,
+  "qhd-h2": 1.7em,
+  "qhd-p": 0.95em,
+  "qhd-text": 0.85em,
+
   // 1280px
   "hd-h1": 2.27em,
   "hd-h2": 2.1em,
@@ -49,7 +55,13 @@ $size: (
   "fhd-text": 1.00em
 );
 $screen: (
+  "D768": 768px,
+  "D767": 767px,
+  "D960": 960px,
+  "D959": 959px,
+  "D1279": 1279px,
   "D1280": 1280px,
+  "D1599": 1599px,
   "D1600": 1600px,
   "D1919": 1919px,
   "D1920": 1920px
@@ -61,6 +73,12 @@ $screen: (
 // --------------- WIDTH ----------------
 
 $width: (
+  // 960px
+  "D960-qhd-surprise-top-img": 28.5em,
+  "D960-qhd-surprise-top-btn": 10%,
+  "D960-qhd-surprise-bottom": 42.25%,
+  "D960-qhd-surprise-bottom-btn": 100%,
+
   // 1280px
   "D1280-hd-surprise-top-img": 29.5em,
   "D1280-hd-surprise-top-btn": 7%,
@@ -69,6 +87,7 @@ $width: (
 
   // 1600px
   "D1600-hdplus-surprise-top-img": 30.5em,
+  "D1600-hdplus-surprise-top-btn": 8%,
   "D1600-hdplus-surprise-bottom": 33.25%,
   "D1600-hdplus-surprise-bottom-btn": 100%,
 
@@ -85,10 +104,21 @@ $width: (
 
 $indentations: (
   "zero-margin": 0em,
+  "one-margin": 1em,
+  "two-margin": 2em,
 
   "surprise-top-margin": 2em auto 0em,
   "surprise-top-p-margin": 0em auto,
-  "surprise-bottom-margin": 0em 2em 2em 0em,
+  "surprise-bottom-one-margin": 0em 1em 1em 0em,
+  "surprise-bottom-two-margin": 0em 2em 2em 0em,
+
+  // 960px
+  "D960-qhd-surprise-top-p-padding": 1.1em,
+  "D960-qhd-surprise-top-btn-padding": 0.35em 0.65em,
+  "D960-qhd-surprise-bottom-p-header-padding": 0.45em,
+  "D960-qhd-surprise-bottom-p-percent-padding": 0.4em,
+  "D960-qhd-surprise-bottom-p-code-padding": 1.72em,
+  "D960-qhd-surprise-bottom-btn-padding": 0.55em 0.82em,
 
   // 1280px
   "D1280-hd-surprise-top-p-padding": 1.1em,
