@@ -212,7 +212,7 @@
                                 size: self.size
                                 pos: self.pos
 
-                        # Input && Button
+                        # Input && Settings
                         GridLayout:
                             cols: 2
                             spacing: 4
@@ -235,7 +235,7 @@
                                         width: 1
                                         rectangle: self.x, self.y, self.width, self.height
                             
-                            # Button
+                            # Settings
                             Button:
                                 id: content_installation_datetime_btn
                                 text: "Настройки"
@@ -318,7 +318,7 @@
 
                             # .
                             MDCheckbox:
-                                id: content_installation_datetime_checkbox_dash
+                                id: content_installation_datetime_checkbox_dot
                                 size_hint: (0.2, 1)
                                 color_active: (0.960, 0.468, 0, 1)  # F57C00
                                 color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
@@ -403,7 +403,7 @@
                                 size: self.size
                                 pos: self.pos
 
-                        # CheckBoxes : VERTICAL
+                        # CheckBox : VERTICAL
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -432,7 +432,7 @@
                                 font_style: "Body1"
                                 color: (0.129, 0.129, 0.129, 1)  # 212121
 
-                        # CheckBoxes : HORIZONTAL
+                        # CheckBox : HORIZONTAL
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -461,7 +461,7 @@
                                 font_style: "Body1"
                                 color: (0.129, 0.129, 0.129, 1)  # 212121
 
-                        # CheckBoxes : LENGTH
+                        # CheckBox : LENGTH
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -525,7 +525,7 @@
                                 size: self.size
                                 pos: self.pos
 
-                        # CheckBoxes : FLASH
+                        # CheckBox : FLASH
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -669,7 +669,6 @@
 
                         # Button : ...
                         Button:
-                            id: content_installation_other_btn_display
                             text: ""
                             size_hint: (0.3, None)
                             height: 35
@@ -688,7 +687,6 @@
 
                         # Button : ...
                         Button:
-                            id: content_installation_other_btn_display
                             text: ""
                             size_hint: (0.3, None)
                             height: 35
@@ -705,7 +703,7 @@
                                     width: 1.1
                                     rectangle: self.x, self.y, self.width, self.height
 
-            # SOUND
+            # Sound
             BoxLayout:
                 orientation: "vertical"
                 size_hint: (None, None)
@@ -745,7 +743,7 @@
                     GridLayout:
                         cols: 3
 
-                        # CheckBoxes : SWITCH
+                        # CheckBox : SWITCH
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -833,11 +831,11 @@
                             size: self.size
                             pos: self.pos
 
-                    # INCLINE && SLIDER + VALUE
+                    # INCLINE : SLIDER + VALUE
                     GridLayout:
                         cols: 3
 
-                        # CheckBoxes : INCLINE
+                        # CheckBox : INCLINE
                         GridLayout:
                             cols: 2
                             spacing: 3
@@ -889,17 +887,17 @@
                             track_color_active: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
                             track_color_inactive: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
 
-                    # INCLINE && SLIDER + VALUE
+                    # IMPACT && SLIDER + VALUE
                     GridLayout:
                         cols: 3
 
-                        # CheckBoxes : INCLINE
+                        # CheckBoxes : IMPACT
                         GridLayout:
                             cols: 2
                             spacing: 3
 
                             MDCheckbox:
-                                id: content_installation_detector_checkbox_incline
+                                id: content_installation_detector_checkbox_impact
                                 size_hint: (0.2, 1)
                                 color_active: (0.960, 0.468, 0, 1)  # F57C00
                                 color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
@@ -945,7 +943,7 @@
                             track_color_active: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
                             track_color_inactive: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
 
-            # SAVE && RESET
+            # Save && Reset
             BoxLayout:
                 size_hint: (None, None)
                 width: 810
@@ -1000,4 +998,3 @@
                             Line:
                                 width: 1.1
                                 rectangle: self.x, self.y, self.width, self.height
-
