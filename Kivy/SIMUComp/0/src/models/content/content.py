@@ -4,14 +4,13 @@
 # Goal: Create a CONTENT TEMPLATE with Ready-Made Working Filling
 # Result: Providing a CONTENT TEMPLATE
 #
-# Past Modification: Editing The «ContentScreen» CLASS (BASEDIR)
-# Last Modification: Editing The «ContentScreen» CLASS (HEADER)
-# Modification Date: 2024.02.09, 03:28 AM
+# Past Modification: Editing The «ContentScreen» CLASS (HEADER)
+# Last Modification: Editing The «ContentScreen» CLASS (LAYOUT && IMPORT)
+# Modification Date: 2024.02.09, 06:20 PM
 #
 # Create Date: 2024.02.07, 01:07 PM
 
 
-from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 from models.content.installation.installation import ContentInstallationScreen
@@ -51,8 +50,6 @@ class ContentScreen(Screen):
         self.str_val = StringsValues(self.basedir)
 
         self.sm = sm
-
-        self.layout = ScreenManager()
         self.__page()
 
     def __str_val(self, name: str) -> str:
