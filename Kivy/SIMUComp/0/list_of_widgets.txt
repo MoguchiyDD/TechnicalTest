@@ -1,0 +1,186 @@
+По правилам документации Kivy был сделан расчёт виджетов
+В данный расчёт не включено ПЕРЕРИСОВКА ГРАФИКИ и работа с 2-мя ОБЪЕКТАМИ
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+||| 188 WIDGETS |||
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+
+
+| 11 WIDGETS |
+.py
+
+    | 1 WIDGET |
+    main
+        BoxLayout
+
+    | 1 WIDGET |
+    header
+        Screen
+    
+    | 9 WIDGETS |
+    content
+        ScreenManager, Screen
+
+        | 1 WIDGET |
+        installation
+            Screen
+
+        | 1 WIDGET |
+        update
+            Screen
+
+        | 1 WIDGET |
+        licenses
+            Screen
+
+        | 1 WIDGET |
+        network
+            Screen
+
+        | 1 WIDGET |
+        bluetooth
+            Screen
+
+        | 1 WIDGET |
+        logout
+            Screen
+
+        | 1 WIDGET |
+        about
+            Screen
+
+| 177 WIDGETS |
+.kv
+
+    | 6 WIDGETS |
+    HEADER
+        1 Layout
+            1 Layout
+                3 Widgets
+            1 Widget
+
+    | 168 WIDGETS |
+    CONTENT
+
+        | 90 WIDGETS |
+        INSTALLATION
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content) | 78 WIDGETS
+                1 Layout
+                    1 Layout (DateTime, Borders && Display) | 39 WIDGETS
+                        1 Layout (DateTime)
+                            1 Widget
+                            1 Layout (Content)
+                                1 Layout (Input && Settings)
+                                    2 Widgets
+                                1 Layout (CheckBoxes : - && 24)
+                                    4 Widgets
+                                1 Layout (CheckBoxes : . && 12)
+                                    4 Widgets
+                        1 Layout (Borders)
+                            1 Widget
+                            1 Layout (Content)
+                                1 Layout (CheckBox : VERTICAL)
+                                    2 Widgets
+                                1 Layout (CheckBox : HORIZONTAL)
+                                    2 Widgets
+                                1 Layout (CheckBox : LENGTH)
+                                    2 Widgets
+                        1 Layout (Display)
+                            1 Widget
+                            1 Layout (Content)
+                                1 Layout (CheckBox : FLASH)
+                                    2 Widgets
+                                1 Layout (CheckBoxes : VNC)
+                                    2 Widgets
+                                1 Widget
+                    1 Layout (Other) | 8 WIDGETS
+                        1 Widget
+                        1 Layout (Content)
+                            1 Layout (Buttons x4)
+                                4 Widgets
+                    1 Layout (Sound) | 9 WIDGETS
+                        1 Widget
+                        1 Layout (Content)
+                            1 Layout (SWITCH && SLIDER + VALUE)
+                                1 Layout (CheckBox : SWITCH)
+                                    2 Widgets
+                                2 Widgets
+                    1 Layout (Detector) | 15 WIDGETS
+                        1 Widget
+                        1 Layout (Content)
+                            1 Layout (INCLINE : SLIDER + VALUE)
+                                1 Layout (CheckBox : INCLINE)
+                                    2 Widgets
+                                2 Widgets
+                            1 Layout (IMPACT : SLIDER + VALUE)
+                                1 Layout (CheckBoxes : IMPACT)
+                                    2 Widgets
+                                2 Widgets
+                    1 Layout (Save && Reset) | 5 WIDGETS
+                        1 Layout
+                            3 Widgets
+
+        | 13 WIDGETS |
+        UPDATE
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
+
+        | 13 WIDGETS |
+        LICENSES
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
+
+        | 13 WIDGETS |
+        NETWORK
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
+
+        | 13 WIDGETS |
+        BLUETOOTH
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
+
+        | 13 WIDGETS |
+        LOGOUT
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
+
+        | 13 WIDGETS |
+        ABOUT
+            1 Layout (Activate && Menu) | 12 WIDGETS
+                1 Layout (Activate)
+                    1 Widget
+                1 Layout (Menu)
+                    8 Widgets
+            1 Layout (Content)
+                1 Widget
