@@ -1,13 +1,23 @@
-import getShopData from "./api/shop/shop"
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements
+} from "react-router-dom"
+import Shop from "./components/Shop"
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">
+      <Route index element={<Shop />} />
+    </Route>
+  )
+)
 
 function App() {
-  getShopData()
-
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <RouterProvider router={router} />
     </>
   )
 }
