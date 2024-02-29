@@ -1,4 +1,7 @@
+import getShopData from "./api/shop/shop"
+
 function App() {
+  getShopData()
 
   return (
     <>
