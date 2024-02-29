@@ -20,6 +20,18 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## Installed
 <div id="installed" align="left">
+<a href="https://www.npmjs.com/package/react-router-dom" target="_blank">
+    <img alt="npm react-router-dom" src="https://img.shields.io/badge/npm-react--router--dom-FAFAFA?style=for-the-badge" />
+  </a>
+  <a href="https://www.npmjs.com/package/localforage" target="_blank">
+    <img alt="npm localforage" src="https://img.shields.io/badge/npm-localforage-FAFAFA?style=for-the-badge" />
+  </a>
+  <a href="https://www.npmjs.com/package/match-sorter" target="_blank">
+    <img alt="npm match-sorter" src="https://img.shields.io/badge/npm-match--sorter-FAFAFA?style=for-the-badge" />
+  </a>
+  <a href="https://www.npmjs.com/package/sort-by" target="_blank">
+    <img alt="npm sort-by" src="https://img.shields.io/badge/npm-sort--by-FAFAFA?style=for-the-badge" />
+  </a>
   <a href="https://www.npmjs.com/package/tailwindcss" target="_blank">
     <img alt="npm tailwindcss" src="https://img.shields.io/badge/npm-tailwindcss-FAFAFA?style=for-the-badge" />
   </a>
