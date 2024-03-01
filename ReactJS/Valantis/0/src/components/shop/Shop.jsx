@@ -9,8 +9,9 @@ function ShopData({page, data}) {
           data.map((dt, index) => {
             return (
               <>
-                <div className="w-full h-80 lg:h-96 p-5 grid content-center bg-white text-center border-t-8 border-blue-600 rounded transition ease-in-out delay-150 hover:shadow-xl duration-300" key={index}>
+                <div className="w-full h-96 p-5 grid content-center bg-white text-center border-t-8 border-blue-600 rounded transition ease-in-out delay-150 hover:shadow-xl duration-300" key={index}>
                   <p className="pb-4 text-8xl 2xl:text-9xl">🌌</p>
+                  <p className="pb-2 text-xs lg:text-sm 2xl:text-base font-bold text-gray-400">{dt.id}</p>
                   <p className="text-xl lg:text-2xl font-bold text-gray-900">{dt.product}</p>
                   <div className="grid grid-cols-2 relative top-8 lg:top-10">
                     <p className="text-sm lg:text-base 2xl:text-lg text-gray-600">{dt.brand}</p>
