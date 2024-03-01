@@ -15,6 +15,22 @@ const whileSleep = async (func, data) => {
 
   return funcData
 }
+const insertSort = (array) => {
+  const length = array.length
+
+  for (let i = 0; i < length; i++) {
+    let current = array[i]
+
+    let j = i - 1 
+    while ((j > -1) && (current < array[j])) {
+      array[j + 1] = array[j]
+      j--
+    }
+    array[j + 1] = current
+  }
+
+  return array
+}
 
 /**
  * @copyright Copyright (c) 2023 MoguchiyDD
@@ -23,7 +39,7 @@ const whileSleep = async (func, data) => {
  * @param object body Body for Sending DATA to API
  * @returns Data Result || undefined
  */
-const templateFetchShop = async (body) => {
+const _templateFetchShop = async (body) => {
   try {
     const response = await fetch(import.meta.env.VITE_API_SHOP_URL, {
       method: "POST",
@@ -48,14 +64,15 @@ const templateFetchShop = async (body) => {
  * @copyright Copyright (c) 2023 MoguchiyDD
  * @license MIT License
  * @description Gets PRODUCT IDs (LIMIT 50 ITEMS)
+ * @param number offset Where to Start Getting ELEMENTS in an ARRAY
  * @returns Object IDs || undefined
  */
-const getShopIds = async (offset) => {
+const _getShopIds = async (offset) => {
   const body = {
     action: "get_ids",
-    "params": {"offset": offset, "limit": 50}
+    params: {"offset": offset, "limit": 50}
   }
-  const getIds = await templateFetchShop(body)
+  const getIds = await _templateFetchShop(body)
 
   if (getIds !== undefined) {
       const ids = [...new Set(getIds)]
@@ -67,18 +84,46 @@ const getShopIds = async (offset) => {
  * @copyright Copyright (c) 2023 MoguchiyDD
  * @license MIT License
  * @description Gets PRODUCTS by IDs
+ * @param number offset Where to Start Getting ELEMENTS in an ARRAY
  * @returns Object PRODUCTS || undefined
  */
 const getShopData = async (offset) => {
-  const getIds = await whileSleep(getShopIds, offset)  // Get IDs
+  const getIds = await whileSleep(_getShopIds, offset)  // Get IDs
 
   const body = {
     action: "get_items",
-    "params": {"ids": getIds}
+    params: {"ids": getIds}
   }
-  const getData = await whileSleep(templateFetchShop, body)  // Get PRODUCTS
+  const getData = await whileSleep(_templateFetchShop, body)  // Get PRODUCTS
 
   return getData
 }
 
-export { getShopData }
+/**
+ * @copyright Copyright (c) 2023 MoguchiyDD
+ * @license MIT License
+ * @description Gets PRODUCTS from Field
+ * @param string field 1 PRODUCT Field
+ * @returns Object PRODUCT by Field || undefined
+ */
+const getShopFilters = async (field) => {
+  const body = {
+    action: "get_fields",
+    params: {"field": field, "offset": 0}
+  }
+  const getProduct = await whileSleep(_templateFetchShop, body)  // Gets PRODUCTS from Field
+
+  const filterProducts= getProduct.filter(b => !!b)
+  const products = [...new Set(filterProducts)]
+
+  switch (field) {
+    case "product":
+      return products
+    case "brand":
+      return products.sort()
+    case "price":
+      return insertSort(products)
+  }
+}
+
+export { getShopData, getShopFilters }
