@@ -1,26 +1,33 @@
 function ShopData({url, data}) {
   const dataLength = data.length
+  let htmlData = data.map((dt, index) => {
+    return (
+      <div className="w-full h-96 p-5 grid content-center bg-white text-center border-t-8 border-blue-600 rounded transition ease-in-out delay-150 hover:shadow-xl duration-300" key={`${index}`}>
+        <p className="pb-4 text-8xl 2xl:text-9xl">🌌</p>
+        <p className="pb-2 text-xs lg:text-sm 2xl:text-base font-bold text-gray-400">{dt.id}</p>
+        <p className="text-xl lg:text-2xl font-bold text-gray-900">{dt.product}</p>
+        <div className="grid grid-cols-2 relative top-8 lg:top-10">
+          <p className="text-sm lg:text-base 2xl:text-lg text-gray-600">{dt.brand}</p>
+          <p className="text-base lg:text-lg 2xl:text-lg text-blue-600">₽{dt.price}</p>
+        </div>
+        <br />
+      </div>
+    )
+  })
+
+  if (data.length === 0) {
+    htmlData = (
+      <div className="w-full h-96 p-5 grid content-center bg-white text-center border-t-8 border-blue-600 rounded transition ease-in-out delay-150 hover:shadow-xl duration-300">
+        <p className="text-xl lg:text-2xl font-bold text-gray-900">Чистенько и Гладенько, Пустенько и Ладьненько!</p>
+      </div>
+    )
+  }
 
   return (
     <>
       {ShopPagination(url, dataLength)}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4 2xl:gap-5 justify-center items-center">
-        {
-          data.map((dt, index) => {
-            return (
-              <div className="w-full h-96 p-5 grid content-center bg-white text-center border-t-8 border-blue-600 rounded transition ease-in-out delay-150 hover:shadow-xl duration-300" key={`${index}`}>
-                <p className="pb-4 text-8xl 2xl:text-9xl">🌌</p>
-                <p className="pb-2 text-xs lg:text-sm 2xl:text-base font-bold text-gray-400">{dt.id}</p>
-                <p className="text-xl lg:text-2xl font-bold text-gray-900">{dt.product}</p>
-                <div className="grid grid-cols-2 relative top-8 lg:top-10">
-                  <p className="text-sm lg:text-base 2xl:text-lg text-gray-600">{dt.brand}</p>
-                  <p className="text-base lg:text-lg 2xl:text-lg text-blue-600">₽{dt.price}</p>
-                </div>
-                <br />
-              </div>
-            )
-          })
-        }
+      {htmlData}
       </div>
       {ShopPagination(url, dataLength)}
     </>
