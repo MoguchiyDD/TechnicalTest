@@ -216,7 +216,7 @@ const getShopDataFilters = async (query) => {
     if (find === -1) {
       return data[left]
     }
-    console.log(find)
+
     return find
   }
 
