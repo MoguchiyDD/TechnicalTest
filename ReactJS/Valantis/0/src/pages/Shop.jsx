@@ -12,6 +12,8 @@ function Shop() {
   const { products, prices, brands } = useLoaderData()
   const _params = new URLSearchParams(window.location.search)
   const page = _params.get("page")
+  const price = _params.get("price")
+  const brand = _params.get("brand")
 
   const handleClick = async () => {
     let curUrl = window.location.origin
@@ -63,7 +65,7 @@ function Shop() {
             <Await resolve={brands}>
               {
                 paths => (
-                  <ShopFilterBrand brands={paths} />
+                  <ShopFilterBrand brands={paths} value={brand} />
                 )
               }
             </Await>
