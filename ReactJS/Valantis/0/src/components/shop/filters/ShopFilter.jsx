@@ -1,6 +1,15 @@
 import { Component, useEffect } from "react";
 
-function ShopFilterProduct() {
+function ShopFilterProduct({value}) {
+  useEffect(() => {
+    const product = document.getElementById("shop-product")
+
+    if ((product !== null) && (value !== null)) {
+      product.value = value
+      return
+    }
+  })
+
   return (
     <div className="mb-4">
       <input className="p-2 lg:p-3 w-full text-base 2xl:text-lg text-blue-600 rounded-md focus:outline-blue-600" type="text" id="shop-product" name="shop-product" placeholder="Магазинный поиск" />
@@ -15,7 +24,7 @@ class ShopFilterPrice extends Component {
       const min = props.price[0]
       const max = props.price[props.price.length - 1]
 
-      this.state = { value: min, min: min, max: max }
+      this.state = { value: props.value !== null ? props.value : min, min: min, max: max }
       this.handleChange = this.handleChange.bind(this)
   }
 
@@ -42,13 +51,20 @@ class ShopFilterPrice extends Component {
   }
 }
 
-function ShopFilterBrand({brands}) {
+function ShopFilterBrand({brands, value}) {
   useEffect(() => {
-    const brand = document.querySelector("input[name=\"shop-brand\"]")
+    const brand = document.querySelectorAll("input[name=\"shop-brand\"]")
 
-    if (brand !== null) {
-      brand.checked = true
+    if ((brand !== null) && (value === null)) {
+      brand[0].checked = true
       return
+    } else if (value !== null) {
+      for (let b = 0; b < brand.length; b++) {
+        if (brand[b].value === value) {
+          brand[b].checked = true
+          return
+        }
+      }
     }
   })
 

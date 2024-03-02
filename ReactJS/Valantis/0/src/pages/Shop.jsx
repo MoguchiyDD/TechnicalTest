@@ -12,6 +12,7 @@ function Shop() {
   const { products, prices, brands } = useLoaderData()
   const _params = new URLSearchParams(window.location.search)
   const page = _params.get("page")
+  const product = _params.get("product")
   const price = _params.get("price")
   const brand = _params.get("brand")
 
@@ -51,12 +52,12 @@ function Shop() {
       <div className="lg:h-screen flex justify-center">
         <div className="w-full lg:w-24pr xl:w-19pr block lg:fixed">
           <p className="my-3 lg:my-5 text-xl lg:text-2xl font-bold text-center text-gray-900">Фильтрация</p>
-          <ShopFilterProduct />
+          <ShopFilterProduct value={product} />
           <Suspense fallback={<SkeletonShopFilterPrice />}>
             <Await resolve={prices}>
               {
                 paths => (
-                  <ShopFilterPrice price={paths} />
+                  <ShopFilterPrice price={paths} value={price} />
                 )
               }
             </Await>
@@ -113,7 +114,7 @@ const shopDataLoader = async () => {
       offset = 0
     }
   }
-  console.log(query, query === null)
+
   return defer({
     products: query === null ? getShopData(offset) : getShopDataFilters(query),
     prices: getShopFilters("price"),
