@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { getShopData, getShopFilters } from "../api/shop/shop"
 import { Await, useLoaderData, defer } from "react-router"
 import ShopData from "../components/shop/Shop"
-import { SkeletonShopData, SkeletonShopFilterPrice } from "../skeletons"
+import { SkeletonShopData, SkeletonShopFilterBrand, SkeletonShopFilterPrice } from "../skeletons"
 import { ShopFilterBrand, ShopFilterPrice, ShopFilterProduct } from "../components/shop/filters/ShopFilter"
 
 let offset = 0
@@ -34,11 +34,11 @@ function Shop() {
                   }
                 </Await>
               </Suspense>
-              <Suspense fallback={<p className="p-3 text-lg lg:text-xl font-bold text-center text-gray-900">~~</p>}>
+              <Suspense fallback={<SkeletonShopFilterBrand />}>
                 <Await resolve={brands}>
                   {
                     paths => (
-                      <ShopFilterBrand />
+                      <ShopFilterBrand brands={paths} />
                     )
                   }
                 </Await>
