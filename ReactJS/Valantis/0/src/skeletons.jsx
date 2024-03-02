@@ -71,8 +71,8 @@ function SkeletonShopFilterBrand() {
           {
             brands.map(brand => {
               return (
-                <div className="py-2 flex items-center border-b border-gray-300 border-dashed" key={`${brand}`}>
-                  <input className="mr-2 mb-1 size-5 appearance-none border border-gray-600 rounded-full before:content[''] before:size-4 before:mt-px before:ml-px before:block before:rounded-full before:bg-white checked:before:border-blue-600 checked:before:bg-blue-600" type="radio" id={`${brand}`} name="shop-brand" value={`${brand}`} />
+                <div className="py-2 flex items-center border-b border-gray-300 border-dashed" key={`${brand}`} id="shop-brand">
+                  <input className="mr-2 mb-1 size-5 appearance-none border border-gray-600 rounded-full before:content[''] before:size-4 before:block before:rounded-full before:bg-white checked:before:border-blue-600 checked:before:size-5 checked:before:bg-blue-600" type="radio" id={`${brand}`} name="shop-brand" value={`${brand}`} />
                   <div className="h-8 w-5/6 mx-auto bg-gray-200 animate-pulse"></div>
                 </div>
               )
