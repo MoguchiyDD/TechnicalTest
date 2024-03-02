@@ -8,23 +8,15 @@ import { ShopFilterBrand, ShopFilterPrice, ShopFilterProduct } from "../componen
 let offset = 0
 
 function Shop() {
-  const { page, products, titles, brands, prices } = useLoaderData()
+  const { page, products, brands, prices } = useLoaderData()
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-3 2xl:gap-5 p-5 lg:p-3 font-mono">
         <div className="lg:h-screen flex justify-center">
           <div className="w-full lg:w-24pr xl:w-19pr block lg:fixed">
-            <p className="text-xl lg:text-2xl font-bold text-center text-gray-900">Фильтрация</p>
-              <Suspense fallback={<p className="p-3 text-lg lg:text-xl font-bold text-center text-gray-900">~~</p>}>
-                <Await resolve={titles}>
-                  {
-                    paths => (
-                      <ShopFilterProduct />
-                    )
-                  }
-                </Await>
-              </Suspense>
+            <p className="my-5 text-xl lg:text-2xl font-bold text-center text-gray-900">Фильтрация</p>
+              <ShopFilterProduct />
               <Suspense fallback={<SkeletonShopFilterPrice />}>
                 <Await resolve={prices}>
                   {
@@ -77,7 +69,6 @@ const shopDataLoader = async () => {
   return defer({
     page: page === null ? 1 : parseInt(page),
     products: getShopData(offset),
-    titles: getShopFilters("product"),
     brands: getShopFilters("brand"),
     prices: getShopFilters("price")
   })

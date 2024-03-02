@@ -2,9 +2,9 @@ import { Component } from "react";
 
 function ShopFilterProduct() {
   return (
-    <>
-      <p className="p-3 text-lg lg:text-xl font-bold text-center text-gray-900">Названия</p>
-    </>
+    <div className="mb-4">
+      <input className="p-2 lg:p-3 w-full text-base 2xl:text-lg text-blue-600 rounded-md focus:outline-blue-600" type="text" id="shop-product" name="shop-brand" placeholder="Магазинный поиск" />
+    </div>
   )
 }
 
@@ -58,7 +58,7 @@ class ShopFilterBrand extends Component {
                 return (
                   <div className="py-2 flex items-center border-b border-gray-300 border-dashed" key={`${index}`}>
                     <input className="mr-2 mb-1 size-5 appearance-none border border-gray-600 rounded-full before:content[''] before:size-4 before:mt-px before:ml-px before:block before:rounded-full before:bg-white checked:before:border-blue-600 checked:before:bg-blue-600" type="radio" id={`${brand}`} name="shop-brand" value={`${brand}`} />
-                    <label className="text-base xl:text-lg 2xl:text-xl text-gray-900" htmlFor={`${brand}`}>{brand}</label>
+                    <label className="text-base 2xl:text-lg text-gray-900" htmlFor={`${brand}`}>{brand}</label>
                   </div>
                 )
               })
