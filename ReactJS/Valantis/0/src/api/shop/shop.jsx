@@ -120,7 +120,9 @@ const getShopFilters = async (field) => {
     case "product":
       return products
     case "brand":
-      return products.sort()
+      const brands = products.sort()
+      brands.unshift(import.meta.env.VITE_API_SHOP_BRAND_DEFAULT)
+      return brands
     case "price":
       return insertSort(products)
   }
