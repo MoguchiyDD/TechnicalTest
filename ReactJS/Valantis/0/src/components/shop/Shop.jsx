@@ -1,9 +1,9 @@
-function ShopData({page, data}) {
+function ShopData({url, data}) {
   const dataLength = data.length
 
   return (
     <>
-      {ShopPagination(page, dataLength)}
+      {ShopPagination(url, dataLength)}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4 2xl:gap-5 justify-center items-center">
         {
           data.map((dt, index) => {
@@ -22,31 +22,35 @@ function ShopData({page, data}) {
           })
         }
       </div>
-      {ShopPagination(page, dataLength)}
+      {ShopPagination(url, dataLength)}
     </>
   )
 }
 
-function ShopPagination(page, productsLength) {
+function ShopPagination(url, productsLength) {
+  const _params = new URLSearchParams(url.split(import.meta.env.VITE_SITE_URL + "/shop")[1])
+  const _page = _params.get("page")
+  const page = _page === null ? 1 : parseInt(_page)
+
   const absPage = Math.abs(page)
-  const nextPage = absPage + 1
-  const prevPage = absPage - 1
+  const nextPage = url.replace(`page=${page.toString()}`, `page=${(absPage + 1).toString()}`)
+  const prevPage = url.replace(`page=${page.toString()}`, `page=${(absPage - 1).toString()}`)
 
   if (absPage === 1) {  // /shop?page=1 | previous
     return (
       <div className="my-5 flex justify-between">
         <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md opacity-50">Прерыдущий</button>
         <p className="p-3 text-base xl:text-lg 2xl:text-xl text-gray-900">{absPage}</p>
-        <a href={`/shop?page=${nextPage}`}>
-          <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Следующий</button>
+        <a href={`${nextPage}`}>
+          <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md focus:outline-none transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Следующий</button>
         </a>
       </div>
     )
   } else if (productsLength < 50) {  // /shop?page=<number> where PRODUCTS < LIMIT 50 | next
     return (
       <div className="my-5 flex justify-between">
-        <a href={`/shop?page=${prevPage}`}>
-          <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Предыдущий</button>
+        <a href={`${prevPage}`}>
+          <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md focus:outline-none transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Предыдущий</button>
         </a>
         <p className="p-3 text-base xl:text-lg 2xl:text-xl text-gray-900">{absPage}</p>
         <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md opacity-50">Следующий</button>
@@ -56,12 +60,12 @@ function ShopPagination(page, productsLength) {
 
   return (
     <div className="my-5 flex justify-between">
-      <a href={`/shop?page=${prevPage}`}>
-        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Предыдущий</button>
+      <a href={`${prevPage}`}>
+        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md focus:outline-none transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Предыдущий</button>
       </a>
       <p className="p-3 text-base xl:text-lg 2xl:text-xl text-gray-900">{absPage}</p>
-      <a href={`/shop?page=${nextPage}`}>
-        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Следующий</button>
+      <a href={`${nextPage}`}>
+        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md focus:outline-none transition ease-in-out delay-150 hover:bg-purple-700 duration-300">Следующий</button>
       </a>
     </div>
   )
