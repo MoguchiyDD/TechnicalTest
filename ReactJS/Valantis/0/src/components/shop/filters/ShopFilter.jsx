@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, useEffect } from "react";
 
 function ShopFilterProduct() {
   return (
@@ -42,32 +42,35 @@ class ShopFilterPrice extends Component {
   }
 }
 
-class ShopFilterBrand extends Component {
-  constructor(props) {
-    super(props)
-  }
+function ShopFilterBrand({brands}) {
+  useEffect(() => {
+    const brand = document.querySelector("input[name=\"shop-brand\"]")
+    console.log(brand)
+    if (brand !== null) {
+      brand.checked = true
+      return
+    }
+  })
 
-  render () {
-    return (
-      <div className="bg-white rounded-md">
-        <details className="rounded-md" open>
-          <summary className="p-3 lg:p-4 list-item space-x-3 text-base xl:text-lg 2xl:text-xl font-bold text-left text-white bg-blue-600 rounded-md">Бренды</summary>
-          <div className="h-52 p-3 lg:p-4 overflow-y-scroll overflow-x-none" id="shop-brand-scroll">
-            {
-              this.props.brands.map((brand, index) => {
-                return (
-                  <div className="py-2 flex items-center border-b border-gray-300 border-dashed" key={`${index}`}>
-                    <input className="mr-2 mb-1 size-5 appearance-none border border-gray-600 rounded-full before:content[''] before:size-4 before:mt-px before:ml-px before:block before:rounded-full before:bg-white checked:before:border-blue-600 checked:before:bg-blue-600" type="radio" id={`${brand}`} name="shop-brand" value={`${brand}`} />
-                    <label className="text-base 2xl:text-lg text-gray-900" htmlFor={`${brand}`}>{brand}</label>
-                  </div>
-                )
-              })
-            }
-          </div>
-        </details>
-      </div>
-    )
-  }
+  return (
+    <div className="bg-white rounded-md">
+      <details className="rounded-md" open>
+        <summary className="p-3 lg:p-4 list-item space-x-3 text-base xl:text-lg 2xl:text-xl font-bold text-left text-white bg-blue-600 rounded-md">Бренды</summary>
+        <div className="h-52 p-3 lg:p-4 overflow-y-scroll overflow-x-none" id="shop-brand-scroll">
+          {
+            brands.map((brand, index) => {
+              return (
+                <div className="py-2 flex items-center border-b border-gray-300 border-dashed" key={`${index}`}>
+                  <input className="mr-2 mb-1 size-5 appearance-none border border-gray-600 rounded-full before:content[''] before:size-4 before:block before:rounded-full before:bg-white checked:before:border-blue-600 checked:before:size-5 checked:before:bg-blue-600" type="radio" id={`${brand}`} name="shop-brand" value={`${brand}`} />
+                  <label className="text-base 2xl:text-lg text-gray-900" htmlFor={`${brand}`}>{brand}</label>
+                </div>
+              )
+            })
+          }
+        </div>
+      </details>
+    </div>
+  )
 }
 
 export { ShopFilterProduct, ShopFilterPrice, ShopFilterBrand }
