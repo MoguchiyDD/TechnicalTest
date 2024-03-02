@@ -182,9 +182,11 @@ const getShopDataFilters = async (query) => {
       }
 
       return ids
+    } else if (query.length == 1) {
+      return query[0]
     }
 
-    return query[0]
+    return query
   }
   const binarySearch = (data, target) => {
     let find = -1
@@ -240,10 +242,14 @@ const getShopDataFilters = async (query) => {
   }
 
   const getProductIds = getIds(_query)
-  const getProduct = await whileSleep(_templateFetchShop, {  // Gets PRODUCTS from FILTERS
-    action: "get_items",
-    params: {"ids": getProductIds}
-  })
+
+  let getProduct = {}
+  if (getProductIds.length >= 0) {
+    getProduct = await whileSleep(_templateFetchShop, {  // Gets PRODUCTS from FILTERS
+      action: "get_items",
+      params: {"ids": getProductIds}
+    })
+  }
 
   return getProduct
 }
