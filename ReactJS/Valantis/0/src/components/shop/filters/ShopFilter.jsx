@@ -45,7 +45,7 @@ class ShopFilterPrice extends Component {
 function ShopFilterBrand({brands}) {
   useEffect(() => {
     const brand = document.querySelector("input[name=\"shop-brand\"]")
-    console.log(brand)
+
     if (brand !== null) {
       brand.checked = true
       return
