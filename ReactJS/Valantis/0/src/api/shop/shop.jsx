@@ -104,7 +104,7 @@ const getShopData = async (offset) => {
  * @license MIT License
  * @description Gets PRODUCTS from Field
  * @param string field 1 PRODUCT Field
- * @returns Object PRODUCT by Field || undefined
+ * @returns Array PRODUCTS by Field || undefined
  */
 const getShopFilters = async (field) => {
   const body = {
@@ -113,7 +113,7 @@ const getShopFilters = async (field) => {
   }
   const getProduct = await whileSleep(_templateFetchShop, body)  // Gets PRODUCTS from Field
 
-  const filterProducts= getProduct.filter(b => !!b)
+  const filterProducts = getProduct.filter(b => !!b)
   const products = [...new Set(filterProducts)]
 
   switch (field) {
@@ -128,4 +128,124 @@ const getShopFilters = async (field) => {
   }
 }
 
-export { getShopData, getShopFilters }
+/**
+ * @copyright Copyright (c) 2023 MoguchiyDD
+ * @license MIT License
+ * @description Gets PRODUCTS from Filters
+ * @param object query {"product": ..., "price": ..., "brand": ...}
+ * @returns Object PRODUCTS by Filters || undefined
+ */
+const getShopDataFilters = async (query) => {
+  const product = query.product
+  const price = query.price
+  const brand = query.brand
+  const _query = []
+
+  const bodyParams = async (strFilter, filter) => {
+    if ((filter !== null) && (filter !== undefined)) {
+      switch (strFilter) {
+        case "product": {
+          const body = { action: "filter", params: {"product": filter} }
+          return await whileSleep(_templateFetchShop, body)  // Gets PRODUCTS IDs by PRODUCT
+        }
+        case "price": {
+          const body = { action: "filter", params: {"price": parseFloat(filter + ".0")} }
+          return await whileSleep(_templateFetchShop, body)  // Gets PRODUCTS IDs by PRICE
+        }
+        case "brand": {
+          const body = { action: "filter", params: {"brand": filter} }
+          return await whileSleep(_templateFetchShop, body)  // Gets PRODUCTS IDs by BRAND
+        }
+      }
+    }
+
+    return []
+  }
+  const getIds = (query) => {
+    if (query.length >= 2) {
+      const ids = []
+
+      for (let i = 0; i < query[0].length; i++) {
+        for (let j = 0; j < query[1].length; j++) {
+          const index = query[0][i].indexOf(query[1][j])
+          if (index !== -1) {
+            ids.push(query[0][i])
+          }
+        }
+      }
+
+      const filterIds = ids.filter(b => !!b)
+      const newIds = [...new Set(filterIds)]
+
+      if (query.length >= 3) {
+        return getIds([newIds, query[2]])
+      }
+
+      return ids
+    }
+
+    return query[0]
+  }
+  const binarySearch = (data, target) => {
+    let find = -1
+    let stopLeft = 0
+    let stopRight = 0
+
+    let left = 0
+    let right = data.length - 1
+
+    while (left < right) {
+      const mid = parseInt((left + right) / 2)
+      if (data[mid] == target) {
+        find = data[mid]
+        return find
+      } else if (data[mid] < target) {
+        left = mid + 1
+      } else if (data[mid] > target) {
+        right = mid + 1
+      }
+
+      if ((left === stopLeft) && (right === stopRight)) {
+        return data[left]
+      }
+
+      stopLeft = left
+      stopRight = right
+    }
+
+    if (find === -1) {
+      return data[left]
+    }
+    console.log(find)
+    return find
+  }
+
+  const getIdsBrandFilter = await bodyParams("brand", brand)
+  if (getIdsBrandFilter.length >= 1) {
+    _query.push(getIdsBrandFilter)
+  }
+
+  const getIdsProductFilter = await bodyParams("product", product)
+  if (getIdsProductFilter.length >= 1) {
+    _query.push(getIdsProductFilter)
+  }
+  
+  if (price !== null) {
+    const isPrices = await getShopFilters("price")
+    const findPrice = binarySearch(isPrices, parseInt(price))
+    const getIdsPriceFilter = await bodyParams("price", findPrice)
+    if (getIdsPriceFilter.length >= 1) {
+      _query.push(getIdsPriceFilter)
+    } 
+  }
+
+  const getProductIds = getIds(_query)
+  const getProduct = await whileSleep(_templateFetchShop, {  // Gets PRODUCTS from FILTERS
+    action: "get_items",
+    params: {"ids": getProductIds}
+  })
+
+  return getProduct
+}
+
+export { getShopData, getShopFilters, getShopDataFilters }
