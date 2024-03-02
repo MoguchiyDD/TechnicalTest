@@ -34,7 +34,7 @@ class ShopFilterPrice extends Component {
           <label htmlFor="shop-price" className="!ml-2 text-gray-900">Цены</label>
         </div>
         <div className="grid col-span-2 grid-cols-2 lg:grid-cols-3 gap-1 items-center justify-items-center">
-          <input className="lg:col-span-2" type="range" id="shop-price" name="shop-price" min={`${this.state.min}`} max={`${this.state.max}`} step="1" onChange={this.handleChange.bind(this)} />
+          <input className="lg:col-span-2" type="range" id="shop-price" name="shop-price" min={`${this.state.min}`} max={`${this.state.max}`} step="100" onChange={this.handleChange.bind(this)} />
           <p className="text-base xl:text-lg 2xl:text-xl text-gray-900">{this.state.value}</p>
         </div>
       </div>
