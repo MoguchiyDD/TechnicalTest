@@ -52,7 +52,7 @@ class ShopFilterBrand extends Component {
       <div className="bg-white rounded-md">
         <details className="rounded-md" open>
           <summary className="p-3 lg:p-4 list-item space-x-3 text-base xl:text-lg 2xl:text-xl font-bold text-left text-white bg-blue-600 rounded-md">Бренды</summary>
-          <div className="h-52 p-3 lg:p-4 overflow-scroll">
+          <div className="h-52 p-3 lg:p-4 overflow-y-scroll overflow-x-none" id="shop-brand-scroll">
             {
               this.props.brands.map((brand, index) => {
                 return (
