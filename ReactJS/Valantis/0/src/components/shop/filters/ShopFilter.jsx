@@ -3,7 +3,7 @@ import { Component } from "react";
 function ShopFilterProduct() {
   return (
     <div className="mb-4">
-      <input className="p-2 lg:p-3 w-full text-base 2xl:text-lg text-blue-600 rounded-md focus:outline-blue-600" type="text" id="shop-product" name="shop-brand" placeholder="Магазинный поиск" />
+      <input className="p-2 lg:p-3 w-full text-base 2xl:text-lg text-blue-600 rounded-md focus:outline-blue-600" type="text" id="shop-product" name="shop-product" placeholder="Магазинный поиск" />
     </div>
   )
 }
