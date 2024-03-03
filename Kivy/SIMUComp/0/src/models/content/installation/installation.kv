@@ -1,0 +1,999 @@
+<ContentInstallationScreen>:
+    size_hint: (1, 1)
+
+    # Activate && Menu
+    GridLayout:
+        cols: 2
+        spacing: 3
+
+        # Activate
+        BoxLayout:
+            size_hint: (None, None)
+            width: 816
+            height: 32
+            pos_hint: {"y": 0.99}
+            canvas:
+                Color:
+                    rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                Rectangle:
+                    size: self.size
+                    pos: (0, 490)
+            
+            MDLabel:
+                id: content_installation_activate_title
+                halign: "center"
+                font_style: "H6"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                pos_hint: {"y": 15.3}
+
+        # Menu
+        GridLayout:
+            rows: 8
+            size_hint: (1, 1)
+            # pos_hint: {"x": 0.865}
+            padding: [0, 9, 0, 0]
+            spacing: 3
+
+            # INSTALATTION
+            Button:
+                id: content_installation_btn
+                text: "Установки"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                bold: True
+                color: (0.129, 0.129, 0.129, 1)  # 212121
+                background_color: (0.960, 0.468, 0, 1)  # F57C00
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_installation"
+
+            # UPDATE
+            Button:
+                id: content_update_btn
+                text: "Обновление"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_update"
+
+            # LICENSES
+            Button:
+                id: content_licenses_btn
+                text: "Лицензии"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_licenses"
+
+            # NETWORK
+            Button:
+                id: content_network_btn
+                text: "Сеть"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_network"
+
+            # BLUETOOTH
+            Button:
+                id: content_bluetooth_btn
+                text: "Bluetooth"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_bluetooth"
+
+            Button:
+                size_hint: (None, 1)
+                width: 130
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_disabled_normal: ""
+                disabled: True
+
+            # LOGOUT
+            Button:
+                id: content_logout_btn
+                text: "Выход"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_logout"
+
+            # ABOUT
+            Button:
+                id: content_about_btn
+                text: "Об Компании"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_about"
+
+    # Content
+    BoxLayout:
+        size_hint: (None, None)
+        width: 816
+        height: 486
+        canvas:
+            Color:
+                rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+            Rectangle:
+                size: self.size
+                pos: (0, 0)
+        
+        GridLayout:
+            rows: 5
+            padding: [3, 3, 3, 3]
+            spacing: 3
+
+            # DateTime, Borders && Display
+            GridLayout:
+                cols: 3
+                spacing: 3
+
+                # DateTime
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 350
+                    height: 130
+                    padding: [3, 3, 3, 3]
+                    spacing: 3
+                    canvas:
+                        Color:
+                            rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    # Title
+                    MDLabel:
+                        text: "Дата/Время"
+                        halign: "center"
+                        font_style: "Body1"
+                        color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                    # Content
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (None, None)
+                        width: 344
+                        height: 104
+                        padding: [3, 3, 3, 3]
+                        canvas:
+                            Color:
+                                rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                        # Input && Settings
+                        GridLayout:
+                            cols: 2
+                            spacing: 4
+
+                            # Input
+                            TextInput:
+                                id: content_installation_datetime_input
+                                size_hint: (0.4, None)
+                                height: 26
+                                padding: [3, 3, 3, 3]
+                                font_size: "17sp"
+                                bold: True
+                                background_color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                background_normal: ""
+                                background_disabled_normal: ""
+                                canvas.before:
+                                    Color:
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Line:
+                                        width: 1
+                                        rectangle: self.x, self.y, self.width, self.height
+                            
+                            # Settings
+                            Button:
+                                id: content_installation_datetime_btn
+                                text: "Настройки"
+                                size_hint: (0.3, None)
+                                height: 26
+                                font_size: "17sp"
+                                halign: "center"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+                                background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                                background_normal: ""
+                                background_down: ""
+                                canvas.before:
+                                    Color:
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Line:
+                                        width: 1.1
+                                        rectangle: self.x, self.y, self.width, self.height
+
+                        # CheckBoxes : - && 24
+                        GridLayout:
+                            cols: 4
+                            spacing: 3
+
+                            # -
+                            MDCheckbox:
+                                id: content_installation_datetime_checkbox_dash
+                                size_hint: (0.205, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (10, 396)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (11, 397)
+
+                            # -
+                            MDLabel:
+                                text: "ДД-ММ-ГГГГ"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                            # 24
+                            MDCheckbox:
+                                id: content_installation_datetime_checkbox_24
+                                size_hint: (0.205, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (180, 396)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (181, 397)
+
+                            # 24
+                            MDLabel:
+                                text: "24 часа"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # CheckBoxes : . && 12
+                        GridLayout:
+                            cols: 4
+                            spacing: 3
+
+                            # .
+                            MDCheckbox:
+                                id: content_installation_datetime_checkbox_dot
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (10, 363)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (11, 364)
+
+                            # .
+                            MDLabel:
+                                text: "ММ.ДД/ГГГГ"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                            # 12
+                            MDCheckbox:
+                                id: content_installation_datetime_checkbox_12
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (180, 363)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (181, 364)
+
+                            # 12
+                            MDLabel:
+                                text: "12 часов"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                # Borders
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 227
+                    height: 130
+                    padding: [3, 3, 3, 3]
+                    spacing: 3
+                    canvas:
+                        Color:
+                            rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    # Title
+                    MDLabel:
+                        text: "Макс. границы"
+                        halign: "center"
+                        font_style: "Body1"
+                        color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                    # Content
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (None, None)
+                        width: 221
+                        height: 104
+                        canvas:
+                            Color:
+                                rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                        # CheckBox : VERTICAL
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_borders_checkbox_vertical
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (365, 430)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (366, 431)
+
+                            MDLabel:
+                                text: "Макс. верт. угол"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # CheckBox : HORIZONTAL
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_borders_checkbox_horizontal
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (365, 396)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (366, 397)
+
+                            MDLabel:
+                                text: "Макс. гориз. угол"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # CheckBox : LENGTH
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_borders_checkbox_length
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (365, 361)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (366, 362)
+
+                            MDLabel:
+                                text: "Макс. длина нити"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                # Display
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 227
+                    height: 130
+                    padding: [3, 3, 3, 3]
+                    spacing: 3
+                    canvas:
+                        Color:
+                            rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    # Title
+                    MDLabel:
+                        text: "Экран"
+                        halign: "center"
+                        font_style: "Body1"
+                        color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                    # Content
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (None, None)
+                        width: 221
+                        height: 104
+                        canvas:
+                            Color:
+                                rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                        # CheckBox : FLASH
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_display_checkbox_flash
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (595, 430)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (596, 431)
+
+                            MDLabel:
+                                text: "Вспышка"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # CheckBoxes : VNC
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+                            valign: "top"
+
+                            MDCheckbox:
+                                id: content_installation_display_checkbox_vnc
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (595, 396)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (596, 397)
+
+                            MDLabel:
+                                text: "VNC поддержка"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        MDLabel:
+                            text: ""
+
+            # Other
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: (None, None)
+                width: 810
+                height: 77
+                padding: [3, 3, 3, 3]
+                spacing: 3
+                canvas:
+                    Color:
+                        rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                # Title
+                MDLabel:
+                    text: "Прочее"
+                    halign: "center"
+                    font_style: "Body1"
+                    color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                # Content
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 804
+                    height: 51
+                    padding: [3, 3, 3, 3]
+                    canvas:
+                        Color:
+                            rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                
+                    # Buttons x4
+                    GridLayout:
+                        cols: 4
+                        spacing: 8
+                        padding: [5, 5, 5, 5]
+
+                        # Button : DISPLAY
+                        Button:
+                            id: content_installation_other_btn_display
+                            text: "Калибровка экрана"
+                            size_hint: (0.3, None)
+                            height: 35
+                            font_size: "17sp"
+                            halign: "center"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+                            background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            background_normal: ""
+                            background_down: ""
+                            canvas.before:
+                                Color:
+                                    rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                Line:
+                                    width: 1.1
+                                    rectangle: self.x, self.y, self.width, self.height
+
+                        # Button : DIAGNOSTICS
+                        Button:
+                            id: content_installation_other_btn_diagnostics
+                            text: "Диагностика"
+                            size_hint: (0.3, None)
+                            height: 35
+                            font_size: "17sp"
+                            halign: "center"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+                            background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            background_normal: ""
+                            background_down: ""
+                            canvas.before:
+                                Color:
+                                    rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                Line:
+                                    width: 1.1
+                                    rectangle: self.x, self.y, self.width, self.height
+
+                        # Button : ...
+                        Button:
+                            text: ""
+                            size_hint: (0.3, None)
+                            height: 35
+                            font_size: "17sp"
+                            halign: "center"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+                            background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            background_normal: ""
+                            background_down: ""
+                            canvas.before:
+                                Color:
+                                    rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                Line:
+                                    width: 1.1
+                                    rectangle: self.x, self.y, self.width, self.height
+
+                        # Button : ...
+                        Button:
+                            text: ""
+                            size_hint: (0.3, None)
+                            height: 35
+                            font_size: "17sp"
+                            halign: "center"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+                            background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                            background_normal: ""
+                            background_down: ""
+                            canvas.before:
+                                Color:
+                                    rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                Line:
+                                    width: 1.1
+                                    rectangle: self.x, self.y, self.width, self.height
+
+            # Sound
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: (None, None)
+                width: 810
+                height: 77
+                padding: [3, 3, 3, 3]
+                spacing: 3
+                canvas:
+                    Color:
+                        rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                # Title
+                MDLabel:
+                    text: "Громкость звука"
+                    halign: "center"
+                    font_style: "Body1"
+                    color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                # Content
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 804
+                    height: 51
+                    padding: [3, 3, 3, 3]
+                    canvas:
+                        Color:
+                            rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    # SWITCH && SLIDER + VALUE
+                    GridLayout:
+                        cols: 3
+
+                        # CheckBox : SWITCH
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_sound_checkbox_switch
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                active: True
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (12, 209)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (13, 210)
+
+                            MDLabel:
+                                text: "Включено"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER VALUE
+                        MDLabel:
+                            id: content_installation_sound_slider_value
+                            size_hint_x: 0.16
+                            halign: "right"
+                            font_style: "Body1"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER
+                        MDSlider:
+                            id: content_installation_sound_slider
+                            step: 1
+                            value: 8
+                            size_hint_x: None
+                            width: "580dp"
+                            hint: False
+                            color: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_active: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_inactive: (0.960, 0.468, 0, 1)  # F57C00
+                            track_color_active: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                            track_color_inactive: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+            # Detector
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: (None, None)
+                width: 810
+                height: 107
+                padding: [3, 3, 3, 3]
+                spacing: 3
+                canvas:
+                    Color:
+                        rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                # Title
+                MDLabel:
+                    text: "Детектор смещения"
+                    halign: "center"
+                    font_style: "Body1"
+                    color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                # Content
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (None, None)
+                    width: 804
+                    height: 81
+                    padding: [3, 3, 3, 3]
+                    canvas:
+                        Color:
+                            rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    # INCLINE : SLIDER + VALUE
+                    GridLayout:
+                        cols: 3
+
+                        # CheckBox : INCLINE
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_detector_checkbox_incline
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                active: True
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (12, 133)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (13, 134)
+
+                            MDLabel:
+                                text: "Изменение наклона"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER VALUE
+                        MDLabel:
+                            id: content_installation_detector_incline_slider_value
+                            size_hint_x: 0.16
+                            halign: "right"
+                            font_style: "Body1"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER
+                        MDSlider:
+                            id: content_installation_detector_incline_slider
+                            step: 1
+                            value: 10
+                            size_hint_x: None
+                            width: "580dp"
+                            hint: False
+                            color: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_active: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_inactive: (0.960, 0.468, 0, 1)  # F57C00
+                            track_color_active: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                            track_color_inactive: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+                    # IMPACT && SLIDER + VALUE
+                    GridLayout:
+                        cols: 3
+
+                        # CheckBoxes : IMPACT
+                        GridLayout:
+                            cols: 2
+                            spacing: 3
+
+                            MDCheckbox:
+                                id: content_installation_detector_checkbox_impact
+                                size_hint: (0.2, 1)
+                                color_active: (0.960, 0.468, 0, 1)  # F57C00
+                                color_inactive: (0.129, 0.129, 0.129, 0)  # 212121
+                                checkbox_icon_down: "close"
+                                active: True
+                                canvas.before:
+                                    Color:  # border
+                                        rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                                    Rectangle:
+                                        size: (24, 24)
+                                        pos: (12, 95)
+                                    Color:  # full
+                                        rgba: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                                    Rectangle:
+                                        size: (22, 22)
+                                        pos: (13, 96)
+
+                            MDLabel:
+                                text: "Фиксация удара"
+                                halign: "left"
+                                font_style: "Body1"
+                                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER VALUE
+                        MDLabel:
+                            id: content_installation_detector_impact_slider_value
+                            size_hint_x: 0.16
+                            halign: "right"
+                            font_style: "Body1"
+                            color: (0.129, 0.129, 0.129, 1)  # 212121
+
+                        # SLIDER
+                        MDSlider:
+                            id: content_installation_detector_impact_slider
+                            step: 1
+                            value: 19
+                            size_hint_x: None
+                            width: "580dp"
+                            hint: False
+                            color: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_active: (0.960, 0.468, 0, 1)  # F57C00
+                            thumb_color_inactive: (0.960, 0.468, 0, 1)  # F57C00
+                            track_color_active: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                            track_color_inactive: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+
+            # Save && Reset
+            BoxLayout:
+                size_hint: (None, None)
+                width: 810
+                height: 77
+                padding: [3, 3, 3, 3]
+                spacing: 3
+
+                GridLayout:
+                    cols: 3
+                    spacing: 8
+
+                    MDLabel:
+                        text: ""
+                        size_hint_x: None
+                        width: 500
+
+                    # Button : SAVE
+                    Button:
+                        id: content_installation_save_reset_btn_save
+                        text: "Сохранить"
+                        size_hint: (0.3, None)
+                        height: 35
+                        font_size: "17sp"
+                        halign: "center"
+                        color: (0.129, 0.129, 0.129, 1)  # 212121
+                        background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                        background_normal: ""
+                        background_down: ""
+                        canvas.before:
+                            Color:
+                                rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                            Line:
+                                width: 1.1
+                                rectangle: self.x, self.y, self.width, self.height
+
+                    # Button : RESET
+                    Button:
+                        id: content_installation_save_reset_btn_reset
+                        text: "Отменить"
+                        size_hint: (0.3, None)
+                        height: 35
+                        font_size: "17sp"
+                        halign: "center"
+                        color: (0.129, 0.129, 0.129, 1)  # 212121
+                        background_color: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                        background_normal: ""
+                        background_down: ""
+                        canvas.before:
+                            Color:
+                                rgba: (0.129, 0.129, 0.129, 1)  # 212121
+                            Line:
+                                width: 1.1
+                                rectangle: self.x, self.y, self.width, self.height

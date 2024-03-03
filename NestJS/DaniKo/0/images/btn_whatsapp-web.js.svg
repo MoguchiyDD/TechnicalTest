@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="20"
+   height="20"
+   viewBox="0 0 20 20"
+   fill="none"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="btn_whatsapp-web.js.svg"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="8"
+     inkscape:cx="3.5"
+     inkscape:cy="19.875"
+     inkscape:window-width="1360"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2">
+    <sodipodi:guide
+       position="0,72.113281"
+       orientation="1,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0.375,80"
+       orientation="0,-1"
+       id="guide3"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <path
+     d="M 223.99414,208 V 48 a 16.01582,16.01582 0 0 0 -16,-16 h -160 a 16.01583,16.01583 0 0 0 -16,16 v 160 a 16.01583,16.01583 0 0 0 16,16 h 160 a 16.01582,16.01582 0 0 0 16,-16 z m -56.39062,-80.40625 a 7.99708,7.99708 0 0 1 -11.3125,0 L 135.99414,107.30762 V 168 a 8,8 0 1 1 -16,0 v -60.6875 l -20.28125,20.28125 a 7.99915,7.99915 0 0 1 -11.3125,-11.3125 l 33.92773,-33.92773 a 8.02367,8.02367 0 0 1 11.332,0 l 33.94336,33.92773 a 7.99708,7.99708 0 0 1 4e-5,11.3125 z"
+     id="path1" />
+  <rect
+     style="fill:#eeeeee;fill-opacity:1;stroke-width:0.44444"
+     id="rect2"
+     width="20"
+     height="20"
+     x="-20"
+     y="0"
+     rx="4.02"
+     ry="4.02"
+     transform="rotate(-90)" />
+  <path
+     d="M 3.5147289,3.6040125 C 3.3183262,3.5167218 3.0880457,3.5660549 2.9446456,3.7261402 2.8012443,3.8862259 2.7774513,4.1205249 2.885745,4.3061677 L 6.2072045,10.000016 2.885745,15.693887 c -0.1082937,0.18563 -0.0845,0.419901 0.058901,0.579978 0.1434008,0.160075 0.3736807,0.209404 0.570084,0.12214 l 13.372897,-5.94338 c 0.178799,-0.07949 0.294104,-0.256865 0.294104,-0.452601 0,-0.1957262 -0.115309,-0.3730982 -0.294104,-0.452592 z M 7.1228794,9.6037888 4.5144855,5.1323416 15.466932,10.000016 4.5144855,14.867652 7.1228694,10.396244 H 11.23823 c 0.218839,0 0.396233,-0.17739 0.396233,-0.396228 0,-0.2188262 -0.177394,-0.3962272 -0.396233,-0.3962272 z"
+     fill="currentColor"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     id="path2"
+     style="stroke-width:0.991603;stroke-dasharray:none" />
+  <text
+     xml:space="preserve"
+     style="font-size:19px;fill:#eeeeee;fill-opacity:1;stroke-width:0.79748;stroke-dasharray:none"
+     x="14.675559"
+     y="115.15926"
+     id="text3"><tspan
+       sodipodi:role="line"
+       id="tspan3"
+       x="14.675559"
+       y="115.15926">/обозначения-команд-для-whatsapp-web.js</tspan></text>
+</svg>

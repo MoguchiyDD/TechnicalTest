@@ -1,0 +1,69 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: TEMPORARILY ABSENT
+
+Goal: Setting Important STYLES
+Result: Important STYLES Adjusted
+
+Past Modification: Adding New «MAIN» BLOCK
+Last Modification: Editing New «FONTS» BLOCK (line-height)
+Modification Date: 2023.12.30, 06:26 PM
+
+Create Data: 2023.12.29, 04:27 PM
+*/
+
+
+@import "important/vocabulary";
+
+
+// ------------ FONTS ------------
+
+@font-face {
+  font-family: "Graphik LC Web";
+  src: local("Graphik LC Web"),
+       url("../fonts/Graphik-LC-Web/Graphik-LC-Web_medium.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+$text-family: (
+  main: "Graphik LC Web",
+  optional: sans-serif,
+);
+
+// -------------------------------
+
+
+// ------------ MAIN -------------
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.1;
+}
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html, body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: map-get($text-family, main), map-get($text-family, optional);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 100%;
+}
+body {
+  height: $height;
+  background-color: map-get($colors, "background");
+}
+
+// -------------------------------
+

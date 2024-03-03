@@ -1,0 +1,46 @@
+<HeaderScreen>:
+    size_hint: (1, 0.05)
+    pos_hint: {"top": 1}
+
+    GridLayout:
+        cols: 2
+        spacing: 3
+
+        BoxLayout:
+            size_hint: (None, None)
+            width: 862
+            height: 32
+            canvas:
+                Color:
+                    rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # TITLE
+            MDLabel:
+                id: header_title
+                padding: [3, 0, 0, 0]
+                halign: "left"
+                font_style: "H6"
+                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+
+            # PROGRESS
+            RectangleProgressBar:
+                id: header_progress
+                size_hint: (1, 1)
+                max: 100
+
+            # DATE
+            MDLabel:
+                id: header_datetime
+                padding: [0, 0, 3, 0]
+                halign: "right"
+                font_style: "Body1"
+                bold: True
+                color: (0.129, 0.129, 0.129, 1)  # 212121
+
+        # LOGOTYPE
+        Image:
+            id: header_logo

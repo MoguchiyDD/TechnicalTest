@@ -33,4 +33,4 @@ This repository stores all completed Technical Tests
 - **GREEN-API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
 - **SIMUComp** (once : *Python* + *Kivy*)
 - **Tangem** (once : *ReactJS* + *SCSS*)
-- **Valantis** (once : *ReactJS* + *Tailwind CSS* + *API Shop from Valantis*)
+- **Valantis** (once : *ReactJS* + *Tailwind CSS* + *API from Valantis*)
