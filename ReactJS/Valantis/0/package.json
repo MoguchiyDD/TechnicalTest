@@ -1,7 +1,10 @@
 {
   "name": "0",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Open «./README.md» file",
+  "author": "МогучийДД (MoguchiyDD)",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
