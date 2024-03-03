@@ -1,5 +1,4 @@
-# NestJS
-
+# NestJS/DaniKo
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ![](result.gif)
