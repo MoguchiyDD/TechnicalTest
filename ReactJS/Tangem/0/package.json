@@ -1,7 +1,10 @@
 {
   "name": "0",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Open «./README.md» file",
+  "author": "МогучийДД (MoguchiyDD)",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
