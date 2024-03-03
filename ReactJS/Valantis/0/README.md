@@ -16,7 +16,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 </div>
 
 ## URL Addresses
-- http://localhost:5173 : The MAIN Page
+- http://localhost:5173/shop : The MAIN Page
 
 ## Installed
 <div id="installed" align="left">
