@@ -1,4 +1,4 @@
-# ReactJS
+# ReactJS/Valantis
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ![](result.gif)
@@ -11,7 +11,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2024.02.29%20/%202024.03.~~-F9A825?style=for-the-badge" />
+  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2024.02.29%20/%202024.03.03-F9A825?style=for-the-badge" />
   <img alt="Testing" src="https://img.shields.io/badge/Testing-Google%20Chrome%20and%20Firefox-2E7D32?style=for-the-badge" />
 </div>
 
@@ -49,7 +49,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 ## Commands
 ```Bash
 # Start ReactJS
-$ npm run start
+$ npm run dev
 
 # Build ReactJS
 $ npm run build
