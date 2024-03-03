@@ -45,7 +45,16 @@ function ShopPagination(url, productsLength) {
   const nextPage = url.replace(`page=${page.toString()}`, `page=${(absPage + 1).toString()}`)
   const prevPage = url.replace(`page=${page.toString()}`, `page=${(absPage - 1).toString()}`)
 
-  if (absPage === 1) {  // /shop?page=1 | previous
+  if (productsLength === 0) {  // /shop?page=<number> where PRODUCTS < LIMIT 50 | next
+    return (
+      <div className="my-5 flex justify-between">
+        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md opacity-50">Прерыдущий</button>
+        <p className="p-3 text-base xl:text-lg 2xl:text-xl text-gray-900">{absPage}</p>
+        <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md opacity-50">Следующий</button>
+      </div>
+    )
+  }
+  else if (absPage === 1) {  // /shop?page=1 | previous
     return (
       <div className="my-5 flex justify-between">
         <button className="p-3 text-sm xl:text-base 2xl:text-lg text-white bg-blue-600 rounded-md opacity-50">Прерыдущий</button>
