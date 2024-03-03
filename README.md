@@ -11,19 +11,19 @@ This repository stores all completed Technical Tests
   </a>
 </div>
 
-## Technical Tests completed (5)
+## Technical Tests completed (6)
 <div id="technical-tests" align="left">
-  <a href="Kivy" target="_blank">
+  <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/Kivy" target="_blank">
     <img alt="Kivy (1)" src="https://img.shields.io/badge/Kivy-1-B71C1C?style=for-the-badge" />
   </a>
-  <a href="NestJS" target="_blank">
+  <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/NestJS" target="_blank">
     <img alt="NestJS (2)" src="https://img.shields.io/badge/NestJS-2-B71C1C?style=for-the-badge" />
   </a>
-  <a href="NodeJS" target="_blank">
+  <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/NodeJS" target="_blank">
     <img alt="NodeJS (1)" src="https://img.shields.io/badge/NodeJS-1-B71C1C?style=for-the-badge" />
   </a>
-  <a href="ReactJS" target="_blank">
-    <img alt="ReactJS (1)" src="https://img.shields.io/badge/ReactJS-1-B71C1C?style=for-the-badge" />
+  <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/ReactJS" target="_blank">
+    <img alt="ReactJS (2)" src="https://img.shields.io/badge/ReactJS-2-B71C1C?style=for-the-badge" />
   </a>
 </div>
 
@@ -33,3 +33,4 @@ This repository stores all completed Technical Tests
 - **GREEN-API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
 - **SIMUComp** (once : *Python* + *Kivy*)
 - **Tangem** (once : *ReactJS* + *SCSS*)
+- **Valantis** (once : *ReactJS* + *Tailwind CSS* + *API from Valantis*)
