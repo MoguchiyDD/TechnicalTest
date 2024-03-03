@@ -1,6 +1,4 @@
 # TechnicalTest
-Technical Test
-# TechnicalTest
 This repository stores all completed Technical Tests
 
 ## Information

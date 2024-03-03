@@ -1,0 +1,54 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: TEMPORARILY ABSENT
+
+Goal: Creating Different Useful Short FUNCTIONS
+Result: Created Different Useful Short FUNCTIONS
+
+Past Modification: Removing The «MIXINS» BLOCK (INDENTATIONS)
+Last Modification: Editing The «MIXINS» BLOCK («positionTopLeftRight»)
+Modification Date: 2023.12.31, 08:29 PM
+
+Create Data: 2023.12.29, 04:29 PM
+*/
+
+
+// ------------ FUNCTIONS ------------
+
+@function HexToRGB($hex) {
+  @return rgb(red($hex), green($hex), blue($hex));
+}
+
+// -----------------------------------
+
+
+// ------------- MIXINS --------------
+
+@mixin sizeScreen($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin positionTopLeftRight($position, $top, $left, $right) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+}
+@mixin positionTopLeft($position, $top, $left) {
+  position: $position;
+  top: $top;
+  left: $left;
+}
+@mixin positionTopRight($position, $top, $right) {
+  position: $position;
+  top: $top;
+  right: $right;
+}
+@mixin positionBottomRight($position, $bottom, $right) {
+  position: $position;
+  bottom: $bottom;
+  right: $right;
+}
+
+// -----------------------------------
