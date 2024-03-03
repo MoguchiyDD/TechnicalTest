@@ -1,10 +1,10 @@
 {
   "name": "0",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "Open «./README.md» file",
+  "author": "МогучийДД (MoguchiyDD)",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "doc:up": "docker compose up -d",
     "doc:rm": "docker compose rm database -s -f -v && docker compose rm adminer -s -f -v && docker compose rm redis -s -f -v",
