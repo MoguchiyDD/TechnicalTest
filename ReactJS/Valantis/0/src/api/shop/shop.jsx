@@ -70,7 +70,7 @@ const _templateFetchShop = async (body) => {
 const _getShopIds = async (offset) => {
   const body = {
     action: "get_ids",
-    params: {"offset": offset, "limit": 50}
+    params: {"offset": offset, "limit": parseInt(import.meta.env.VITE_API_SHOP_LIMIT)}
   }
   const getIds = await _templateFetchShop(body)
 
@@ -133,6 +133,7 @@ const getShopFilters = async (field) => {
  * @license MIT License
  * @description Gets PRODUCTS from Filters
  * @param object query {"product": ..., "price": ..., "brand": ...}
+* @param number offset Where to Start Getting ELEMENTS in an ARRAY
  * @returns Object PRODUCTS by Filters || undefined
  */
 const getShopDataFilters = async (query) => {
@@ -231,7 +232,7 @@ const getShopDataFilters = async (query) => {
   if (getIdsProductFilter.length >= 1) {
     _query.push(getIdsProductFilter)
   }
-  
+
   if (price !== null) {
     const isPrices = await getShopFilters("price")
     const findPrice = binarySearch(isPrices, parseInt(price))
