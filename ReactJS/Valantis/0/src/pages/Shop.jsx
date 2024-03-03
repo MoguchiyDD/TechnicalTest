@@ -96,7 +96,12 @@ const shopDataLoader = async () => {
   const queryPrice = _params.get("price")
   const queryBrand = _params.get("brand")
   let query = null
-  url += "/shop?" + _params
+
+  if (page === null) {
+    url += "/shop?page=1"
+  } else {
+    url += "/shop?" + _params
+  }
 
   if ((queryProduct !== null) || (queryPrice !== null) || (queryBrand !== null)) {
     query = {
