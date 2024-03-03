@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-/* --------------- INPUT RANGE --------------- */
+/* ------------ INPUT RANGE ------------ */
 
 input[type="range"] {
   -webkit-appearance: none;
@@ -30,11 +30,32 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* ------------------------------------------- */
+/* ------------------------------------- */
 
 
-/* ------------ SCROLLBAR DETAILS ------------ */
+/* ------------- SCROLLBAR ------------- */
 
+/* BODY */
+body {
+  scrollbar-width: 5px;
+  scrollbar-color: rgb(37 99 235) rgb(241 245 249);
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: rgb(241 245 249);
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgb(37 99 235);
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb:hover  {
+  background: rgb(37 99 235);
+}
+
+/* FILTER BRAND */
 div#shop-brand-scroll {
   scrollbar-width: 5px;
   scrollbar-color: rgb(156 163 175) white;
@@ -54,4 +75,4 @@ div#shop-brand-scroll::-webkit-scrollbar-thumb:hover {
   background: rgb(156 163 175);
 }
 
-/* ------------------------------------------- */
+/* ------------------------------------- */
