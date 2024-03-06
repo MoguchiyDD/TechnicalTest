@@ -1,4 +1,6 @@
 # NodeJS/GREEN-API
+**BackEnd**. Through the 1st microservice, a request for execution is sent to the 2nd microservice. The 2nd microservice sends the processed response to the 1st microservice. Request: 19. Response: 38.
+
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ![](result.gif)
