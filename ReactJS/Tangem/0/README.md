@@ -1,4 +1,6 @@
 # ReactJS/Tangem
+**FrontEnd**. Design of the top and bottom label «Black Friday».
+
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ![](result.gif)
