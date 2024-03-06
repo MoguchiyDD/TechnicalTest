@@ -53,11 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'src.urls'
 
-TEMPLATES_DIR = path.join(BASE_DIR, 'statics', 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR,],
+        'DIRS': [path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +76,9 @@ TEMPLATES = [
         },
     },
 ]
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [path.join(BASE_DIR, 'static/')]
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
