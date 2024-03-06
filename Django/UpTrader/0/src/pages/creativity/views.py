@@ -4,9 +4,9 @@
 # Goal: URL Page for CREATIVITY
 # Result: Ready URL Page for CREATIVITY
 #
-# Past Modification: Editing The ALL FUNCTIONS (RESULT)
-# Last Modification: Adding DOCUMENTATION
-# Modification Date: 2024.03.06, 05:51 PM
+# Past Modification: Adding The «subjects» and «objects» FUNCTION
+# Last Modification: Editing The ALL FUNCTIONS (RESULT)
+# Modification Date: 2024.03.06, 10:28 PM
 #
 # Create Date: 2024.03.05, 01:23 PM
 
@@ -33,10 +33,12 @@ def index(request: WSGIRequest) -> HttpResponse:
     """
 
     template = "index.html"
-    tab = "Творчество"
+    title = "Творчество"
+    tab = "creativity"
 
     context = {
-        "title": tab
+        "title": title,
+        "tab": tab
     }
     return render(request, f"pages/{ PAGE }/{ template }", context)
 
@@ -57,10 +59,56 @@ def paintings(request: WSGIRequest) -> HttpResponse:
     """
 
     template = "paintings.html"
-    tab = "Живописи"
+    title = "Живописи"
+    tab = "paintings"
 
     context = {
-        "title": tab
+        "title": title,
+        "tab": tab
+    }
+    return render(request, f"pages/{ PAGE }/{ template }", context)
+
+
+def subjects(request: WSGIRequest) -> HttpResponse:
+    """
+    The «subjects» TAB from The MENU
+
+    ---
+    PARAMETERS:
+    - request: WSGIRequest -> Request to URL page
+    ---
+    RESULT: Response with DATA for HTML
+    """
+
+    template = "paintings.html"
+    title = "Субъеты"
+    tab = "subjects"
+
+    context = {
+        "title": title,
+        "tab": tab
+    }
+    return render(request, f"pages/{ PAGE }/{ template }", context)
+
+
+def objects(request: WSGIRequest) -> HttpResponse:
+    """
+    The «objects» TAB from The MENU
+
+    ---
+    PARAMETERS:
+    - request: WSGIRequest -> Request to URL page
+    ---
+    RESULT: Response with DATA for HTML
+    """
+
+    template = "paintings.html"
+    title = "Объекты"
+    tab = "objects"
+
+    context = {
+        "title": title,
+        "tab": tab
     }
     return render(request, f"pages/{ PAGE }/{ template }", context)
 
@@ -81,10 +129,12 @@ def sculptures(request: WSGIRequest) -> HttpResponse:
     """
 
     template = "sculptures.html"
-    tab = "Скульптуры"
+    title = "Скульптуры"
+    tab = "sculptures"
 
     context = {
-        "title": tab
+        "title": title,
+        "tab": tab
     }
     return render(request, f"pages/{ PAGE }/{ template }", context)
 
