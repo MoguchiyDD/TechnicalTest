@@ -1,6 +1,6 @@
 # NestJS/DEMETRA-SYSTEMS
-
 ### Read The **NestJS-README.md** file
+**BackEnd**. Creation of user registration and authorization. After 10 seconds the user's status is updated. If the user is in the cache, then the data is taken from there without using the database. Get the current IP address of the computer.
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
