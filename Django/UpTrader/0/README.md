@@ -19,6 +19,12 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ## URL Addresses
 - http://localhost:8000 : The MAIN Page
+- http://localhost:8000/creativity : The CREATIVITY Page
+- http://localhost:8000/creativity/paintings : The PAINTINGS Page
+- http://localhost:8000/creativity/paintings/subjects : The SUBJECTS Page
+- http://localhost:8000/creativity/paintings/objects : The OBJECTS Page
+- http://localhost:8000/creativity/sculptures : The SCULPTURES Page
+- http://localhost:8000/information : The INFORMATION Page
 
 ## MENU TABS
 - home (URL)
