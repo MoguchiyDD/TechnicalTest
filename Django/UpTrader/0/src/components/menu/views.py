@@ -6,7 +6,7 @@
 #
 # Past Modification: Editing The «queue» and «is_queue» FUNCTIONS (SUBMENU)
 # Last Modification: Adding DOCUMENTATION
-# Modification Date: 2024.03.06, 05:38 PM
+# Modification Date: 2024.03.06, 06:18 PM
 #
 # Create Date: 2024.03.05, 12:38 PM
 
@@ -22,7 +22,7 @@ ul_queue = []  # for SUBMENU
 
 # ------------------- DRAW MENU --------------------
 
-@register.inclusion_tag("components/menu.html", takes_context=True)
+@register.inclusion_tag("components/menu/menu.html", takes_context=True)
 def draw_menu(context: RequestContext, menu_type: str, current: str):
     """
     New TEMPLATE TAG for MENU

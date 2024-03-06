@@ -1,0 +1,55 @@
+{% load draw_menu %}
+
+<header>
+    <nav>
+        {{ parents }}
+        <ul>
+            {% for m in menu %}
+                {% with previous_parent=menu|previous:forloop.counter0 %}
+                    {% if m.status %}
+                        <li>
+                            <a href="{% url m.slug %}">{{ m.title }}</a>
+                        </li>
+                    {% elif m.parent is None %}
+                        <li>
+                            <a href="{% url m.slug %}">{{ m.title }}</a>
+                        </li>
+                    {% else %}
+                        {% if previous_parent is None %}
+                            {% with list_parents=menu|parents:forloop.counter0 %}
+                                {% for list in list_parents %}
+                                    {% with is_new_ul=list_parents|queue:forloop.counter0 %}
+                                        {% if is_new_ul.0 is True %}
+                                            <ul>
+                                            <li>
+                                                <a href="{% url list.slug %}">{{ list.title }}</a>
+                                            </li>
+                                        {% elif is_new_ul.0 is False %}
+                                            {% for ul in is_new_ul %}
+                                                </ul>
+                                            {% endfor %}
+                                            <li>
+                                                <a href="{% url list.slug %}">{{ list.title }}</a>
+                                            </li>
+                                        {% elif is_new_ul.0 is None %}
+                                            <li>
+                                                <a href="{% url list.slug %}">{{ list.title }}</a>
+                                            </li>
+                                        {% endif %}
+                                        {% if forloop.last %}
+                                            {% with is_ul=0|is_queue %}
+                                                {% for ul in is_ul %}
+                                                    </ul>
+                                                {% endfor %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% endwith %}
+                                {% endfor %}
+                            {% endwith %}
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    </nav>
+</header>
