@@ -4,9 +4,9 @@
 # Goal: URL Page for CREATIVITY
 # Result: Ready URL Page for CREATIVITY
 #
-# Past Modification: Adding The «subjects» and «objects» FUNCTION
-# Last Modification: Editing The ALL FUNCTIONS (RESULT)
-# Modification Date: 2024.03.06, 10:28 PM
+# Past Modification: Editing The ALL FUNCTIONS (RESULT)
+# Last Modification: Editing The «subjects» FUNCTION (TITLE)
+# Modification Date: 2024.03.07, 12:04 ФM
 #
 # Create Date: 2024.03.05, 01:23 PM
 
@@ -81,7 +81,7 @@ def subjects(request: WSGIRequest) -> HttpResponse:
     """
 
     template = "paintings.html"
-    title = "Субъеты"
+    title = "Субъекты"
     tab = "subjects"
 
     context = {
