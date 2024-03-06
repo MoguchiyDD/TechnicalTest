@@ -1,4 +1,6 @@
 # Kivy/SIMUComp
+**FrontEnd**. Design of the 1st tab of Desktop Software.
+
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
 ![](result.gif)
