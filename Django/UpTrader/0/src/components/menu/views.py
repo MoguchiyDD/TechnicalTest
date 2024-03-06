@@ -4,9 +4,9 @@
 # Goal: Custom Template for MENU
 # Result: Ready Custom Template for MENU
 #
-# Past Modification: Editing The «queue» and «is_queue» FUNCTIONS (SUBMENU)
-# Last Modification: Adding DOCUMENTATION
-# Modification Date: 2024.03.06, 06:18 PM
+# Past Modification: Adding DOCUMENTATION
+# Last Modification: Adding The «next» FUNCTION
+# Modification Date: 2024.03.06, 10:11 PM
 #
 # Create Date: 2024.03.05, 12:38 PM
 
@@ -57,6 +57,27 @@ def draw_menu(context: RequestContext, menu_type: str, current: str):
 
 
 # ------------ MENU DRAWING ASSISTANTSt ------------
+
+@register.filter(name="next")
+def next(menu: list[Menu], index: int) -> str:
+    """
+    Returns The NEXT ITERATION of The «Menu» DATA TABLE
+
+    ---
+    PARAMETERS:
+    - menu: list[Menu] -> LIST from «Menu» DATA TABLE
+    - index: int -> INDEX for The «menu» VARIABLE
+    ---
+    RESULT: 1 PARENT from MENU
+    """
+
+    try:
+        result = menu[index + 1]
+    except:
+        result = menu[index]
+
+    return result.parent
+
 
 @register.filter(name="previous")
 def previous(menu: list[Menu], index: int) -> str:
@@ -168,6 +189,5 @@ def queue(menu: list[Menu], index: int) -> list[bool | None]:
         is_new_ul = append_ul_queue()
 
     return is_new_ul
-
 
 # --------------------------------------------------
