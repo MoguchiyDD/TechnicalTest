@@ -4,9 +4,9 @@
 # Goal: URL Page for HOME
 # Result: Ready URL Page for HOME
 #
-# Past Modification: Editing The ALL FUNCTIONS (RESULT)
-# Last Modification: Adding DOCUMENTATION
-# Modification Date: 2024.03.06, 05:51 PM
+# Past Modification: Adding DOCUMENTATION
+# Last Modification: Editing The ALL FUNCTIONS (RESULT)
+# Modification Date: 2024.03.06, 10:29 PM
 #
 # Create Date: 2024.03.05, 12:38 PM
 
@@ -33,10 +33,12 @@ def index(request: WSGIRequest) -> HttpResponse:
     """
 
     template = "index.html"
-    tab = "Дом"
+    title = "Дом"
+    tab = "home"
 
     context = {
-        "title": tab
+        "title": title,
+        "tab": tab
     }
     return render(request, f"pages/{ PAGE }/{ template }", context)
 
