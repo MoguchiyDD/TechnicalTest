@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load draw_menu %}
+
+<!-- HEAD: Title -->
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+<!-- BODY: MAIN MENU -->
+{% block main_menu %}
+    {% draw_menu "main" tab %}
+{% endblock %}
+
+<!-- BODY: SECTION -->
+{% block body %}
+    <h1>{{ title }}</h1>
+{% endblock body %}
