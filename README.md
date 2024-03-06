@@ -11,8 +11,11 @@ This repository stores all completed Technical Tests
   </a>
 </div>
 
-## Technical Tests completed (6)
+## Technical Tests completed (7)
 <div id="technical-tests" align="left">
+  <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/Django" target="_blank">
+    <img alt="Django (1)" src="https://img.shields.io/badge/Django-1-B71C1C?style=for-the-badge" />
+  </a>
   <a href="https://github.com/MoguchiyDD/TechnicalTest/tree/main/Kivy" target="_blank">
     <img alt="Kivy (1)" src="https://img.shields.io/badge/Kivy-1-B71C1C?style=for-the-badge" />
   </a>
@@ -33,4 +36,5 @@ This repository stores all completed Technical Tests
 - **GREEN-API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
 - **SIMUComp** (once : *Python* + *Kivy*)
 - **Tangem** (once : *ReactJS* + *SCSS*)
+- **UpTrader** (once : *Python* + *Django* + *SQLite3* + *CSS*)
 - **Valantis** (once : *ReactJS* + *Tailwind CSS* + *API from Valantis*)
