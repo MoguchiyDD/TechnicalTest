@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html>
   <head>
@@ -6,9 +8,10 @@
     <title>
         Technical Test | UpTrader — {% block title %}{% endblock %}
     </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
   </head>
   <body>
-    <div class="bg-slate-100" id="root">
+    <div id="root">
         {% block main_menu %}{% endblock %}
         {% block body %}{% endblock %}
     </div>
