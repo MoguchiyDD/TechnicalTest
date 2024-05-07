@@ -1,0 +1,13 @@
+@import "./mcounter";
+@import "../../../_/indents";
+@import "../../../_/colors";
+@import "../../../_/border-radiuses";
+
+
+p#error-counter-status {
+  padding: $indent100;  /* 16px */
+  margin-bottom: $indent100;  /* 16px */
+  color: $darkText100;
+  background-color: $darkSecondaryMain;
+  @include border-radius-025();
+}
