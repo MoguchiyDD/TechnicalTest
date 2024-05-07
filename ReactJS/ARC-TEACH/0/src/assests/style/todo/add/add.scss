@@ -1,0 +1,23 @@
+@import "./madd";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+@import "../../_/buttons";
+@import "../../_/border-radiuses";
+@import "../../_/transitions";
+
+
+#todo-add #add {
+  padding: $indent020 $indent080;
+  position: fixed;
+  bottom: 1rem;  /* 16px */
+  right: 1rem;  /* 16px */
+  @include button-full();
+  @include border-radius-full();
+  opacity: 0.75;
+  @include transition-delay-75-duration-150(color background-color);
+
+  &:hover {
+    @include button-empty();
+  }
+}
