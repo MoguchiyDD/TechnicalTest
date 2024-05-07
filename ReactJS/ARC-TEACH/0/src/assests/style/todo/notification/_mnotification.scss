@@ -1,0 +1,32 @@
+@import "../../_/media";
+@import "../../_/sizes";
+
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  #todo-notification p {
+    @include text-base();
+  }
+}
+
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  #todo-notification p {
+    @include text-lg();
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #todo-notification p {
+    @include text-xl();
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  #todo-notification p {
+    @include text-2xl();
+  }
+}
