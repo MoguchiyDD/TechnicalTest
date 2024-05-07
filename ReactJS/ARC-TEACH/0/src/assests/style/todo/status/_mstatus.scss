@@ -1,0 +1,107 @@
+@import "../../_/media";
+@import "../../_/indents";
+@import "../../_/sizes";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  .filter .todo-status {  /* Filter */
+    flex-direction: column;
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  .filter .todo-status {  /* Filter */
+    flex-direction: row;
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  .filter {  /* Filter */
+    padding: $indent050;  /* 8px */
+    align-items: flex-start;
+
+    .todo-status .title {  /* Title Status */
+      @include text-sm();
+    }
+  }
+
+  label.switch {  /* Toggle Button */
+    height: 16px;
+    width: 32px;
+
+    &:after {
+      height: 10.5px;
+      width: 10.5px;
+    }
+    &:active:after {
+      width: 16px;
+    }
+  }
+}
+
+/* --- ~ > 768px --- */
+@media screen and (min-width: $media768) {
+  label.switch {  /* Toggle Button */
+    height: 22px;
+    width: 44px;
+
+    &:after {
+      height: 16.5px;
+      width: 16.5px;
+    }
+    &:active:after {
+      width: 22px;
+    }
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  .filter {  /* Filter */
+    .todo-status .title {  /* Title Status */
+      @include text-base();
+    }
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (min-width: $media768) {
+  .filter {  /* Filter */
+    padding: $indent100;  /* 16px */
+    flex-direction: column;
+    align-items: flex-end;
+
+    .todo-status {
+      margin-bottom: $indent100;  /* 16px */
+
+      &:last-of-type {
+        margin-bottom: $indent000;  /* 0px */
+      }
+      .title {  /* Title Status */
+        @include text-sm();
+      }
+    }
+
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  .filter {  /* Filter */
+    .todo-status .title {  /* Title Status */
+      @include text-lg();
+    }
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  .filter {  /* Filter */
+    .todo-status .title {  /* Title Status */
+      @include text-xl();
+    }
+  }
+}
