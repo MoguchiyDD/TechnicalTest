@@ -1,0 +1,61 @@
+@import "_/media";
+@import "_/indents";
+@import "_/colors";
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body, h1, p {
+  margin: $indent000;  /* 0px */
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: $darkPrimaryMain;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+article > * + * {
+  margin-top: $indent100;  /* 16px */
+}
+
+input, button, textarea {
+  font: inherit;
+}
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  main {
+    padding: $indent100;  /* 16px */
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  main {
+    padding: $indent200;  /* 32px */
+  }
+}
