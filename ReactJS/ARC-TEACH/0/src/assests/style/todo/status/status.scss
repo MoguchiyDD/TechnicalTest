@@ -1,0 +1,66 @@
+@import "./mstatus";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+@import "../../_/border-radiuses";
+
+
+/* --------------- Filter ---------------- */
+
+.filter {
+  background-color: $darkPrimaryBlocks;
+  display: flex;
+  justify-content: space-evenly;
+  @include border-radius-025();
+
+  .todo-status {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .title {  /* Title Status */
+      color: $darkText100;
+    }
+  }
+}
+
+/* --------------------------------------- */
+
+
+/* ------------ Toggle Button ------------ */
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label.switch {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  text-indent: -9999px;
+  background-color: $darkPrimaryToggleBackground;
+  @include border-radius-full();
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    background-color: $darkText100;
+    @include border-radius-full();
+    transition: 0.3s;
+  }
+}
+
+input:checked + label.switch {
+  background-color: $darkSecondaryMain;
+
+  &:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
+}
+
+/* --------------------------------------- */
