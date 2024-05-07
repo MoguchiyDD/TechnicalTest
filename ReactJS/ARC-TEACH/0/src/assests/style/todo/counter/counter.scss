@@ -1,0 +1,28 @@
+@import "./mcounter";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+@import "../../_/border-radiuses";
+
+
+/* ------------ Total ------------ */
+
+#todo-counter-status {
+  display: grid;
+  gap: $indent100;  /* 16px */
+
+  p {
+    padding: $indent050;  /* 8px */
+    text-align: center;
+    font-weight: bold;
+    color: $darkText100;
+    background-color: $darkSecondaryMain;
+    @include border-radius-025();
+
+    span {
+      font-weight: normal;
+    }
+  }
+}
+
+/* ------------------------------- */
