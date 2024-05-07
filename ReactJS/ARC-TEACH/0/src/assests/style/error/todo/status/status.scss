@@ -1,0 +1,7 @@
+@import "./mstatus";
+@import "../../../_/colors";
+
+
+p#error-status {
+  color: $darkText100;
+}
