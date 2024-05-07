@@ -1,0 +1,69 @@
+@import "../../../_/media";
+@import "../../../_/indents";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  .skeleton-todo-card {
+    .skeleton-card-title-status {
+      .skeleton-card-title, .skeleton-card-status {
+        height: 1.75rem;  /* 28px */
+      }
+    }
+    .skeleton-card-description {
+      height: 6rem;  /* 96px */
+    }
+    .skeleton-card-btns {
+      flex-direction: column;
+
+      .skeleton-card-btn {
+        width: 100%;
+        height: 2rem;  /* 48px */
+
+        &:nth-of-type(1) {
+          margin-bottom: $indent075;  /* 12px */
+        }
+      }
+    }
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  .skeleton-todo-card {
+    .skeleton-card-title-status {
+      .skeleton-card-title, .skeleton-card-status {
+        height: 2rem;  /* 32px */
+      }
+    }
+    .skeleton-card-description {
+      height: 8.75rem;  /* 140px */
+    }
+    .skeleton-card-btns {
+      flex-direction: row;
+
+      .skeleton-card-btn {
+        width: 30%;
+        height: 2.5rem;  /* 40px */
+
+        &:nth-of-type(1) {
+          margin-bottom: $indent075;  /* 12px */
+        }
+      }
+    }
+  }
+}
+
+/* --- ~ < 1536px --- */
+@media screen and (max-width: $media1536) {
+  .skeleton-todo-card {
+    padding: $indent100 !important;  /* 16px */
+  }
+}
+
+/* --- ~ > 1536px --- */
+@media screen and (min-width: $media1536) {
+  .skeleton-todo-card {
+    padding: $indent150 !important;  /* 24px */
+  }
+}
