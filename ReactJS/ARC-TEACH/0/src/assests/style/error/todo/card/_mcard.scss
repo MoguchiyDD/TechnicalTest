@@ -1,0 +1,39 @@
+@import "../../../_/media";
+@import "../../../_/indents";
+@import "../../../_/sizes";
+
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  p#error-todo-card {
+    @include text-base();
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  p#error-todo-card {
+    @include text-lg();
+  }
+}
+
+/* --- ~ < 1536px --- */
+@media screen and (min-width: $media1536) {
+  p#error-todo-card {
+    padding: $indent150 !important;  /* 24px */
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  p#error-todo-card {
+    @include text-xl();
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  p#error-todo-card {
+    @include text-2xl();
+  }
+}
