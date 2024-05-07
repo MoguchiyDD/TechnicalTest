@@ -1,0 +1,12 @@
+@import "./mcard";
+@import "../../../_/indents";
+@import "../../../_/colors";
+@import "../../../_/border-radiuses";
+
+
+p#error-todo-card {
+  padding: $indent100;  /* 16px */
+  color: $darkText100;
+  background-color: $darkPrimaryBlocks;
+  @include border-radius-025();
+}
