@@ -1,0 +1,151 @@
+@import "./mmodal_window";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+@import "../../_/buttons";
+@import "../../_/border-radiuses";
+@import "../../_/transitions";
+
+
+/* ------------ Modal Window ------------- */
+
+#main-modal-window {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background-color: $darkPrimaryMain06;
+  overflow: hidden;
+
+  #modal-window {
+    margin: $autoIndent300;  /* 48px auto */
+    padding: $indent100;  /* 16px */
+    background-color: $darkPrimaryBlocks;
+    @include border-radius-025();
+
+    &-header {
+      padding: $indent025;  /* 4px */
+      padding-bottom: $indent050;  /* 8px */
+      font-weight: bold;
+      color: $darkText100;
+      border-bottom: 1px solid $darkText300;
+    }
+
+    &-content {
+      margin-top: $indent100;  /* 16px */
+      overflow: scroll;
+
+      #content-status {
+        margin-bottom: $indent075;  /* 12px */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        label {
+          color: $darkText300;
+        }
+
+        input[type="range"] {
+          cursor: pointer;
+          height: 1rem;  /* 16px */
+          width: 60%;
+          -webkit-appearance: none;
+          appearance: none; 
+          outline: none;
+          overflow: hidden;
+          border-radius: 16px;
+        }
+        
+        /* Track: webkit browsers */
+        input[type="range"]::-webkit-slider-runnable-track {
+          height: 1rem;  /* 16px */
+          background-color: $darkPrimaryToggleBackground;
+          border-radius: 1rem;  /* 16px */
+        }
+        
+        /* Track: Mozilla Firefox */
+        input[type="range"]::-moz-range-track {
+          height: 1rem;  /* 16px */
+          background-color: $darkPrimaryToggleBackground;
+          border-radius: 1rem;  /* 16px */
+        }
+        
+        /* Thumb: webkit */
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none; 
+          height: 1rem;  /* 16px */
+          width: 1rem;  /* 16px */
+          background-color: $darkText100;
+          border-radius: 50%;
+          border: 2px solid $darkSecondaryMain;
+          box-shadow: -407px 0 0 400px $darkSecondaryMain;
+        }
+
+        /* Thumb: Firefox */
+        input[type="range"]::-moz-range-thumb {
+          height: 1rem;  /* 16px */
+          width: 1rem;  /* 16px */
+          background-color: $darkText100;
+          border-radius: 50%;
+          border: 1px solid $darkSecondaryMain;
+          box-shadow: -407px 0 0 400px $darkSecondaryMain;
+        }
+      }
+
+      #content-title, #content-description {
+        margin-bottom: $indent075;  /* 12px */
+        display: flex;
+        flex-direction: column;
+
+        label {
+          color: $darkText300;
+        }
+
+        input[type=text], textarea {
+          padding: $indent025 $indent050;  /* 4px 8px */
+          color: $darkTextBlack;
+          border: 1px solid $darkPrimaryBlocks;
+          outline: 1px solid $darkPrimaryBlocks;
+          @include border-radius-025();
+
+          &:focus, &:focus-visible {
+            border: 1px solid $darkSecondaryMain;
+            outline: 1px solid $darkSecondaryMain;
+          }
+        }
+      }
+
+      #content-description {
+        textarea {
+          height: 10rem;  /* 160px */
+          resize: none;
+          @include border-radius-025();
+        }
+      }
+    }
+
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        margin-top: $indent100;  /* 16px */
+        padding: $indent0375;  /* 6px */
+        font-weight: bold;
+        @include border-radius-025();
+        @include button-full();
+        @include transition-delay-75-duration-150(color background-color);
+
+        &:hover {
+          @include button-empty();
+        }
+      }
+    }
+  }
+}
+
+/* --------------------------------------- */
