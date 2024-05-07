@@ -1,0 +1,216 @@
+@import "../../_/media";
+@import "../../_/indents";
+@import "../../_/sizes";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  .todo-card .card-btns {  /* Cards */
+    flex-direction: column;
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  .todo-card .card-btns {  /* Cards */
+    flex-direction: row;
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  body, #todo-block {  /* Main */
+    width: 100%;
+  }
+  #todo-block #title {
+    margin-bottom: $indent125;  /* 20px */
+    @include text-5xl();
+  }
+
+  #todo {  /* Total */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    #status {
+      grid-row: 1;
+    }
+    #list {
+      grid-row: 2;
+    }
+  }
+
+  .todo-card {  /* Cards */
+    .card-title-status {  /* Titles && Statuses */
+      .card-title {  /* Titles */
+        @include text-lg();
+      }
+      .card-status {  /* Statuses */
+        @include text-xs();
+      }
+    }
+    .card-description {  /* Descriptions */
+      @include text-xs();
+    }
+    .card-btns {
+      .edit, .del {
+        @include text-base();
+      }
+    }
+  }
+}
+
+/* --- ~ > 768px --- */
+@media screen and (min-width: $media768) {
+  #todo-block #title {  /* Main */
+    margin-bottom: $indent150;  /* 24px */
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  #todo-block #title {  /* Main */
+    @include text-6xl();
+  }
+
+  .todo-card {  /* Cards */
+    .card-title-status {  /* Titles && Statuses */
+      .card-title {  /* Titles */
+        @include text-xl();
+      }
+      .card-status {  /* Statuses */
+        @include text-sm();
+      }
+    }
+    .card-description {  /* Descriptions */
+      @include text-sm();
+    }
+    .card-btns {
+      .edit, .del {
+        @include text-base();
+      }
+    }
+  }
+}
+
+/* --- 768px < 1024px --- */
+@media screen and (min-width: $media768) and (max-width: $media1024) {
+  body, #todo-block {  /* Main */
+    width: 90%;
+  }
+}
+
+/* --- 768px < 1280px --- */
+@media screen and (min-width: $media768) and (max-width: $media1280) {
+  #todo {  /* Total */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: end;
+
+    #status {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    #list {
+      grid-column: 2/4;
+      grid-row: 1;
+    }
+  }
+}
+
+/* --- 1024px < 1280px --- */
+@media screen and (min-width: $media1024) and (max-width: $media1280) {
+  body, #todo-block {  /* Main */
+    width: 75%;
+  }
+}
+
+/* --- ~ < 1280px --- */
+@media screen and (max-width: $media1280) {
+  .todo-card .card-btns {  /* Cards */
+    gap: $indent075;  /* 12px */
+
+    .edit, .del {
+      width: 100%;
+    }
+  }
+}
+
+/* --- ~ > 1280px --- */
+@media screen and (min-width: $media1280) {
+  body, #todo-block {  /* Main */
+    width: 60%;
+  }
+
+  #todo {  /* Total */
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    #status {
+      grid-column: 1/4;
+    }
+    #list {
+      grid-column: 4/13;
+    }
+  }
+
+  .todo-card .card-btns {  /* Cards */
+    .edit, .del {
+      width: 35%;
+    }
+  }
+}
+
+/* --- ~ < 1536px --- */
+@media screen and (min-width: $media1536) {
+  .todo-card {  /* Cards */
+    padding: $indent150 !important;  /* 24px */
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #todo-block #title {  /* Main */
+    @include text-7xl();
+  }
+
+  .todo-card {  /* Cards */
+    .card-title-status {  /* Titles && Statuses */
+      .card-title {  /* Titles */
+        @include text-2xl();
+      }
+      .card-status {  /* Statuses */
+        @include text-base();
+      }
+    }
+    .card-description {  /* Descriptions */
+      @include text-base();
+    }
+    .card-btns {
+      .edit, .del {
+        @include text-lg();
+      }
+    }
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  #todo-block #title {  /* Main */
+    @include text-8xl();
+  }
+
+  .todo-card {  /* Cards */
+    .card-title-status {  /* Titles && Statuses */
+      .card-title {  /* Titles */
+        @include text-3xl();
+      }
+      .card-status {  /* Statuses */
+        @include text-lg();
+      }
+    }
+    .card-description {  /* Descriptions */
+      @include text-lg();
+    }
+    .card-btns {
+      .edit, .del {
+        @include text-xl();
+      }
+    }
+  }
+}
