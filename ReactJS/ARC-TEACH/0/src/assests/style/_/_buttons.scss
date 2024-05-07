@@ -1,0 +1,14 @@
+@import "../_/colors";
+
+
+@mixin button-full() {
+  color: $darkText100;
+  background-color: $darkSecondaryMain;
+  border: 1.3px solid $darkSecondaryMain;
+}
+
+@mixin button-empty() {
+  color: $darkSecondaryMain;
+  background-color: transparent;
+  border: 1.3px solid $darkSecondaryMain;
+}
