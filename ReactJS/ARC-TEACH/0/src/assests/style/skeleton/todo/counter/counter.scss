@@ -1,0 +1,24 @@
+@import "./mcounter";
+@import "../../../_/indents";
+@import "../../../_/colors";
+@import "../../../_/border-radiuses";
+@import "../../../_/animations";
+
+
+#skeleton-todo-counter-status {
+  margin-bottom: $indent100;  /* 16px */
+  display: grid;
+  gap: $indent100;  /* 16px */
+
+  #skeleton-counter-status {
+    background: $darkSecondaryMain;
+    @include border-radius-025();
+    @include animation-pulse();
+
+    @for $i from 1 through 3 {
+      ul:nth-of-type(#{$i}) {
+        grid-column: #{$i};
+      }
+    }
+  }
+}

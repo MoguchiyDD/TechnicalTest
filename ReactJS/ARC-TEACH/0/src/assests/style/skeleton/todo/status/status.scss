@@ -1,0 +1,16 @@
+@import "./mstatus";
+@import "../../../_/indents";
+@import "../../../_/colors";
+@import "../../../_/border-radiuses";
+@import "../../../_/animations";
+
+
+#skeleton-status {
+  background-color: $darkPrimaryToggleBackground;
+  @include border-radius-025();
+  @include animation-pulse();
+
+  &:nth-of-type(3) {
+    margin-bottom: $indent000;  /* 0px */
+  }
+}

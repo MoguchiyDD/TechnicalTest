@@ -1,0 +1,61 @@
+@import "../../_/media";
+@import "../../_/indents";
+@import "../../_/sizes";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  #todo-counter-status {  /* Total */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  
+    p:last-of-type {
+      margin-bottom: $indent100;  /* 16px */
+    }
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  #todo-counter-status {  /* Total */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  
+    p {
+      margin-bottom: $indent100;  /* 16px */
+    }
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  #todo-counter-status p {  /* Total */
+    @include text-sm();
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  #todo-counter-status p {  /* Total */
+    @include text-base();
+  }
+}
+
+/* --- 1536px > 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #todo-counter-status p {  /* Total */
+    @include text-lg();
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #todo-counter-status p {  /* Total */
+    @include text-lg();
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  #todo-counter-status p {  /* Total */
+    @include text-xl();
+  }
+}

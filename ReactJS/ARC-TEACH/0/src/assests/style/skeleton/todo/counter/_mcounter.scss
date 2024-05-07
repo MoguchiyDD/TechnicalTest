@@ -1,0 +1,30 @@
+@import "../../../_/media";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  #skeleton-todo-counter-status {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* --- ~ > 640px --- */
+@media screen and (min-width: $media640) {
+  #skeleton-todo-counter-status {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  #skeleton-counter-status {
+    height: 2rem;  /* 32px */
+  }
+}
+
+/* --- ~ > 768px --- */
+@media screen and (min-width: $media768) {
+  #skeleton-counter-status {
+    height: 2.75rem;  /* 44px */
+  }
+}

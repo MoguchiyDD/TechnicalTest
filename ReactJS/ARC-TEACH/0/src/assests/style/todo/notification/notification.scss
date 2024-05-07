@@ -1,0 +1,19 @@
+@import "./mnotification";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+
+
+#todo-notification {
+  z-index: 1;
+  width: 100%;
+  padding: $indent100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  color: $darkText100;
+  font-weight: bold;
+  text-align: center;
+  background-color: $darkSecondaryMain;
+}

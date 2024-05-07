@@ -1,0 +1,38 @@
+@import "../../../_/media";
+@import "../../../_/sizes";
+
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  p#error-status {
+    @include text-sm();
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  p#error-status {
+    @include text-base();
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (min-width: $media768) {
+  p#error-status {
+    @include text-sm();
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  p#error-status {
+    @include text-lg();
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  p#error-status {
+    @include text-xl();
+  }
+}
