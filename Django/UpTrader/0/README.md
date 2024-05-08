@@ -1,5 +1,5 @@
 # Django/UpTrader
-**BackEnd** + **FrontEnd**. Create and Edit a submenu through the database.
+**FullStack**. Create and Edit a submenu through the database
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
