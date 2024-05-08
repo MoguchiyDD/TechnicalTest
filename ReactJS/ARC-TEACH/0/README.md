@@ -1,4 +1,4 @@
-# ReactJS/ARC-TEACH
+# ReactJS/ARC TEACH
 **FrontEnd**. Creating a todo list with the current status and the ability to add, edit and delete todos from the list
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
