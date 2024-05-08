@@ -34,7 +34,7 @@ This repository stores all completed Technical Tests
 - **ARC TEACH** (once : *ReactJS* + *Redux Toolkit* + *SCSS*)
 - **DaniKo** (once : *NestJS* + *React Flow* + *whatsapp-web.js* + *Mongoose* + *Cache with Redis* + *Docker Compose*)
 - **DEMETRA SYSTEMS** (once : *NestJS* + *TypeORM* + *Bull with Redis* + *Cache with Redis* + *Axios* + *Docker Compose*)
-- **GREEN-API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
+- **GREEN API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
 - **SIMUComp** (once : *Python* + *Kivy*)
 - **Tangem** (once : *ReactJS* + *SCSS*)
 - **UpTrader** (once : *Python* + *Django* + *SQLite3* + *CSS*)
