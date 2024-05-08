@@ -1,5 +1,5 @@
 # ReactJS/Valantis
-**FrontEnd**. Store design with a filter for product names, prices and brands using the API from the Valantis company.
+**FrontEnd**. Store design with a filter for product names, prices and brands using the API from the Valantis company
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
