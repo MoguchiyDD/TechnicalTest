@@ -1,5 +1,5 @@
 # NestJS/DaniKo
-**ChatBot** + **FrontEnd**. Creating a chat bot in WhatsApp, and also displaying the progress of the WhatsApp chat bot using React Flow.
+**ChatBot** + **FrontEnd**. Creating a chat bot in WhatsApp, and also displaying the progress of the WhatsApp chat bot using React Flow
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
