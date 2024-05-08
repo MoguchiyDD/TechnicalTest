@@ -1,5 +1,5 @@
 # ReactJS/Tangem
-**FrontEnd**. Design of the top and bottom label «Black Friday».
+**FrontEnd**. Design of the top and bottom label «Black Friday». The bottom label appears when the top label disappears; if you close the bottom label, then after reloading the page the bottom label does not appear at all
 
 The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 
