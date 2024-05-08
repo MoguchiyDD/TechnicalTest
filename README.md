@@ -1,2 +1,0 @@
-# TechnicalTest
-Technical Test
