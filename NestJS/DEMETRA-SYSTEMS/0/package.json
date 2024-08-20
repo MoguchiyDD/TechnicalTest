@@ -32,6 +32,7 @@
     "@nestjs/typeorm": "^10.0.1",
     "argon2": "^0.31.2",
     "axios": "^1.6.2",
+    "braces": "3.0.3",
     "bull": "^4.11.5",
     "cache-manager": "^5.3.1",
     "cache-manager-redis-store": "^3.0.1",
