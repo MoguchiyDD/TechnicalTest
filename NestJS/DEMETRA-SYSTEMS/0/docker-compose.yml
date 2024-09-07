@@ -1,19 +1,21 @@
 version: "3.8"
 services:
+
   database:
     image: postgres:13
     container_name: db
     restart: always
     ports:
-      - 5434:5432
+      - ${DATABASE_PORT}:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 2023
-      POSTGRES_DB: nestjs
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DB}
     volumes:
       - postgres:/var/lib/postgresql/data
     networks:
       - nestjs-demetra-systems-zero
+
   adminer:
     image: adminer:latest
     container_name: adminer-db
@@ -22,13 +24,15 @@ services:
       - 8080:8080
     networks:
       - nestjs-demetra-systems-zero
+
   redis:
     image: redis:latest
     container_name: redis
     ports:
-      - 6380:6379
+      - ${REDIS_PORT}:6379
     networks:
       - nestjs-demetra-systems-zero
+
 networks:
   nestjs-demetra-systems-zero:
     driver: bridge
