@@ -17,6 +17,9 @@
   </a>
   <img alt="Started & Finished" src="https://img.shields.io/badge/Date/Time-~3 Days-F9A825?style=for-the-badge" />
   <img alt="Language" src="https://img.shields.io/badge/Language-English-00897b?style=for-the-badge" />
+  <a href="https://www.youtube.com/watch?v=4eFVjsAiVXo&list=PLe25Qgw2EMXArcVUY3pRjxn2shc-hLmXT&index=1" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
+  </a>
 </div>
 
 ## Steps before launch
