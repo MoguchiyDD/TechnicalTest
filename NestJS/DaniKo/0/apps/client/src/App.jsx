@@ -223,35 +223,35 @@ const initialEdges = [
   { id: '1-2', source: '1', target: '2', type: 'step' },  // /консультация
   { id: '2-3', source: '2', target: '3', type: 'step' },  // /созвонимся
   { id: '2-4', source: '2', target: '4', type: 'step' },  // /спишемся
-  { id: '3-5', source: '3', target: '5', type: 'step' },  // /да-изменить || /не-изменять
-  { id: '4-5', source: '4', target: '5', type: 'step' },  // /да-изменить || /не-изменять
+  { id: '3-5', source: '3', target: '5', type: 'step' },  // вопрос с вариантами /да-изменить || /не-изменять
+  { id: '4-5', source: '4', target: '5', type: 'step' },  // вопрос с вариантами /да-изменить || /не-изменять
   { id: '5-6', source: '5', target: '6', type: 'step' },  // /да-изменить
   { id: '5-7', source: '5', target: '7', type: 'step' },  // /не-изменять
-  { id: '6-8', source: '6', target: '8', type: 'step' },
+  { id: '6-8', source: '6', target: '8', type: 'step' },  // вопрос о номере телефона (после /да-изменить )
   { id: '8-9', source: '8', target: '9', type: 'step' },  // <номер-телефона-пользователя>
-  { id: '9-10', source: '9', target: '10', type: 'step' },
-  { id: '7-10', source: '7', target: '10', type: 'step' },
+  { id: '9-10', source: '9', target: '10', type: 'step' },  // вопрос с фио (после /да-изменить )
+  { id: '7-10', source: '7', target: '10', type: 'step' },  // вопрос с фио (после /не-изменять)
   { id: '10-11', source: '10', target: '11', type: 'step' },  // <полное-имя-пользователя>
-  { id: '11-12', source: '11', target: '12', label: '/созвонимся', type: 'step' },  // <полное-имя-пользователя>
-  { id: '11-13', source: '11', target: '13', label: '/спишемся', type: 'step' },
+  { id: '11-12', source: '11', target: '12', label: "/созвонимся", type: 'step' },  // <полное-имя-пользователя> (итог)
+  { id: '11-13', source: '11', target: '13', label: '/спишемся', type: 'step' },  // вопрос о том, какой по нужно пользователю
   { id: '13-14', source: '13', target: '14', type: 'step' },  // /сайт
-  { id: '14-15', source: '14', target: '15', type: 'step' },
+  { id: '14-15', source: '14', target: '15', type: 'step' },  // вопрос о теме вебсайта
   { id: '13-16', source: '13', target: '16', type: 'step' },  // /по
-  { id: '16-17', source: '16', target: '17', type: 'step' },
+  { id: '16-17', source: '16', target: '17', type: 'step' },  // вопрос с вариантами /по-настольное || /по-мобильное
   { id: '17-18', source: '17', target: '18', type: 'step' },  // /по-настольное
   { id: '17-19', source: '17', target: '19', type: 'step' },  // /по-мобильное
-  { id: '18-20', source: '18', target: '20', type: 'step' },
-  { id: '19-20', source: '19', target: '20', type: 'step' },
+  { id: '18-20', source: '18', target: '20', type: 'step' },  // вопрос о теме по (после /по-настольное)
+  { id: '19-20', source: '19', target: '20', type: 'step' },  // вопрос о теме по (после /по-мобильное)
   { id: '13-21', source: '13', target: '21', type: 'step' },  // /игра
-  { id: '21-22', source: '21', target: '22', type: 'step' },
+  { id: '21-22', source: '21', target: '22', type: 'step' },  // вопрос с вариантами /игра-настольная || /игра-мобильная
   { id: '22-23', source: '22', target: '23', type: 'step' },  // /игра-настольная
   { id: '22-24', source: '22', target: '24', type: 'step' },  // /игра-мобильная
-  { id: '23-25', source: '23', target: '25', type: 'step' },
-  { id: '24-25', source: '24', target: '25', type: 'step' },
-  { id: '15-26', source: '15', target: '26', type: 'step' },  // <описание>
-  { id: '20-26', source: '20', target: '26', type: 'step' },  // <описание>
-  { id: '25-26', source: '25', target: '26', type: 'step' },  // <описание>
-  { id: '26-27', source: '26', target: '27', type: 'step' },  // END : /спишемся
+  { id: '23-25', source: '23', target: '25', type: 'step' },  // вопрос о теме по (после /игра-настольное)
+  { id: '24-25', source: '24', target: '25', type: 'step' },  // вопрос о теме по (после /игра-мобильное)
+  { id: '15-26', source: '15', target: '26', type: 'step' },  // <описание> (после темы вебсайта)
+  { id: '20-26', source: '20', target: '26', type: 'step' },  // <описание> (после темы по)
+  { id: '25-26', source: '25', target: '26', type: 'step' },  // <описание> (после темы игры)
+  { id: '26-27', source: '26', target: '27', type: 'step' },  // итог после выбора /спишемся
 ];
  
 export default function App() {
