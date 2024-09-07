@@ -4,9 +4,7 @@
   "description": "Open «./README.md» file",
   "author": "МогучийДД (MoguchiyDD)",
   "license": "MIT",
-  "devDependencies": {
-    "turbo": "^1.11.1"
-  },
+  "private": true,
   "scripts": {
     "doc:up": "docker compose up -d",
     "doc:rm": "docker compose rm mongodb -s -f -v && docker compose rm mongo-express -s -f -v && docker compose rm redis -s -f -v",
