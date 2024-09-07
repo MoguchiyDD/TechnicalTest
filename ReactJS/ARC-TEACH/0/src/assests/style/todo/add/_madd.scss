@@ -1,0 +1,32 @@
+@import "../../_/media";
+@import "../../_/indents";
+@import "../../_/sizes";
+
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  #todo-add #add {
+    @include text-2xl();
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  #todo-add #add {
+    @include text-3xl();
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #todo-add #add {
+    @include text-4xl();
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  #todo-add #add {
+    @include text-5xl();
+  }
+}

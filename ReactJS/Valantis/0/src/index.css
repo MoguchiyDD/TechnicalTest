@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ------------ INPUT RANGE ------------ */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 28px;
+  border-radius: 5px;
+  background: linear-gradient(to right, rgb(37 99 235) 0%, rgb(37 99 235) 0%, rgb(191 219 254) 0%, rgb(191 219 254) 100%);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgb(37 99 235);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgb(37 99 235);
+  cursor: pointer;
+}
+
+/* ------------------------------------- */
+
+
+/* ------------- SCROLLBAR ------------- */
+
+/* BODY */
+body {
+  scrollbar-width: 5px;
+  scrollbar-color: rgb(37 99 235) rgb(241 245 249);
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: rgb(241 245 249);
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgb(37 99 235);
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb:hover  {
+  background: rgb(37 99 235);
+}
+
+/* FILTER BRAND */
+div#shop-brand-scroll {
+  scrollbar-width: 5px;
+  scrollbar-color: rgb(156 163 175) white;
+}
+div#shop-brand-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+div#shop-brand-scroll::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 5px;
+}
+div#shop-brand-scroll::-webkit-scrollbar-thumb {
+  background: rgb(156 163 175);
+  border-radius: 5px;
+}
+div#shop-brand-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(156 163 175);
+}
+
+/* ------------------------------------- */

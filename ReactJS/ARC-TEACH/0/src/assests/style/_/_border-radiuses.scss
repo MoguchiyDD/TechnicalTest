@@ -1,0 +1,7 @@
+@mixin border-radius-full() {
+  border-radius: 9999px;
+}
+
+@mixin border-radius-025() {
+  border-radius: 0.25rem;  /* 4px */
+}

@@ -1,0 +1,173 @@
+<ContentLogoutScreen>:
+    size_hint: (1, 1)
+
+    # Activate && Menu
+    GridLayout:
+        cols: 2
+        spacing: 3
+
+        # Activate
+        BoxLayout:
+            size_hint: (None, None)
+            width: 816
+            height: 32
+            pos_hint: {"y": 0.99}
+            canvas:
+                Color:
+                    rgba: (0.380, 0.380, 0.380, 1)  # 616161
+                Rectangle:
+                    size: self.size
+                    pos: (0, 490)
+
+            MDLabel:
+                id: content_logout_activate_title
+                halign: "center"
+                font_style: "H6"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                pos_hint: {"y": 15.3}
+
+        # Menu
+        GridLayout:
+            rows: 8
+            size_hint: (1, 1)
+            # pos_hint: {"x": 0.865}
+            padding: [0, 9, 0, 0]
+            spacing: 3
+
+            # INSTALATTION
+            Button:
+                id: content_installation_btn
+                text: "Установки"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_installation"
+
+            # UPDATE
+            Button:
+                id: content_update_btn
+                text: "Обновление"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_update"
+
+            # LICENSES
+            Button:
+                id: content_licenses_btn
+                text: "Лицензии"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_licenses"
+
+            # NETWORK
+            Button:
+                id: content_network_btn
+                text: "Сеть"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_network"
+
+            # BLUETOOTH
+            Button:
+                id: content_bluetooth_btn
+                text: "Bluetooth"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_bluetooth"
+
+            Button:
+                size_hint: (None, 1)
+                width: 130
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_disabled_normal: ""
+                disabled: True
+
+            # LOGOUT
+            Button:
+                id: content_logout_btn
+                text: "Выход"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                bold: True
+                color: (0.129, 0.129, 0.129, 1)  # 212121
+                background_color: (0.960, 0.468, 0, 1)  # F57C00
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_logout"
+
+            # ABOUT
+            Button:
+                id: content_about_btn
+                text: "Об Компании"
+                size_hint: (None, None)
+                width: 130
+                height: 45
+                font_size: "17sp"
+                color: (0.980, 0.980, 0.980, 0.980)  # FAFAFA
+                background_color: (0.380, 0.380, 0.380, 1)  # 616161
+                background_normal: ""
+                background_down: ""
+                on_press:
+                    root.manager.transition.direction = "up"
+                    root.manager.current = "content_about"
+
+    # Content
+    BoxLayout:
+        size_hint: (None, None)
+        width: 816
+        height: 486
+        canvas:
+            Color:
+                rgba: (0.878, 0.878, 0.878, 1)  # E0E0E0
+            Rectangle:
+                size: self.size
+                pos: (0, 0)
+        
+        MDLabel:
+            text: "Типа, что-то поистине крутатенское"
+            halign: "center"
+            font_style: "Body1"
+            color: (0.129, 0.129, 0.129, 1)  # 212121

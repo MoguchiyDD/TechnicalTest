@@ -1,0 +1,631 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: MIT License which is located in the text file LICENSE
+
+Goal: Stylize OBJECT of SURPRISE MEDIA
+Result: Stylized OBJECT of SURPRISE MEDIA
+
+Past Modification: Adaptation for ALL Screens (BUTTON CLOSE)
+Last Modification: Adaptation for ALL BROWSERS
+Modification Date: 2024.01.02, 12:40 AM
+
+Create Data: 2023.12.30, 07:03 PM
+*/
+
+
+// ---------------- 320 ----------------
+
+@media screen and (min-width: map-get($screen, D320)) {
+
+  // TOP
+  .surprise-top {
+    @include positionTopLeftRight(absolute, 1em, 0em, 0em);
+
+    #btn {
+      margin-right: map-get($indentations, "one-margin");
+      color: rgba(HexToRGB(map-get($colors, "light-gray")), 0.4);
+      background: transparent;
+      border: 0px;
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    #right {
+      @include positionBottomRight(absolute, 2em, 1.2em);
+    }
+  }
+}
+
+// -------------------------------------
+
+// ------------- 320 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D320)) and (max-width: map-get($screen, D575)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-one-rbl-margin");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 320 — 359 -------------
+
+@media screen and (min-width: map-get($screen, D320)) and (max-width: map-get($screen, D359)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 29px);
+
+    p {
+      padding-left: calc(map-get($width, "D320-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D320-surprise-top-p-padding"));
+      font-size: map-get($size, "320-p");
+    }
+
+    #btn {
+      width: map-get($width, "D320-surprise-top-btn");
+      font-size: map-get($size, "320-text");
+    }
+
+    img {
+      width: map-get($width, "D320-surprise-top-img");
+      @include positionTopLeft(absolute, -24px, -17px);
+      clip: rect(24px, 120px, 53px, 17px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D320-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "320-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "320-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D320-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "320-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D320-surprise-bottom-btn");
+      padding: map-get($indentations, "D320-surprise-bottom-btn-padding");
+      font-size: map-get($size, "320-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "320-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 360 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D360)) and (max-width: map-get($screen, D575)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 41px);
+
+    p {
+      padding-left: calc(map-get($width, "D360-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D360-surprise-top-p-padding"));
+      font-size: map-get($size, "360-p");
+    }
+
+    #btn {
+      width: map-get($width, "D360-surprise-top-btn");
+      font-size: map-get($size, "360-text");
+    }
+
+    img {
+      width: map-get($width, "D360-surprise-top-img");
+      @include positionTopLeft(absolute, -35px, -37px);
+      clip: rect(35px, 171px, 76px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D360-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "360-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "360-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D360-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "360-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D360-surprise-bottom-btn");
+      padding: map-get($indentations, "D360-surprise-bottom-btn-padding");
+      font-size: map-get($size, "360-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "360-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 360 — 480 -------------
+
+@media screen and (min-width: map-get($screen, D360)) and (max-width: map-get($screen, D480)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D360-surprise-bottom");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 480 — 575 -------------
+
+@media screen and (min-width: map-get($screen, D480)) and (max-width: map-get($screen, D575)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D480-surprise-bottom");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 576 — 1279 ------------
+
+@media screen and (min-width: map-get($screen, D576)) and (max-width: map-get($screen, D1279)) {
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-one-rb-margin");
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 576 — 767 -------------
+
+@media screen and (min-width: map-get($screen, D576)) and (max-width: map-get($screen, D767)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 46px);
+
+    p {
+      padding-left: calc(map-get($width, "D576-surprise-top-btn") + map-get($indentations, "one-margin") + map-get($indentations, "D576-surprise-top-p-padding"));
+      font-size: map-get($size, "576-p");
+    }
+
+    #btn {
+      width: map-get($width, "D576-surprise-top-btn");
+      font-size: map-get($size, "576-text");
+    }
+
+    img {
+      width: map-get($width, "D576-surprise-top-img");
+      @include positionTopLeft(absolute, -39px, -37px);
+      clip: rect(39px, 194px, 85px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D576-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D576-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "576-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D576-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "576-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D576-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "576-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D576-surprise-bottom-btn");
+      padding: map-get($indentations, "D576-surprise-bottom-btn-padding");
+      font-size: map-get($size, "576-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "576-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ---------------- 768 ----------------
+
+@media screen and (min-width: map-get($screen, D768)) {
+
+  // TOP
+  .surprise-top {
+    #btn {
+      color: map-get($colors, "text");
+      background: map-get($colors, "white");
+      border: 1px solid map-get($colors, "white");
+      border-radius: 5em;
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------- 768 — 959 -------------
+
+@media screen and (min-width: map-get($screen, D768)) and (max-width: map-get($screen, D959)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding-left: calc(map-get($width, "D768-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D768-surprise-top-p-padding"));
+      font-size: map-get($size, "768-p");
+    }
+
+    #btn {
+      width: map-get($width, "D768-surprise-top-btn");
+      padding: map-get($indentations, "D768-surprise-top-btn-padding");
+      font-size: map-get($size, "768-text");
+    }
+
+    img {
+      width: map-get($width, "D768-surprise-top-img");
+      @include positionTopLeft(absolute, -42px, -37px);
+      clip: rect(42px, 207px, 92px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D768-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "768-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "768-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D768-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "768-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D768-surprise-bottom-btn");
+      padding: map-get($indentations, "D768-surprise-bottom-btn-padding");
+      font-size: map-get($size, "768-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "768-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------ 768 — 1279 -------------
+
+@media screen and (min-width: map-get($screen, D768)) and (max-width: map-get($screen, D1279)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 50px);
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    #right {
+      @include positionBottomRight(absolute, 2.5em, 1.5em);
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------ 960 — 1279 -------------
+
+@media screen and (min-width: map-get($screen, D960)) and (max-width: map-get($screen, D1279)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding-left: calc(map-get($width, "D960-qhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D960-qhd-surprise-top-p-padding"));
+      font-size: map-get($size, "qhd-p");
+    }
+
+    #btn {
+      width: map-get($width, "D960-qhd-surprise-top-btn");
+      padding: map-get($indentations, "D960-qhd-surprise-top-btn-padding");
+      font-size: map-get($size, "qhd-text");
+    }
+
+    img {
+      width: map-get($width, "D960-qhd-surprise-top-img");
+      @include positionTopLeft(absolute, -42px, -37px);
+      clip: rect(42px, 207px, 92px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D960-qhd-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "qhd-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "qhd-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D960-qhd-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "qhd-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D960-qhd-surprise-bottom-btn");
+      padding: map-get($indentations, "D960-qhd-surprise-bottom-btn-padding");
+      font-size: map-get($size, "qhd-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "qhd-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// --------------- 1280 ----------------
+
+@media screen and (min-width: map-get($screen, D1280)) {
+
+  // TOP
+  .surprise-top {
+    @include positionTopLeftRight(absolute, 2em, 0em, 0em);
+
+    #btn {
+      margin-right: map-get($indentations, "two-margin");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    margin: map-get($indentations, "surprise-bottom-two-rb-margin");
+
+    #right {
+      @include positionBottomRight(absolute, 3em, 2em);
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------ 1280 — 1599 ------------
+
+@media screen and (min-width: map-get($screen, D1280)) and (max-width: map-get($screen, D1599)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 53px);
+
+    p {
+      padding-left: calc(map-get($width, "D1280-hd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1280-hd-surprise-top-p-padding"));
+      font-size: map-get($size, "hd-p");
+    }
+
+    #btn {
+      width: map-get($width, "D1280-hd-surprise-top-btn");
+      padding: map-get($indentations, "D1280-hd-surprise-top-btn-padding");
+      font-size: map-get($size, "hd-text");
+    }
+
+    img {
+      width: map-get($width, "D1280-hd-surprise-top-img");
+      @include positionTopLeft(absolute, -43px, -37px);
+      clip: rect(43px, 216px, 96px, 37px);
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D1280-hd-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D1280-hd-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "hd-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D1280-hd-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "hd-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D1280-hd-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "hd-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D1280-hd-surprise-bottom-btn");
+      padding: map-get($indentations, "D1280-hd-surprise-bottom-btn-padding");
+      font-size: map-get($size, "hd-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "hd-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// --------------- 1600 ----------------
+
+@media screen and (min-width: map-get($screen, D1600)) {
+
+  // TOP
+  .surprise-top {
+    @include sizeScreen(100%, 54px);
+
+    img {
+      width: map-get($width, "D1600-hdplus-surprise-top-img");
+      @include positionTopLeft(absolute, -44px, -37px);
+      clip: rect(45px, 223px, 98px, 37px);
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// ------------ 1600 — 1920 ------------
+
+@media screen and (min-width: map-get($screen, D1600)) and (max-width: map-get($screen, D1919)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding-left: calc(map-get($width, "D1600-hdplus-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1600-hdplus-surprise-top-p-padding"));
+      font-size: map-get($size, "hdplus-p");
+    }
+
+    #btn {
+      width: map-get($width, "D1600-hdplus-surprise-top-btn");
+      padding: map-get($indentations, "D1600-hdplus-surprise-top-btn-padding");
+      font-size: map-get($size, "hdplus-text");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D1600-hdplus-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "hdplus-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "hdplus-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D1600-hdplus-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "hdplus-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D1600-hdplus-surprise-bottom-btn");
+      padding: map-get($indentations, "D1600-hdplus-surprise-bottom-btn-padding");
+      font-size: map-get($size, "hdplus-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "hdplus-close");
+    }
+  }
+}
+
+// -------------------------------------
+
+
+// --------------- 1920 ----------------
+
+@media screen and (min-width: map-get($screen, D1920)) {
+
+  // TOP
+  .surprise-top {
+    p {
+      padding-left: calc(map-get($width, "D1920-fhd-surprise-top-btn") + map-get($indentations, "two-margin") + map-get($indentations, "D1920-fhd-surprise-top-p-padding"));
+      font-size: map-get($size, "fhd-p");
+    }
+
+    #btn {
+      width: map-get($width, "D1920-fhd-surprise-top-btn");
+      padding: map-get($indentations, "D1920-fhd-surprise-top-btn-padding");
+      font-size: map-get($size, "fhd-text");
+    }
+  }
+
+  // BOTTOM
+  .surprise-bottom {
+    width: map-get($width, "D1920-fhd-surprise-bottom");
+
+    p {
+      &#header {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-header-padding");
+        font-size: map-get($size, "fhd-h1");
+      }
+      &#percent {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-percent-padding");
+        font-size: map-get($size, "fhd-h2");
+      }
+      &#code {
+        padding-bottom: map-get($indentations, "D1920-fhd-surprise-bottom-p-code-padding");
+        font-size: map-get($size, "fhd-text");
+      }
+    }
+
+    #btn {
+      width: map-get($width, "D1920-fhd-surprise-bottom-btn");
+      padding: map-get($indentations, "D1920-fhd-surprise-bottom-btn-padding");
+      font-size: map-get($size, "fhd-text");
+    }
+
+    #btn-close {
+      font-size: map-get($size, "fhd-close");
+    }
+  }
+}
+
+// -------------------------------------

@@ -1,0 +1,98 @@
+@import "./mcard";
+@import "../../_/indents";
+@import "../../_/sizes";
+@import "../../_/colors";
+@import "../../_/buttons";
+@import "../../_/border-radiuses";
+@import "../../_/transitions";
+
+
+/* ------------ Main ------------- */
+
+#todo-block {
+  margin: $autoIndent000;  /* 0px */
+
+  #title {
+    font-weight: bold;
+    text-align: center;
+    color: $darkText100;
+  }
+}
+
+/* ------------------------------- */
+
+
+/* ------------ Total ------------ */
+
+#todo {
+  display: grid;
+  gap: $indent100;  /* 16px */
+
+  #list {
+    width: 100%;
+  }
+}
+
+.todo-card {  /* Cards */
+  margin-bottom: $indent100;  /* 16px */
+  padding: $indent100;  /* 16px */
+  background-color: $darkPrimaryBlocks;
+  @include border-radius-025();
+  @include transition-delay-150-duration-300(box-shadow);
+
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgb(250 250 250 / 0.1), 0 2px 4px -2px rgb(250 250 250 / 0.1);
+  }
+
+  .card-title-status {  /* Titles && Statuses */
+    margin-bottom: $indent075;  /* 12px */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-title {  /* Titles */
+      font-weight: bold;
+      color: $darkText100;
+    }
+    .card-status {  /* Statuses */
+      padding: $indent012505;  /* 2px 8px */
+      color: $darkText100;
+      background-color: $darkSecondaryMain;
+      @include border-radius-full();
+    }
+  }
+  .card-description {  /* Descriptions */
+    margin-bottom: $indent125;  /* 20px */
+    text-align: justify;
+    color: $darkText300;
+  }
+  .card-btns {
+    display: flex;
+    justify-content: space-between;
+
+    .edit, .del {
+      padding: $indent0375;  /* 6px */
+      font-weight: bold;
+      @include border-radius-025();
+      @include transition-delay-75-duration-150(color background-color);
+    }
+
+    .edit {
+      @include button-full();
+
+      &:hover {
+        @include button-empty();
+      }
+    }
+    .del {
+      @include button-empty();
+
+      &:hover {
+        @include button-full();
+      }
+    }
+  }
+}
+
+/* ------------------------------- */

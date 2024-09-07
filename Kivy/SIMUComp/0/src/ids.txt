@@ -1,0 +1,144 @@
+«models/header/header.kv»:
+	| TITLE | <LABEL> : header_title
+	| DATE | <LABEL> : header_datetime
+
+«models/content/installation/installtion.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_installation_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+	<| Content |>
+		<| DateTime, Borders && Display |>
+			<| DateTime |>
+				<| Input && Settings |>
+					| Input | <TEXTINPUT> : content_installation_datetime_input
+					| Settings | <BUTTON> : content_installation_datetime_btn
+				<| CheckBoxes : - && 24 |>
+					| - | <CHECKBOX> : content_installation_datetime_checkbox_dash
+					| 24 | <CHECKBOX> : content_installation_datetime_checkbox_24
+				<| CheckBoxes : - && 12 |>
+					| . | <CHECKBOX> : content_installation_datetime_checkbox_dot
+					| 12 | <CHECKBOX> : content_installation_datetime_checkbox_12
+			<| Borders |>
+				<| CheckBox : VERTICAL |>
+					| VERTICAL | <CHECKBOX> : content_installation_borders_checkbox_vertical
+				<| CheckBox : HORIZONTAL |>
+					| HORIZONTAL | <CHECKBOX> : content_installation_borders_checkbox_horizontal
+				<| CheckBox : LENGTH |>
+					| LENGTH | <CHECKBOX> : content_installation_borders_checkbox_length
+			<| Display |>
+				<| CheckBox : FLASH |>
+					| FLASH | <CHECKBOX> : content_installation_display_checkbox_flash
+				<| CheckBox : VNC |>
+					| VNC | <CHECKBOX> : content_installation_display_checkbox_vnc
+		<| Other |>
+			<| Buttons x4 |>
+				<| Button : DISPLAY |>
+					| DISPLAY | <BUTTON> : content_installation_other_btn_display
+				<| Button : DIAGNOSTICS |>
+					| DISPLAY | <BUTTON> : content_installation_other_btn_diagnostics
+		<| Sound |>
+			<| SWITCH && SLIDER + VALUE |>
+				<| CheckBox : SWITCH |>
+					| SWITCH | <CHECKBOX> : content_installation_sound_checkbox_switch
+				| SLIDER VALUE | <LABEL> : content_installation_sound_slider_value
+				| SLIDER | <SLIDER> : content_installation_sound_slider
+		<| Detector |>
+			<| INCLINE && SLIDER + VALUE |>
+				<| CheckBox : INCLINE |>
+					| INCLINE | <CHECKBOX> : content_installation_detector_checkbox_incline
+				| SLIDER VALUE | <LABEL> : content_installation_detector_incline_slider_value
+				| SLIDER | <SLIDER> : content_installation_detector_incline_slider
+			<| IMPACT && SLIDER + VALUE |>
+				<| CheckBox : IMPACT |>
+					| IMPACT | <CHECKBOX> : content_installation_detector_checkbox_impact
+				| SLIDER VALUE | <LABEL> : content_installation_detector_impact_slider_value
+				| SLIDER | <SLIDER> : content_installation_detector_impact_slider
+		<| Save && Reset |>
+			| SAVE | <BUTTON> : content_installation_save_reset_btn_save
+			| RESET | <BUTTON> : content_installation_save_reset_btn_reset
+
+«models/content/update/update.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_update_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+
+«models/content/licenses/licenses.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_licenses_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+
+«models/content/network/network.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_network_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+
+«models/content/bluetooth/bluetooth.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_bluetooth_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+
+«models/content/logout/logout.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_logout_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn
+
+«models/content/about/about.kv»:
+	<| Activate && Menu |>
+		<| Activate |>
+			| TITLE | <LABEL> : content_about_activate_title
+		<| Menu |>
+			| INSTALLATION | <BUTTON> : content_installation_btn
+			| UPDATE | <BUTTON> : content_update_btn
+			| LICESES | <BUTTON> : content_licenses_btn
+			| NETWORK | <BUTTON> : content_network_btn
+			| BLUETOOTH | <BUTTON> : content_bluetooth_btn
+			| LOGOUT | <BUTTON> : content_logout_btn
+			| ABOUT | <BUTTON> : content_about_btn

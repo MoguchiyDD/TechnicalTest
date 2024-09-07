@@ -1,0 +1,22 @@
+version: "3.10"
+
+services:
+  db:
+    image: postgres:13
+    container_name: my_postgres_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - bots
+
+volumes:
+  pg_data:
+
+networks:
+  bots:

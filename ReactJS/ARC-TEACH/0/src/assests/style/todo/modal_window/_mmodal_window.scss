@@ -1,0 +1,176 @@
+@import "../../_/media";
+@import "../../_/indents";
+@import "../../_/sizes";
+
+
+/* --- ~ < 640px --- */
+@media screen and (max-width: $media640) {
+  #main-modal-window #modal-window-btns {
+    flex-direction: column;
+  }
+}
+
+/* --- 640px < 1024px --- */
+@media screen and (min-width: $media640) and (max-width: $media1024) {
+  #main-modal-window #modal-window-btns {
+    flex-direction: row;
+
+    button {
+      width: 100%;
+
+      &:first-of-type {
+        margin-right: 1rem;  /* 16px */
+      }
+    }
+  }
+}
+
+/* --- ~ < 640px --- */
+@media screen and (min-width: $media640) {
+  #main-modal-window #modal-window-btns {
+    flex-direction: row;
+  }
+}
+
+/* --- ~ < 768px --- */
+@media screen and (max-width: $media768) {
+  #main-modal-window {
+    #modal-window {
+      width: 75%;
+
+      &-header {
+        @include text-lg();
+      }
+      &-content {
+        #content-status {
+          label {
+            @include text-sm();
+          }
+        }
+        #content-title, #content-description {
+          label {
+            @include text-sm();
+          }
+          input[type=text], textarea {
+            @include text-sm();
+          }
+        }
+      }
+      &-btns button {
+        @include text-sm();
+      }
+    }
+  }
+}
+
+/* --- ~ > 768px --- */
+@media screen and (min-width: $media768) {
+  #main-modal-window #modal-window-btns button {
+    width: 35%;
+  }
+}
+
+/* --- 768px < 1280px --- */
+@media screen and (min-width: $media768) and (max-width: $media1280) {
+  #main-modal-window {
+    #modal-window {
+      width: 60%;
+    }
+  }
+}
+
+/* --- 768px < 1536px --- */
+@media screen and (min-width: $media768) and (max-width: $media1536) {
+  #main-modal-window {
+    #modal-window {
+      &-header {
+        @include text-xl();
+      }
+      &-content {
+        #content-status {
+          label {
+            @include text-base();
+          }
+        }
+        #content-title, #content-description {
+          label {
+            @include text-base();
+          }
+          input[type=text], textarea {
+            @include text-base();
+          }
+        }
+      }
+      &-btns button {
+        @include text-base();
+      }
+    }
+  }
+}
+
+/* --- ~ > 1280px --- */
+@media screen and (min-width: $media1280) {
+  #main-modal-window {
+    #modal-window {
+      width: 40%;
+    }
+  }
+}
+
+/* --- 1536px < 1920px --- */
+@media screen and (min-width: $media1536) and (max-width: $media1920) {
+  #main-modal-window {
+    #modal-window {
+      &-header {
+        @include text-2xl();
+      }
+      &-content {
+        #content-status {
+          label {
+            @include text-lg();
+          }
+        }
+        #content-title, #content-description {
+          label {
+            @include text-lg();
+          }
+          input[type=text], textarea {
+            @include text-lg();
+          }
+        }
+      }
+      &-btns button {
+        @include text-lg();
+      }
+    }
+  }
+}
+
+/* --- ~ > 1920px --- */
+@media screen and (min-width: $media1920) {
+  #main-modal-window {
+    #modal-window {
+      &-header {
+        @include text-3xl();
+      }
+      &-content {
+        #content-status {
+          label {
+            @include text-xl();
+          }
+        }
+        #content-title, #content-description {
+          label {
+            @include text-xl();
+          }
+          input[type=text], textarea {
+            @include text-xl();
+          }
+        }
+      }
+      &-btns button {
+        @include text-xl();
+      }
+    }
+  }
+}

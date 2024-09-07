@@ -1,0 +1,244 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: MIT License which is located in the text file LICENSE
+
+Goal: Stylize OBJECT of SURPRISE
+Result: Stylized OBJECT of SURPRISE
+
+Past Modification: Editing The «BOTTOM» BLOCKS (DIV)
+Last Modification: Editing The «BOTTOM» BLOCKS (ANIMATION)
+Modification Date: 2024.01.02, 02:44 AM
+
+Create Data: 2023.12.29, 05:41 PM
+*/
+
+
+@import "../important/vocabulary";
+@import "../important/funmix";
+@import "msurprise.scss";
+
+
+// ------------- MAIN -------------
+
+figure {
+  margin: map-get($indentations, "zero-margin");
+}
+
+// --------------------------------
+
+
+// ------------- TOP --------------
+
+.surprise-top {
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
+  -webkit-align-items: center;
+  align-items: center;
+  background:
+    linear-gradient(
+      to right,
+      rgba(HexToRGB(map-get($colors, "dark-linear-one")), 1),
+      rgba(HexToRGB(map-get($colors, "dark-linear-two")), 0.70)
+    ),
+    radial-gradient(
+      ellipse farthest-side at top center,
+      HexToRGB(map-get($colors, "light-yellow-radial-one")) 10%,
+      HexToRGB(map-get($colors, "light-yellow-radial-two")) 80%
+    );
+
+  p {
+    margin: map-get($indentations, "surprise-top-p-margin");
+    color: map-get($colors, "white");
+    text-align: center;
+
+    span {
+      &.yellow {
+        color: map-get($colors, "yellow");
+      }
+      &.gray {
+        color: rgba(HexToRGB(map-get($colors, "white")), 0.37);
+      }
+    }
+  }
+
+  #btn:hover {
+    font-weight: bold;
+  }
+}
+
+// --------------------------------
+
+
+// ------------ BOTTOM ------------
+
+.surprise-bottom {
+  @include positionBottomRight(fixed, 0em, 0em);
+
+  &.show {
+    display: block;
+    animation: animationShow 1s forwards;
+    -webkit-animation: animationShow 1s forwards;
+    -o-animation: animationShow 1s forwards;
+    -moz-animation: animationShow 1s forwards;
+    -ms-animation: animationShow 1s forwards;
+  }
+
+  @keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-o-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-ms-keyframes animationShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+  @-ms-keyframes animationHide {
+    0% {
+      display: none;
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    -webkit-box-shadow: 0em 0.25em 2em rgba(HexToRGB(map-get($colors, "black")), 0.45);
+    -moz-box-shadow: 0em 0.25em 2em rgba(HexToRGB(map-get($colors, "black")), 0.45);
+    box-shadow: 0em 0.25em 2em rgba(HexToRGB(map-get($colors, "black")), 0.45);
+  }
+
+  #btn-close {
+    @include positionTopRight(absolute, 0.5em, 0.5em);
+    color: rgba(HexToRGB(map-get($colors, "light-gray")), 0.4);
+    background: none;
+    border: 0px;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
+  #right {
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+
+    p {
+      margin: map-get($indentations, "zero-margin");
+
+      &#header {
+        margin: map-get($indentations, "zero-margin");
+        color: map-get($colors, "white");
+      }
+      &#percent {
+        color: transparent;
+        background: linear-gradient(to right, #7D5317, #EDDF95);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+      }
+      &#code {
+        color: #6C6C70;
+
+        span.yellow {
+          color: map-get($colors, "yellow");
+        }
+      }
+    }
+
+    #btn {
+      color: map-get($colors, "white");
+      background-color: map-get($colors, "gray");
+      border: 1px solid map-get($colors, "gray");
+      border-radius: 5em;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// --------------------------------

@@ -1,0 +1,245 @@
+/*
+Developer & Owner: МогучийДД (MoguchiyDD)
+LICENSE: MIT License which is located in the text file LICENSE
+
+Goal: Storing Useful VARIABLES
+Result: Stored Useful VARIABLES
+
+Past Modification: Editing The «MAIN» Block (COLORS)
+Last Modification: Editing The «MAIN» Block (SIZE)
+Modification Date: 2024.01.01, 08:12 PM
+
+Create Data: 2023.12.29, 04:29 PM
+*/
+
+
+// ---------------- MAIN ----------------
+
+$height: 1000em;
+$colors: (
+  "background": #EEE,
+  "white": #FFF,
+  "black": #000,
+  "yellow": #D7A830,
+  "gray": #333,
+  "light-gray": #D9D9D9,
+  "text": #0B0B0B,
+
+  "dark-linear-one": #101010,
+  "dark-linear-two": #0B0B0B,
+
+  "light-yellow-radial-one": #FAE571,
+  "light-yellow-radial-two": #0B0E17
+);
+$size: (
+  // 320px
+  "320-h1": 1.27em,
+  "320-h2": 1.1em,
+  "320-p": 0.65em,
+  "320-text": 0.58em,
+  "320-close": 0.83em,
+
+  // 360px
+  "360-h1": 1.47em,
+  "360-h2": 1.3em,
+  "360-p": 0.75em,
+  "360-text": 0.69em,
+  "360-close": 1.03em,
+  
+  // 576px
+  "576-h1": 1.67em,
+  "576-h2": 1.5em,
+  "576-p": 0.85em,
+  "576-text": 0.75em,
+  "576-close": 1.03em,
+  
+  // 768px
+  "768-h1": 1.87em,
+  "768-h2": 1.6em,
+  "768-p": 0.9em,
+  "768-text": 0.8em,
+  "768-close": 1.03em,
+  
+  // 960px
+  "qhd-h1": 1.97em,
+  "qhd-h2": 1.7em,
+  "qhd-p": 0.95em,
+  "qhd-text": 0.85em,
+  "qhd-close": 1.13em,
+  
+  // 1280px
+  "hd-h1": 2.27em,
+  "hd-h2": 2.1em,
+  "hd-p": 1.05em,
+  "hd-text": 0.9em,
+  "hd-close": 1.23em,
+  
+  // 1600px
+  "hdplus-h1": 2.57em,
+  "hdplus-h2": 2.3em,
+  "hdplus-p": 1.15em,
+  "hdplus-text": 0.95em,
+  "hdplus-close": 1.43em,
+  
+  // 1920px
+  "fhd-h1": 2.87em,
+  "fhd-h2": 2.5em,
+  "fhd-p": 1.25em,
+  "fhd-text": 1.00em,
+  "fhd-close": 1.63em
+);
+$screen: (
+  "D320": 320px,
+  "D359": 359px,
+  "D360": 360px,
+  "D480": 480px,
+  "D575": 575px,
+  "D576": 576px,
+  "D767": 767px,
+  "D768": 768px,
+  "D959": 959px,
+  "D960": 960px,
+  "D1279": 1279px,
+  "D1280": 1280px,
+  "D1599": 1599px,
+  "D1600": 1600px,
+  "D1919": 1919px,
+  "D1920": 1920px
+);
+
+// --------------------------------------
+
+
+// --------------- WIDTH ----------------
+
+$width: (
+  // 320px
+  "D320-surprise-top-img": 16.5em,
+  "D320-surprise-top-btn": 3%,
+  "D320-surprise-bottom": 80%,
+  "D320-surprise-bottom-btn": 50%,
+
+  // 360px
+  "D360-surprise-top-img": 23.5em,
+  "D360-surprise-top-btn": 3%,
+  "D360-surprise-bottom": 91%,
+  "D360-surprise-bottom-btn": 50%,
+
+  // 480px
+  "D480-surprise-bottom": 70%,
+
+  // 576px
+  "D576-surprise-top-img": 26.5em,
+  "D576-surprise-top-btn": 3%,
+  "D576-surprise-bottom": 59.25%,
+  "D576-surprise-bottom-btn": 100%,
+
+  // 768px
+  "D768-surprise-top-img": 28.5em,
+  "D768-surprise-top-btn": 11%,
+  "D768-surprise-bottom": 49.25%,
+  "D768-surprise-bottom-btn": 100%,
+
+  // 960px
+  "D960-qhd-surprise-top-img": 28.5em,
+  "D960-qhd-surprise-top-btn": 10%,
+  "D960-qhd-surprise-bottom": 42.25%,
+  "D960-qhd-surprise-bottom-btn": 100%,
+
+  // 1280px
+  "D1280-hd-surprise-top-img": 29.5em,
+  "D1280-hd-surprise-top-btn": 7%,
+  "D1280-hd-surprise-bottom": 37.25%,
+  "D1280-hd-surprise-bottom-btn": 100%,
+
+  // 1600px
+  "D1600-hdplus-surprise-top-img": 30.5em,
+  "D1600-hdplus-surprise-top-btn": 8%,
+  "D1600-hdplus-surprise-bottom": 33.25%,
+  "D1600-hdplus-surprise-bottom-btn": 100%,
+
+  // 1920px
+  "D1920-fhd-surprise-top-btn": 8%,
+  "D1920-fhd-surprise-bottom": 31.25%,
+  "D1920-fhd-surprise-bottom-btn": 94%
+);
+
+// --------------------------------------
+
+
+// ------------ INDENTATIONS ------------
+
+$indentations: (
+  "zero-margin": 0em,
+  "one-margin": 1em,
+  "two-margin": 2em,
+
+  "surprise-top-margin": 2em auto 0em,
+  "surprise-top-p-margin": 0em auto,
+  "surprise-bottom-one-rbl-margin": 0em 1em 1em 1em,
+  "surprise-bottom-one-rb-margin": 0em 1em 1em 0em,
+  "surprise-bottom-two-rb-margin": 0em 2em 2em 0em,
+
+  // 320px
+  "D320-surprise-top-p-padding": 7em,
+  "D320-surprise-bottom-p-header-padding": 0.4em,
+  "D320-surprise-bottom-p-percent-padding": 0.3em,
+  "D320-surprise-bottom-p-code-padding": 1.52em,
+  "D320-surprise-bottom-btn-padding": 0.53em 0.75em,
+
+  // 360px
+  "D360-surprise-top-p-padding": 8em,
+  "D360-surprise-bottom-p-header-padding": 0.6em,
+  "D360-surprise-bottom-p-percent-padding": 0.5em,
+  "D360-surprise-bottom-p-code-padding": 1.82em,
+  "D360-surprise-bottom-btn-padding": 0.53em 0.75em,
+
+  // 576px
+  "D576-surprise-top-p-padding": 7em,
+  "D576-surprise-bottom-p-header-padding": 0.42em,
+  "D576-surprise-bottom-p-percent-padding": 0.37em,
+  "D576-surprise-bottom-p-code-padding": 1.69em,
+  "D576-surprise-bottom-btn-padding": 0.53em 0.75em,
+
+  // 768px
+  "D768-surprise-top-p-padding": 1.2em,
+  "D768-surprise-top-btn-padding": 0.35em 0.65em,
+  "D768-surprise-bottom-p-header-padding": 0.45em,
+  "D768-surprise-bottom-p-percent-padding": 0.4em,
+  "D768-surprise-bottom-p-code-padding": 1.72em,
+  "D768-surprise-bottom-btn-padding": 0.55em 0.78em,
+
+  // 960px
+  "D960-qhd-surprise-top-p-padding": 1.1em,
+  "D960-qhd-surprise-top-btn-padding": 0.35em 0.65em,
+  "D960-qhd-surprise-bottom-p-header-padding": 0.45em,
+  "D960-qhd-surprise-bottom-p-percent-padding": 0.4em,
+  "D960-qhd-surprise-bottom-p-code-padding": 1.72em,
+  "D960-qhd-surprise-bottom-btn-padding": 0.55em 0.82em,
+
+  // 1280px
+  "D1280-hd-surprise-top-p-padding": 1.1em,
+  "D1280-hd-surprise-top-btn-padding": 0.35em 0.65em,
+  "D1280-hd-surprise-bottom-p-header-padding": 0.45em,
+  "D1280-hd-surprise-bottom-p-percent-padding": 0.4em,
+  "D1280-hd-surprise-bottom-p-code-padding": 2.12em,
+  "D1280-hd-surprise-bottom-btn-padding": 0.65em 1.0em,
+
+  // 1600px
+  "D1600-hdplus-surprise-top-p-padding": 0.9em,
+  "D1600-hdplus-surprise-top-btn-padding": 0.35em 0.75em,
+  "D1600-hdplus-surprise-bottom-p-header-padding": 0.55em,
+  "D1600-hdplus-surprise-bottom-p-percent-padding": 0.45em,
+  "D1600-hdplus-surprise-bottom-p-code-padding": 2.62em,
+  "D1600-hdplus-surprise-bottom-btn-padding": 0.75em 1.5em,
+
+  // 1920px
+  "D1920-fhd-surprise-top-p-padding": 0.8em,
+  "D1920-fhd-surprise-top-btn-padding": 0.35em 0.75em,
+  "D1920-fhd-surprise-bottom-p-header-padding": 0.6em,
+  "D1920-fhd-surprise-bottom-p-percent-padding": 0.5em,
+  "D1920-fhd-surprise-bottom-p-code-padding": 2.92em,
+  "D1920-fhd-surprise-bottom-btn-padding": 0.75em 1.5em,
+);
+
+// --------------------------------------

@@ -1,0 +1,19 @@
+{
+  "name": "0",
+  "version": "1.0.0",
+  "description": "Open «./README.md» file",
+  "author": "МогучийДД (MoguchiyDD)",
+  "license": "MIT",
+  "devDependencies": {
+    "turbo": "^1.11.1"
+  },
+  "scripts": {
+    "doc:up": "docker compose up -d",
+    "doc:rm": "docker compose rm mongodb -s -f -v && docker compose rm mongo-express -s -f -v && docker compose rm redis -s -f -v",
+    "dev": "npm run doc:rm && npm run doc:up && sleep 10 && turbo run dev",
+    "build": "turbo run build"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}

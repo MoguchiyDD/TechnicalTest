@@ -1,0 +1,13 @@
+@mixin transition-delay-75-duration-150($property) {
+  transition-property: $property;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 150ms;
+  transition-delay: 75ms;
+}
+
+@mixin transition-delay-150-duration-300($property) {
+  transition-property: $property;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 300ms;
+  transition-delay: 150ms;
+}
