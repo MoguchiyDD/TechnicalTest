@@ -1,7 +1,7 @@
-# NodeJS/GREEN API
-**BackEnd**. Through the 1st microservice, a request for execution is sent to the 2nd microservice. The 2nd microservice sends the processed response to the 1st microservice. Request: 19. Response: 38
+# NodeJS/GREEN API (1st)
+**BackEnd**. The 1st microservice sends the user-provided number to the 2nd microservice for processing, and after 5 seconds, the 2nd microservice returns the number, doubled, to the 1st microservice
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+**Stack**: NodeJS, RabbitMQ, Microservices, Docker Compose
 
 ![](result.gif)
 
@@ -13,64 +13,23 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2023.12.11%20/%202023.12.13-F9A825?style=for-the-badge" />
-  <a href="https://hub.docker.com/_/rabbitmq" target="_blank">
-    <img alt="Docker Compose RabbitMQ" src="https://img.shields.io/badge/Docker%20Compose-RabbitMQ%20v3.10.7--management-2E7D32?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~2 days-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-English-00897b?style=for-the-badge" />
+  <a href="https://youtu.be/9i9fZmhnGUA" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
   </a>
 </div>
 
 ## URL Addresses
-- https://localhost:443/anyNumber : The «*send.ts*» FILE sends the REQUEST to **RabbitMQ**, and the «*receive.ts*» FILE works with the REQUEST in **RabbitMQ** and sends the RESPONSE to **HTTPS**.
-  - anyNumber : Any Number, e.g. 1
+- https://localhost:443/anyNumber : The «_send.ts_» file sends the request to **RabbitMQ**, and the «_receive.ts_» file processes the request from **RabbitMQ** and sends the response via **HTTPS**.
+  - **anyNumber**: Any number, e.g., 19
 
-## Installed
-<div id="installed" align="left">
-  <a href="https://www.npmjs.com/package/@types/node" target="_blank">
-    <img alt="npm @types/node" src="https://img.shields.io/badge/npm-@types/node-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/@types/typescript" target="_blank">
-    <img alt="npm @types/typescript" src="https://img.shields.io/badge/npm-@types/typescript-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/typescript" target="_blank">
-    <img alt="npm typescript" src="https://img.shields.io/badge/npm-typescript-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/@types/dotenv" target="_blank">
-    <img alt="npm @types/dotenv" src="https://img.shields.io/badge/npm-@types/dotenv-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/dotenv" target="_blank">
-    <img alt="npm dotenv" src="https://img.shields.io/badge/npm-dotenv-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/@types/express" target="_blank">
-    <img alt="npm @types/express" src="https://img.shields.io/badge/npm-@types/express-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/express" target="_blank">
-    <img alt="npm express" src="https://img.shields.io/badge/npm-express-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/@types/amqplib" target="_blank">
-    <img alt="npm @types/amqplib" src="https://img.shields.io/badge/npm-@types/amqplib-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/amqplib" target="_blank">
-    <img alt="npm amqplib" src="https://img.shields.io/badge/npm-amqplib-FAFAFA?style=for-the-badge" />
-  </a>
-</div>
-
-## OpenSSL
+## Steps before launch
 ```Bash
+$ mkdir ssl
 $ openssl req -x509 -newkey rsa:2048 -keyout ssl/keytmp.pem -out ssl/cert.pem -days 365
-$ openssl rsa -in keytmp.pem -out ssl/key.pem
-```
+$ openssl rsa -in ssl/keytmp.pem -out ssl/key.pem
 
-## Commands
-```Bash
-# Installs all *Docker Containers* from *Docker Compose*
-$ npm run doc:up
-
-# Stops and Removes all *Docker Containers* from *Docker Compose*
-$ npm run doc:rm
-
-# Build TypeScript
-$ npm run build
-
-# Build TypeScript + Start Node
-$ npm run start
+$ npm run doc:up  # Docker Compose
+$ npm run start  # via root
 ```
