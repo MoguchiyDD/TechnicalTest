@@ -30,7 +30,7 @@
 - ![](images/answers_whatsapp-web.js.svg)
 - ![](images/ends_whatsapp-web.js.svg)
 
-## Commands
+## Steps before launch
 ```Bash
 # Main
 $ yarn run doc:up  # Docker Compose
