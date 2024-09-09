@@ -33,6 +33,7 @@
 ## Steps before launch
 ```Bash
 # Main
+$ yarn install
 $ yarn run doc:up  # Docker Compose
 
 # Apps/API
