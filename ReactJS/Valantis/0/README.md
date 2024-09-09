@@ -1,8 +1,9 @@
-# ReactJS/Valantis
-**FrontEnd**. Store design with a filter for product names, prices and brands using the API from the Valantis company
+# ReactJS/Valantis (1st)
+**FrontEnd**. Store design with filters for product names, prices, and brands, utilizing the Valantis company's API
 
+**Stack**: ReactJS, Tailwind CSS, API from Valantis
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+### Note: The API from Valantis is closed, so the code cannot be executed
 
 ![](result.gif)
 
@@ -14,46 +15,15 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2024.02.29%20/%202024.03.03-F9A825?style=for-the-badge" />
-  <img alt="Testing" src="https://img.shields.io/badge/Testing-Google%20Chrome%20and%20Firefox-2E7D32?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~2 days-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
 </div>
 
 ## URL Addresses
-- http://localhost:5173/shop : The MAIN Page
+- http://localhost:5173/shop : main page
 
-## Installed
-<div id="installed" align="left">
-<a href="https://www.npmjs.com/package/react-router-dom" target="_blank">
-    <img alt="npm react-router-dom" src="https://img.shields.io/badge/npm-react--router--dom-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/localforage" target="_blank">
-    <img alt="npm localforage" src="https://img.shields.io/badge/npm-localforage-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/match-sorter" target="_blank">
-    <img alt="npm match-sorter" src="https://img.shields.io/badge/npm-match--sorter-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/sort-by" target="_blank">
-    <img alt="npm sort-by" src="https://img.shields.io/badge/npm-sort--by-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/tailwindcss" target="_blank">
-    <img alt="npm tailwindcss" src="https://img.shields.io/badge/npm-tailwindcss-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/postcss" target="_blank">
-    <img alt="npm postcss" src="https://img.shields.io/badge/npm-postcss-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/autoprefixer" target="_blank">
-    <img alt="npm autoprefixer" src="https://img.shields.io/badge/npm-autoprefixer-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/md5" target="_blank">
-    <img alt="npm md5" src="https://img.shields.io/badge/npm-md5-FAFAFA?style=for-the-badge" />
-  </a>
-</div>
-
-## Commands
+## Steps before launch
 ```Bash
-# Start ReactJS
+$ npm install
 $ npm run dev
-
-# Build ReactJS
-$ npm run build
 ```
