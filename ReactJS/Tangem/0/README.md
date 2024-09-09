@@ -1,7 +1,7 @@
-# ReactJS/Tangem
-**FrontEnd**. Design of the top and bottom label «Black Friday». The bottom label appears when the top label disappears; if you close the bottom label, then after reloading the page the bottom label does not appear at all
+# ReactJS/Tangem (1st)
+**FrontEnd**. The «Black Friday» design includes top and bottom labels. The bottom label appears after the top one disappears. If the bottom label is closed, it will disappear and not reappear after the page reloads
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+**Stack**: ReactJS, SCSS
 
 ![](result.gif)
 
@@ -13,28 +13,18 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2023.12.29%20/%202024.01.02-F9A825?style=for-the-badge" />
-  <img alt="Testing" src="https://img.shields.io/badge/Testing-Google%20Chrome%20and%20Firefox-2E7D32?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~3 Days-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-English-00897b?style=for-the-badge" />
+  <a href="https://youtu.be/-aoauUYUTSc" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
+  </a>
 </div>
 
 ## URL Addresses
-- https://localhost:3000 : The MAIN Page
+- https://localhost:3000 : main page
 
-## Installed
-<div id="installed" align="left">
-  <a href="https://www.npmjs.com/package/node-sass" target="_blank">
-    <img alt="npm node-sass" src="https://img.shields.io/badge/npm-node--sass-FAFAFA?style=for-the-badge" />
-  </a>
-  <a href="https://www.npmjs.com/package/sass" target="_blank">
-    <img alt="npm sass" src="https://img.shields.io/badge/npm-sass-FAFAFA?style=for-the-badge" />
-  </a>
-</div>
-
-## Commands
+## Steps before launch
 ```Bash
-# Start ReactJS
+$ npm install
 $ npm run start
-
-# Build ReactJS
-$ npm run build
 ```
