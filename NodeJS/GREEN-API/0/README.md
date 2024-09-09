@@ -30,6 +30,7 @@ $ mkdir ssl
 $ openssl req -x509 -newkey rsa:2048 -keyout ssl/keytmp.pem -out ssl/cert.pem -days 365
 $ openssl rsa -in ssl/keytmp.pem -out ssl/key.pem
 
+$ npm install
 $ npm run doc:up  # Docker Compose
 $ npm run start  # via root
 ```
