@@ -1,4 +1,4 @@
-# NestJS/DaniKo (1st)
+# NestJS/DaniKo (1st) | #2
 **WhatsApp Bot** + **FrontEnd**. Creating a chatbot in WhatsApp, and also displaying the progress of the WhatsApp chat bot using React Flow
 
 **Stack**: NestJS, React Flow, whatsapp-web.js, Mongoose, Cache with Redis, Docker Compose
