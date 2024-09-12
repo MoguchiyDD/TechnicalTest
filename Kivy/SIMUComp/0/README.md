@@ -1,4 +1,4 @@
-# Kivy/SIMUComp (1st)
+# Kivy/SIMUComp (1st) | #6
 **FrontEnd**. Desktop software design. It was required to create only one tab without functionality
 
 **Stack**: Python, Kivy
