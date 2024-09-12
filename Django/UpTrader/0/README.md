@@ -1,7 +1,7 @@
-# Django/UpTrader
-**FullStack**. Create and Edit a submenu through the database
+# Django/UpTrader (1st)
+**FullStack**. Create and Edit a menu through the database.
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+**Stack**: Python, Django, SQLite3, CSS
 
 ![](result.gif)
 
@@ -13,18 +13,21 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-2024.03.05%20/%202024.03.07-F9A825?style=for-the-badge" />
-  <img alt="Testing" src="https://img.shields.io/badge/Testing-Google%20Chrome%20and%20Firefox-2E7D32?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~1 day-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
+  <a href="https://youtu.be/clBRfp2Z6OU" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
+  </a>
 </div>
 
 ## URL Addresses
-- http://localhost:8000 : The MAIN Page
-- http://localhost:8000/creativity : The CREATIVITY Page
-- http://localhost:8000/creativity/paintings : The PAINTINGS Page
-- http://localhost:8000/creativity/paintings/subjects : The SUBJECTS Page
-- http://localhost:8000/creativity/paintings/objects : The OBJECTS Page
-- http://localhost:8000/creativity/sculptures : The SCULPTURES Page
-- http://localhost:8000/information : The INFORMATION Page
+- http://localhost:8000 : main page
+- http://localhost:8000/creativity : creativity page
+- http://localhost:8000/creativity/paintings : paintings page
+- http://localhost:8000/creativity/paintings/subjects : subjects page
+- http://localhost:8000/creativity/paintings/objects : objects page
+- http://localhost:8000/creativity/sculptures : sculptures page
+- http://localhost:8000/information : information page
 
 ## MENU TABS
 - home (URL)
@@ -35,14 +38,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   - sculptures (URL, Parent: creativity)
 - information (URL)
 
-## Installed
-<div id="installed" align="left">
-  <a href="https://pypi.org/project/Django/" target="_blank">
-    <img alt="PyPi Django" src="https://img.shields.io/badge/PyPi-Django-0073B7?style=for-the-badge" />
-  </a>
-</div>
-
-## Commands
+## Steps before launch
 ```Bash
 # Virtual Window (Python)
 $ python -m venv <NAME>
@@ -57,5 +53,6 @@ $ python manage.py migrate
 # Create 1 SUPER USER and ADD 1 MENU (type «main») following the INSTRUCTION
 # in the «MENU TABS» Block from the «README.md» to the MENU DATABASE
 # (the parent is saved automatically when creating 1 new tab for the menu)
+$ python manage.py fullmenu
 $ python manage.py runserver
 ```
