@@ -1,4 +1,4 @@
-# ReactJS/Tangem (1st)
+# ReactJS/Tangem (1st) | #4
 **FrontEnd**. The «Black Friday» design includes top and bottom labels. The bottom label appears after the top one disappears. If the bottom label is closed, it will disappear and not reappear after the page reloads
 
 **Stack**: ReactJS, SCSS
