@@ -1,4 +1,4 @@
-# ReactJS/Valantis (1st)
+# ReactJS/Valantis (1st) | #5
 **FrontEnd**. Store design with filters for product names, prices, and brands, utilizing the Valantis company's API
 
 **Stack**: ReactJS, Tailwind CSS, API from Valantis
