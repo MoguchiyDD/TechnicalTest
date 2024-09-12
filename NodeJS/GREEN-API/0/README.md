@@ -1,4 +1,4 @@
-# NodeJS/GREEN API (1st)
+# NodeJS/GREEN API (1st) | #3
 **BackEnd**. The 1st microservice sends the user-provided number to the 2nd microservice for processing, and after 5 seconds, the 2nd microservice returns the number, doubled, to the 1st microservice
 
 **Stack**: NodeJS, RabbitMQ, Microservices, Docker Compose
