@@ -1,7 +1,7 @@
-# Kivy/SIMUComp
-**FrontEnd**. Design of the 1st tab of Desktop Software
+# Kivy/SIMUComp (1st)
+**FrontEnd**. Desktop software design. It was required to create only one tab without functionality
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+**Stack**: Python, Kivy
 
 ![](result.gif)
 
@@ -13,20 +13,14 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-~2024.02.04%20/%202024.02.09-F9A825?style=for-the-badge" />
-</div>
-
-## Installed
-<div id="installed" align="left">
-  <a href="https://pypi.org/project/Kivy/" target="_blank">
-    <img alt="PyPi Kivy" src="https://img.shields.io/badge/PyPi-Kivy-0073B7?style=for-the-badge" />
-  </a>
-  <a href="https://pypi.org/project/kivymd/" target="_blank">
-    <img alt="PyPi KivyMD" src="https://img.shields.io/badge/PyPi-KivyMD-0073B7?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~5 days-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
+  <a href="https://youtu.be/W7vdRjB4cqg" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
   </a>
 </div>
 
-## Commands
+## Steps before launch
 ```Bash
 # Virtual Window (Python)
 $ python -m venv <NAME>
