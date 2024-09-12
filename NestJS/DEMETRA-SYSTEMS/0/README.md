@@ -1,4 +1,4 @@
-# NestJS/DEMETRA SYSTEMS (1st)
+# NestJS/DEMETRA SYSTEMS (1st) | #1
 **BackEnd**. User registration and authorization with status updated 10 seconds after logging into the account. If the user is in the cache, data is retrieved from there; otherwise, it is retrieved from the database. There is also a separate endpoint for obtaining the IP address from the proxy server, which is unrelated to the user processes
 
 **Stack**: NestJS, TypeORM, Bull with Redis, Cache with Redis, Axios, Docker Compose
