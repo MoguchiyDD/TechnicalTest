@@ -1,4 +1,4 @@
-# Django/UpTrader (1st)
+# Django/UpTrader (1st) | #7
 **FullStack**. Create and Edit a menu through the database.
 
 **Stack**: Python, Django, SQLite3, CSS
