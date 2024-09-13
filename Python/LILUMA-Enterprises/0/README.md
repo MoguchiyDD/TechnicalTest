@@ -1,7 +1,7 @@
-# Python/LILUMA Enterprises
-**Telegram Bot**. Hard-coded financial bot with four companies. It is possible to add and display information in the form of graphs. No filtering.
+# Python/LILUMA Enterprises (1st) | #9
+**Telegram Bot**. A hard-coded financial bot with four companies. It allows adding data to predefined companies and displaying information in the form of graphs. No filtering capabilities
 
-The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
+**Stack**: Python, Aiogram, Matplotlib, PostgreSQL
 
 ![](result.gif)
 
@@ -13,23 +13,10 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Started & Finished" src="https://img.shields.io/badge/Started%20&%20Finished-~1 day-F9A825?style=for-the-badge" />
-  <img alt="Language" src="https://img.shields.io/badge/Language-Russian-3E2723?style=for-the-badge" />
-</div>
-
-## Installed
-<div id="installed" align="left">
-  <a href="https://pypi.org/project/aiogram/" target="_blank">
-    <img alt="PyPi aiogram" src="https://img.shields.io/badge/PyPi-aiogram-0073B7?style=for-the-badge" />
-  </a>
-  <a href="https://pypi.org/project/matplotlib/" target="_blank">
-    <img alt="PyPi matplotlib" src="https://img.shields.io/badge/PyPi-matplotlib-0073B7?style=for-the-badge" />
-  </a>
-  <a href="https://pypi.org/project/psycopg2-binary/" target="_blank">
-    <img alt="PyPi psycopg2-binary" src="https://img.shields.io/badge/PyPi-psycopg2--binary-0073B7?style=for-the-badge" />
-  </a>
-  <a href="https://pypi.org/project/python-dotenv/" target="_blank">
-    <img alt="PyPi python-dotenv" src="https://img.shields.io/badge/PyPi-python--dotenv-0073B7?style=for-the-badge" />
+  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~1 day-F9A825?style=for-the-badge" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
+  <a href="https://youtu.be/BeOpeIHEQ5s" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
   </a>
 </div>
 
@@ -38,7 +25,7 @@ The project was created and tested on the **Linux Ubuntu 22.04 Wayland** OS
 - **/append**: Add an annual report for a company
 - **/graphic**: Display company data as a graph
 
-## Commands
+## Steps before launch
 ```Bash
 # Virtual Window (Python)
 $ python -m venv <NAME>
