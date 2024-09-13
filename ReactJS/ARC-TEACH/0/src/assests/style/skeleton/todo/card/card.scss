@@ -19,8 +19,8 @@
     .skeleton-card-title {
       width: 75%;
       margin-right: 1rem;  /* 16px */
-      @include animation-pulse();
       @include border-radius-025();
+      @include animation-pulse();
     }
     .skeleton-card-status {
       width: 25%;
