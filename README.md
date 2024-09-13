@@ -9,6 +9,9 @@ This repository stores all completed Technical Tests
   <a href="LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
+  <a href="https://www.youtube.com/playlist?list=PLe25Qgw2EMXArcVUY3pRjxn2shc-hLmXT" target="_blank">
+    <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
+  </a>
 </div>
 
 ## Classification
@@ -32,7 +35,7 @@ This repository stores all completed Technical Tests
 - **DaniKo** (once : *NestJS* + *React Flow* + *whatsapp-web.js* + *Mongoose* + *Cache with Redis* + *Docker Compose*)
 - **DEMETRA SYSTEMS** (once : *NestJS* + *TypeORM* + *Bull with Redis* + *Cache with Redis* + *Axios* + *Docker Compose*)
 - **GREEN API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
-- **LILUMA Enterprises** (once : *Python* + *aiogram* + *matplotlib* + *PostgreSQL*)
+- **LILUMA Enterprises** (once : *Python* + *Aiogram* + *Matplotlib* + *PostgreSQL*)
 - **SIMUComp** (once : *Python* + *Kivy*)
 - **Tangem** (once : *ReactJS* + *SCSS*)
 - **UpTrader** (once : *Python* + *Django* + *SQLite3* + *CSS*)
