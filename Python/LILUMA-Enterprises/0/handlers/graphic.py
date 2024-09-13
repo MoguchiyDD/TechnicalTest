@@ -17,10 +17,13 @@ from aiogram.fsm.context import FSMContext
 from data.database import DatabaseCompanies
 
 from matplotlib.pyplot import subplots, savefig, close
+from matplotlib.ticker import FuncFormatter
 from io import BytesIO
 
 router = Router()
 
+
+# ------------ KEYBOARD ------------
 
 def create_company_inline_keyboard() -> InlineKeyboardMarkup:
     """
@@ -54,6 +57,25 @@ def create_types_inline_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
 
+# ----------------------------------
+
+
+# ------------ GRAPHIC -------------
+
+def millions_formatter(y: float, _) -> str:
+    """
+    Format function to display values in millions
+
+    ---
+    PARAMETERS:
+    - y: float -> Value
+    - _: int -> Y-axis position
+    ---
+    RETURN: Number of million in text
+    """
+
+    return f"{y * 1e-6:.0f}M"
+
 
 async def create_revenue_graph(company: str, type: str, name: str) -> BytesIO:
     """
@@ -73,6 +95,7 @@ async def create_revenue_graph(company: str, type: str, name: str) -> BytesIO:
     db.db_close()
 
     years, types = zip(*data) if data else ([], [])
+    types = tuple([t * 1_000_000 for t in types])
 
     _, ax = subplots(figsize=(10, 5))
     ax.plot(years, types, label=name, marker="o")
@@ -82,6 +105,8 @@ async def create_revenue_graph(company: str, type: str, name: str) -> BytesIO:
     ax.set_ylabel(name)
     ax.grid(True)
 
+    ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
+
     buf = BytesIO()
     savefig(buf, format="png")
     buf.seek(0)
@@ -89,6 +114,10 @@ async def create_revenue_graph(company: str, type: str, name: str) -> BytesIO:
 
     return buf
 
+# ----------------------------------
+
+
+# ------------ COMMAND -------------
 
 class CommandGraphicStates(StatesGroup):
     waiting_for_company = State()
@@ -116,8 +145,10 @@ async def save_company_name(
     company = data.split("company_")[1]
     await state.update_data(company=company)
 
+    await callback_query.answer(f"Вы выбрали {company}")
+
     keyboard = create_types_inline_keyboard()
-    await callback_query.message.answer(
+    await callback_query.message.edit_text(
         "Выберите тип графики", reply_markup=keyboard
     )
     await state.set_state(CommandGraphicStates.waiting_for_type)
@@ -146,6 +177,8 @@ async def save_company_name(
     elif _type == "kpn":
         name = "КПН"
 
+    await callback_query.answer(f"Вы выбрали {name}")
+
     __data = await state.get_data()
     company = __data.get("company")
 
@@ -153,9 +186,13 @@ async def save_company_name(
     graph_file = BufferedInputFile(
         graph_buf.getvalue(), filename=f"{company}_{_type}_graph.png"
     )
+
+    await callback_query.message.delete()
     await callback_query.bot.send_photo(
         callback_query.message.chat.id,
         photo=graph_file,
         caption=f"График компании «{company}» за все отчётные периоды"
     )
     await state.clear()
+
+# ----------------------------------

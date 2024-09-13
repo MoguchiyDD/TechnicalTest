@@ -9,6 +9,8 @@ from aiogram.filters import Command
 router = Router()
 
 
+# ------------ COMMAND ------------
+
 @router.message(Command("start"))
 async def command_start_handler(message: Message) -> None:
     """
@@ -24,3 +26,5 @@ async def command_start_handler(message: Message) -> None:
     text += f"об компании в виде графика. Вы можете в моём {__menu} найти "
     text += "доступные команды."
     await message.answer(text)
+
+# ---------------------------------
