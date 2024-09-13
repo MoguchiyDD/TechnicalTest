@@ -18,6 +18,8 @@ from data.database import DatabaseCompanies
 router = Router()
 
 
+# ------------ KEYBOARD ------------
+
 def create_company_inline_keyboard() -> InlineKeyboardMarkup:
     """
     Buttons with company names
@@ -35,6 +37,10 @@ def create_company_inline_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
 
+# ----------------------------------
+
+
+# ------------ COMMAND -------------
 
 class CommandAppendStates(StatesGroup):
     waiting_for_company = State()
@@ -69,7 +75,7 @@ async def save_company_name(
     data = callback_query.data
     company = data.split("acompany_")[1]
     await state.update_data(company=company)
-    await callback_query.message.answer(f"Доход компании «{company}»")
+    await callback_query.message.edit_text(f"Доход компании «{company}»")
     await state.set_state(CommandAppendStates.waiting_for_revenue)
 
 
@@ -185,3 +191,5 @@ async def save_year_company(message: Message, state: FSMContext) -> None:
     except ValueError:
         await message.answer("Год отчёта должен быть, например, 2023")
         await state.clear()
+
+# ----------------------------------
