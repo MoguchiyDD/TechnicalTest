@@ -18,25 +18,27 @@ This repository stores all completed Technical Tests
 <div id="technical-tests-types" align="left">
   <img alt="Bots (2)" src="https://img.shields.io/badge/Bots-2-B71C1C?style=for-the-badge" />
   <img alt="FullStack (1)" src="https://img.shields.io/badge/FullStack-1-B71C1C?style=for-the-badge" />
-  <img alt="FrontEnd (4)" src="https://img.shields.io/badge/FrontEnd-4-B71C1C?style=for-the-badge" />
+  <img alt="FrontEnd (5)" src="https://img.shields.io/badge/FrontEnd-5-B71C1C?style=for-the-badge" />
   <img alt="BackEnd (2)" src="https://img.shields.io/badge/BackEnd-2-B71C1C?style=for-the-badge" />
 </div>
 
-## Completed (9)
+## Completed (10)
 <div id="technical-tests-language" align="left">
   <img alt="Python (3)" src="https://img.shields.io/badge/Python-3-1A237E?style=for-the-badge" />
   <img alt="NestJS (2)" src="https://img.shields.io/badge/NestJS-2-1A237E?style=for-the-badge" />
   <img alt="NodeJS (1)" src="https://img.shields.io/badge/NodeJS-1-1A237E?style=for-the-badge" />
   <img alt="ReactJS (3)" src="https://img.shields.io/badge/ReactJS-3-1A237E?style=for-the-badge" />
+  <img alt="Static (1)" src="https://img.shields.io/badge/Static-1-1A237E?style=for-the-badge" />
 </div>
 
-## Completed *Technical Test* from companies (A-Z):
-- **ARC TEACH** (once : *ReactJS* + *Redux Toolkit* + *SCSS*)
-- **DaniKo** (once : *NestJS* + *React Flow* + *whatsapp-web.js* + *Mongoose* + *Cache with Redis* + *Docker Compose*)
-- **DEMETRA SYSTEMS** (once : *NestJS* + *TypeORM* + *Bull with Redis* + *Cache with Redis* + *Axios* + *Docker Compose*)
-- **GREEN API** (once : *NodeJS* + *RabbitMQ* + *Microservices* + *Docker Compose*)
-- **LILUMA Enterprises** (once : *Python* + *Aiogram* + *Matplotlib* + *PostgreSQL*)
-- **SIMUComp** (once : *Python* + *Kivy*)
-- **Tangem** (once : *ReactJS* + *SCSS*)
-- **UpTrader** (once : *Python* + *Django* + *SQLite3* + *CSS*)
-- **Valantis** (once : *ReactJS* + *Tailwind CSS* + *API from Valantis*)
+## Completed _Technical Test_ from companies (A-Z):
+- **ARC TEACH** (once : _ReactJS_ + _Redux Toolkit_ + _SCSS_)
+- **DaniKo** (once : _NestJS_ + _React Flow_ + _whatsapp-web.js_ + _Mongoose_ + _Cache with Redis_ + _Docker Compose_)
+- **DEMETRA SYSTEMS** (once : _NestJS_ + _TypeORM_ + _Bull with Redis_ + _Cache with Redis_ + _Axios_ + _Docker Compose_)
+- **GREEN API** (once : _NodeJS_ + _RabbitMQ_ + _Microservices_ + _Docker Compose_)
+- **LILUMA Enterprises** (once : _Python_ + _Aiogram_ + _Matplotlib_ + _PostgreSQL_)
+- **Maxinum Consulting Ltd** (once: _HTML_ + _JavaScript_ + _Bootstrap_)
+- **SIMUComp** (once : _Python_ + _Kivy_)
+- **Tangem** (once : _ReactJS_ + _SCSS_)
+- **UpTrader** (once : _Python_ + _Django_ + _SQLite3_ + _CSS_)
+- **Valantis** (once : _ReactJS_ + _Tailwind CSS_ + _API from Valantis_)
