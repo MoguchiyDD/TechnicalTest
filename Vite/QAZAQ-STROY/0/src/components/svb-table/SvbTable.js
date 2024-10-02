@@ -153,6 +153,13 @@ export default class SvbTable {
 
       tbody.appendChild(tr);
     });
+
+    const tr = document.createElement("tr");
+    columns.forEach(_ => {
+      const td = document.createElement("td");
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
   }
 
   formatDate(dateString) {

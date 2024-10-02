@@ -1,52 +1,104 @@
 @import './vars.scss';
 
-/** Это пример */
-
 table {
   width: 100%;
+  padding-bottom: 1rem !important;
+  display: block;
+  background-color: #f3f4f6;
   border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  th,
+  td {
+    font-size: $size12;
+    text-align: left;
+    border: 0.125rem solid $table-border-color;
+  }
+  th {
+    padding: $size16 $size12;
+    font-weight: bold;
+    text-transform: inherit;
+    letter-spacing: 1px;
+    background-color: $main-color;
+  }
+  td {
+    padding: $size8 $size12;
+    color: $dark-color;
+
+    a {
+      color: $main-color;
+
+      &:hover {
+        color: mix($main-color, $dark-color, 60%);
+      }
+    }
+  }
+
+  thead {
+    color: $light-color;
+    background-color: $main-color;
+
+    th {
+      &:first-of-type {
+        border-top-left-radius: $size4;
+      }
+      &:last-of-type {
+        border-top-right-radius: $size4;
+      }
+    }
+  }
+
+  tbody {
+    width: 100%;
+
+    tr {
+      background-color: $table-color;
+
+      &:hover {
+        background-color: mix($light-color, $dark-color, 90%);
+      }
+      &:last-of-type {
+        height: $size40;
+        background-color: $main-color;
+       
+        td {
+          &:first-of-type {
+            border-bottom-left-radius: $size4;
+          }
+          &:last-of-type {
+            border-bottom-right-radius: $size4;
+          }
+        }
+      }
+
+      td {
+        &:first-child {
+          font-weight: bold;
+          color: $dark-color;
+        }
+        &:last-child {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
-table thead {
-  background-color: $main-color;
-  color: white;
-}
 
-table th,
-table td {
-  padding: 8px;
-  text-align: left;
-  font-size: 14px;
+/* Scroll */
+::-webkit-scrollbar {
+  width: $size8;
+  height: $size8;
 }
-
-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+::-webkit-scrollbar-thumb {
+  background-color: $scroll-color;
+  border-radius: $size4;
 }
-
-table tbody tr:hover {
-  background-color: #e9eff7;
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
-
-table th {
-  background-color: $main-color;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-table td {
-  color: #555;
-}
-
-table tbody tr td:first-child {
-  font-weight: bold;
-  color: #333;
-}
-
-table tbody tr td:last-child {
-  color: $main-color;
-  font-weight: bold;
+::-webkit-scrollbar-thumb:hover {
+  background-color: mix($scroll-color, $dark-color, 90%);
 }
