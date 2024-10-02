@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QS Frontend Developer - Тестовое задание</title>
+  </head>
+  <body>
+    <div class="app">
+      <header id="header" class="main-header">
+        <div class="header-top">
+          <div class="logo-block">
+            <img src="/logo-blue.svg" alt="logo" width="90" />
+          </div>
+          <div class="user-company">
+            <select class="user-company__switcher">
+              <option value="1">Название организации</option>
+            </select>
+          </div>
+          <div class="user-block">
+          <div class="logout-block">
+            <button type="submit" class="logout-button">
+              <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.25 2.75L7.75305 2.92538C5.819 3.608 4.85196 3.94931 4.30098 4.72807C3.75 
+                          5.50682 3.75 6.53232 3.75 8.58335V10.4167C3.75 12.4677 3.75 13.4932 4.30098 
+                          14.272C4.85196 15.0507 5.819 15.392 7.75305 16.0746L8.25 16.25" 
+                      stroke="black" 
+                      stroke-width="1.125" 
+                      stroke-linecap="round"
+                  />
+                  <path d="M15.75 9.5H8.25M15.75 9.5C15.75 8.97485 14.2543 7.99365 13.875 7.625M15.75 
+                          9.5C15.75 10.0252 14.2543 11.0064 13.875 11.375" 
+                      stroke="black" 
+                      stroke-width="1.125" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round"
+                  />
+              </svg>                            
+              Выход
+            </button>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="svb-panel">
+          <div class="svb-panel__body">
+            <div class="svb-panel__main">
+              <div class="svb-panel__sidebar">
+                <div class="page-sidebar">
+                  <div class="main-menu">
+                    <ul class="main-menu__list">
+                      <li class="main-menu__item">
+                        <a href="#">
+                          <span class="icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                              <path
+                                d="M12.3333 11.3333V4.66667C12.3333 3.40959 12.3333 2.78105 11.9428 2.39053C11.5522 
+                                2 10.9237 2 9.66663 2H6.33329C5.07621 2 4.44767 2 4.05715 2.39053C3.66663 2.78105 3.66663 
+                                3.40959 3.66663 4.66667V11.3333C3.66663 12.5904 3.66663 13.2189 4.05715 13.6095C4.44767 14 
+                                5.07621 14 6.33329 14H9.66663C10.9237 14 11.5522 14 11.9428 13.6095C12.3333 13.2189 12.3333 12.5904 
+                                12.3333 11.3333Z"
+                                stroke="black"
+                              />
+                              <path
+                                d="M12.3334 4H12.6667C13.6095 4 14.0809 4 14.3738 4.29289C14.6667 4.58579 14.6667 
+                                5.05719 14.6667 6V10.6667C14.6667 11.6095 14.6667 12.0809 14.3738 12.3738C14.0809 12.6667 
+                                13.6095 12.6667 12.6667 12.6667H12.3334"
+                                stroke="black"
+                                stroke-linecap="round"
+                              />
+                              <path
+                                d="M3.66671 4H3.33337C2.39057 4 1.91916 4 1.62627 4.29289C1.33337 4.58579 1.33337 
+                                5.05719 1.33337 6V10.6667C1.33337 11.6095 1.33337 12.0809 1.62627 12.3738C1.91916 12.6667 
+                                2.39057 12.6667 3.33337 12.6667H3.66671"
+                                stroke="black"
+                                stroke-linecap="round"
+                              />
+                              <path
+                                d="M9.66671 5.3335H6.33337M9.66671 8.00016H6.33337M9.66671 10.6668H6.33337"
+                                stroke="black"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                          </span>
+                          Документы
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="svb-panel__content">
+
+                <div class="svb-panel__table-toolbar">
+                  <div class="svb-toolbar">
+                    <button class="svb-button">Создать</button>
+                    <button class="svb-button svb-button--red">Удалить</button>
+                  </div>
+                </div>
+
+                <div id="table-wrapper" class="svb-panel__table-wrapper">
+                  <!-- Воот тут ты будешь шкодить -->
+                </div>
+
+                <div class="svb-panel__table-pagination">
+                  <div class="svb-toolbar">
+                    <button class="svb-button">1</button>
+                    <button class="svb-button svb-button--gray">2</button>
+                    <button class="svb-button svb-button--gray">3</button>
+                    <button class="svb-button svb-button--gray">4</button>
+                    <button class="svb-button svb-button--gray">5</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
