@@ -1,19 +1,28 @@
 @import './vars.scss';
 
 table {
+  padding-bottom: $size16 !important;
+  padding-right: $size16 !important;
   width: 100%;
-  padding-bottom: 1rem !important;
+  max-height: 75%;
   display: block;
-  background-color: #f3f4f6;
+  background-color: transparent;
   border-collapse: collapse;
   overflow-x: auto;
+  overflow-y: auto;
   white-space: nowrap;
 
   th,
   td {
     font-size: $size12;
     text-align: left;
-    border: 0.125rem solid $table-border-color;
+    
+    &:not(:first-child) {
+      border: $size2 solid $table-border-color;
+    }
+    &:first-child {
+      border-bottom: $size2 solid $table-border-color;
+    }
   }
   th {
     padding: $size16 $size12;
@@ -21,6 +30,22 @@ table {
     text-transform: inherit;
     letter-spacing: 1px;
     background-color: $main-color;
+
+    &:first-child {
+      z-index: 15;
+      position: sticky;
+      left: 0;
+
+      &::after {
+        content: "";
+        width: $size1;
+        height: 100%;
+        background-color: $table-border-color;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
   }
   td {
     padding: $size8 $size12;
@@ -36,8 +61,11 @@ table {
   }
 
   thead {
+    z-index: 10;
     color: $light-color;
     background-color: $main-color;
+    position: sticky;
+    top: 0;
 
     th {
       &:first-of-type {
@@ -57,13 +85,31 @@ table {
 
       &:hover {
         background-color: mix($light-color, $dark-color, 90%);
+
+        td:first-child {
+          background-color: mix($light-color, $dark-color, 90%);
+        }
       }
       &:last-of-type {
+        z-index: 10;
         height: $size40;
         background-color: $main-color;
+        position: sticky;
+        bottom: -$size16;
+
+        &::after {
+          content: "";
+          width: $size1;
+          height: 100%;
+          background-color: $table-border-color;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
        
         td {
           &:first-of-type {
+            background-color: $main-color;
             border-bottom-left-radius: $size4;
           }
           &:last-of-type {
@@ -74,8 +120,22 @@ table {
 
       td {
         &:first-child {
+          z-index: 5;
           font-weight: bold;
           color: $dark-color;
+          background-color: $table-color;
+          position: sticky;
+          left: 0;
+
+          &::after {
+            content: "";
+            width: $size1;
+            height: 100%;
+            background-color: $table-border-color;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
         }
         &:last-child {
           color: $main-color;

@@ -72,6 +72,11 @@
 }
 
 .svb-panel__table-pagination {
+    z-index: 10;
     padding: 16px 28px;
+    width: 100%;
     flex: 0 0 auto;
+    background-color: #f3f4f6;
+    position: fixed;
+    bottom: 0;
 }
