@@ -90,6 +90,13 @@ table {
           background-color: mix($light-color, $dark-color, 90%);
         }
       }
+      &:active {
+        background-color: mix($light-color, $dark-color, 80%);
+
+        td:first-child {
+          background-color: mix($light-color, $dark-color, 80%);
+        }
+      }
       &:last-of-type {
         z-index: 10;
         height: $size40;
