@@ -1,0 +1,36 @@
+@import './vars.scss';
+
+.modal {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: rgba($dark-color, 0.5);
+  overflow: hidden;
+}
+.modal-content {
+  margin: 10% auto;
+  padding: $size20;
+  width: 70%;
+  background-color: $light-color;
+  border: 0.1rem solid $table-border-color;
+  border-radius: $size4;
+  box-shadow: 0 $size4 $size16 rgba($dark-color, 0.3);
+}
+.close {
+  margin-top: -1.25rem;
+  margin-right: -0.75rem;
+  color: rgba($dark-color, 0.6);
+  float: right;
+  font-size: $size28;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+  color: $dark-color;
+}
