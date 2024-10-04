@@ -11,6 +11,13 @@ export default class SvbTable {
     this.element = SvbTable.createElement('table', 'doc-list-table', 'svb-table', SvbTable.getTableHTML());
   }
 
+  static COLUMN_DOCDATE = 1;
+  static COLUMN_CONTRACT = 3;
+  static COLUMN_SUM = 8;
+  static COLUMN_SUMFACT = 9;
+  static COLUMNS_WITH_UUID = [2, 3, 4, 6];
+  static START_INDEX_TO_TABLE = 1;
+
   // ------------ CREATE ------------
 
   /**
@@ -309,10 +316,10 @@ export default class SvbTable {
     tr.appendChild(td);
 
     const keys = Object.keys(settings);
-    let index = 1;
+    let index = SvbTable.START_INDEX_TO_TABLE;
     for (let [_, value] of formData.entries()) {
       const td = document.createElement("td");
-      if ([2, 3, 4, 6].includes(index)) value = {'v': SvbTable.generateUUID(), 'r': value};
+      if (SvbTable.COLUMNS_WITH_UUID.includes(index)) value = {'v': SvbTable.generateUUID(), 'r': value};
       SvbTable.rowsTable(settings[keys[index - 1]], index, td, value);
       tr.appendChild(td);
       index++;
@@ -320,42 +327,6 @@ export default class SvbTable {
 
     tbody.appendChild(tr);
     tbody.appendChild(SvbTable.addEmptyTR(settings));
-  }
-
-  /**
-   * @author MoguchiyDD
-   * @description Fills in rows for a table
-   * @param {object} column Response from API data
-   * @param {int} index Index for correct formatting of rows in table from API data
-   * @param {HTMLElement} td Link **td** element to **tr**
-   * @param {string | object} cellValue Values ​​for the table
-   */
-  static rowsTable(column, index, td, cellValue) {
-    switch(index) {
-      case 1:  // docdate
-        td.textContent = SvbTable.formatDate(cellValue);
-        break;
-      case 3:  // contract
-        const link = document.createElement('a');
-        link.href = '#';
-        link.target = "_blank";
-        link.textContent = cellValue.r;
-        td.appendChild(link);
-        td.dataset.uuid = cellValue.v;
-        break;
-      case 8:  // sum
-      case 9:  // sumfact
-        td.textContent = cellValue + " ₸";
-        break;
-      default:
-        if (typeof cellValue === "object" && cellValue.r) {
-          td.textContent = cellValue.r;
-          td.dataset.uuid = cellValue.v;
-        } else td.textContent = cellValue;
-        break;
-    }
-
-    if (column.textAlign) td.style.textAlign = column.textAlign;
   }
 
   /**
@@ -401,6 +372,42 @@ export default class SvbTable {
       const v = c === 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
+  }
+
+  /**
+   * @author MoguchiyDD
+   * @description Fills in rows for a table
+   * @param {object} column Response from API data
+   * @param {int} index Index for correct formatting of rows in table from API data
+   * @param {HTMLElement} td Link **td** element to **tr**
+   * @param {string | object} cellValue Values ​​for the table
+   */
+  static rowsTable(column, index, td, cellValue) {
+    switch(index) {
+      case SvbTable.COLUMN_DOCDATE:
+        td.textContent = SvbTable.formatDate(cellValue);
+        break;
+      case SvbTable.COLUMN_CONTRACT:
+        const link = document.createElement('a');
+        link.href = '#';
+        link.target = "_blank";
+        link.textContent = cellValue.r;
+        td.appendChild(link);
+        td.dataset.uuid = cellValue.v;
+        break;
+      case SvbTable.COLUMN_SUM:
+      case SvbTable.COLUMN_SUMFACT:
+        td.textContent = cellValue + " ₸";
+        break;
+      default:
+        if (typeof cellValue === "object" && cellValue.r) {
+          td.textContent = cellValue.r;
+          td.dataset.uuid = cellValue.v;
+        } else td.textContent = cellValue;
+        break;
+    }
+
+    if (column.textAlign) td.style.textAlign = column.textAlign;
   }
 
   // --------------------------------
