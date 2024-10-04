@@ -1,123 +1,121 @@
+@import './vars.scss';
+
 .svb-button {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: $size12;
+  line-height: $size14;
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 12px;
-  border: 2px;
+  padding: $size4 $size12;
+  border: $size2;
   border-style: solid;
-  border-color: #00A0E3;
+  border-color: $main-color;
   position: relative;
-  background-color: #00A0E3;
-  color: #fff;
-  border-radius: 2px;
+  background-color: $main-color;
+  color: $light-color;
+  border-radius: $size2;
   cursor: pointer;
   transition:
-    0.16s background-color,
-    0.16s border-color;
-}
+    $seconds0-16 background-color,
+    $seconds0-16 border-color;
 
-.svb-button:hover {
-  background-color: #0078be;
-  border-color: #0078be;
-}
+  &:hover {
+    background-color: $main-hover-color;
+    border-color: $main-hover-color;
+  }
 
-.svb-button--gray {
-  border-color: #cccccc;
-  background-color: #cccccc;
+  &.selected {
+    background-color: $selected-color;
+  }
 }
 
 .svb-button--red {
-  border-color: #d52222;
-  background-color: #d52222;
-}
+  border-color: $red-color;
+  background-color: $red-color;
 
-.svb-button--red:hover {
-  border-color: #9d1313;
-  background-color: #9d1313;
-}
-
-.svb-button.selected {
-  background-color: coral;
+  &:hover {
+    border-color: $red-hover-color;
+    background-color: $red-hover-color;
+  }
 }
 
 .loader {
-  background-color: #00000020;
+  background-color: $loader-color;
   background-image: url('../img/loader.gif');
-  background-position: 50% 50%;
+  background-position: $pr50 $pr50;
   background-repeat: no-repeat;
   z-index: 9999;
 }
 
 input {
-  font-size: 14px;
+  font-size: $size14;
   line-height: 1.3;
   font-weight: 400;
   display: block;
-  padding: 4px 8px;
-  color: #1c1819;
-  background-color: #fff;
+  padding: $size4 $size8;
+  color: $input-color;
+  background-color: $light-color;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid $light-border-color;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 2px;
+  border-radius: $size2;
   transition:
-    border-color 0.18s ease-in-out,
-    box-shadow 0.18s ease-in-out;
-}
-input[type='checkbox'] {
-  display: inline-block;
-  width: auto !important;
-  padding: 8px;
-  height: auto !important;
-}
-input[type='checkbox']:checked {
-  background-color: #036958;
-  border-color: #036958;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
-}
-input:focus,
-input:active {
-  border-color: #86b7fe;
-  outline: 0;
-  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+    border-color $seconds0-18 ease-in-out,
+    box-shadow $seconds0-18 ease-in-out;
+
+  &[type='checkbox'] {
+    display: inline-block;
+    padding: $size8;
+    width: auto !important;
+    height: auto !important;
+  }
+  &[type='checkbox']:checked {
+    background-color: $checkbox-color;
+    border-color: $checkbox-color;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  &:focus,
+  &:active {
+    border-color: $checkbox-color;
+    outline: 0;
+    box-shadow: 0 0 0 $size2 $shadow-color;
+  }
 }
 
 select {
-  font-size: 13.5px;
+  font-size: $size13-5;
   line-height: 1;
   font-weight: 400;
   display: block;
-  width: 100%;
-  padding: 4px 8px;
-  color: #1c1819;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  width: $pr100;
+  padding: $size4 $size8;
+  color: $input-color;
+  background-color: $light-color;
+  border: $size1 solid $light-border-color;
+  border-radius: $size4;
   transition:
-    border-color 0.18s ease-in-out,
-    box-shadow 0.18s ease-in-out;
+    border-color $seconds0-18 ease-in-out,
+    box-shadow $seconds0-18 ease-in-out;
 }
 
 select:focus,
 .select:active {
-  border-color: #86b7fe;
+  border-color: $focus-color;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 $size4 $shadow-color;
 }
 
 .page-sidebar {
-  height: 100%;
-  padding: 16px 28px;
-  background: #fff;
-  border-right: 1px solid #d1d5db;
+  height: $pr100;
+  padding: $size16 $size28;
+  background: $light-color;
+  border-right: $size1 solid $slider-border-color;
 }
 
 .svb-toolbar {
     display: flex;
-    gap: 8px;
+    gap: $size8;
 }

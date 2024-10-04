@@ -1,10 +1,10 @@
-@import './vars.scss';
+@import './../../../scss/vars.scss';
 @import '../../../scss/varsmedia.scss';
 
 .modal {
   z-index: 100;
-  width: 100%;
-  height: 100%;
+  width: $pr10;
+  height: $pr10;
   display: none;
   position: fixed;
   left: 0;
@@ -14,9 +14,9 @@
   overflow-y: auto;
 }
 .modal-content {
-  margin: 10% auto;
+  margin: $pr10 auto;
   padding: $size20;
-  width: 70%;
+  width: $pr70;
   background-color: $light-color;
   border: 0.1rem solid $table-border-color;
   border-radius: $size4;
@@ -37,7 +37,7 @@
 
       input {
         margin-right: $size8;
-        width: 100%;
+        width: $pr100;
       }
     }
 
@@ -78,8 +78,8 @@
   }
 }
 .close {
-  margin-top: -1.25rem;
-  margin-right: -0.75rem;
+  margin-top: -$size20;
+  margin-right: -$size12;
   color: rgba($dark-color, 0.6);
   float: right;
   font-size: $size28;

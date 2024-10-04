@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 /* Eric Meyer's CSS Reset */
 html,
 body,
@@ -84,7 +86,7 @@ video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: $pr100;
     font: inherit;
     vertical-align: baseline;
 }
@@ -106,7 +108,7 @@ section {
 
 body {
     font-family: "Inter", sans-serif;
-    font-size: 13px;
+    font-size: $size13;
     overflow-x: hidden;
 }
 
