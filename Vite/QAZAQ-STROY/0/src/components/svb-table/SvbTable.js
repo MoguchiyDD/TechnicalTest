@@ -274,9 +274,11 @@ export default class SvbTable {
    * @author MoguchiyDD
    * @description Create a form to table (add) for modal window
    * @param {object} settings from getList function
+   * @param {Array | null} [tds=null] The rows from the table
+   * @param {boolean} [isRead=false] 
    * @returns form tag
    */
-  static createForm(settings, tds = null) {
+  static createForm(settings, tds = null, isRead = false) {
     const fields = SvbTable.getFormFields(settings);
     const form = document.createElement("form");
     let index = 0;
@@ -310,7 +312,24 @@ export default class SvbTable {
       }
       ++index;
 
-      form.appendChild(input);
+      if (isRead) {
+        const button = document.createElement("button");
+        button.className = "copy";
+        button.textContent = '📋';
+        button.type = "button";
+        button.addEventListener("click", (e) => {
+          SvbTable.getValue(parseInt(input.dataset.index));
+          e.target.readOnly = true;
+        });
+
+        const div = document.createElement("div");
+        div.className = "inputs";
+
+        div.appendChild(input);
+        div.appendChild(button);
+        form.appendChild(div);
+      } else form.appendChild(input);
+
       form.appendChild(document.createElement("br"));
     });
 
@@ -453,8 +472,12 @@ export default class SvbTable {
    * @param {object} settings from getList function
    */
   static getActiveRow(tds, settings) {
-    const modalContent = createModal();
     const rows = [];
+    const modalContent = createModal();
+    const p = document.createElement("p");
+    p.id = "info-clipboard";
+    p.style.display = "none";
+    modalContent.appendChild(p);
 
     tds.forEach((td, index) => {
       if (index > SvbTable.START_INDEX_NUMBER) {
@@ -469,7 +492,7 @@ export default class SvbTable {
       }
     });
 
-    const form = SvbTable.createForm(settings, rows);
+    const form = SvbTable.createForm(settings, rows, true);
     modalContent.appendChild(form);
   }
 
@@ -478,17 +501,65 @@ export default class SvbTable {
   
   // ------------ VALUES ------------
 
+  /**
+   * @author MoguchiyDD
+   * @description Set one value from current row
+   * @param {object} settings from getList function
+   * @param {int} index Index value
+   * @param {string} value Any value
+   */
   static setValue(settings, index, value) {
+    const td = SvbTable.getTd(index);
+    const keys = Object.keys(settings);
+    const keyIndex = ++index;
+    if (SvbTable.COLUMNS_WITH_UUID.includes(keyIndex)) value = {'v': td.dataset.uuid, 'r': value};
+    SvbTable.rowsTable(settings[keys[SvbTable.START_INDEX_TO_TABLE - 1]], keyIndex, td, value, false);
+  }
+
+  /**
+   * @author MoguchiyDD
+   * @description Get one value from current row
+   * @param {int} index Index row
+   */
+  static getValue(index) {
+    const td = SvbTable.getTd(index);
+    SvbTable.copyToClipboard(td.textContent);
+  }
+
+  /**
+   * @author MoguchiyDD
+   * @description Copy text
+   * @param {string} value Any value
+   */
+  static copyToClipboard(value) {
+    const p = document.getElementById("info-clipboard");
+    navigator.clipboard.writeText(value).then(() => {
+      p.textContent = "Успешно скопировано значение";
+    }).catch(err => {
+      p.textContent = "Что-то пошло не так при копировании значения";
+      console.error(err);
+    });
+    p.style.display = "block";
+
+    setTimeout(() => {
+      p.style.display = "none";
+      p.textContent = '';
+    }, 3000);
+  }
+
+  /**
+   * @author MoguchiyDD
+   * @description Get td tag
+   * @param {int} index Index row
+   * @returns td tag
+   */
+  static getTd(index) {
     const tbody = document.querySelector("tbody");
     const row = tbody.querySelectorAll("tr")[SvbTable.rowIndex];
     const td = Array.from(row.querySelectorAll("td")).find(r => {
       if (parseInt(r.dataset.index) === index) return r;
     });
-
-    const keys = Object.keys(settings);
-    const keyIndex = ++index;
-    if (SvbTable.COLUMNS_WITH_UUID.includes(keyIndex)) value = {'v': td.dataset.uuid, 'r': value};
-    SvbTable.rowsTable(settings[keys[SvbTable.START_INDEX_TO_TABLE - 1]], keyIndex, td, value, false);
+    return td;
   }
 
   // --------------------------------
