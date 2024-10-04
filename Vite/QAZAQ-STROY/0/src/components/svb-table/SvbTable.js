@@ -246,8 +246,10 @@ export default class SvbTable {
     
     tr.onclick = (e) => {
       const tds = e.currentTarget.querySelectorAll("td");
-      SvbTable.rowIndex = e.currentTarget.dataset.index;
-      SvbTable.getActiveRow(tds, settings);
+      if (e.target.dataset.index !== undefined) {
+        SvbTable.rowIndex = e.currentTarget.dataset.index;
+        SvbTable.getActiveRow(tds, settings);
+      }
     }
     return tr;
   }
@@ -333,11 +335,13 @@ export default class SvbTable {
       form.appendChild(document.createElement("br"));
     });
 
-    const submitButton = document.createElement("button");
-    submitButton.type = "submit";
-    submitButton.textContent = "Добавить";
-    submitButton.id = "add-save";
-    form.appendChild(submitButton);
+    if (isRead === false) {
+      const submitButton = document.createElement("button");
+      submitButton.type = "submit";
+      submitButton.textContent = "Добавить";
+      submitButton.id = "add-save";
+      form.appendChild(submitButton);
+    }
 
     return form;
   }
@@ -398,10 +402,11 @@ export default class SvbTable {
     const td = document.createElement("td");
     td.textContent = rowLength + 1;
     td.dataset.uuid = SvbTable.generateUUID();
+    tr.append(SvbTable.createCheckTabRow());
     tr.appendChild(td);
 
     const keys = Object.keys(settings);
-    let index = SvbTable.START_INDEX_TO_TABLE;
+    let index = SvbTable.START_INDEX_TO_TABLE - 1;
     for (let [_, value] of formData.entries()) {
       const td = document.createElement("td");
       if (SvbTable.COLUMNS_WITH_UUID.includes(index)) value = {'v': SvbTable.generateUUID(), 'r': value};
@@ -426,6 +431,10 @@ export default class SvbTable {
       const td = document.createElement("td");
       tr.appendChild(td);
     });
+
+    const td = document.createElement("td");
+    tr.appendChild(td);
+
     return tr;
   }
 

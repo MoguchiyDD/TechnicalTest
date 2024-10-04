@@ -3,8 +3,8 @@
 
 .modal {
   z-index: 100;
-  width: $pr10;
-  height: $pr10;
+  width: $pr100;
+  height: $pr100;
   display: none;
   position: fixed;
   left: 0;
@@ -102,5 +102,17 @@
   .modal-content {
     margin: $size16 auto;
     width: $pr80;
+  }
+}
+@media screen and (min-width: $media1024) and (max-width: $media1280){
+  .modal-content {
+    margin: $size16 auto;
+    width: $pr60;
+  }
+}
+@media screen and (min-width: $media1280) {
+  .modal-content {
+    margin: $size40 auto;
+    width: $pr30;
   }
 }
