@@ -1,3 +1,4 @@
+import createModal from './modal';
 import './styles/svb-table.scss'
 import './styles/modal.scss'
 
@@ -11,11 +12,16 @@ export default class SvbTable {
     this.element = SvbTable.createElement('table', 'doc-list-table', 'svb-table', SvbTable.getTableHTML());
   }
 
+  static CURRENCY = " ₸";
+  static INDEX_WITHOUT_CURRENCY = 0;
   static COLUMN_DOCDATE = 1;
   static COLUMN_CONTRACT = 3;
   static COLUMN_SUM = 8;
   static COLUMN_SUMFACT = 9;
   static COLUMNS_WITH_UUID = [3, 4, 5, 7];
+  static COLUMNS_WITH_NUMBER_TYPE = [9, 10, 11];
+  static COLUMNS_WITH_NUMBER_TYPE_INTEGER = [11];
+  static COLUMNS_WITH_NUMBER_TYPE_FLOAT_WITHOUT_START = [7, 8];
   static START_INDEX_CHECKBOX = 0;
   static START_INDEX_NUMBER = 1;
   static START_INDEX_TO_TABLE = 2;
@@ -193,13 +199,16 @@ export default class SvbTable {
     const label = document.createElement("label");
     const input = document.createElement("input");
     const span = document.createElement("span");
+
     label.className = "custom-checkbox";
     input.type = "checkbox";
     input.name = "checkbox";
     span.className = "checkmark";
+
     label.appendChild(input);
     label.appendChild(span);
     td.appendChild(label);
+
     return td;
   }
 
@@ -214,11 +223,11 @@ export default class SvbTable {
   static createTabRow(index, settings, columns, row) {
     const tr = document.createElement("tr");
     tr.appendChild(SvbTable.createCheckTabRow());
-
+    
     columns.forEach((column, j) => {
       const td = document.createElement("td");
       const cellValue = row[j];
-
+      
       if (settings[column]) SvbTable.rowsTable(settings[column], j, td, cellValue);
       else {
         td.textContent = ++index;
@@ -228,7 +237,11 @@ export default class SvbTable {
       if (j === SvbTable.START_INDEX_NUMBER) tr.dataset.uuid = cellValue;
       tr.appendChild(td);
     });
-
+    
+    tr.onclick = (e) => {
+      const tds = e.currentTarget.querySelectorAll("td");
+      SvbTable.getActiveRow(tds, settings);
+    }
     return tr;
   }
 
@@ -256,9 +269,10 @@ export default class SvbTable {
    * @param {object} settings from getList function
    * @returns form tag
    */
-  static createForm(settings) {
+  static createForm(settings, tds = null) {
     const fields = SvbTable.getFormFields(settings);
     const form = document.createElement("form");
+    let index = 0;
 
     fields.forEach(field => {
       const label = document.createElement("label");
@@ -271,8 +285,17 @@ export default class SvbTable {
       input.type = field.type;
       input.name = field.name;
       input.required = true;
-      form.appendChild(input);
 
+      if (SvbTable.COLUMNS_WITH_NUMBER_TYPE_FLOAT_WITHOUT_START.includes(index)) {
+        input.step = "0.1";
+      }
+      if (tds !== null) {
+        input.value = tds[index];
+        input.readOnly = true;
+      }
+      ++index;
+
+      form.appendChild(input);
       form.appendChild(document.createElement("br"));
     });
 
@@ -407,6 +430,37 @@ export default class SvbTable {
   // --------------------------------
 
 
+  // ------------ ACTIVE ------------
+
+  /**
+   * @author MoguchiyDD
+   * @param {HTMLElement} tds Many td from tr to table
+   * @param {object} settings from getList function
+   */
+  static getActiveRow(tds, settings) {
+    const modalContent = createModal();
+    const rows = [];
+
+    tds.forEach((td, index) => {
+      if (index > SvbTable.START_INDEX_NUMBER) {
+        if (SvbTable.COLUMNS_WITH_NUMBER_TYPE.includes(index)) {
+          let num = td.textContent.split(SvbTable.CURRENCY)[SvbTable.INDEX_WITHOUT_CURRENCY];
+          if (SvbTable.COLUMNS_WITH_NUMBER_TYPE_INTEGER.includes(index)) num = parseInt(num);
+          else num = parseFloat(num);
+          rows.push(num);
+        } else if (index === SvbTable.COLUMN_DOCDATE + SvbTable.START_INDEX_NUMBER) {
+          rows.push(SvbTable.formatDateDotsToDashes(td.textContent));
+        } else rows.push(td.textContent);
+      }
+    });
+
+    const form = SvbTable.createForm(settings, rows);
+    modalContent.appendChild(form);
+  }
+
+  // --------------------------------
+
+
   // ------------ OTHER -------------
 
   /**
@@ -415,10 +469,21 @@ export default class SvbTable {
    * @param {string} dateString 2024-10-03 20:30:00
    * @returns 03.10.2024
    */
-  static formatDate(dateString) {
+  static formatDateDots(dateString) {
     const datePart = dateString.split(' ')[0];
     const [year, month, day] = datePart.split('-');
     return `${day}.${month}.${year}`;
+  }
+
+  /**
+   * @author MoguchiyDD
+   * @description From **03.10.2024** to **2024-10-03**
+   * @param {string} dateString 03.10.2024
+   * @returns 2024-10-03
+   */
+  static formatDateDotsToDashes(dateString) {
+    const [day, month, year] = dateString.split('.');
+    return `${year}-${month}-${day}`;
   }
 
   /**
@@ -445,7 +510,7 @@ export default class SvbTable {
   static rowsTable(column, index, td, cellValue) {
     switch(index) {
       case SvbTable.COLUMN_DOCDATE:
-        td.textContent = SvbTable.formatDate(cellValue);
+        td.textContent = SvbTable.formatDateDots(cellValue);
         break;
       case SvbTable.COLUMN_CONTRACT:
         const link = document.createElement('a');
@@ -457,7 +522,7 @@ export default class SvbTable {
         break;
       case SvbTable.COLUMN_SUM:
       case SvbTable.COLUMN_SUMFACT:
-        td.textContent = cellValue + " ₸";
+        td.textContent = cellValue + SvbTable.CURRENCY;
         break;
       default:
         if (typeof cellValue === "object" && cellValue.r) {
