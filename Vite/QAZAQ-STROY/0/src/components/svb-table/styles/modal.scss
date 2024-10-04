@@ -1,4 +1,5 @@
 @import './vars.scss';
+@import '../../../scss/varsmedia.scss';
 
 .modal {
   z-index: 100;
@@ -10,7 +11,7 @@
   top: 0;
   overflow: auto;
   background-color: rgba($dark-color, 0.5);
-  overflow: hidden;
+  overflow-y: auto;
 }
 .modal-content {
   margin: 10% auto;
@@ -20,6 +21,61 @@
   border: 0.1rem solid $table-border-color;
   border-radius: $size4;
   box-shadow: 0 $size4 $size16 rgba($dark-color, 0.3);
+
+  p#info-clipboard {
+    font-size: $size12;
+    color: $main-color;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .inputs {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        margin-right: $size8;
+        width: 100%;
+      }
+    }
+
+    label {
+      padding-bottom: $size4;
+      font-size: $size12;
+      font-weight: bold;
+
+      &:first-child {
+        padding-top: $size16;
+      }
+    }
+
+    input {
+      font-size: $size12;
+    }
+
+    button {
+      background-color: $main-color;
+      border: $size1 solid $main-color;
+      border-radius: $size4;
+
+      &:hover {
+        background-color: mix($main-color, $dark-color, $pr60);
+        border-color: mix($main-color, $dark-color, $pr60);
+      }
+    }
+
+    button#add-save {
+      margin-top: $size16;
+      padding: $size12;
+      font-size: $size12;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $light-color;
+      
+    }
+  }
 }
 .close {
   margin-top: -1.25rem;
@@ -33,4 +89,18 @@
 .close:hover,
 .close:focus {
   color: $dark-color;
+}
+
+
+@media screen and (max-width: $media640) {
+  .modal-content {
+    margin: 0;
+    width: $pr100;
+  }
+}
+@media screen and (min-width: $media640) and (max-width: $media1024) {
+  .modal-content {
+    margin: $size16 auto;
+    width: $pr80;
+  }
 }

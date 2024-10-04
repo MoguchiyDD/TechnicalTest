@@ -1,4 +1,5 @@
 @import './vars.scss';
+@import '../../../scss/varsmedia.scss';
 
 table {
   padding-bottom: $size16 !important;
@@ -21,6 +22,7 @@ table {
       border: $size2 solid $table-border-color;
     }
     &:nth-child(2) {
+      border-top: $size2 solid $table-border-color;
       border-bottom: $size2 solid $table-border-color;
     }
   }
@@ -69,7 +71,7 @@ table {
     top: 0;
 
     th {
-      &:nth-child(2) {
+      &:first-of-type {
         border-top-left-radius: $size4;
       }
       &:last-of-type {
@@ -207,5 +209,17 @@ table {
     &::after {
       display: block;
     }
+  }
+}
+
+
+@media screen and (max-width: $media1024) {
+  table {
+    max-height: $pr80;
+  }
+}
+@media screen and (min-width: $media1024) {
+  table {
+    max-height: $pr87;
   }
 }

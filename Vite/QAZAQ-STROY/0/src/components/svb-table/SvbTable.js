@@ -336,6 +336,7 @@ export default class SvbTable {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.textContent = "Добавить";
+    submitButton.id = "add-save";
     form.appendChild(submitButton);
 
     return form;
