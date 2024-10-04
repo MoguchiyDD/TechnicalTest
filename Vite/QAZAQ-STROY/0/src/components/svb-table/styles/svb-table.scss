@@ -3,8 +3,8 @@
 table {
   padding-bottom: $size16 !important;
   padding-right: $size16 !important;
-  width: 100%;
-  max-height: 74%;
+  width: $pr100;
+  max-height: $pr62;
   display: block;
   background-color: transparent;
   border-collapse: collapse;
@@ -17,10 +17,10 @@ table {
     font-size: $size12;
     text-align: left;
     
-    &:not(:first-child) {
+    &:not(:nth-child(2)) {
       border: $size2 solid $table-border-color;
     }
-    &:first-child {
+    &:nth-child(2) {
       border-bottom: $size2 solid $table-border-color;
     }
   }
@@ -31,15 +31,15 @@ table {
     letter-spacing: 1px;
     background-color: $main-color;
 
-    &:first-child {
+    &:nth-child(2) {
       z-index: 15;
       position: sticky;
       left: 0;
 
       &::after {
         content: "";
-        width: $size1;
-        height: 100%;
+        width: $size0-16;
+        height: $pr100;
         background-color: $table-border-color;
         position: absolute;
         top: 0;
@@ -49,13 +49,14 @@ table {
   }
   td {
     padding: $size8 $size12;
+    vertical-align: middle;
     color: $dark-color;
 
     a {
       color: $main-color;
 
       &:hover {
-        color: mix($main-color, $dark-color, 60%);
+        color: mix($main-color, $dark-color, $pr60);
       }
     }
   }
@@ -68,7 +69,7 @@ table {
     top: 0;
 
     th {
-      &:first-of-type {
+      &:nth-child(2) {
         border-top-left-radius: $size4;
       }
       &:last-of-type {
@@ -78,23 +79,23 @@ table {
   }
 
   tbody {
-    width: 100%;
+    width: $pr100;
 
     tr {
       background-color: $table-color;
 
       &:hover {
-        background-color: mix($light-color, $dark-color, 90%);
+        background-color: mix($light-color, $dark-color, $pr90);
 
-        td:first-child {
-          background-color: mix($light-color, $dark-color, 90%);
+        td:nth-child(2) {
+          background-color: mix($light-color, $dark-color, $pr90);
         }
       }
       &:active {
-        background-color: mix($light-color, $dark-color, 80%);
+        background-color: mix($light-color, $dark-color, $pr80);
 
-        td:first-child {
-          background-color: mix($light-color, $dark-color, 80%);
+        td:nth-child(2) {
+          background-color: mix($light-color, $dark-color, $pr80);
         }
       }
       &:last-of-type {
@@ -106,8 +107,8 @@ table {
 
         &::after {
           content: "";
-          width: $size1;
-          height: 100%;
+          width: $size0-16;
+          height: $pr100;
           background-color: $table-border-color;
           position: absolute;
           top: 0;
@@ -115,7 +116,7 @@ table {
         }
        
         td {
-          &:first-of-type {
+          &:nth-child(2) {
             background-color: $main-color;
             border-bottom-left-radius: $size4;
           }
@@ -126,7 +127,7 @@ table {
       }
 
       td {
-        &:first-child {
+        &:nth-child(2) {
           z-index: 5;
           font-weight: bold;
           color: $dark-color;
@@ -136,8 +137,8 @@ table {
 
           &::after {
             content: "";
-            width: $size1;
-            height: 100%;
+            width: $size0-16;
+            height: $pr100;
             background-color: $table-border-color;
             position: absolute;
             top: 0;
@@ -167,5 +168,44 @@ table {
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: mix($scroll-color, $dark-color, 90%);
+  background-color: mix($scroll-color, $dark-color, $pr90);
+}
+
+/* CheckBox */
+.custom-checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .checkmark {
+    width: $size20;
+    height: $size20;
+    background-color: $light-color;
+    border: $size2 solid rgba($dark-color, 0.3);
+    border-radius: $size4;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: $size5-6;
+      top: $size1;
+      width: $size4;
+      height: $size8;
+      border: solid $light-color;
+      border-width: 0 $size4 $size4 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  input[type="checkbox"]:checked + .checkmark {
+    background-color: $main-color;
+  
+    &::after {
+      display: block;
+    }
+  }
 }

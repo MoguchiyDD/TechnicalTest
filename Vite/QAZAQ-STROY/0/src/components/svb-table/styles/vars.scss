@@ -6,12 +6,20 @@ $light-color: #FFF;
 $dark-color: #000;
 $scroll-color: #9CA3AF;
 
-$size1: 0.01rem;
-$size2: 0.125rem;
+$size0-16: 0.01rem;  /* 0.16px */
+$size1: 0.1rem;  /* 1.6px */
+$size2: 0.125rem;  /* 2px */
 $size4: 0.25rem;  /* 4px */
+$size5-6: 0.35rem;  /* 5.6px */
 $size8: 0.5rem;  /* 8px */
 $size12: 0.75rem;  /* 12px */
 $size16: 1rem;  /* 16px */
 $size20: 1.25rem;  /* 20px */
 $size28: 1.75rem;  /* 28px */
 $size40: 2.5rem;  /* 40px */
+
+$pr60: 60%;
+$pr62: 62%;
+$pr80: 80%;
+$pr90: 90%;
+$pr100: 100%;

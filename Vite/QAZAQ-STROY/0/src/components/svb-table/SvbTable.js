@@ -15,8 +15,10 @@ export default class SvbTable {
   static COLUMN_CONTRACT = 3;
   static COLUMN_SUM = 8;
   static COLUMN_SUMFACT = 9;
-  static COLUMNS_WITH_UUID = [2, 3, 4, 6];
-  static START_INDEX_TO_TABLE = 1;
+  static COLUMNS_WITH_UUID = [3, 4, 5, 7];
+  static START_INDEX_CHECKBOX = 0;
+  static START_INDEX_NUMBER = 1;
+  static START_INDEX_TO_TABLE = 2;
 
   // ------------ CREATE ------------
 
@@ -133,6 +135,7 @@ export default class SvbTable {
   static updateTableHead(element, settings) {
     const thead = element.querySelector("thead");
     const head = document.createElement("tr");
+    head.appendChild(SvbTable.createHeaderCell(' '));
     head.appendChild(SvbTable.createHeaderCell('#'));
     thead.innerHTML = '';
 
@@ -181,6 +184,26 @@ export default class SvbTable {
   }
 
   /**
+   * @author MoguchiyDD
+   * @description Create an input for remove row(s) to table
+   * @returns td tag
+   */
+  static createCheckTabRow() {
+    const td = document.createElement("td");
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    const span = document.createElement("span");
+    label.className = "custom-checkbox";
+    input.type = "checkbox";
+    input.name = "checkbox";
+    span.className = "checkmark";
+    label.appendChild(input);
+    label.appendChild(span);
+    td.appendChild(label);
+    return td;
+  }
+
+  /**
    * 
    * @param {int} index index row
    * @param {object} settings from getList function
@@ -190,15 +213,19 @@ export default class SvbTable {
    */
   static createTabRow(index, settings, columns, row) {
     const tr = document.createElement("tr");
+    tr.appendChild(SvbTable.createCheckTabRow());
 
     columns.forEach((column, j) => {
       const td = document.createElement("td");
       const cellValue = row[j];
 
       if (settings[column]) SvbTable.rowsTable(settings[column], j, td, cellValue);
-      else td.textContent = ++index;
+      else {
+        td.textContent = ++index;
+        td.style.textAlign = "center";
+      }
 
-      if (j === 0) tr.dataset.uuid = cellValue;
+      if (j === SvbTable.START_INDEX_NUMBER) tr.dataset.uuid = cellValue;
       tr.appendChild(td);
     });
 
@@ -342,6 +369,39 @@ export default class SvbTable {
       tr.appendChild(td);
     });
     return tr;
+  }
+
+  // --------------------------------
+
+
+  // ------------ REMOVE ------------
+
+  /**
+   * @author MoguchiyDD
+   * @description Remove some rows or one row to table
+   */
+  removeRow() {
+    const tbody = this.element.querySelector("tbody");
+    const trWithoutLast = [...tbody.querySelectorAll("tr")].slice(0, -1);
+    const rowsToDelete = [];
+
+    trWithoutLast.forEach(row => {
+      const td = row.querySelectorAll("td")[SvbTable.START_INDEX_CHECKBOX];
+      const input = td.querySelector("input");
+      if (input.checked) rowsToDelete.push(row);
+    });
+
+    rowsToDelete.forEach(row => {
+      tbody.removeChild(row);
+    });
+
+    const _trWithoutLast = [...tbody.querySelectorAll("tr")].slice(0, -1);
+    let index = SvbTable.START_INDEX_NUMBER;
+    _trWithoutLast.forEach(key => {
+      const td = key.querySelectorAll("td")[SvbTable.START_INDEX_NUMBER];
+      td.textContent = index;
+      index++;
+    });
   }
 
   // --------------------------------

@@ -5,6 +5,7 @@ import './src/scss/main.scss';
 const request = getList();
 const tableWrapper = document.querySelector("#table-wrapper");
 const addDataToTable = document.getElementById("add-data");
+const removeDataToTable = document.getElementById("remove-data");
 
 const svbTable = new SvbTable();
 
@@ -16,7 +17,11 @@ request.then((response) => {
 
 addDataToTable.onclick = () => {
   const modalContent = createModal();
-  request.then(response => svbTable.addRow(modalContent, response.settings, response.rows.length))
+  request.then(response => svbTable.addRow(modalContent, response.settings, response.rows.length));
+};
+
+removeDataToTable.onclick = () => {
+  svbTable.removeRow();
 };
 
 
