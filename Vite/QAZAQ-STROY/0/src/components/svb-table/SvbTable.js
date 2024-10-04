@@ -12,12 +12,16 @@ export default class SvbTable {
     this.element = SvbTable.createElement('table', 'doc-list-table', 'svb-table', SvbTable.getTableHTML());
   }
 
+  static rowIndex = -1;
+
   static CURRENCY = " ₸";
+  static DAYS = " дн.";
   static INDEX_WITHOUT_CURRENCY = 0;
   static COLUMN_DOCDATE = 1;
   static COLUMN_CONTRACT = 3;
   static COLUMN_SUM = 8;
   static COLUMN_SUMFACT = 9;
+  static COLUMN_DEADLINE = 10;
   static COLUMNS_WITH_UUID = [3, 4, 5, 7];
   static COLUMNS_WITH_NUMBER_TYPE = [9, 10, 11];
   static COLUMNS_WITH_NUMBER_TYPE_INTEGER = [11];
@@ -223,7 +227,8 @@ export default class SvbTable {
   static createTabRow(index, settings, columns, row) {
     const tr = document.createElement("tr");
     tr.appendChild(SvbTable.createCheckTabRow());
-    
+    tr.dataset.index = index;
+
     columns.forEach((column, j) => {
       const td = document.createElement("td");
       const cellValue = row[j];
@@ -235,11 +240,13 @@ export default class SvbTable {
       }
 
       if (j === SvbTable.START_INDEX_NUMBER) tr.dataset.uuid = cellValue;
+      if (j > SvbTable.START_INDEX_CHECKBOX) td.dataset.index = j - 1;
       tr.appendChild(td);
     });
     
     tr.onclick = (e) => {
       const tds = e.currentTarget.querySelectorAll("td");
+      SvbTable.rowIndex = e.currentTarget.dataset.index;
       SvbTable.getActiveRow(tds, settings);
     }
     return tr;
@@ -284,6 +291,7 @@ export default class SvbTable {
       input.id = field.name;
       input.type = field.type;
       input.name = field.name;
+      input.dataset.index = index;
       input.required = true;
 
       if (SvbTable.COLUMNS_WITH_NUMBER_TYPE_FLOAT_WITHOUT_START.includes(index)) {
@@ -292,6 +300,13 @@ export default class SvbTable {
       if (tds !== null) {
         input.value = tds[index];
         input.readOnly = true;
+        input.addEventListener("focus", (e) => {
+          e.target.readOnly = false;
+        });
+        input.addEventListener("blur", (e) => {
+          SvbTable.setValue(settings, parseInt(input.dataset.index), input.value);
+          e.target.readOnly = true;
+        });
       }
       ++index;
 
@@ -459,6 +474,24 @@ export default class SvbTable {
   }
 
   // --------------------------------
+  
+  
+  // ------------ VALUES ------------
+
+  static setValue(settings, index, value) {
+    const tbody = document.querySelector("tbody");
+    const row = tbody.querySelectorAll("tr")[SvbTable.rowIndex];
+    const td = Array.from(row.querySelectorAll("td")).find(r => {
+      if (parseInt(r.dataset.index) === index) return r;
+    });
+
+    const keys = Object.keys(settings);
+    const keyIndex = ++index;
+    if (SvbTable.COLUMNS_WITH_UUID.includes(keyIndex)) value = {'v': td.dataset.uuid, 'r': value};
+    SvbTable.rowsTable(settings[keys[SvbTable.START_INDEX_TO_TABLE - 1]], keyIndex, td, value, false);
+  }
+
+  // --------------------------------
 
 
   // ------------ OTHER -------------
@@ -506,23 +539,36 @@ export default class SvbTable {
    * @param {int} index Index for correct formatting of rows in table from API data
    * @param {HTMLElement} td Link **td** element to **tr**
    * @param {string | object} cellValue Values ​​for the table
+   * @param {boolean} [isLink=true] Create or not create a link
    */
-  static rowsTable(column, index, td, cellValue) {
+  static rowsTable(column, index, td, cellValue, isLink = true) {
     switch(index) {
       case SvbTable.COLUMN_DOCDATE:
         td.textContent = SvbTable.formatDateDots(cellValue);
         break;
       case SvbTable.COLUMN_CONTRACT:
-        const link = document.createElement('a');
-        link.href = '#';
-        link.target = "_blank";
-        link.textContent = cellValue.r;
-        td.appendChild(link);
+        let link;
+        if (isLink) {
+          link = document.createElement('a');
+          link.href = '#';
+          link.target = "_blank";
+          link.textContent = cellValue.r;  
+          td.appendChild(link);
+        } else {
+          link = td.querySelector('a');
+          link.textContent = cellValue.r;
+        }
         td.dataset.uuid = cellValue.v;
         break;
       case SvbTable.COLUMN_SUM:
       case SvbTable.COLUMN_SUMFACT:
         td.textContent = cellValue + SvbTable.CURRENCY;
+        break;
+      case SvbTable.COLUMN_DEADLINE:
+        const _cellvalue = cellValue.split(' ');
+        if (_cellvalue.length < 2) {
+          td.textContent = _cellvalue.toString() + SvbTable.DAYS;
+        } else td.textContent = cellValue;
         break;
       default:
         if (typeof cellValue === "object" && cellValue.r) {
