@@ -18,16 +18,17 @@ This repository stores all completed Technical Tests
 <div id="technical-tests-types" align="left">
   <img alt="Bots (2)" src="https://img.shields.io/badge/Bots-2-B71C1C?style=for-the-badge" />
   <img alt="FullStack (1)" src="https://img.shields.io/badge/FullStack-1-B71C1C?style=for-the-badge" />
-  <img alt="FrontEnd (5)" src="https://img.shields.io/badge/FrontEnd-5-B71C1C?style=for-the-badge" />
+  <img alt="FrontEnd (6)" src="https://img.shields.io/badge/FrontEnd-6-B71C1C?style=for-the-badge" />
   <img alt="BackEnd (2)" src="https://img.shields.io/badge/BackEnd-2-B71C1C?style=for-the-badge" />
 </div>
 
-## Completed (10)
+## Completed (11)
 <div id="technical-tests-language" align="left">
   <img alt="Python (3)" src="https://img.shields.io/badge/Python-3-1A237E?style=for-the-badge" />
   <img alt="NestJS (2)" src="https://img.shields.io/badge/NestJS-2-1A237E?style=for-the-badge" />
   <img alt="NodeJS (1)" src="https://img.shields.io/badge/NodeJS-1-1A237E?style=for-the-badge" />
   <img alt="ReactJS (3)" src="https://img.shields.io/badge/ReactJS-3-1A237E?style=for-the-badge" />
+  <img alt="Vite (1)" src="https://img.shields.io/badge/Vite-1-1A237E?style=for-the-badge" />
   <img alt="Static (1)" src="https://img.shields.io/badge/Static-1-1A237E?style=for-the-badge" />
 </div>
 
@@ -38,6 +39,7 @@ This repository stores all completed Technical Tests
 - **GREEN API** (once : _NodeJS_ + _RabbitMQ_ + _Microservices_ + _Docker Compose_)
 - **LILUMA Enterprises** (once : _Python_ + _Aiogram_ + _Matplotlib_ + _PostgreSQL_)
 - **Maxinum Consulting Ltd** (once: _HTML_ + _JavaScript_ + _Bootstrap_)
+- **QAZAQ STROY** (once: _Vite_ + _HTML_ + _SCSS_ + _JavaScript_)
 - **SIMUComp** (once : _Python_ + _Kivy_)
 - **Tangem** (once : _ReactJS_ + _SCSS_)
 - **UpTrader** (once : _Python_ + _Django_ + _SQLite3_ + _CSS_)
