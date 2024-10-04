@@ -1,0 +1,225 @@
+@import './../../../scss/vars.scss';
+@import '../../../scss/varsmedia.scss';
+
+table {
+  padding-bottom: $size16 !important;
+  padding-right: $size16 !important;
+  width: $pr100;
+  max-height: $pr62;
+  display: block;
+  background-color: transparent;
+  border-collapse: collapse;
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: nowrap;
+
+  th,
+  td {
+    font-size: $size12;
+    text-align: left;
+    
+    &:not(:nth-child(2)) {
+      border: $size2 solid $table-border-color;
+    }
+    &:nth-child(2) {
+      border-top: $size2 solid $table-border-color;
+      border-bottom: $size2 solid $table-border-color;
+    }
+  }
+  th {
+    padding: $size16 $size12;
+    font-weight: bold;
+    text-transform: inherit;
+    letter-spacing: 1px;
+    background-color: $main-color;
+
+    &:nth-child(2) {
+      z-index: 15;
+      position: sticky;
+      left: 0;
+
+      &::after {
+        content: "";
+        width: $size0-16;
+        height: $pr100;
+        background-color: $table-border-color;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  td {
+    padding: $size8 $size12;
+    vertical-align: middle;
+    color: $dark-color;
+
+    a {
+      color: $main-color;
+
+      &:hover {
+        color: mix($main-color, $dark-color, $pr60);
+      }
+    }
+  }
+
+  thead {
+    z-index: 10;
+    color: $light-color;
+    background-color: $main-color;
+    position: sticky;
+    top: 0;
+
+    th {
+      &:first-of-type {
+        border-top-left-radius: $size4;
+      }
+      &:last-of-type {
+        border-top-right-radius: $size4;
+      }
+    }
+  }
+
+  tbody {
+    width: $pr100;
+
+    tr {
+      background-color: $table-color;
+
+      &:hover {
+        background-color: mix($light-color, $dark-color, $pr90);
+
+        td:nth-child(2) {
+          background-color: mix($light-color, $dark-color, $pr90);
+        }
+      }
+      &:active {
+        background-color: mix($light-color, $dark-color, $pr80);
+
+        td:nth-child(2) {
+          background-color: mix($light-color, $dark-color, $pr80);
+        }
+      }
+      &:last-of-type {
+        z-index: 10;
+        height: $size40;
+        background-color: $main-color;
+        position: sticky;
+        bottom: -$size16;
+
+        &::after {
+          content: "";
+          width: $size0-16;
+          height: $pr100;
+          background-color: $table-border-color;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+       
+        td {
+          &:nth-child(2) {
+            background-color: $main-color;
+            border-bottom-left-radius: $size4;
+          }
+          &:last-of-type {
+            border-bottom-right-radius: $size4;
+          }
+        }
+      }
+
+      td {
+        &:nth-child(2) {
+          z-index: 5;
+          font-weight: bold;
+          color: $dark-color;
+          background-color: $table-color;
+          position: sticky;
+          left: 0;
+
+          &::after {
+            content: "";
+            width: $size0-16;
+            height: $pr100;
+            background-color: $table-border-color;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+        }
+        &:last-child {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: $size8;
+  height: $size8;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $scroll-color;
+  border-radius: $size4;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: mix($scroll-color, $dark-color, $pr90);
+}
+
+/* CheckBox */
+.custom-checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .checkmark {
+    width: $size20;
+    height: $size20;
+    background-color: $light-color;
+    border: $size2 solid rgba($dark-color, 0.3);
+    border-radius: $size4;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: $size5-6;
+      top: $size1;
+      width: $size4;
+      height: $size8;
+      border: solid $light-color;
+      border-width: 0 $size4 $size4 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  input[type="checkbox"]:checked + .checkmark {
+    background-color: $main-color;
+  
+    &::after {
+      display: block;
+    }
+  }
+}
+
+
+@media screen and (max-width: $media1024) {
+  table {
+    max-height: $pr80;
+  }
+}
+@media screen and (min-width: $media1024) {
+  table {
+    max-height: $pr87;
+  }
+}
