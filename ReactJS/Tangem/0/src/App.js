@@ -1,6 +1,7 @@
+import React from 'react';
+import { SurpriseTop, SurpriseBottom } from './components/surprise/Surprise';
 import './style/scss/global.scss';
 import './style/scss/surprise/surprise.scss';
-import { SurpriseTop, SurpriseBottom } from './components/surprise/Surprise';
 
 function App() {
   const surpriseDiscount = "10%OFF";

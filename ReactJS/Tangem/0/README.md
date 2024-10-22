@@ -25,6 +25,6 @@
 
 ## Steps before launch
 ```Bash
-$ npm install
-$ npm run start
+$ yarn install
+$ yarn run dev
 ```
