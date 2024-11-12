@@ -16,16 +16,16 @@ This repository stores all completed Technical Tests
 
 ## Classification
 <div id="technical-tests-types" align="left">
-  <img alt="Figma (1)" src="https://img.shields.io/badge/Figma-1-B71C1C?style=for-the-badge" />
+  <img alt="Figma (2)" src="https://img.shields.io/badge/Figma-2-B71C1C?style=for-the-badge" />
   <img alt="Bots (2)" src="https://img.shields.io/badge/Bots-2-B71C1C?style=for-the-badge" />
   <img alt="FullStack (1)" src="https://img.shields.io/badge/FullStack-1-B71C1C?style=for-the-badge" />
   <img alt="FrontEnd (6)" src="https://img.shields.io/badge/FrontEnd-6-B71C1C?style=for-the-badge" />
   <img alt="BackEnd (2)" src="https://img.shields.io/badge/BackEnd-2-B71C1C?style=for-the-badge" />
 </div>
 
-## Completed (12)
+## Completed (13)
 <div id="technical-tests-language" align="left">
-  <img alt="Figma (1)" src="https://img.shields.io/badge/Figma-1-1A237E?style=for-the-badge" />
+  <img alt="Figma (2)" src="https://img.shields.io/badge/Figma-2-1A237E?style=for-the-badge" />
   <img alt="Python (3)" src="https://img.shields.io/badge/Python-3-1A237E?style=for-the-badge" />
   <img alt="NestJS (2)" src="https://img.shields.io/badge/NestJS-2-1A237E?style=for-the-badge" />
   <img alt="NodeJS (1)" src="https://img.shields.io/badge/NodeJS-1-1A237E?style=for-the-badge" />
@@ -39,6 +39,7 @@ This repository stores all completed Technical Tests
 - **Blockchain & AI Technology Center** (once : _Figma_ + _Recraft AI_)
 - **DaniKo** (once : _NestJS_ + _React Flow_ + _whatsapp-web.js_ + _Mongoose_ + _Cache with Redis_ + _Docker Compose_)
 - **DEMETRA SYSTEMS** (once : _NestJS_ + _TypeORM_ + _Bull with Redis_ + _Cache with Redis_ + _Axios_ + _Docker Compose_)
+- **Dizzy** (once : _Figma_)
 - **GREEN API** (once : _NodeJS_ + _RabbitMQ_ + _Microservices_ + _Docker Compose_)
 - **LILUMA Enterprises** (once : _Python_ + _Aiogram_ + _Matplotlib_ + _PostgreSQL_)
 - **Maxinum Consulting Ltd** (once: _HTML_ + _JavaScript_ + _Bootstrap_)
