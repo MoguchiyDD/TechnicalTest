@@ -9,7 +9,7 @@ This repository stores all completed Technical Tests
   <a href="LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <a href="https://www.youtube.com/playlist?list=PLe25Qgw2EMXArcVUY3pRjxn2shc-hLmXT" target="_blank">
+  <a href="https://www.youtube.com/playlist?list=PLe25Qgw2EMXClakBQPXonXXf9_sghTFFC" target="_blank">
     <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
   </a>
 </div>
