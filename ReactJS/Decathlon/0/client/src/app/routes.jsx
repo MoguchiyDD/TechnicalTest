@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import QrTimekeepingPage from "../pages/QrTimekeepingPage";
-import TimekeepingFormPage from "../pages/TimekeepingFormPage";
+import QrTimekeepingPage from "../pages/QrTimekeeping";
+import TimekeepingFormPage from "../pages/TimekeepingForm";
 
 const AppRoutes = createBrowserRouter([
   {
