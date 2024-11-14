@@ -1,5 +1,5 @@
 # ReactJS/Decathlon (1st) | #14
-**FrontEnd**. A web application for employee attendance tracking. A QR code is generated on the main screen, which is recreated if not scanned within 10 minutes or after navigating to the URL in the QR code. Upon the first launch, the app prompts for the user's name and stores it in localStorage for subsequent scans.
+**FullStack**. A web application for employee attendance tracking. A QR code is generated on the main screen, which is recreated if not scanned within 10 minutes or after navigating to the URL in the QR code. Upon the first launch, the app prompts for the user's name and stores it in localStorage for subsequent scans.
 
 **Stack**: ReactJS, NodeJS, shadcn/ui, Tailwind CSS, SQLite
 
