@@ -15,7 +15,7 @@
   </a>
   <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~3 hours-F9A825?style=for-the-badge" />
   <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
-  <!-- <a href="#" target="_blank">
+  <a href="https://youtu.be/7GNLZoINhTg" target="_blank">
     <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
-  </a> -->
+  </a>
 </div>
