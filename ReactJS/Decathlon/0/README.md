@@ -31,9 +31,13 @@
 
 ## Steps before launch
 ```Bash
+# Install
 $ yarn install
-$ yarn run start  # NodeJS + ReactJS
+$ cd client && yarn install
+$ cd ..
 
+# Run
+$ yarn run start  # NodeJS + ReactJS
 # or ...
 $ yarn run start:server  # NodeJS
 $ yarn run start:client  # ReactJS
