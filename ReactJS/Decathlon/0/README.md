@@ -30,7 +30,13 @@
   - http://localhost:5000/api/timekeeping/create : saved data into database
 
 ## Steps before launch
-```Bash
+### 1st option
+```bash
+$ docker compose up --build
+```
+
+### 2nd option
+```bash
 # Install
 $ yarn install
 $ cd client && yarn install
