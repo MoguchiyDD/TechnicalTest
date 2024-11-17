@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"yarn run start:server\" \"yarn run start:client\"",
     "start:server": "node server/index.js",
-    "start:client": "cd client && yarn dev"
+    "start:client": "cd client && yarn dev --host 0.0.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
