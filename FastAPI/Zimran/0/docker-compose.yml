@@ -1,0 +1,60 @@
+name: fastapi-zimran-zero
+services:
+  api:
+    container_name: api
+    build:
+      context: ./src
+    ports:
+      - 8000:8000
+    environment:
+      - REDIS_HOST=redis
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - redis
+      - rabbitmq
+    networks:
+      - fastapi-zimran-zero
+  
+  consumer:
+    container_name: consumer
+    build:
+      context: ./src
+      dockerfile: ./consumer/Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - redis
+      - rabbitmq
+      - api
+    networks:
+      - fastapi-zimran-zero
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - fastapi-zimran-zero
+  
+  rabbitmq:
+    image: rabbitmq:4.0.5-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - fastapi-zimran-zero
+
+networks:
+  fastapi-zimran-zero:
+    driver: bridge
+volumes:
+  rabbitmq:
