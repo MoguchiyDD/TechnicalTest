@@ -1,2 +1,4 @@
 Kivy==2.3.0
 kivymd==1.2.0
+kivy[full]
+kivy-garden
