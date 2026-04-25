@@ -13,7 +13,6 @@
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~3 days-F9A825?style=for-the-badge" />
   <img alt="Language" src="https://img.shields.io/badge/Language-English-00897b?style=for-the-badge" />
   <a href="https://youtu.be/tbNYPksYV3E" target="_blank">
     <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
