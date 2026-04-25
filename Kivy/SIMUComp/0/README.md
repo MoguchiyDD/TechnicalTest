@@ -13,7 +13,6 @@
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~5 days-F9A825?style=for-the-badge" />
   <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
   <a href="https://youtu.be/IzQOuXnBJ0E" target="_blank">
     <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
@@ -21,14 +20,21 @@
 </div>
 
 ## Steps before launch
-```Bash
-# Virtual Window (Python)
+```BASH
+$ # 1 OPTION
+$ docker build -t simucomp .
+$ xhost +local:docker
+$ docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix simucomp
+$ 
+$ # 2 OPTION
+$ 
+$ # Virtual Window (Python)
 $ python -m venv <NAME>
-# for Linux and MacOS : source <NAME>/bin/activate
-# for Windows : <NAME>\Scripts\activate
+$ # for Linux and MacOS : source <NAME>/bin/activate
+$ # for Windows : <NAME>\Scripts\activate
 $ pip install -r requirements.txt  # Installation of Packages 
-
-# RUN
+$ 
+$ # RUN
 $ cd src
 $ python main.py
 ```
