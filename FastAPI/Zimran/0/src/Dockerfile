@@ -7,8 +7,9 @@ COPY /schema /usr/app/schema
 COPY config.py /usr/app/config.py
 COPY producer.py /usr/app/producer.py
 COPY index.py /usr/app/index.py
+COPY requirements.txt /usr/app/requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install fastapi fastapi[standard] uvicorn aioredis aio-pika
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 CMD ["uvicorn", "index:app", "--host", "0.0.0.0", "--port", "8000"]

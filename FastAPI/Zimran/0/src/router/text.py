@@ -2,59 +2,46 @@
 # https://github.com/MoguchiyDD/TechnicalTest/
 
 
-from fastapi import APIRouter, HTTPException, status
-from aioredis import from_url
+from fastapi import APIRouter, HTTPException, Request, status
 from uuid import uuid4
 from json import loads, dumps
-from time import perf_counter
+from asyncio import sleep
 
 from schema.text import TextSchema
-
-from pathlib import Path
-from sys import path
-
-path.append(str(Path(__file__).resolve().parent.parent))
-
 from producer import send_to_queue
-from config import REDIS_TIME, REDIS_URL, REDIS_TIMEOUT, REDIS_SLEEP
+from config import REDIS_TIME, REDIS_TIMEOUT, REDIS_SLEEP
 
 
 router = APIRouter()
 
 
 @router.get("/")
-async def root(data: TextSchema):
+async def root(request: Request, body: TextSchema):
+    redis = request.app.state.redis
+    channel = request.app.state.rabbitmq_channel
+
     __uuid = str(uuid4())
-    __rdt = dumps({
-        "status": "processing",
-        "data": dict(data)
-    })
+    await redis.set(__uuid, dumps({"status": "processing", "data": dict(body)}), REDIS_TIME)
+    await send_to_queue(channel, "text", __uuid)
 
-    redis = from_url(REDIS_URL)
-    await redis.set(__uuid, __rdt, REDIS_TIME)
+    result = None
+    elapsed = 0
+    while elapsed <= REDIS_TIMEOUT:
+        await sleep(REDIS_SLEEP)
+        elapsed += REDIS_SLEEP
 
-    await send_to_queue("text", __uuid)
+        raw = await redis.get(__uuid)
+        if raw is None:
+            break
+        candidate = loads(raw)
+        if candidate["status"] == "OK":
+            result = candidate
+            break
 
-    __start, __end = perf_counter(), perf_counter()
-    while int(__end - __start) <= REDIS_TIMEOUT:
-        if int(__end - __start) >= REDIS_SLEEP:
-            data = await redis.get(__uuid)
-            if data:
-                data = loads(data)
-                if data["status"] == "OK":
-                    break
-                else:
-                    data = None
-            else:
-                break
-        __end = perf_counter()
-
-    if data is None:
-        await redis.close()
+    if result is None:
         raise HTTPException(
             status_code=status.HTTP_408_REQUEST_TIMEOUT,
             detail="timeout"
         )
 
-    await redis.close()
-    return HTTPException(status_code=status.HTTP_200_OK, detail=data)
+    return result

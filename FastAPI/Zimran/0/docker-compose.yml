@@ -10,11 +10,14 @@ services:
       - REDIS_HOST=redis
       - RABBITMQ_HOST=rabbitmq
     depends_on:
-      - redis
-      - rabbitmq
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
     networks:
       - fastapi-zimran-zero
-  
+
   consumer:
     container_name: consumer
     build:
@@ -24,9 +27,11 @@ services:
       - REDIS_HOST=redis
       - RABBITMQ_HOST=rabbitmq
     depends_on:
-      - redis
-      - rabbitmq
-      - api
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
     networks:
       - fastapi-zimran-zero
 
@@ -35,9 +40,14 @@ services:
     container_name: redis
     ports:
       - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
     networks:
       - fastapi-zimran-zero
-  
+
   rabbitmq:
     image: rabbitmq:4.0.5-management
     container_name: rabbitmq
@@ -50,6 +60,11 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     networks:
       - fastapi-zimran-zero
 

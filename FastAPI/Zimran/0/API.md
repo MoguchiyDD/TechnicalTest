@@ -16,14 +16,10 @@
 #### Output
 ```json
 {
-	"status_code": 200,
-	"detail": {
-		"status": "OK",
-		"data": {
-			"text": "CBA"
-		}
-	},
-	"headers": null
+	"status": "OK",
+	"data": {
+		"text": "CBA"
+	}
 }
 ```
 
