@@ -16,9 +16,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-PAGE = "home"
-
-
 # ------------ HOME ------------
 
 def index(request: WSGIRequest) -> HttpResponse:
@@ -32,14 +29,10 @@ def index(request: WSGIRequest) -> HttpResponse:
     RESULT: Response with DATA for HTML
     """
 
-    template = "index.html"
-    title = "Дом"
-    tab = "home"
-
     context = {
-        "title": title,
-        "tab": tab
+        "title": "Дом",
+        "tab": "home"
     }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return render(request, "pages/page.html", context)
 
 # ------------------------------

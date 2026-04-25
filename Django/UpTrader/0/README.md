@@ -13,7 +13,6 @@
   <a href="../../../LICENSE" target="_blank">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT%20License-6A1B9A?style=for-the-badge" />
   </a>
-  <img alt="Date/Time" src="https://img.shields.io/badge/Date/Time-~1 day-F9A825?style=for-the-badge" />
   <img alt="Language" src="https://img.shields.io/badge/Language-Russian-00897b?style=for-the-badge" />
   <a href="https://youtu.be/KPfGGGur7Fs" target="_blank">
     <img alt="YouTube" src="https://img.shields.io/badge/Result-YouTube-FF0000?style=for-the-badge" />
@@ -39,20 +38,27 @@
 - information (URL)
 
 ## Steps before launch
-```Bash
-# Virtual Window (Python)
+```BASH
+$ # 1 OPTION
+$ # Docker
+$ docker build -t uptrader .
+$ docker run --name uptrader -p 8000:8000 uptrader
+$ 
+$ # 2 OPTION
+$ 
+$ # Virtual Window (Python)
 $ python -m venv <NAME>
-# for Linux and MacOS : source <NAME>/bin/activate
-# for Windows : <NAME>\Scripts\activate
+$ # for Linux and MacOS : source <NAME>/bin/activate
+$ # for Windows : <NAME>\Scripts\activate
 $ pip install -r requirements.txt  # Installation of Packages 
-
-# RUN
+$ 
+$ # RUN
 $ cd src
 $ python manage.py makemigrations menu
 $ python manage.py migrate
-# Create 1 SUPER USER and ADD 1 MENU (type «main») following the INSTRUCTION
-# in the «MENU TABS» Block from the «README.md» to the MENU DATABASE
-# (the parent is saved automatically when creating 1 new tab for the menu)
+$ # Create 1 SUPER USER and ADD 1 MENU (type «main») following the INSTRUCTION
+$ # in the «MENU TABS» Block from the «README.md» to the MENU DATABASE
+$ # (the parent is saved automatically when creating 1 new tab for the menu)
 $ python manage.py fullmenu
 $ python manage.py runserver
 ```

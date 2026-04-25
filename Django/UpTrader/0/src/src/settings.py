@@ -65,19 +65,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries': {
-                'draw_menu': 'components.menu.views',
-                'queue': 'components.menu.views',
-                'is_queue': 'components.menu.views',
-                'parents': 'components.menu.views',
-                'next': 'components.menu.views',
-                'previous': 'components.menu.views'
-            },
         },
     },
 ]
 
 STATIC_URL = '/static/'
+STATIC_ROOT = path.join(BASE_DIR, 'staticfiles/')
 STATICFILES_DIRS = [path.join(BASE_DIR, 'static/')]
 
 WSGI_APPLICATION = 'src.wsgi.application'
@@ -124,11 +117,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

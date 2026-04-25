@@ -1,3 +1,4 @@
 roof/
 __pycache__/
 migrations/
+.venv

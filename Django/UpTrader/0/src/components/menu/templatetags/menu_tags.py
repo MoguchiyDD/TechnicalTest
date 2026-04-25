@@ -11,13 +11,23 @@
 # Create Date: 2024.03.05, 12:38 PM
 
 
+import threading
+
 from django import template
 from django.template.context import RequestContext
-from .models import Menu
+
+from ..models import Menu
 
 
 register = template.Library()
-ul_queue = []  # for SUBMENU
+
+_local = threading.local()
+
+
+def _get_ul_queue() -> list:
+    if not hasattr(_local, 'ul_queue'):
+        _local.ul_queue = []
+    return _local.ul_queue
 
 
 # ------------------- DRAW MENU --------------------
@@ -36,16 +46,13 @@ def draw_menu(context: RequestContext, menu_type: str, current: str):
     RESULT: { "current": current.lower(), "menu": «Menu» DATA TABLE }
     """
 
-    menu = Menu.objects.filter(
-        menu_type__menu_type=menu_type
-    ).order_by("level")
+    menu = list(
+        Menu.objects.filter(menu_type__menu_type=menu_type).order_by("level")
+    )
 
     for m in menu:
-        if m.slug == current.lower():
-            m.status = True
-        else:
-            m.status = False
-        m.save()
+        m.status = (m.slug == current.lower())
+    Menu.objects.bulk_update(menu, ['status'])
 
     result = {
         "current": current.lower(),
@@ -56,7 +63,7 @@ def draw_menu(context: RequestContext, menu_type: str, current: str):
 # --------------------------------------------------
 
 
-# ------------ MENU DRAWING ASSISTANTSt ------------
+# ------------ MENU DRAWING ASSISTANTS ------------
 
 @register.filter(name="next")
 def next(menu: list[Menu], index: int) -> str:
@@ -73,7 +80,7 @@ def next(menu: list[Menu], index: int) -> str:
 
     try:
         result = menu[index + 1]
-    except:
+    except IndexError:
         result = menu[index]
 
     return result.parent
@@ -94,7 +101,7 @@ def previous(menu: list[Menu], index: int) -> str:
 
     try:
         result = menu[index - 1]
-    except:
+    except IndexError:
         result = menu[0]
 
     return result.parent
@@ -137,7 +144,7 @@ def is_queue(_: int) -> list[bool]:
     RESULT: LIST with «False»
     """
 
-    global ul_queue
+    ul_queue = _get_ul_queue()
     is_new_ul = [False for _ in range(len(ul_queue)) if len(ul_queue) >= 1]
     return is_new_ul
 
@@ -163,24 +170,24 @@ def queue(menu: list[Menu], index: int) -> list[bool | None]:
         RESULT: LIST with «None» | «False» | «True»
         """
 
-        ul_queue.append(menu[index].parent)
+        _get_ul_queue().append(menu[index].parent)
         is_new_ul = [True]
         return is_new_ul
 
-    global ul_queue
     is_new_ul = [None]
     if index == 0:
-        ul_queue = []
+        _local.ul_queue = []
 
+    ul_queue = _get_ul_queue()
     if len(ul_queue) >= 1:
         if ul_queue[-1] != menu[index].parent:
             dot = True
             try:
                 q = ul_queue.index(menu[index].parent)
-                is_new_ul = [False for _ in range(q+1, len(ul_queue))]
-                del ul_queue[q+1:]
+                is_new_ul = [False for _ in range(q + 1, len(ul_queue))]
+                del ul_queue[q + 1:]
                 dot = False
-            except:
+            except ValueError:
                 pass
 
             if dot:

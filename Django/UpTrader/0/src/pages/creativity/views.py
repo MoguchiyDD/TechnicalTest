@@ -6,7 +6,7 @@
 #
 # Past Modification: Editing The ALL FUNCTIONS (RESULT)
 # Last Modification: Editing The «subjects» FUNCTION (TITLE)
-# Modification Date: 2024.03.07, 12:04 ФM
+# Modification Date: 2024.03.07, 12:04 PM
 #
 # Create Date: 2024.03.05, 01:23 PM
 
@@ -16,7 +16,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-PAGE = "creativity"
+_TITLES = {
+    "creativity": "Творчество",
+    "paintings":  "Живописи",
+    "subjects":   "Субъекты",
+    "objects":    "Объекты",
+    "sculptures": "Скульптуры",
+}
+
+
+def _page(request: WSGIRequest, tab: str) -> HttpResponse:
+    return render(request, "pages/page.html", {"title": _TITLES[tab], "tab": tab})
 
 
 # ------------ CREATIVITY ------------
@@ -31,16 +41,7 @@ def index(request: WSGIRequest) -> HttpResponse:
     ---
     RESULT: Response with DATA for HTML
     """
-
-    template = "index.html"
-    title = "Творчество"
-    tab = "creativity"
-
-    context = {
-        "title": title,
-        "tab": tab
-    }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return _page(request, "creativity")
 
 # ------------------------------------
 
@@ -57,16 +58,7 @@ def paintings(request: WSGIRequest) -> HttpResponse:
     ---
     RESULT: Response with DATA for HTML
     """
-
-    template = "paintings.html"
-    title = "Живописи"
-    tab = "paintings"
-
-    context = {
-        "title": title,
-        "tab": tab
-    }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return _page(request, "paintings")
 
 
 def subjects(request: WSGIRequest) -> HttpResponse:
@@ -79,16 +71,7 @@ def subjects(request: WSGIRequest) -> HttpResponse:
     ---
     RESULT: Response with DATA for HTML
     """
-
-    template = "paintings.html"
-    title = "Субъекты"
-    tab = "subjects"
-
-    context = {
-        "title": title,
-        "tab": tab
-    }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return _page(request, "subjects")
 
 
 def objects(request: WSGIRequest) -> HttpResponse:
@@ -101,16 +84,7 @@ def objects(request: WSGIRequest) -> HttpResponse:
     ---
     RESULT: Response with DATA for HTML
     """
-
-    template = "paintings.html"
-    title = "Объекты"
-    tab = "objects"
-
-    context = {
-        "title": title,
-        "tab": tab
-    }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return _page(request, "objects")
 
 # ------------------------------------
 
@@ -127,15 +101,6 @@ def sculptures(request: WSGIRequest) -> HttpResponse:
     ---
     RESULT: Response with DATA for HTML
     """
-
-    template = "sculptures.html"
-    title = "Скульптуры"
-    tab = "sculptures"
-
-    context = {
-        "title": title,
-        "tab": tab
-    }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return _page(request, "sculptures")
 
 # ------------------------------------
