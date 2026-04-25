@@ -107,10 +107,6 @@ class Menu(models.Model):
             self.slug = slugify(self.title)
         self.slug = self.slug.lower()
 
-        menu_parent_tab = MenuForParentTabs.objects.get_or_create(
-            parent=self.slug
-        )
-        if not menu_parent_tab:
-            menu_parent_tab.save()
+        MenuForParentTabs.objects.get_or_create(parent=self.slug)
 
         super().save(*args, **kwargs)

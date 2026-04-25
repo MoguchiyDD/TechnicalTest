@@ -16,14 +16,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-PAGE = "information"
-
-
 # ------------ INFORMATION ------------
 
 def index(request: WSGIRequest) -> HttpResponse:
     """
-    The «home» TAB from The MENU
+    The «information» TAB from The MENU
 
     ---
     PARAMETERS:
@@ -32,14 +29,10 @@ def index(request: WSGIRequest) -> HttpResponse:
     RESULT: Response with DATA for HTML
     """
 
-    template = "index.html"
-    title = "Информация"
-    tab = "information"
-
     context = {
-        "title": title,
-        "tab": tab
+        "title": "Информация",
+        "tab": "information"
     }
-    return render(request, f"pages/{ PAGE }/{ template }", context)
+    return render(request, "pages/page.html", context)
 
 # -------------------------------------

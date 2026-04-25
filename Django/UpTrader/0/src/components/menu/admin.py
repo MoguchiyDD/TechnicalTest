@@ -3,7 +3,7 @@ from .models import TypeMenu, Menu, MenuForParentTabs
 
 
 @admin.register(TypeMenu)
-class TypeMenu(admin.ModelAdmin):
+class TypeMenuAdmin(admin.ModelAdmin):
     fields = ["menu_type"]
     list_display = ["menu_type"]
     search_fields = ["menu_type"]
@@ -11,7 +11,7 @@ class TypeMenu(admin.ModelAdmin):
 
 
 @admin.register(MenuForParentTabs)
-class MenuForParentTabs(admin.ModelAdmin):
+class MenuForParentTabsAdmin(admin.ModelAdmin):
     fields = ["parent"]
     list_display = ["parent"]
     readonly_fields = ["parent"]
@@ -20,7 +20,7 @@ class MenuForParentTabs(admin.ModelAdmin):
 
 
 @admin.register(Menu)
-class Menu(admin.ModelAdmin):
+class MenuAdmin(admin.ModelAdmin):
     fields = ["menu_type", "title", "slug", "parent", "level", "status"]
     list_display = ["menu_type", "title", "slug", "parent", "level", "status"]
     readonly_fields = ["status"]
